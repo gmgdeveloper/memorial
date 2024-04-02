@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>A life Worth Remembering</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            color: #BE9438 !important;
+            font-size: 25px;
+        }
+
+        .navlinks{
+            margin-right: 30px;
+        }
+
+        .searchinputnav {
+            height: 30px;
+            border-radius: 25px;
+            font-size: 12px;
+        }
+
+        h3.mainheading {
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 18px;
+            font-weight:500;
+            text-align: center;
+            color: #BE9438;
+        }
+        .mainheading {
+            font-size: 18px;
+            font-family: "Josefin Sans", sans-serif;
+            font-weight:500;
+            text-align: center;
+            color: #BE9438;
+        }
+        h3.secondheading {
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 22px;
+            text-align: center;
+            font-weight:500;
+            color: #BE9438;
+        }
+
+        .secondheading {
+            font-size: 22px;
+            font-family: "Josefin Sans", sans-serif;
+            font-weight:500;
+            text-align: center;
+            color: #BE9438;
+        }
+
+        p.mainparagraph.mt-3 {
+            font-size: 16px;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .featurelink{
+            font-size: 22px;
+            color: #BE9438;  
+            margin-right: 15px;
+            margin-left: 27px;
+            font-weight:bold;
+        }
+        .lifeatures{
+            font-size: 15px;
+        }
+        #client-testimonial-carousel {min-height: 200px;}
+        .carousel-indicators .active{
+            background-color:black;
+        }
+        .carousel-indicators > li{
+            background-color:grey;
+        }
+        h4{
+            font-family: "Josefin Sans", sans-serif!important;
+            font-weight:500;
+        }
+        h3{
+            font-family: "Josefin Sans", sans-serif!important;
+            font-weight:500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6">
+                                    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                                        <a class="navbar-brand" href="#">A Life Worth Remembering</a>
+                                    </nav>
+                                </div>
+                                <div class="col-lg-6 col-sm-6 mt-lg-2 mb-lg-5">
+                                    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                            aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-icon"></span>
+                                        </button>
+                                        <div class="collapse navbar-collapse" id="navbarNav">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link navlinks" href="login.html">LOG IN</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link navlinks" href="creat_a_page.html">CREATE A PAGE</a>
+                                                </li>
+                                            </ul>
+                                            <form class="form-inline">
+                                                <input class="form-control mr-sm-2 searchinputnav" type="search"
+                                                    placeholder="Search" aria-label="Search">
+                                            </form>
+                                        </div>
+                                    </nav>
+                                </div>
+
+                                <div class="col-lg-6 col-sm-6 mt-lg-5 text-center">
+                                    <br>
+                                    <h3 class="mainheading mt-lg-5">
+                                        BUILD YOUR DIGITAL MONUMENT:
+                                        <br>
+                                        CRAFT YOUR ONLINE LEGACY WITH PURPOSE
+                                    </h3>
+                                    <p class="mainparagraph mt-3">Capture and share life’s journey on our platform
+                                        dedicated to creating lasting legacies. Whether it’s your own story or that of a
+                                        loved one, our easy-to-use tools help you craft a beautiful narrative that can
+                                        be shared and cherished for generations to come</p>
+                                </div>
+                                <div class="col-lg-6 col-sm-6">
+                                    <img src="assets/heart.png" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="swiper mySwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="assets/dummyone.png">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/dummytwo.png">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/dummythree.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <!-- <div class="swiper-pagination"></div> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-12 mb-lg-3">
+                                <h3 class="secondheading mt-lg-5 mb-lg-3">
+                                    FEATURES
+                                </h3>
+                                <nav class="nav">
+                                    <a class="nav-link featurelink" href="#">Meaningful</a>
+                                    <a class="nav-link featurelink" href="#">Nostalgic</a>
+                                    <a class="nav-link featurelink" href="#">Interactive</a>
+                                    <a class="nav-link featurelink" href="#">Comprehensive</a>
+                                    <a class="nav-link featurelink" href="#">Timeless</a>
+                                    <a class="nav-link featurelink" href="#">Intuitive</a>
+                                </nav>
+                            </div>
+                            <div class="col-lg-4 col-sm-4">
+                                <ul>
+                                    <li class="lifeatures mt-3">Create a legacy page and share your life story with loved ones and future generations
+                                    </li>
+                                    <li class="lifeatures mt-3">Automatically add page visitors to the Guest Book
+                                    </li>
+                                    <li class="lifeatures mt-3">Utilise the flexible setting  options for privacy.
+                                    </li>
+                                </ul> 
+                            </div>
+                            <div class="col-lg-4 col-sm-4">
+                                <ul>
+                                    <li class="lifeatures mt-3">Share the story of a loved-one that has passed
+                                    </li>
+                                    <li class="lifeatures mt-3">Personalise using the easy to use template with your choice of background, fonts, colours, photos and videos 
+                                    </li>
+                                    <li class="lifeatures  mt-3">Create a personalised URL and QR code 
+                                    </li>
+                                </ul> 
+                            </div>
+                            <div class="col-lg-4 col-sm-4">
+                                <ul>
+                                    <li class="lifeatures mt-3">Build your family tree by linking pages
+                                    </li>
+                                    <li class="lifeatures mt-3">Allow administrators access to add, edit and approve contributions
+                                    </li>
+                                    <li class="lifeatures mt-3">Share event details and track RSVP’s 
+                                    </li>
+                                </ul> 
+                            </div>
+                            <div class="col-lg-4 col-sm-4 mt-3">
+                                <div class="card" style="background-image:url('assets/dummythree.jpg'); background-repeat: no-repeat; background-position: center; border: none;">
+                                    <div class="card-body" style="border: none;height: 200px;">
+                                        <h4 class="card-title text-center">Breannon Schuback
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4  mt-3">
+                                <div class="card" style="background-image:url('assets/dummythree.jpg'); background-repeat: no-repeat; background-position: center; border: none;">
+                                    <div class="card-body" style="border: none;height: 200px;">
+                                        <h4 class="card-title text-center">Joyce Jeffers
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-4  mt-3">
+                                <div class="card" style="background-image:url('assets/dummythree.jpg'); background-repeat: no-repeat; background-position: center; border: none;">
+                                    <div class="card-body" style="border: none;height: 200px;">
+                                        <h4 class="card-title text-center">Lex Horgan
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-12 text-center mt-3">
+                                <button class="btn btn-large" style="background-color: #ccaa54; font-weight: bold;">CREATE A PAGE</button>
+                            </div>
+                            <div class="col-lg-12 col-sm-12 mt-3" style="border-top: 2px solid #ccaa54; border-bottom: 2px solid #ccaa54;">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 text-center">
+                                        <h3 class="secondheading mt-lg-5">
+                                            REVIEWS
+                                        </h3>
+                                        <i class="fa fa-heart text-center" style="color:#ccaa54;"></i>
+                                        <i class="fa fa-heart text-center" style="color:#ccaa54;"></i>
+                                        <i class="fa fa-heart text-center" style="color:#ccaa54;"></i>
+                                        <i class="fa fa-heart text-center" style="color:#ccaa54;"></i>
+                                        <i class="fa fa-heart text-center" style="color:#ccaa54;"></i>
+                                    </div>
+                                    <div class="col-lg-10 offset-lg-1 text-light">
+                                        <div id="client-testimonial-carousel" class="carousel slide" data-ride="carousel" style="height:200px;">
+                                          <div class="carousel-inner" role="listbox">
+                                            <div class="carousel-item active text-center p-4">
+                                              <blockquote class="blockquote text-center">
+                                                <p class="mb-0" style="color:black;"><i class="fa fa-quote-left" style="color:black;"></i>First Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.
+                                                </p>
+                                                <footer class="blockquote-footer"  style="color:black;">First Albert Einstein <cite title="Source Title">genius</cite></footer>
+                                                <!-- Client review stars -->
+                                                <!-- "fa fa-star" for a full star, "far fa-star" for an empty star, "far fa-star-half-alt" for a half star. -->
+                                                <p class="client-review-stars">
+                                                  <i class="fa fa-star" style="color:black;"></i>
+                                                  <i class="fa fa-star" style="color:black;"></i>
+                                                  <i class="fa fa-star" style="color:black;"></i>
+                                                  <i class="fa fa-star-half-alt" style="color:black;"></i>
+                                                  <i class="fa fa-star" style="color:black;"></i>
+                                                </p>
+                                              </blockquote>
+                                            </div>
+                                            <div class="carousel-item text-center p-4">
+                                                <blockquote class="blockquote text-center">
+                                                  <p class="mb-0" style="color:black;"><i class="fa fa-quote-left" style="color:black;"></i>Second Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.
+                                                  </p>
+                                                  <footer class="blockquote-footer"  style="color:black;">Second Albert Einstein <cite title="Source Title">genius</cite></footer>
+                                                  <!-- Client review stars -->
+                                                  <!-- "fa fa-star" for a full star, "far fa-star" for an empty star, "far fa-star-half-alt" for a half star. -->
+                                                  <p class="client-review-stars">
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                    <i class="fa fa-star-half-alt" style="color:black;"></i>
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                  </p>
+                                                </blockquote>
+                                              </div>
+                                              <div class="carousel-item text-center p-4">
+                                                <blockquote class="blockquote text-center">
+                                                  <p class="mb-0" style="color:black;"><i class="fa fa-quote-left" style="color:black;"></i>Third Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.
+                                                  </p>
+                                                  <footer class="blockquote-footer"  style="color:black;">Third Albert Einstein <cite title="Source Title">genius</cite></footer>
+                                                  <!-- Client review stars -->
+                                                  <!-- "fa fa-star" for a full star, "far fa-star" for an empty star, "far fa-star-half-alt" for a half star. -->
+                                                  <p class="client-review-stars">
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                    <i class="fa fa-star-half-alt" style="color:black;"></i>
+                                                    <i class="fa fa-star" style="color:black;"></i>
+                                                  </p>
+                                                </blockquote>
+                                              </div>
+                                          </div>
+                                          <ol class="carousel-indicators">
+                                            <li data-target="#client-testimonial-carousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#client-testimonial-carousel" data-slide-to="1"></li>
+                                            <li data-target="#client-testimonial-carousel" data-slide-to="2"></li>
+                                          </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-12 text-center mt-2">
+                                <h3 class="secondheading mt-lg-5 mb-lg-3">
+                                    HOW IT WORKS
+                                </h3>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-4">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h6 class="secondheading">Select a page type
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Autobiography, Biography 
+                                                    or Memorial
+                                                    </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h6 class="secondheading">Set your privacy options
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Set your page to public  or private
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h6 class="secondheading">Authorise page administrators
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Invite people to help with adding, and approving contributions
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4 mt-2">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h6 class="secondheading">Create your design
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Choose your background, colours,  font, and URL
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4 mt-2">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h6 class="secondheading">Add your content
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Add unlimited photo’s, video’s, and text
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4 mt-2">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h6 class="secondheading">Share with family and friends
+                                                </h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Share your page and invite them to contribute
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-sm-12 mt-3" style="border-top: 2px solid #ccaa54; border-bottom: 2px solid #ccaa54;">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 text-center">
+                                        <h3 class="secondheading mt-lg-5">
+                                            PACKAGES & PRICING
+                                        </h3>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-6 mb-lg-4">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h4 style="font-weight: bold;color:#000;" class="text-center">
+                                                    MONTHLY SUBCRIPTION
+                                                </h4>
+                                                <p class="text-center">$5.55</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-sm-6 mb-lg-4">
+                                        <div class="card">
+                                            <div class="card-header" style="border:0px;background-color: #fff;">
+                                                <h4 style="font-weight: bold;color:#000;" class="text-center">
+                                                    LIFETIME MEMBERSHIP
+                                                </h4>
+                                                <p class="text-center">$111</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-sm-12 mt-3" style="border-top: 2px solid #ccaa54; border-bottom: 2px solid #ccaa54;">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 text-center">
+                                        <h3 class="secondheading mt-lg-5">
+                                            WHY CHOOSE A LIFE WORTH REMEMBERING?
+                                        </h3>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 mb-lg-4">
+                                        <p class="text-center">At "A Life Worth Remembering," we understand the profound impact of preserving memories and stories for  future generations. Here's why you should choose us to craft your online legacy:
+                                        </p>
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Personalised Touch: 
+                                        </h6>
+                                        <p class="text-center">
+                                            We believe each life story is unique. Our platform allows you to create a personalised online legacy that truly reflects the essence of your life, or the life of someone you love.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Easy to Use:  
+                                        </h6>
+                                        <p class="text-center">
+                                            Our platform is user-friendly, with a template that allows you to customise the design of the page easily to     reflect the personality of the honouree.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Unlimited Content:   
+                                        </h6>
+                                        <p class="text-center">
+                                            Preserve every aspect of your story without limits. Upload unlimited photos, videos, soundbites, and text to create a comprehensive and enduring tribute.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Customisable Sections:    
+                                        </h6>
+                                        <p class="text-center">
+                                            Tailor your page to reflect your unique story. Choose which sections you want to publish, from photos and videos to personal anecdotes and achievements, creating a truly personalised legacy page.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Lasting Tributes:    
+                                        </h6>
+                                        <p class="text-center">
+                                            Your loved one's legacy deserves to be remembered. We ensure that the memories shared on our platform endure, providing a lasting tribute for generations to come.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Secure and Private:    
+                                        </h6>
+                                        <p class="text-center">
+                                            We prioritize the security and privacy of your data. Rest assured that your memories are safe with us, accessible only to those you choose to share them with.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Supportive Community:     
+                                        </h6>
+                                        <p class="text-center">
+                                            Join a community of individuals who understand the importance of preserving legacies. Link your pages, and share your lives to gain inspiration, and connect with others who are also creating a life worth remembering.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            All-Inclusive:      
+                                        </h6>
+                                        <p class="text-center">
+                                            Say goodbye to hidden fees. We believe in transparent pricing, offering access to all features without any additional costs. Create a comprehensive tribute without worrying about extra charges.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Multiple Administrators:       
+                                        </h6>
+                                        <p class="text-center">
+                                            Sharing the responsibility of curating memories is made easy with multiple administrators. Collaborate with    family and friends to add, edit, and approve contributions, ensuring that your loved one's legacy is accurately represented.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            No Account Required for Guests:       
+                                        </h6>
+                                        <p class="text-center">
+                                            We understand that not everyone may want to create an account. Guests can view and contribute to the legacy page without the need for an account, making it easier for friends and family to participate in celebrating a life worth remembering.
+                                        </p>
+
+                                        <h6 class="secondheading mt-lg-4" style="font-size:14px;">
+                                            Accessible Anytime, Anywhere:       
+                                        </h6>
+                                        <p class="text-center">
+                                            Your memories are accessible from anywhere with an internet connection. Whether you're at home or on the go, you can revisit and share your loved one's legacy with ease. 
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 text-center">
+                                        <button class="btn btn-large" style="background-color: #ccaa54; font-weight: bold;">CREATE A PAGE</button>
+                                    </div>
+                                    <div class="col-lg-12 col-sm-12 text-center">
+                                        <h3 class="secondheading mt-lg-5">
+                                            PRESS
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-sm-12 mt-3">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 text-center">
+                                        <p>
+                                            "A Life Worth Remembering" was first established to honour my daughter Breannon, who passed away unexpectedly in August 2023. Whilst in the design phase, I decided I also wanted to commemorate the life of my surviving daughter, Kaitlyn, and link their pages. From there, I decide to add other family and friends and link their pages to create a more comprehensive and holistic story of their lives. It has become such an important tool that I now want to open it to anyone who sees the benefit of leaving a legacy for loved ones.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-lg-12 col-sm-12 mt-3" style="background-color: #e5d079;">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 text-center">
+                                        <div class="row">
+                                            <div class="col-lg-2 col-sm-2 text-left">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link active" href="#" style="color: #000;">ABOUT</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">TERMS</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">CHARITIES</a>
+                                                    </li>
+                                                  </ul>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 text-left">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link active" href="#" style="color: #000;">VISION</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">Q & A’S</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">TECH SUPPORT</a>
+                                                    </li>
+                                                  </ul>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 text-left">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link active" href="#" style="color: #000;">MISSION</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">BUSINESS</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">CONTACT US</a>
+                                                    </li>
+                                                  </ul>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 text-left">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link active" href="#" style="color: #000;">PRIVACY</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">MEDIA KIT</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="#" style="color: #000;">CREATE A PAGE</a>
+                                                    </li>
+                                                  </ul>
+                                            </div>
+                                            <div class="col-lg-4 col-sm-4">
+                                                <h6 class="text-center mt-3">SHARE THIS PAGE
+                                                </h6>
+                                                <ul class="nav flex-column text-center">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link active" href="#" style="color: #000;">Facebook</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                type: "fraction",
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+</body>
+
+</html>
