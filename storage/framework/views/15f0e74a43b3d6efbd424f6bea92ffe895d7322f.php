@@ -3,7 +3,7 @@
 
 <head>
     <title>A life Worth Remembering</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/frontendlogin.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/frontendlogin.css')); ?>" rel="stylesheet">
 
 </head>
 
@@ -28,12 +28,12 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 mobileoff">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="<?php echo e(route('home')); ?>" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                         <a class="navbar-brand mobileon" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';display:none;">A Life Worth Remembering</a>
+                                         <a class="navbar-brand mobileon" href="<?php echo e(route('home')); ?>" style="font-family: 'Josefin Sans Bold';display:none;">A Life Worth Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                             aria-label="Toggle navigation">
@@ -42,10 +42,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('login')); ?>">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('create_page')); ?>">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-6 mobileoff" style="display:none;">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="<?php echo e(route('home')); ?>" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                             </div>
@@ -207,7 +207,7 @@
             // Send data to the server with CSRF token included
             $.ajax({
                 type: "POST",
-                url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
+                url: "<?php echo e(route('frontend_login')); ?>", // Replace "frontend_login" with the actual server endpoint
                 data: formData,
                 headers: {
                     'X-CSRF-TOKEN': csrfToken
@@ -215,7 +215,7 @@
                 success: function(response){
                     if(response.success){
                     // Redirect to the desired page
-                    window.location.href = '{{ route("pageone") }}';
+                    window.location.href = '<?php echo e(route("pageone")); ?>';
                 } else {
                     // Handle unsuccessful login
                     console.error('Login unsuccessful');
@@ -263,4 +263,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/Frontend/login.blade.php ENDPATH**/ ?>

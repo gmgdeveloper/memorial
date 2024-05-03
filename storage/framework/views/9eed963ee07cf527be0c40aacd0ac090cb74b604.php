@@ -1,8 +1,8 @@
-@include('admin.layouts.header')
+<?php echo $__env->make('admin.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    @include('admin.layouts.sidebar')
+    <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -102,7 +102,7 @@
                                             $total += $subscription->total_amount;
                                         }
                                         ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${{$total}}</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$<?php echo e($total); ?></div>
                                     </div>
 
                                     <div class="col-auto">
@@ -126,7 +126,7 @@
                                         // Fetch total count of users from the 'users' table
                                         $totalUsers = DB::table('users')->count();
                                         ?>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalUsers }}</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo e($totalUsers); ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -164,4 +164,4 @@
 
 </div>
 <!-- End of Page Wrapper -->
-@include('admin.layouts.footer')
+<?php echo $__env->make('admin.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

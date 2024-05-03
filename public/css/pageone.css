@@ -1,0 +1,774 @@
+
+.navbar-brand {
+    color: white !important;
+    font-size: 25px;
+}
+
+.navlinks {
+    margin-right: 30px;
+    font-family: "Josefin Sans Light";
+}
+
+.searchinputnav {
+    height: 30px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.footersearchinputnav {
+    height: 30px;
+    border-radius: 6px;
+    font-size: 12px;
+    width: 100% !important;
+}
+
+h3.mainheading {
+    font-family: 'Josefin Sans Bold';
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    color: #BE9438;
+}
+
+.mainheading {
+    font-size: 18px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    text-align: center;
+    color: #BE9438;
+}
+
+h3.secondheading {
+    font-family: 'Josefin Sans Bold';
+    font-size: 22px;
+    text-align: center;
+    font-weight: 500;
+    color: #BE9438;
+}
+
+.secondheading {
+    font-size: 22px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    text-align: center;
+    color: #BE9438;
+}
+
+.pagemainheading {
+    font-size: 25px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    text-align: center;
+    color: #BE9438;
+}
+
+.anotherpagemainheading {
+    font-size: 25px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    text-align: right;
+    color: #BE9438;
+}
+
+.transitionheading {
+    font-size: 25px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    text-align: center;
+    color: #000;
+}
+
+.wishesheading {
+    font-size: 18px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    text-align: center;
+    color: #000;
+}
+
+.breesheading {
+    font-size: 15px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    color: #000;
+}
+
+p.mainparagraph.mt-3 {
+    font-size: 16px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    /* width: 100%; */
+    /* height: 400px; */
+    /* object-fit: cover; */
+}
+
+.featurelink {
+    font-size: 22px;
+    color: #BE9438;
+    margin-right: 15px;
+    margin-left: 27px;
+    font-weight: bold;
+}
+
+.lifeatures {
+    font-size: 15px;
+}
+
+#client-testimonial-carousel {
+    min-height: 200px;
+}
+
+.carousel-indicators .active {
+    background-color: black;
+}
+
+.carousel-indicators>li {
+    background-color: grey;
+}
+
+h4 {
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+}
+
+h5 {
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+}
+
+h3 {
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+}
+
+.brennonheading {
+    font-size: 40px;
+    font-family: 'Josefin Sans Bold';
+    font-weight: 500;
+    text-align: center;
+    color: #000;
+}
+
+h6 {
+    font-family: 'Josefin Sans Bold';
+}
+
+input.form-control.mr-sm-2.searchinputnav {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px;
+    padding-left: 2px;
+}
+
+input.form-control.mr-sm-2.searchinputnav:focus {
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    box-shadow: inherit;
+}
+
+.carousel-indicators {
+    bottom: inherit !important;
+}
+
+.offinmobile {
+    display: none !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #be9438 !important;
+}
+
+.searchinputnavhsbdha {
+    float: right;
+}
+
+.slider-container {
+    max-width: 100%;
+    /* Adjust the maximum width as needed */
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slider-content {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slider-item {
+    flex: 0 0 100%;
+    /* Display one item at a time */
+    margin-right: 20px;
+    /* Adjust the space between items as needed */
+    max-width: 300px;
+    /* Adjust the maximum width as needed */
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    /* Add border for better visibility */
+}
+
+.product-info {
+    text-align: center;
+    padding: 10px;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: #f1f1f100;
+    padding: 10px;
+    border: 0px solid #ccc;
+    border-radius: 50%;
+    font-size: 40px;
+    z-index: 1;
+}
+
+.prev {
+    left: 0;
+    color: #be9438;
+}
+
+.next {
+    right: 0;
+    color: #be9438;
+}
+
+.swiper-button-next.mt-lg-5 {
+    top: 60px;
+}
+
+.swiper-button-prev.mt-lg-5 {
+    top: 60px;
+}
+
+.swiper-button-next.generalnext {
+    margin-top: -76px;
+}
+
+.swiper-button-prev.generalprev {
+    margin-top: -76px;
+}
+
+@media screen and (max-width: 768px) {
+    .mobileoff {
+        display: none !important;
+    }
+
+    .mobileon {
+        display: block !important;
+    }
+
+    h3.mainheading {
+        font-size: 13px !important;
+    }
+
+    .mainparagraph {
+        font-size: 13px !important;
+    }
+
+    .firstimg {
+        height: 200px !important;
+    }
+
+    .featurelink {
+        font-size: 15px !important;
+    }
+
+    .margininstutive {
+        margin-left: 42px !important;
+    }
+
+    .blockquotep {
+        font-size: 14px !important;
+    }
+
+    .margintopadd {
+        margin-top: .5rem !important;
+    }
+
+    .loginheading {
+        text-align: center !important;
+    }
+
+    .heartinmg {
+        text-align: center !important;
+    }
+
+    .widthseting {
+        width: 80% !important;
+    }
+
+    .widthsetingcheck {
+        width: 20% !important;
+    }
+
+    .widthsetingtext {
+        font-size: 14px !important;
+    }
+
+    .margintopchecking {
+        margin-top: 5px !important;
+    }
+
+    .number {
+        width: 45px !important;
+        height: 40px !important;
+    }
+
+    .heightsetpackagediv {
+        height: 700% !important;
+    }
+
+    .visiblecheckbox {
+        width: 20% !important;
+        margin-top: 20px !important;
+    }
+
+    .visiblecheckboxdiv {
+        width: 80% !important;
+    }
+
+    .marginledftcvc {
+        margin-left: 4px !important;
+    }
+
+    .floatfledft {
+        float: left !important;
+        margin-right: 190px !important;
+    }
+
+    .imagemainheightset {
+        height: 150px !important;
+    }
+
+    .pagemainheading {
+        font-size: 20px !important;
+    }
+
+    .brennonheading {
+        font-size: 20px !important;
+    }
+
+    .borderremove {
+        padding-bottom: 130px !important;
+    }
+
+    .contactadministration {
+        width: 100% !important;
+    }
+
+    .addfullresposnive {
+        font-size: 11px !important;
+    }
+
+    .funeralmargin {
+        margin-top: 1rem !important
+    }
+
+    .dummyvideooo {
+        height: 250px !important;
+    }
+
+    .heightsethournreebotonimage {
+        height: 200px !important;
+    }
+
+    .slider-item {
+        margin-right: 0px !important;
+    }
+
+    .textcentssrer {
+        text-align: center !important;
+    }
+
+    a.navbar-brand.mobileon {
+        width: 50% !important;
+        font-size: 12px;
+    }
+
+    button:focus {
+        outline: inherit !important;
+    }
+
+    .searchinputnavhsbdha {
+        float: inherit;
+    }
+
+    .heightmainstory {
+        height: 200px !important;
+    }
+
+    .prev,
+    .next {
+        position: absolute;
+        top: 35%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background-color: #f1f1f100;
+        padding: 10px;
+        border: 0px solid #ccc;
+        border-radius: 50%;
+        font-size: 40px;
+        z-index: 1;
+    }
+
+    .qrimageheightset {
+        height: 310px !important;
+    }
+
+    .anotherpagemainheading {
+        text-align: center !important;
+        margin-right: 0px !important;
+        font-size: 20px !important;
+    }
+
+    .storiesanotherpagemainheading {
+        text-align: center !important;
+        margin-right: 0px !important;
+        margin-top: 15px;
+        font-size: 20px !important;
+    }
+
+    .addcontactswipermargintopres {
+        margin-top: 100px !important;
+    }
+
+    .transitionheading {
+        font-size: 20px !important;
+    }
+
+    .swiper-button-next.mt-lg-5 {
+        top: 140px;
+    }
+
+    .swiper-button-prev.mt-lg-5 {
+        top: 140px;
+    }
+
+    .qrcodediv {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .topaddmarginsub {
+        margin-top: 30px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .paddingunsget {
+        padding-left: 0px !important;
+        padding-right: 0px !important
+    }
+
+    .addpagingmodilbe {
+        padding: 6px !important;
+    }
+
+    .topcontactadministrationbottom {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .pagenotify {
+        text-align: left !important;
+    }
+
+    button.btn.notifybutton {
+        height: 31px;
+        border-radius: 0px;
+        margin-top: 0px;
+        padding-top: 2px;
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: lightgrey;
+        outline: 0;
+        box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
+    }
+
+    .offinmobile {
+        padding-right: 0px !important;
+    }
+
+    .newclasspaddingoff {
+        padding-right: 0px !important;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .mobileoff {
+        display: none !important;
+    }
+
+    .mobileon {
+        display: block !important;
+    }
+
+    h3.mainheading {
+        font-size: 13px !important;
+    }
+
+    .mainparagraph {
+        font-size: 13px !important;
+    }
+
+    .firstimg {
+        height: 200px !important;
+    }
+
+    .featurelink {
+        font-size: 15px !important;
+    }
+
+    .margininstutive {
+        margin-left: 42px !important;
+    }
+
+    .blockquotep {
+        font-size: 14px !important;
+    }
+
+    .margintopadd {
+        margin-top: .5rem !important;
+    }
+
+    .loginheading {
+        text-align: center !important;
+    }
+
+    .heartinmg {
+        text-align: center !important;
+    }
+
+    .widthseting {
+        width: 80% !important;
+    }
+
+    .widthsetingcheck {
+        width: 20% !important;
+    }
+
+    .widthsetingtext {
+        font-size: 14px !important;
+    }
+
+    .margintopchecking {
+        margin-top: 5px !important;
+    }
+
+    .number {
+        width: 45px !important;
+        height: 40px !important;
+    }
+
+    .heightsetpackagediv {
+        height: auto !important;
+    }
+
+    .visiblecheckbox {
+        width: 20% !important;
+        margin-top: 20px !important;
+    }
+
+    .visiblecheckboxdiv {
+        width: 80% !important;
+    }
+
+    .marginledftcvc {
+        margin-left: 10px !important;
+    }
+
+    .floatfledft {
+        float: left !important;
+        width: 100%;
+        -webkit-flex-direction: initial !important;
+    }
+
+    .form-date-item {
+        margin-left: 6px !important;
+    }
+
+    .textlinkhref {
+        width: 30% !important;
+    }
+
+    .textlinkhrefinput {
+        width: 40% !important;
+    }
+
+    .steps {
+        display: none !important;
+    }
+
+    .content .current {
+        padding-top: 0px !important;
+    }
+
+    .heightsetcredit {
+        height: auto !important;
+    }
+
+    .paddingkhaam {
+        padding-left: 0px !important;
+    }
+
+    .actions ul li a:hover {
+        background-color: #BE9438;
+        color: #fff !important;
+    }
+
+    label#email-error {
+        display: none !important;
+    }
+
+    .createammeorialwebsitetotitl {
+        margin-left: 30px !important;
+        font-size: 20px !important;
+    }
+
+    a[href="#next"] {
+        background-color: #BE9438 !important;
+        color: #fff !important;
+    }
+
+    .navbar-brand {
+        font-size: 14px !important;
+    }
+
+    .createa_pagebuttonwidthsetres {
+        width: 100% !important;
+    }
+
+    a.navbar-brand.mobileon {
+        width: 50% !important;
+    }
+
+    .responsiveinvisible {
+        height: auto !important;
+    }
+
+    .reposdivecardheight {
+        height: auto !important;
+    }
+
+    .fieldset-contenthwight {
+        height: auto !important;
+    }
+
+    .nameofcardiwdth {
+        width: 15% !important;
+    }
+
+    .searchinputnavhsbdha {
+        float: inherit;
+    }
+
+    .heightmainstory {
+        height: 200px !important;
+    }
+
+    .contactadministration {
+        width: 100% !important;
+    }
+
+    .qrimageheightset {
+        height: 310px !important;
+    }
+
+    .anotherpagemainheading {
+        text-align: center !important;
+        margin-right: 0px !important;
+        font-size: 20px !important;
+    }
+
+    .storiesanotherpagemainheading {
+        text-align: center !important;
+        margin-right: 0px !important;
+        margin-top: 15px;
+    }
+
+    .addcontactswipermargintopres {
+        margin-top: 100px !important;
+    }
+
+    .transitionheading {
+        font-size: 20px !important;
+    }
+
+    .swiper-button-next.mt-lg-5 {
+        top: 140px;
+    }
+
+    .swiper-button-prev.mt-lg-5 {
+        top: 140px;
+    }
+
+    .qrcodediv {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .topaddmarginsub {
+        margin-top: 30px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .paddingunsget {
+        padding-left: 0px !important;
+        padding-right: 0px !important
+    }
+
+    .addpagingmodilbe {
+        padding: 6px !important;
+    }
+
+    .topcontactadministrationbottom {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    button.btn.notifybutton {
+        height: 31px;
+        border-radius: 0px;
+        margin-top: 0px;
+        padding-top: 2px;
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: lightgrey;
+        outline: 0;
+        box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
+    }
+}

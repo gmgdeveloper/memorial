@@ -260,7 +260,7 @@
             .swiper-button-prev.generalprev{
                 margin-top: -76px;
             }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -455,7 +455,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -735,12 +735,12 @@
                             </div>
                                 <div class="col-lg-6 col-sm-6 mobileoff" style="display:none;">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="<?php echo e(route('home')); ?>" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5 mobileon offinmobile">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white" style="background-color: #be9438 !important;">
-                                         <a class="navbar-brand mobileon" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
+                                         <a class="navbar-brand mobileon" href="<?php echo e(route('home')); ?>" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                             aria-label="Toggle navigation">
@@ -848,7 +848,7 @@
                                                 method: 'POST',
                                                 headers: {
                                                     'Content-Type': 'application/json',
-                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                    'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
                                                 },
                                                 body: JSON.stringify({ editedData: editedData })
                                             })
@@ -2996,4 +2996,4 @@
       </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/Frontend/pageone.blade.php ENDPATH**/ ?>

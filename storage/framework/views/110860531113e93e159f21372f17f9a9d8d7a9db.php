@@ -1,8 +1,8 @@
-@include('admin.layouts.header')
+<?php echo $__env->make('admin.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    @include('admin.layouts.sidebar')
+    <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -50,24 +50,31 @@
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
-                    <!-- Nav Item - User Information -->
+                    <!-- Nav Item - plan Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="planDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @auth
-                            <!-- Display the user's name -->
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                            @endauth
+                            <?php if(auth()->guard()->check()): ?>
+                            <!-- Display the plan's name -->
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(auth()->user()->name); ?></span>
+                            <?php endif; ?>
                             <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                         </a>
-                        <!-- Dropdown - User Information -->
+                        <!-- Dropdown - plan Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="userDropdown">
+                            aria-labelledby="planDropdown">
                             <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <i class="fas fa-plan fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
-                      
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Activity Log
+                            </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -85,14 +92,17 @@
             <div class="container-fluid">
 
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Users</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Page Created</h1>
+
                 </div>
 
-                @if(session('success'))
+
+                <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    <?php echo e(session('success')); ?>
+
                 </div>
-                @endif
+                <?php endif; ?>
 
 
                 <div class="row">
@@ -104,48 +114,41 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
-                                                <th scope="col">Role</th>
+                                                <th scope="col">FirstName</th>
+                                                <th scope="col">LastName</th>
                                                 <th scope="col">Name</th>
-                                                <th scope="col">Username</th>
                                                 <th scope="col">Email</th>
-                                                <th scope="col">Actions</th>
-                                                <!-- Updated header for the actions column -->
+
+                                                <th scope="col">PageType</th>
+                                                <th scope="col">TotalAmount</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($users as $user)
+                                            <?php $__currentLoopData = $userpages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
-                                                <td>{{ $user->id }}</td>
-                                                <td>{{ $user->role }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->username }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="User Actions">
-                                                        <!-- Edit button -->
-                                                        <button type="button" class="btn btn-primary btn-sm mr-1"
-                                                            onclick="window.location.href='{{ route('admin.edit_user', $user->id) }}'">
-                                                            <i class="fas fa-edit"></i> 
-                                                        </button>
-                                                        <!-- Delete button -->
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm mr-1 delete-btn">
-                                                            <i class="fas fa-trash"></i> 
-                                                        </button>
-                                                        <!-- View history button -->
-                                                        <button type="button" class="btn btn-info btn-sm mr-1"
-                                                            onclick="window.location.href='{{ route('user.history', $user->id) }}'">
-                                                            <i class="fas fa-history"></i> 
-                                                        </button>
-                                                    </div>
+                                                <th scope="row" class="page-id"><?php echo e($page->id); ?></th>
+                                                <td><?php echo e($page->first_name); ?></td>
+                                                <td><?php echo e($page->last_name); ?></td>
+                                                <td><?php echo e($page->name); ?></td>
+                                                <td><?php echo e($page->email); ?></td>
 
+
+                                                <td><?php echo e($page->page_type); ?></td>
+                                                <td><?php echo e($page->total_amount); ?></td>
+                                                <td>
+                                                <button type="button" class="btn btn-danger btn-sm delete-btn">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 </td>
+
+
                                             </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -185,12 +188,12 @@ $(document).ready(function() {
     $('.delete-btn').click(function() {
         // Get the row data
         var row = $(this).closest('tr');
-        var id = row.find('td:first').text(); // Assuming the ID is in the first column
+        var id = row.find('.page-id').text(); 
 
         // Show SweetAlert confirmation dialog as a small card
         Swal.fire({
             title: 'Are you sure?',
-            text: 'You want to delete this user?',
+            text: 'You want to delete this plan?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -206,12 +209,12 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 // Send AJAX request to delete the item
+            
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route("admin.delete_user", ["id" => ":id"]) }}'.replace(
-                        ':id', id),
+                    url: '<?php echo e(route("admin.delete_page", ":id")); ?>'.replace(':id', id),
                     data: {
-                        _token: '{{ csrf_token() }}'
+                        _token: '<?php echo e(csrf_token()); ?>'
                     }, // Add CSRF token for Laravel
                     success: function(response) {
                         // Remove the row from the table if delete is successful
@@ -219,7 +222,7 @@ $(document).ready(function() {
                         // Show success message
                         Swal.fire({
                             title: 'Deleted!',
-                            text: 'Your User has been deleted.',
+                            text: 'Your plan has been deleted.',
                             icon: 'success',
                             customClass: {
                                 container: 'my-swal-container',
@@ -255,4 +258,4 @@ $(document).ready(function() {
 
 
 <!-- End of Page Wrapper -->
-@include('admin.layouts.footer')
+<?php echo $__env->make('admin.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/admin/pages/index.blade.php ENDPATH**/ ?>

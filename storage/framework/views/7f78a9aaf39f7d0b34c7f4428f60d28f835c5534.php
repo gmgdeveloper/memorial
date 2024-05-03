@@ -1,8 +1,8 @@
-@include('admin.layouts.header')
+<?php echo $__env->make('admin.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    @include('admin.layouts.sidebar')
+    <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -54,10 +54,10 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="planDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @auth
+                            <?php if(auth()->guard()->check()): ?>
                             <!-- Display the plan's name -->
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                            @endauth
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(auth()->user()->name); ?></span>
+                            <?php endif; ?>
                             <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - plan Information -->
@@ -90,19 +90,20 @@
         </div>
 
 
-                @if(session('success'))
+                <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    <?php echo e(session('success')); ?>
+
                 </div>
-                @endif
+                <?php endif; ?>
 
 
                 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('admin.store_plan') }}" method="POST">
-                    @csrf
+                <form action="<?php echo e(route('admin.store_plan')); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
 
                     <div class="form-group">
                         <label for="price">Price:</label>
@@ -178,4 +179,4 @@
 
 
 <!-- End of Page Wrapper -->
-@include('admin.layouts.footer')
+<?php echo $__env->make('admin.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/admin/plan/add_plan.blade.php ENDPATH**/ ?>

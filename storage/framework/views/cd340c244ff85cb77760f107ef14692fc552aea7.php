@@ -1,8 +1,8 @@
-@include('admin.layouts.header')
+<?php echo $__env->make('admin.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    @include('admin.layouts.sidebar')
+    <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -50,24 +50,24 @@
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
-                    <!-- Nav Item - User Information -->
+                    <!-- Nav Item - plan Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="planDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @auth
-                            <!-- Display the user's name -->
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                            @endauth
+                            <?php if(auth()->guard()->check()): ?>
+                            <!-- Display the plan's name -->
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(auth()->user()->name); ?></span>
+                            <?php endif; ?>
                             <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                         </a>
-                        <!-- Dropdown - User Information -->
+                        <!-- Dropdown - plan Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="userDropdown">
+                            aria-labelledby="planDropdown">
                             <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <i class="fas fa-plan fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
-                      
+                           
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -84,15 +84,20 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Users</h1>
-                </div>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Plans</h1>
+            <button class="btn btn-primary" onclick="window.location.href='<?php echo e(route('admin.add_plan')); ?>'">
+                <i class="fas fa-plus"></i> Add Plan
+            </button>
+        </div>
 
-                @if(session('success'))
+
+                <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    <?php echo e(session('success')); ?>
+
                 </div>
-                @endif
+                <?php endif; ?>
 
 
                 <div class="row">
@@ -104,48 +109,38 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
-                                                <th scope="col">Role</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Username</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Actions</th>
-                                                <!-- Updated header for the actions column -->
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Duration</th>
+                                                <th scope="col">Features</th>
+
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($users as $user)
+                                            <?php $__currentLoopData = $plans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $plan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
-                                                <td>{{ $user->id }}</td>
-                                                <td>{{ $user->role }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->username }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="User Actions">
-                                                        <!-- Edit button -->
-                                                        <button type="button" class="btn btn-primary btn-sm mr-1"
-                                                            onclick="window.location.href='{{ route('admin.edit_user', $user->id) }}'">
-                                                            <i class="fas fa-edit"></i> 
-                                                        </button>
-                                                        <!-- Delete button -->
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-sm mr-1 delete-btn">
-                                                            <i class="fas fa-trash"></i> 
-                                                        </button>
-                                                        <!-- View history button -->
-                                                        <button type="button" class="btn btn-info btn-sm mr-1"
-                                                            onclick="window.location.href='{{ route('user.history', $user->id) }}'">
-                                                            <i class="fas fa-history"></i> 
-                                                        </button>
-                                                    </div>
+                                                <td><?php echo e($plan->id); ?></td>
+                                                <td><?php echo e($plan->price); ?></td>
+                                                <td><?php echo e($plan->duration); ?></td>
+                                                <td><?php echo e($plan->features); ?></td>
+                                             
 
+                                                <td>
+                                                    <button type="button" class="btn btn-primary btn-sm"
+                                                        onclick="window.location.href='<?php echo e(route('admin.edit_plan', $plan->id)); ?>'">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+
+                                                    <!-- Delete button -->
+                                                    <button type="button" class="btn btn-danger btn-sm delete-btn">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -190,7 +185,7 @@ $(document).ready(function() {
         // Show SweetAlert confirmation dialog as a small card
         Swal.fire({
             title: 'Are you sure?',
-            text: 'You want to delete this user?',
+            text: 'You want to delete this plan?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -208,10 +203,10 @@ $(document).ready(function() {
                 // Send AJAX request to delete the item
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route("admin.delete_user", ["id" => ":id"]) }}'.replace(
+                    url: '<?php echo e(route("admin.delete_plan", ["id" => ":id"])); ?>'.replace(
                         ':id', id),
                     data: {
-                        _token: '{{ csrf_token() }}'
+                        _token: '<?php echo e(csrf_token()); ?>'
                     }, // Add CSRF token for Laravel
                     success: function(response) {
                         // Remove the row from the table if delete is successful
@@ -219,7 +214,7 @@ $(document).ready(function() {
                         // Show success message
                         Swal.fire({
                             title: 'Deleted!',
-                            text: 'Your User has been deleted.',
+                            text: 'Your plan has been deleted.',
                             icon: 'success',
                             customClass: {
                                 container: 'my-swal-container',
@@ -255,4 +250,4 @@ $(document).ready(function() {
 
 
 <!-- End of Page Wrapper -->
-@include('admin.layouts.footer')
+<?php echo $__env->make('admin.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/admin/plan/show.blade.php ENDPATH**/ ?>

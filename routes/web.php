@@ -29,23 +29,30 @@ Auth::routes();
 
 
 Route::get('/',[FrontendController::class,'home_page'])->name('home');
-
-
-Route::get('/create_page',[PageController::class,'creat_a_page'])->name('create_page');
-Route::post('/create_page_save',[PageController::class,'save_create_page'])->name('save_page');
-Route::get('/pageone',[PageController::class,'pageone'])->name('pageone');
-
 Route::get('/login',function(){
     return view('Frontend.login');
 })->name('login');
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/userlogin',[UserController::class,'frontend_login'])->name('frontend_login');
+
+
+
 Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
 
 
+Route::get('/create_page',[PageController::class,'creat_a_page'])->name('create_page');
+Route::post('/create_page_save',[PageController::class,'save_create_page'])->name('save_page');
 
-Route::post('/userlogin',[UserController::class,'frontend_login'])->name('frontend_login');
+
+
+
+
+// Route::group(['middleware' => ['auth', 'honouree']], function(){
+    Route::get('/pageone', [PageController::class, 'pageone'])->name('pageone');
+// });
+
 
 
 Route::group(['prefix' => 'admin'], function() {
@@ -57,6 +64,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => 'admin.auth'], function(){
         Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+        Route::get('/profile',[AdminController::class,'profile'])->name('admin.profile');
         
         Route::get('allusers',[UserController::class,'getallusers'])->name('admin.getallusers');
         Route::get('edit/{id}', [UserController::class, 'display_user'])->name('admin.edit_user');

@@ -111,26 +111,6 @@ public function userpagehistory($id){
 
 
 
-// public function page_history($id){
-//     // Retrieve user plans based on user ID
-//     $userPlans = UserPlan::where('user_id', $id)->get();
-
-//     $page_id = [];
-//     // Retrieve user pages based on all plan IDs associated with the user
-//     $planIds = $userPlans->pluck('page_id'); // Extract page_ids from userPlans collection
-
-//     foreach($planIds as $page){
-//        $page_id[]=$page;
-//     }
-
-   
-//     $plans = UserPages::whereIn('id', $planIds)->get();
-
-
-//     // Return the view with the retrieved user pages
-//     return view('admin.pages.history', compact('plans'));
-// }
-
 public function page_history($id){
     // Retrieve user plans based on user ID
     $userPlans = UserPlan::where('user_id', $id)->get();
@@ -177,17 +157,17 @@ public function frontend_login(Request $request)
 
     if ($user) {
         // Verify the access code
-        if (Hash::check($validatedData['accesscode'], $user->access_code_hash)) {
+        if (Hash::check($validatedData['accesscode'], $user->access_code)) {
             // Authentication successful
             // You can perform any additional actions here, such as setting session data or logging in the user
-            return response()->json(['message' => 'Login successful'], 200);
+            return response()->json(['success' => true, 'message' => 'Login successful'], 200);
         } else {
             // Access code does not match
-            return response()->json(['message' => 'Invalid access code'], 401);
+            return response()->json(['success' => false, 'message' => 'Invalid access code'], 401);
         }
     } else {
         // User not found
-        return response()->json(['message' => 'User not found'], 404);
+        return response()->json(['success' => false, 'message' => 'User not found'], 404);
     }
 }
 

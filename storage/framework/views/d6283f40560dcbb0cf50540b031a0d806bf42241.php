@@ -1,8 +1,8 @@
-@include('admin.layouts.header')
+<?php echo $__env->make('admin.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    @include('admin.layouts.sidebar')
+    <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -54,10 +54,10 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @auth
+                            <?php if(auth()->guard()->check()): ?>
                             <!-- Display the user's name -->
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                            @endauth
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(auth()->user()->name); ?></span>
+                            <?php endif; ?>
                             <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->
@@ -88,11 +88,12 @@
                     <h1 class="h3 mb-0 text-gray-800">Users</h1>
                 </div>
 
-                @if(session('success'))
+                <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    <?php echo e(session('success')); ?>
+
                 </div>
-                @endif
+                <?php endif; ?>
 
 
                 <div class="row">
@@ -113,18 +114,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($users as $user)
+                                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
-                                                <td>{{ $user->id }}</td>
-                                                <td>{{ $user->role }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->username }}</td>
-                                                <td>{{ $user->email }}</td>
+                                                <td><?php echo e($user->id); ?></td>
+                                                <td><?php echo e($user->role); ?></td>
+                                                <td><?php echo e($user->name); ?></td>
+                                                <td><?php echo e($user->username); ?></td>
+                                                <td><?php echo e($user->email); ?></td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="User Actions">
                                                         <!-- Edit button -->
                                                         <button type="button" class="btn btn-primary btn-sm mr-1"
-                                                            onclick="window.location.href='{{ route('admin.edit_user', $user->id) }}'">
+                                                            onclick="window.location.href='<?php echo e(route('admin.edit_user', $user->id)); ?>'">
                                                             <i class="fas fa-edit"></i> 
                                                         </button>
                                                         <!-- Delete button -->
@@ -134,14 +135,14 @@
                                                         </button>
                                                         <!-- View history button -->
                                                         <button type="button" class="btn btn-info btn-sm mr-1"
-                                                            onclick="window.location.href='{{ route('user.history', $user->id) }}'">
+                                                            onclick="window.location.href='<?php echo e(route('user.history', $user->id)); ?>'">
                                                             <i class="fas fa-history"></i> 
                                                         </button>
                                                     </div>
 
                                                 </td>
                                             </tr>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -208,10 +209,10 @@ $(document).ready(function() {
                 // Send AJAX request to delete the item
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route("admin.delete_user", ["id" => ":id"]) }}'.replace(
+                    url: '<?php echo e(route("admin.delete_user", ["id" => ":id"])); ?>'.replace(
                         ':id', id),
                     data: {
-                        _token: '{{ csrf_token() }}'
+                        _token: '<?php echo e(csrf_token()); ?>'
                     }, // Add CSRF token for Laravel
                     success: function(response) {
                         // Remove the row from the table if delete is successful
@@ -255,4 +256,4 @@ $(document).ready(function() {
 
 
 <!-- End of Page Wrapper -->
-@include('admin.layouts.footer')
+<?php echo $__env->make('admin.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/admin/users.blade.php ENDPATH**/ ?>

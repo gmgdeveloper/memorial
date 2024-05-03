@@ -1,4 +1,4 @@
-@include('admin.layouts.header')
+<?php echo $__env->make('admin.layouts.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- Page Wrapper -->
 <style>
 .top_rw {
@@ -78,7 +78,7 @@ button {
     font-weight: bold;
 }
 
-@media only screen and (max-width: 600px) {
+@media  only screen and (max-width: 600px) {
     .invoice-box table tr.top table td {
         width: 100%;
         display: block;
@@ -110,7 +110,7 @@ button {
 
 
 
-    @include('admin.layouts.sidebar')
+    <?php echo $__env->make('admin.layouts.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
 
@@ -164,10 +164,10 @@ button {
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="planDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @auth
+                            <?php if(auth()->guard()->check()): ?>
                             <!-- Display the plan's name -->
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                            @endauth
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(auth()->user()->name); ?></span>
+                            <?php endif; ?>
                             <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - plan Information -->
@@ -177,8 +177,14 @@ button {
                                 <i class="fas fa-plan fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
-                           
-                            
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Activity Log
+                            </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -201,24 +207,26 @@ button {
                 </div>
 
 
-                @if(session('success'))
+                <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    <?php echo e(session('success')); ?>
+
                 </div>
-                @endif
+                <?php endif; ?>
 
 
                 <div class="row">
-                    @foreach($plans as $plan)
+                    <?php $__currentLoopData = $plans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $plan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-12">
                         <div class="invoice-box">
                         <table cellpadding="0" cellspacing="0">
                             <tr class="top_rw">
                                 <td colspan="2">
-                                    <h2 style="margin-bottom: 0px;">{{ strtoupper($plan->name) }} </h2>
+                                    <h2 style="margin-bottom: 0px;"><?php echo e(strtoupper($plan->name)); ?> </h2>
                                 </td>
                                 <td style="width:30%; margin-right: 10px;">
-                                    {{ strtoupper($plan->id) }}
+                                    <?php echo e(strtoupper($plan->id)); ?>
+
                                     <?php 
                              
                                $plandata = DB::table('plans')->where('id',$plan->plan_id)->get();
@@ -232,26 +240,27 @@ button {
                                     <table>
                                         <tr>
                                             <td>
-                                                <b> FIRST NAME : {{ strtoupper($plan->first_name) }} </b> <br>
-                                                <b> LAST NAME : {{ strtoupper($plan->last_name) }} </b> <br>
-                                                <b> MIDDLE NAME : {{ strtoupper($plan->middle_name) }} </b> <br>
-                                                <b> DATE OF DEATH : {{ strtoupper($plan->date_of_death) }} </b> <br>
-                                                <b> DATE OF BIRTH : {{ strtoupper($plan->date_of_birth) }} </b> <br>
-                                                <b> MEMORIAL WEB ADDRESS : {{ strtoupper($plan->memorial_web_address) }}
+                                                <b> FIRST NAME : <?php echo e(strtoupper($plan->first_name)); ?> </b> <br>
+                                                <b> LAST NAME : <?php echo e(strtoupper($plan->last_name)); ?> </b> <br>
+                                                <b> MIDDLE NAME : <?php echo e(strtoupper($plan->middle_name)); ?> </b> <br>
+                                                <b> DATE OF DEATH : <?php echo e(strtoupper($plan->date_of_death)); ?> </b> <br>
+                                                <b> DATE OF BIRTH : <?php echo e(strtoupper($plan->date_of_birth)); ?> </b> <br>
+                                                <b> MEMORIAL WEB ADDRESS : <?php echo e(strtoupper($plan->memorial_web_address)); ?>
+
                                                 </b> <br>
-                                                <b> PAGE TYPE : {{ strtoupper($plan->page_type) }} </b> <br>
-                                                <b> TOTAL AMOUNT : {{ strtoupper($plan->total_amount) }} </b> <br>
-                                                <b> EMAIL : {{ strtoupper($plan->email) }} </b> <br>
+                                                <b> PAGE TYPE : <?php echo e(strtoupper($plan->page_type)); ?> </b> <br>
+                                                <b> TOTAL AMOUNT : <?php echo e(strtoupper($plan->total_amount)); ?> </b> <br>
+                                                <b> EMAIL : <?php echo e(strtoupper($plan->email)); ?> </b> <br>
                                                 <h1>PLANS</h1>
-                                                @foreach($plandata as $data)
-                                                <b> DURATION : {{ strtoupper( $data->duration) }} </b> <br>
-                                                <b> FEATURES : {{ strtoupper($data->features) }} </b> <br>
+                                                <?php $__currentLoopData = $plandata; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <b> DURATION : <?php echo e(strtoupper( $data->duration)); ?> </b> <br>
+                                                <b> FEATURES : <?php echo e(strtoupper($data->features)); ?> </b> <br>
                                                
-                                                <b> DESCRIPTION : {{ strtoupper( $data->description) }} </b> <br>
-                                                <br> <b> END DATE : {{ strtoupper( $data->end_date) }} </b> <br>
+                                                <b> DESCRIPTION : <?php echo e(strtoupper( $data->description)); ?> </b> <br>
+                                                <br> <b> END DATE : <?php echo e(strtoupper( $data->end_date)); ?> </b> <br>
                                             
                                             
-                                                @endforeach
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             
                                             </td>
                                         </tr>
@@ -262,7 +271,7 @@ button {
                     </div>
                     </div>
                     
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
 
 
@@ -326,9 +335,9 @@ $(document).ready(function() {
 
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route("admin.delete_page", ":id") }}'.replace(':id', id),
+                    url: '<?php echo e(route("admin.delete_page", ":id")); ?>'.replace(':id', id),
                     data: {
-                        _token: '{{ csrf_token() }}'
+                        _token: '<?php echo e(csrf_token()); ?>'
                     }, // Add CSRF token for Laravel
                     success: function(response) {
                         // Remove the row from the table if delete is successful
@@ -372,4 +381,4 @@ $(document).ready(function() {
 
 
 <!-- End of Page Wrapper -->
-@include('admin.layouts.footer')
+<?php echo $__env->make('admin.layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/admin/pages/history.blade.php ENDPATH**/ ?>

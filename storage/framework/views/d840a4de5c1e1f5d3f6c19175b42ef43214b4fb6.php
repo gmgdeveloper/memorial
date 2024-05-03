@@ -1,0 +1,1 @@
+<p>Your access code is: <?php echo e($accessCode); ?></p><?php /**PATH D:\laragon\www\gmg solution\m1\memorial\resources\views/emails/access_code.blade.php ENDPATH**/ ?>
