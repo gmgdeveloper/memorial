@@ -1,0 +1,522 @@
+
+.navbar-brand {
+    color: #BE9438 !important;
+    font-size: 25px;
+}
+
+.navlinks{
+    margin-right: 30px;
+    font-family: "Josefin Sans Light";
+}
+
+.searchinputnav {
+    height: 30px;
+    border-radius: 25px;
+    font-size: 12px;
+}
+
+h3.mainheading {
+    font-family: "Josefin Sans Bold";
+    font-size: 18px;
+    font-weight:500;
+    text-align: center;
+    color: #BE9438;
+}
+.mainheading {
+    font-size: 18px;
+    font-family: "Josefin Sans Bold";
+    font-weight:500;
+    text-align: center;
+    color: #BE9438;
+}
+h3.secondheading {
+    font-family: "Josefin Sans Bold";
+    font-size: 22px;
+    text-align: center;
+    font-weight:500;
+    color: #BE9438;
+}
+
+h6{
+    font-family: 'Josefin Sans Bold';
+}
+
+.secondheading {
+    font-size: 22px;
+    font-family: "Josefin Sans Bold";
+    font-weight:500;
+    text-align: center;
+    color: #BE9438;
+}
+
+p.mainparagraph.mt-3 {
+    font-size: 16px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.featurelink{
+    font-size: 22px;
+    color: #BE9438;  
+    margin-right: 15px;
+    margin-left: 27px;
+    font-weight:bold;
+}
+.lifeatures{
+    font-size: 15px;
+}
+#client-testimonial-carousel {min-height: 200px;}
+.carousel-indicators .active{
+    background-color:black;
+}
+.carousel-indicators > li{
+    background-color:grey;
+}
+h4{
+    font-family: "Josefin Sans Bold";
+    font-weight:500;
+}
+h3{
+    font-family: "Josefin Sans Bold";
+    font-weight:500;
+}
+h2{
+    font-family: "Josefin Sans Bold";
+    font-weight:500;
+    text-align: left;
+}
+.newheading{
+    font-family: "Josefin Sans Bold";
+    font-weight:500;
+    text-align: left;
+    font-size:25px;
+}
+.form-label{
+    font-family: 'Josefin Sans Light';
+}
+.number{
+    width: 43px!important;
+    height:42px!important;
+    margin-right:5px!important;
+}
+.steps ul li {
+    padding-right: 10px!important;
+}
+.steps ul li:after{
+    background:#ebebeb00!important;
+}
+input.form-control.mr-sm-2.searchinputnav {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px;
+    padding-left: 2px;
+}
+
+input.form-control.mr-sm-2.searchinputnav:focus {
+   border-top:0px;
+   border-right:0px;
+   border-left:0px;
+   box-shadow:inherit;
+}
+label#email-error{
+       display:none!important;
+   }
+input, select, textarea{
+  font-weight:inherit!important; 
+  margin-right: 0px;
+}
+.cusorhover:hover{
+    cursor:pointer;
+}
+.form-date-item .select-icon{
+    top: -2px;
+}
+.actions ul li a:hover{
+    background-color:#BE9438!important;
+}
+@media screen and (max-width: 768px) {
+  .mobileoff{
+      display:none!important;
+  }
+  .mobileon{
+      display:block!important;  
+  }
+  h3.mainheading{
+      font-size:13px!important;
+  }
+  .mainparagraph {
+      font-size:13px!important;
+  }
+  .firstimg{
+      height:200px!important;
+  }
+  .featurelink{
+    font-size: 15px!important;
+  }
+  .margininstutive{
+    margin-left: 42px!important;
+  }
+  .blockquotep{
+      font-size:14px!important;
+  }
+  .margintopadd{
+      margin-top: .5rem !important;
+  }
+  .loginheading{
+      text-align:center!important;
+  }
+  .heartinmg{
+      text-align:center!important;
+  }
+  .widthseting{
+      width:80%!important;
+  }
+  .widthsetingcheck{
+      width:20%!important;
+  }
+  .widthsetingtext{
+      font-size:14px!important;
+  }
+  .margintopchecking{
+      margin-top:5px!important;
+  }
+  .number {
+        width: 48px !important;
+        height: 45px!important;
+   }
+   .heightsetpackagediv{
+       height:700%!important;
+   }
+   .visiblecheckbox{
+       width:20%!important;
+       margin-top:20px!important;
+   }
+   .visiblecheckboxdiv{
+       width:80%!important;
+   }
+   .marginledftcvc{
+       margin-left:10px!important;
+   }
+   .floatfledft{
+      float: left !important;
+      width: 100%;
+      -webkit-flex-direction: initial!important;
+   }
+   .form-date-item{
+       margin-left:0px!important;
+       width: 50%;
+   }
+   .textlinkhref{
+       width:30%!important;
+   }
+   .textlinkhrefinput{
+       width:40%!important;
+   }
+   /*.steps{*/
+   /*    display:none!important;*/
+   /*}*/
+   .content .current{
+       padding-top:0px!important;
+   }
+   .heightsetcredit{
+       height:auto!important;
+   }
+   .actions ul li a:hover{
+       background:color:#BE9438;
+       color:#fff!important;
+   }
+    label#email-error{
+       display:none!important;
+   }
+   .createammeorialwebsitetotitl{
+           margin-left: 30px!important;
+            font-size: 20px!important;
+   }
+   a[href="#next"] {
+       background-color:#BE9438!important;
+       color:#fff!important;
+   }
+   .navbar-brand{
+       font-size:14px!important;
+   }
+   .createa_pagebuttonwidthsetres{
+       width:100%!important;
+   }
+   a.navbar-brand.mobileon {
+    width: 50%!important;
+   }
+   .responsiveinvisible{
+       height:auto!important;
+   }
+   .reposdivecardheight{
+       height:auto!important;
+   }
+   .fieldset-contenthwight{
+        height:auto!important;    
+    }
+    .heightsetpackagediv {
+        height: auto !important;
+    }
+    .paddingkhaam{
+        padding-left: 0px!important;
+    }
+    /*.nameofcardiwdth{*/
+    /*    width:15%!important;*/
+    /*}*/
+    label.form-check-label{
+        text-align:initial!important;
+    }
+    .lastformheightset{
+        height:240px!important;
+    }
+    .form-row .form-date, .form-row .form-select, .form-file, input, select, textarea, .form-textarea textarea, #signup-form-p-2 #credit_card, #signup-form-p-2 #cvc, #signup-form-p-2 .form-radio-flex, #signup-form-p-2 .form-flex, #signup-form-p-2 .form-group input, .form-row .form-group label{
+        width:96%!important;
+    }
+    .form-date-item .select-icon{
+        right: 6px!important;
+        top:-12px!important;
+    }
+    label.form-label{
+        margin-bottom:0px!important;
+        margin-top:15px!important;
+    }
+    .expirdtate{
+        text-align:left!important;
+        margin-bottom:0px!important;
+        margin-top:6px!important;
+    }
+    #defaultCheck1{
+        margin-top:3px!important;
+    }
+    #defaultCheck2{
+        margin-top:3px!important;
+    }
+    #defaultCheck3{
+        margin-top:3px!important;
+    }
+    .subcriptionmarginotp{
+        margin-top:15px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .mobileoff {
+        display: none !important;
+    }
+    
+    .mobileon {
+        display: block !important;  
+    }
+    
+    h3.mainheading {
+        font-size: 13px !important;
+    }
+    
+    .mainparagraph {
+        font-size: 13px !important;
+    }
+    
+    .firstimg {
+        height: 200px !important;
+    }
+    
+    .featurelink {
+        font-size: 15px !important;
+    }
+    
+    .margininstutive {
+        margin-left: 42px !important;
+    }
+    
+    .blockquotep {
+        font-size: 14px !important;
+    }
+    
+    .margintopadd {
+        margin-top: .5rem !important;
+    }
+    
+    .loginheading {
+        text-align: center !important;
+    }
+    
+    .heartinmg {
+        text-align: center !important;
+    }
+    
+    .widthseting {
+        width: 80% !important;
+    }
+    
+    .widthsetingcheck {
+        width: 20% !important;
+    }
+    
+    .widthsetingtext {
+        font-size: 14px !important;
+    }
+    
+    .margintopchecking {
+        margin-top: 5px !important;
+    }
+    
+    .number {
+        width: 48px !important;
+        height: 45px !important;
+    }
+    
+    .heightsetpackagediv {
+        height: auto !important;
+    }
+    
+    .visiblecheckbox {
+        width: 20% !important;
+        margin-top: 20px !important;
+    }
+    
+    .visiblecheckboxdiv {
+        width: 80% !important;
+    }
+    
+    .marginledftcvc {
+        margin-left: 10px !important;
+    }
+    
+    .floatfledft {
+        float: left !important;
+        width: 100%;
+        -webkit-flex-direction: initial !important;
+    }
+    
+    .form-date-item {
+        margin-left: 0px !important;
+        width: 50%;
+    }
+    
+    .textlinkhref {
+        width: 30% !important;
+    }
+    
+    .textlinkhrefinput {
+        width: 40% !important;
+    }
+    
+    /*.steps {*/
+    /*    display: none !important;*/
+    /*}*/
+    
+    .content .current {
+        padding-top: 0px !important;
+    }
+    
+    .heightsetcredit {
+        height: auto !important;
+    }
+    .paddingkhaam{
+        padding-left: 0px!important;
+    }
+    
+    .actions ul li a:hover {
+        background-color: #BE9438;
+        color: #fff !important;
+    }
+    
+    label#email-error {
+        display: none !important;
+    }
+    
+    .createammeorialwebsitetotitl {
+        margin-left: 30px !important;
+        font-size: 20px !important;
+    }
+    
+    a[href="#next"] {
+        background-color: #BE9438 !important;
+        color: #fff !important;
+    }
+    
+    .navbar-brand {
+        font-size: 14px !important;
+    }
+    
+    .createa_pagebuttonwidthsetres {
+        width: 100% !important;
+    }
+    
+    a.navbar-brand.mobileon {
+        width: 50% !important;
+    }
+    
+    .responsiveinvisible {
+        height: auto !important;
+    }
+    
+    .reposdivecardheight {
+        height: auto !important;
+    }
+    .fieldset-contenthwight{
+        height:auto!important;    
+    }
+    /*.nameofcardiwdth{*/
+    /*    width:15%!important;*/
+    /*}*/
+    .nameofcardiwdth{
+        text-align:left!important;
+    }
+    label.form-check-label{
+        text-align:initial!important;
+    }
+    .steps{
+        display:none!important;
+    }
+    .expirdtate{
+        text-align:left!important;
+        margin-bottom:0px!important;
+        margin-top:6px!important;
+    }
+    .lastformheightset{
+        height:240px!important;
+    }
+    .form-row .form-date, .form-row .form-select, .form-file, input, select, textarea, .form-textarea textarea, #signup-form-p-2 #credit_card, #signup-form-p-2 #cvc, #signup-form-p-2 .form-radio-flex, #signup-form-p-2 .form-flex, #signup-form-p-2 .form-group input, .form-row .form-group label{
+        width:96%!important;
+    }
+    .form-date-item .select-icon{
+        right: 6px!important;
+        top:-12px!important;
+    }
+    label.form-label{
+        margin-bottom:0px!important;
+        margin-top:15px!important;
+    }
+    #defaultCheck1{
+        margin-top:3px!important;
+    }
+    #defaultCheck2{
+        margin-top:3px!important;
+    }
+    #defaultCheck3{
+        margin-top:3px!important;
+    }
+    .subcriptionmarginotp{
+        margin-top:15px;
+    }
+}
