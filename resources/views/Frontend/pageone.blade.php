@@ -1754,10 +1754,10 @@
                                 <div class="swiper qandanswerswiper mobileon" style="border:0px;display:none;">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #BE9438!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #BE9438!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummytwo.png"> <img src="{{asset('assets/dummytwo.png')}}" style="width: 100%;border: 1px solid #BE9438!important;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummytwo.png')}}"> <img src="{{asset('assets/dummytwo.png')}}" style="width: 100%;border: 1px solid #BE9438!important;"></a>
                                         </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
@@ -2661,7 +2661,7 @@
                                 </h3>
                             </div>
                             <div class="col-lg-4 col-sm-4 mt-2 qrcodediv newclasspaddingoff">
-                                <img src="{{asset('assets/qr.png" class="qrimageheightset" style="width: 100%; height: 328px;border: 1px solid #BE9438!important;">
+                                <img src="{{asset('assets/qr.png')}}" class="qrimageheightset" style="width: 100%; height: 328px;border: 1px solid #BE9438!important;">
                             </div>
                             <div class="col-lg-8 col-sm-8 mt-2 ">
                                 <div class="row">
