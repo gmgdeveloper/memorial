@@ -15,7 +15,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="{{asset('css/create_page.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('css/create_page.css')); ?>">
 
 </head>
 
@@ -29,13 +29,13 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 mobileoff">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}"
+                                        <a class="navbar-brand" href="<?php echo e(route('home')); ?>"
                                             style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand mobileon" href="{{route('home')}}"
+                                        <a class="navbar-brand mobileon" href="<?php echo e(route('home')); ?>"
                                             style="font-family: 'Josefin Sans Bold';display:none;">A Life Worth
                                             Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -46,10 +46,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('login')); ?>">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('create_page')}}">CREATE
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('create_page')); ?>">CREATE
                                                         A PAGE</a>
                                                 </li>
                                             </ul>
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-6 mobileoff" style="display:none;">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}"
+                                        <a class="navbar-brand" href="<?php echo e(route('home')); ?>"
                                             style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
@@ -71,10 +71,10 @@
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
                                 <!--<h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl">CREATE A MEMORIAL WEBSITE</h2>-->
-                                <h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl" style="color:#BE9438;"><img class="mr-2" src="{{asset('assets/heart.png')}}" style="width:5%;"> William</h2>
-                                <form method="POST" action="{{route('save_page')}}" id="signup-form"
+                                <h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl" style="color:#BE9438;"><img class="mr-2" src="<?php echo e(asset('assets/heart.png')); ?>" style="width:5%;"> William</h2>
+                                <form method="POST" action="<?php echo e(route('save_page')); ?>" id="signup-form"
                                     class="signup-form">
-                                    @csrf
+                                    <?php echo csrf_field(); ?>
 
                                     <h3>
                                         <span class="title_text" style="font-family: 'Josefin Sans Bold';">About the
@@ -314,41 +314,41 @@
                                             <div class="row">
                                                 <div class="row">
                                                     <input type="hidden" name="to_buy_plan_id" id="to_buy_plan_id">
-                                                    @foreach ($plans as $plan)
+                                                    <?php $__currentLoopData = $plans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $plan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <div class="col-lg-6 col-sm-12">
                                                         <div class="card mt-3"
                                                             style="background-color: #fff; border-radius:18px;">
                                                             <div class="card-header text-center"
                                                                 style="background-color: #fff; border:0px;border-radius:18px;">
                                                                 <span class="text-center newheading mb-5">
-                                                                    {{ strtoupper($plan->duration) }}</span>
+                                                                    <?php echo e(strtoupper($plan->duration)); ?></span>
                                                                 <p class="text-center mt-3"
                                                                     style="font-size:40px;font-weight: 700;color:#BE9438;font-family: 'Josefin Sans Light';">
-                                                                    ${{$plan->price}}</p>
+                                                                    $<?php echo e($plan->price); ?></p>
                                                             </div>
 
                                                             <div class="card-body reposdivecardheight"
                                                                 style="height: 300px;">
                                                                 <!-- Use a <div> element styled to look like a button -->
                                                                 <div class="select-plan-btn"
-    data-plan-id="{{$plan->id}}"
-    data-price="{{$plan->price}}"
+    data-plan-id="<?php echo e($plan->id); ?>"
+    data-price="<?php echo e($plan->price); ?>"
     style="width:100%; background-color: #BE9438; color: #fff; font-family: 'Josefin Sans Light'; cursor: pointer; padding: 10px; text-align: center; border-radius: 5px;">
     Select
 </div>
 
                                                                 <p class="mt-3"
                                                                     style="font-size:16px;color:#000; font-weight: 500;margin-top:20px;font-family: 'Josefin Sans Light';">
-                                                                    <b>{{$plan->features}}</b>
+                                                                    <b><?php echo e($plan->features); ?></b>
                                                                 </p>
                                                                 <p class="text-muted mt-2"
                                                                     style="font-family: 'Josefin Sans Light';">
-                                                                    {{$plan->description}}</p>
+                                                                    <?php echo e($plan->description); ?></p>
                                                                 <!-- <p class="text-muted mt-3" style="font-family: 'Josefin Sans Light';">Renews monthly.</p> -->
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    @endforeach
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </div>
 
 
@@ -860,4 +860,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/creat_a_page.blade.php ENDPATH**/ ?>

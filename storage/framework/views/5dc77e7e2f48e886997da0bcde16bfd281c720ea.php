@@ -3,7 +3,7 @@
 
 <head>
     <title>A life Worth Remembering</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
-            background-image: url({{asset('assets/background.png')}});
+            background-image: url(<?php echo e(asset('assets/background.png')); ?>);
             background-position: center;
         }
         .navbar-brand {
@@ -156,7 +156,7 @@
         .cursorchange:hover {
             cursor: pointer;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -211,7 +211,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -406,10 +406,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="<?php echo e(route('login')); ?>">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="<?php echo e(route('create_page')); ?>">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -437,7 +437,7 @@
                                         be shared and cherished for generations to come</p>
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
-                                    <img src="{{asset('assets/heart.png')}}" class="img-fluid heartimgresposive">
+                                    <img src="<?php echo e(asset('assets/heart.png')); ?>" class="img-fluid heartimgresposive">
                                 </div>
                             </div>
                         </div>
@@ -446,7 +446,7 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Bruce Lee</h5>
@@ -454,7 +454,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Unknown</h5>
@@ -462,7 +462,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Brene Brown</h5>
@@ -470,7 +470,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Rebel Thriver</h5>
@@ -478,7 +478,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Simply Topaz</h5>
@@ -502,10 +502,10 @@
                             <!--    <div class="swiper mySwiper">-->
                             <!--        <div class="swiper-wrapper">-->
                             <!--            <div class="swiper-slide">-->
-                            <!--                <img src="{{asset('assets/dummythree.jpg')}}">-->
+                            <!--                <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>">-->
                             <!--            </div>-->
                             <!--            <div class="swiper-slide">-->
-                            <!--                <img src="{{asset('assets/dummytwo.jpg')}}">-->
+                            <!--                <img src="<?php echo e(asset('assets/dummytwo.jpg')); ?>">-->
                             <!--            </div>-->
                             <!--        </div>-->
                             <!--        <div class="swiper-button-next"></div>-->
@@ -557,7 +557,7 @@
                                 </ul> 
                             </div>
                             <div class="col-lg-4 col-sm-12 mt-3">
-                                <div class="card" style="background-image:url('{{asset('assets/dummythree.jpg')}}'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
+                                <div class="card" style="background-image:url('<?php echo e(asset('assets/dummythree.jpg')); ?>'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
                                     <div class="card-body" style="border: none;height: 200px;">
                                         <h4 class="card-title text-center">Breannon Schuback
                                         </h4>
@@ -565,7 +565,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12  mt-3">
-                                <div class="card" style="background-image:url('{{asset('assets/dummythree.jpg')}}'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
+                                <div class="card" style="background-image:url('<?php echo e(asset('assets/dummythree.jpg')); ?>'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
                                     <div class="card-body" style="border: none;height: 200px;">
                                         <h4 class="card-title text-center">Joyce Jeffers
                                         </h4>
@@ -573,7 +573,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12  mt-3">
-                                <div class="card" style="background-image:url('{{asset('assets/dummythree.jpg')}}'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
+                                <div class="card" style="background-image:url('<?php echo e(asset('assets/dummythree.jpg')); ?>'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
                                     <div class="card-body" style="border: none;height: 200px;">
                                         <h4 class="card-title text-center">Lex Horgan
                                         </h4>
@@ -581,7 +581,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3">
-                                <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
+                                <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3" style="border-top: 2px solid #ccaa54; border-bottom: 2px solid #ccaa54;">
                                 <div class="row">
@@ -902,7 +902,7 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
+                                        <button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <h3 class="secondheading mt-5">
@@ -986,28 +986,28 @@
                                                 <h6 class="text-center mt-3">SHARE THIS PAGE
                                                 </h6>
                                                 <!--<ul class="nav flex-column text-center">-->
-                                                <!--    <li class="nav-item" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');">-->
+                                                <!--    <li class="nav-item" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');">-->
                                                 <!--      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';"><i class="fa fa-facebook text-white"></i></a>-->
                                                 <!--    </li>-->
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1045,4 +1045,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/index.blade.php ENDPATH**/ ?>

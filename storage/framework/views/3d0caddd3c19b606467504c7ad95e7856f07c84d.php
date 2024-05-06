@@ -5,9 +5,9 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
     
     <div class="sidebar-brand-text mx-3">
-        @auth
-        <span class="text-white">{{ auth()->user()->name }}</span>
-        @endauth
+        <?php if(auth()->guard()->check()): ?>
+        <span class="text-white"><?php echo e(auth()->user()->name); ?></span>
+        <?php endif; ?>
     </div>
 </a>
 
@@ -30,52 +30,52 @@
 
 
     <!-- Nav Item - Charts -->
-    @auth
-    @if(auth()->user()->role === 'admin')
+    <?php if(auth()->guard()->check()): ?>
+    <?php if(auth()->user()->role === 'admin'): ?>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.getallusers') }}">
+            <a class="nav-link" href="<?php echo e(route('admin.getallusers')); ?>">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>User</span>
             </a>
         </li>
-    @endif
-@endauth
+    <?php endif; ?>
+<?php endif; ?>
 
 
 
 
-@auth
-    @if(auth()->user()->role === 'admin')
+<?php if(auth()->guard()->check()): ?>
+    <?php if(auth()->user()->role === 'admin'): ?>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.categories') }}">
+            <a class="nav-link" href="<?php echo e(route('admin.categories')); ?>">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Category</span>
             </a>
         </li>
-    @endif
-@endauth
+    <?php endif; ?>
+<?php endif; ?>
 
-@auth
-    @if(auth()->user()->role === 'admin')
+<?php if(auth()->guard()->check()): ?>
+    <?php if(auth()->user()->role === 'admin'): ?>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.getpages_created') }}">
+            <a class="nav-link" href="<?php echo e(route('admin.getpages_created')); ?>">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Pages</span>
             </a>
         </li>
-    @endif
-@endauth
+    <?php endif; ?>
+<?php endif; ?>
 
-@auth
-    @if(auth()->user()->role === 'admin')
+<?php if(auth()->guard()->check()): ?>
+    <?php if(auth()->user()->role === 'admin'): ?>
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.plans') }}">
+            <a class="nav-link" href="<?php echo e(route('admin.plans')); ?>">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Plans</span>
             </a>
         </li>
-    @endif
-@endauth
+    <?php endif; ?>
+<?php endif; ?>
 
 
     <!-- Divider -->
@@ -88,4 +88,4 @@
 
 
 </ul>
-<!-- End of Sidebar -->
+<!-- End of Sidebar --><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/admin/layouts/sidebar.blade.php ENDPATH**/ ?>

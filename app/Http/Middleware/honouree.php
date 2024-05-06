@@ -17,7 +17,8 @@ class honouree
     public function handle(Request $request, Closure $next)
     {
         if(auth()->user()->role == 1){
-            return route('pageone');
+            // return route('pageone');
+            return $next($request);
         }else{
               return redirect()->route('login');
         }

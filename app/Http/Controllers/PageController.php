@@ -26,6 +26,8 @@ class PageController extends Controller
     
     public function save_create_page(Request $request){
         // Validate the request data as needed
+
+        // dd($request->all());
     
         // Check if the email already exists
         $existingUser = User::where('email', $request->email)->first();
@@ -37,12 +39,22 @@ class PageController extends Controller
     
         // Create a new user instance
         $user = new User;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password); // Hash the password
+        $user->mobilephone = $request->mobilephone;
+        $user->buildingname = $request->buildingname;
+        $user->street = $request->street;
+        $user->suburb = $request->suburb;
+        $user->postcode = $request->postcode;
+        $user->state  = $request->state;
+        $user->country = $request->country;
         $user->role = 1;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->is_active = 1;
         $user->no_of_memorial_pages = 1;
         $user->relationship = $request->relationship;
+
     
         // Generate a random access code
         $accessCode = Str::random();

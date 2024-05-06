@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,9 +51,13 @@ Route::post('/create_page_save',[PageController::class,'save_create_page'])->nam
 
 
 
-// Route::group(['middleware' => ['auth', 'honouree']], function(){
+Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::get('/pageone', [PageController::class, 'pageone'])->name('pageone');
-// });
+    Route::get('/UserProfile',[UserController::class,'profile_honree'])->name('profile_honree');
+    Route::get('/honreelogout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('honree_logout');
+
+
+});
 
 
 
@@ -84,6 +90,17 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/userpagehistory/{id}',[UserController::class,'userpagehistory'])->name('admin.userpagehistory');
         Route::post('/userpagedelete/{id}',[PageController::class,'delete_page'])->name('admin.delete_page');
         Route::get('/userhistory/{id}',[UserController::class,'page_history'])->name('user.history');
+
+        Route::get('/admin/category',[CategoryController::class,'display_categories'])->name('admin.categories');
+        Route::get('/admin/create-category',function(){
+            return view('admin.categories.add_category');
+        })->name('admin.add_category');
+        Route::post('/admin/create-category',[CategoryController::class,'create_category'])->name('admin.categories.store');
+        Route::get('/admin/editcategory/{id}',[CategoryController::class,'display'])->name('admin.editCategory');
+        Route::post('/admin/updatecategory/{id}',[CategoryController::class,'update_category'])->name('admin.update_category');
+        Route::post('/admin/deletecategory/{id}',[CategoryController::class,'delete_category'])->name('admin.delete_category');
+
+
 
 
 
