@@ -3,8 +3,6 @@
 
 <head>
     <title>A life Worth Remembering</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -14,26 +12,386 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/frontendlogin.css') }}" rel="stylesheet">
+    <style>
+        body {
+            background-image: url({{assets('background.png')}});
+            background-position: center;
+        }
+        .navbar-brand {
+            color: #BE9438 !important;
+            font-size: 25px;
+        }
 
+        .navlinks{
+            margin-right: 30px;
+            font-family: "Josefin Sans Light";
+        }
+
+        .searchinputnav {
+            height: 30px;
+            border-radius: 25px;
+            font-size: 12px;
+        }
+
+        h3.mainheading {
+            font-family: "Josefin Sans Bold";
+            font-size: 18px;
+            font-weight:500;
+            text-align: center;
+            color: #BE9438;
+        }
+        .mainheading {
+            font-size: 18px;
+            font-family: "Josefin Sans Bold";
+            font-weight:500;
+            text-align: center;
+            color: #BE9438;
+        }
+        h3.secondheading {
+            font-family: "Josefin Sans Bold";
+            font-size: 22px;
+            text-align: center;
+            font-weight:500;
+            color: #BE9438;
+        }
+
+        .secondheading {
+            font-size: 22px;
+            font-family: "Josefin Sans Bold";
+            font-weight:500;
+            text-align: center;
+            color: #BE9438;
+        }
+        .loginheading {
+            font-size: 35px;
+            font-family: "Josefin Sans Bold";
+            font-weight:500;
+            text-align: center;
+            color: #000;
+        }
+        .securityloginheading {
+            font-size: 25px;
+            font-family: "Josefin Sans Bold";
+            font-weight:500;
+            text-align: center;
+            color: #000;
+        }
+
+        p.mainparagraph.mt-3 {
+            font-size: 16px;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .featurelink{
+            font-size: 22px;
+            color: #BE9438;  
+            margin-right: 15px;
+            margin-left: 27px;
+            font-weight:bold;
+        }
+        .lifeatures{
+            font-size: 15px;
+        }
+        #client-testimonial-carousel {min-height: 200px;}
+        .carousel-indicators .active{
+            background-color:black;
+        }
+        .carousel-indicators > li{
+            background-color:grey;
+        }
+        h4{
+            font-family: "Josefin Sans Bold";
+            font-weight:500;
+        }
+        h3{
+            font-family: "Josefin Sans Bold";
+            font-weight:500;
+        }
+        input.form-control.mr-sm-2.searchinputnav {
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-radius: 0px;
+            padding-left: 2px;
+        }
+        
+        input.form-control.mr-sm-2.searchinputnav:focus {
+           border-top:0px;
+           border-right:0px;
+           border-left:0px;
+           box-shadow:inherit;
+        }
+        .btn:focus{
+            box-shadow: 0 0 0 0.2rem rgb(177 138 52 / 30%)!important;
+        }
+        @media screen and (max-width: 768px) {
+          .mobileoff{
+              display:none!important;
+          }
+          .mobileon{
+              display:block!important;  
+          }
+          h3.mainheading{
+              font-size:13px!important;
+          }
+          .mainparagraph {
+              font-size:13px!important;
+          }
+          .firstimg{
+              height:200px!important;
+          }
+          .featurelink{
+            font-size: 15px!important;
+          }
+          .margininstutive{
+            margin-left: 42px!important;
+          }
+          .blockquotep{
+              font-size:14px!important;
+          }
+          .margintopadd{
+              margin-top: .5rem !important;
+          }
+          .loginheading{
+              text-align:center!important;
+          }
+          .heartinmg{
+              text-align:center!important;
+          }
+          .widthseting{
+              width:80%!important;
+          }
+          .widthsetingcheck{
+              width:20%!important;
+          }
+          .widthsetingtext{
+              font-size:14px!important;
+          }
+          .margintopchecking{
+              margin-top:5px!important;
+          }
+          .navbar-brand{
+               font-size:14px!important;
+           }
+           .createa_pagebuttonwidthsetres{
+               width:100%!important;
+           }
+           a.navbar-brand.mobileon {
+            width: 50%!important;
+           }
+           .bottommargindh{
+               margin-bottom:0px!important;
+           }
+           .addbottommargindh{
+                 margin-bottom:6px!important;
+            }
+        }
+        
+        @media screen and (max-width: 1024px) {
+            .mobileoff {
+                display: none !important;
+            }
+            
+            .mobileon {
+                display: block !important;  
+            }
+            
+            h3.mainheading {
+                font-size: 13px !important;
+            }
+            
+            .mainparagraph {
+                font-size: 13px !important;
+            }
+            
+            .firstimg {
+                height: 200px !important;
+            }
+            
+            .featurelink {
+                font-size: 15px !important;
+            }
+            
+            .margininstutive {
+                margin-left: 42px !important;
+            }
+            
+            .blockquotep {
+                font-size: 14px !important;
+            }
+            
+            .margintopadd {
+                margin-top: .5rem !important;
+            }
+            
+            .loginheading {
+                text-align: center !important;
+            }
+            
+            .heartinmg {
+                text-align: center !important;
+            }
+            
+            .widthseting {
+                width: 80% !important;
+            }
+            
+            .widthsetingcheck {
+                width: 20% !important;
+            }
+            
+            .widthsetingtext {
+                font-size: 14px !important;
+            }
+            
+            .margintopchecking {
+                margin-top: 5px !important;
+            }
+            
+            .number {
+                width: 45px !important;
+                height: 40px !important;
+            }
+            
+            .heightsetpackagediv {
+                height: auto !important;
+            }
+            
+            .visiblecheckbox {
+                width: 20% !important;
+                margin-top: 20px !important;
+            }
+            
+            .visiblecheckboxdiv {
+                width: 80% !important;
+            }
+            
+            .marginledftcvc {
+                margin-left: 10px !important;
+            }
+            
+            .floatfledft {
+                float: left !important;
+                width: 100%;
+                -webkit-flex-direction: initial !important;
+            }
+            
+            .form-date-item {
+                margin-left: 6px !important;
+            }
+            
+            .textlinkhref {
+                width: 30% !important;
+            }
+            
+            .textlinkhrefinput {
+                width: 40% !important;
+            }
+            
+            .steps {
+                display: none !important;
+            }
+            
+            .content .current {
+                padding-top: 0px !important;
+            }
+            
+            .heightsetcredit {
+                height: auto !important;
+            }
+            .paddingkhaam{
+                padding-left: 0px!important;
+            }
+            
+            .actions ul li a:hover {
+                background-color: #BE9438;
+                color: #fff !important;
+            }
+            
+            label#email-error {
+                display: none !important;
+            }
+            
+            .createammeorialwebsitetotitl {
+                margin-left: 30px !important;
+                font-size: 20px !important;
+            }
+            
+            a[href="#next"] {
+                background-color: #BE9438 !important;
+                color: #fff !important;
+            }
+            
+            .navbar-brand {
+                font-size: 14px !important;
+            }
+            
+            .createa_pagebuttonwidthsetres {
+                width: 100% !important;
+            }
+            
+            a.navbar-brand.mobileon {
+                width: 50% !important;
+            }
+            
+            .responsiveinvisible {
+                height: auto !important;
+            }
+            
+            .reposdivecardheight {
+                height: auto !important;
+            }
+            .fieldset-contenthwight{
+                height:auto!important;    
+            }
+            .nameofcardiwdth{
+                width:15%!important;
+            }
+            .bottommargindh{
+               margin-bottom:0px!important;
+            }
+            .addbottommargindh{
+                 margin-bottom:6px!important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="container">
+            <div class="container" style="background-color:white;border:2px solid #BE9438">
                 <div class="row">
                     <div class="col-lg-12 mb-4">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 mobileoff">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="/" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                         <a class="navbar-brand mobileon" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';display:none;">A Life Worth Remembering</a>
+                                         <a class="navbar-brand mobileon" href="/" style="font-family: 'Josefin Sans Bold';display:none;">A Life Worth Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                             aria-label="Toggle navigation">
@@ -42,10 +400,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks" href="login.html">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks" href="creat_a_page.html">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -57,7 +415,7 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-6 mobileoff" style="display:none;">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="/" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                             </div>
@@ -66,14 +424,13 @@
                             <div class="row p-lg-5" style="border: 2px solid #BE9438;">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
-                                        
                                         <div class="col-lg-7 col-sm-6 mt-5">
                                             <h3 class="loginheading text-right mt-lg-5" style="color:#BE9438;">
                                                 LOG IN
                                             </h3>
                                         </div>
                                         <div class="col-lg-5 col-sm-6 text-right mb-4 heartinmg">
-                                            <img src="assets/heart.png" class="img-fluid heartinmg" style="width:180px;">
+                                            <img src="{{assets('heart.png)}}" class="img-fluid heartinmg" style="width:180px;">
                                         </div>
                                         <div class="col-lg-2 mt-2">
                                             <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">FULL NAME</h5>
@@ -156,10 +513,8 @@
                                             <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">I accept accasional marketing emails from 'A Life Worth Remembring'</p>
                                         </div>
                                         <div class="col-lg-5 col-sm-5 offset-lg-1 mt-2">
-                                            <button class="btn btn-large  login-butn mb-4" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">LOG IN</button>
+                                            <button class="btn btn-large mb-4" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">LOG IN</button>
                                         </div>
-
-
                                         <div class="col-lg-5 col-sm-5 mt-2">
                                             <button class="btn btn-large mb-4" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">REQUEST ACCESS</button>
                                         </div>
@@ -177,90 +532,28 @@
             </div>
         </div>
     </div>
-
-   
-   
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-    $(document).ready(function(){
-        $(".login-butn").click(function(){
-            // Get CSRF token value from meta tag
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-            // Get form data
-            var fullname = $("input[name='fullname']").val();
-            var email = $("input[name='email']").val();
-            var honouree = $("input[name='honouree']").val();
-            var relationship = $("select[name='relationship']").val();
-            var accesscode = $("input[name='accesscode']").val();
-            
-            // Prepare data for sending
-            var formData = {
-                fullname: fullname,
-                email: email,
-                honouree: honouree,
-                relationship: relationship,
-                accesscode: accesscode
-            };
-            
-            // Send data to the server with CSRF token included
-            $.ajax({
-                type: "POST",
-                url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                success: function(response){
-                    if(response.success){
-                    // Redirect to the desired page
-                    window.location.href = '{{ route("pageone") }}';
-                } else {
-                    // Handle unsuccessful login
-                    console.error('Login unsuccessful');
-                }
-
-                },
-                error: function(xhr, status, error){
-                    // Handle errors
-                    console.error(xhr.responseText);
-                }
-            });
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                type: "fraction",
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
         });
-    });
-</script>
-
-
-
-<!-- Other scripts -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        pagination: {
-            el: ".swiper-pagination",
-            type: "fraction",
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-</script>
-
-
- 
-
-
-
-
-
+    </script>
 </body>
 
 </html>

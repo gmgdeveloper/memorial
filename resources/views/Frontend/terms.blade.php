@@ -387,12 +387,12 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 mobileoff">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="/" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                         <a class="navbar-brand mobileon" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
+                                         <a class="navbar-brand mobileon" href="/" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                             aria-label="Toggle navigation">
@@ -401,10 +401,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="login.html">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="creat_a_page.html">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -499,9 +499,9 @@
                                     <p style="font-family: 'Josefin Sans Light';">
                                         These terms and conditions may be updated from time to time. Users will be notified of any changes, and continued use of the platform constitutes acceptance of the updated terms.
                                     </p>
-                                    <p style="font-family: 'Josefin Sans Light';">
-                                        If you have any questions or concerns regarding these terms and conditions, please contact us at [contact@email.com].
-                                    </p>
+                                    <!--<p style="font-family: 'Josefin Sans Light';">-->
+                                    <!--    If you have any questions or concerns regarding these terms and conditions, please contact us at [contact@email.com].-->
+                                    <!--</p>-->
                                     <p style="font-family: 'Josefin Sans Light';">
                                         Thank you for using "A Life Worth Remembering."
                                     </p>
@@ -561,18 +561,38 @@
                                                       <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="{{route('create_page')}}" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>
                                             <div class="col-lg-4 col-sm-6 col-12">
                                                 <h6 class="text-center mt-3">SHARE THIS PAGE
                                                 </h6>
-                                                <ul class="nav flex-column text-center">
-                                                    <li class="nav-item">
-                                                      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';">Facebook</a>
-                                                    </li>
-                                                </ul>
+                                                <!--<ul class="nav flex-column text-center">-->
+                                                <!--    <li class="nav-item">-->
+                                                <!--      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';">Facebook</a>-->
+                                                <!--    </li>-->
+                                                <!--</ul>-->
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <img src="{{assets('facebook.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{assets('instagram.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{assets('linkedin.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{assets('whatsapp.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{assets('snapchat.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{assets('youtube.png')}}" style="width:100%;">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -71,8 +71,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
                                 <!--<h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl">CREATE A MEMORIAL WEBSITE</h2>-->
-                                <h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl" style="color:#BE9438;">Celebrating
-                                    the life of William</h2>
+                                <h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl" style="color:#BE9438;"><img class="mr-2" src="{{asset('assets/heart.png')}}" style="width:5%;"> William</h2>
                                 <form method="POST" action="{{route('save_page')}}" id="signup-form"
                                     class="signup-form">
                                     @csrf
@@ -82,7 +81,7 @@
                                             honouree</span>
                                     </h3>
                                     <fieldset>
-                                        <div class="fieldset-content fieldset-contenthwight" style="height:300px;">
+                                        <div class="fieldset-content fieldset-contenthwight" style="height:365px;">
                                             <div class="row">
                                                 <div class="col-lg-6 col-sm-12">
                                                     <label for="firstname" class="form-label"
@@ -127,50 +126,50 @@
                                                         <input type="text" name="memorialaddress"
                                                             placeholder="Type web address" class="textlinkhrefinput" readonly>
                                                         <div class="input-group-append textlinkhref">
-                                                            <span class="input-group-text"
-                                                                style="font-size:13px;background-color: #e9ecef00;border: 1px solid #ced4da00; font-family: 'Josefin Sans Light';">.memorial.com</span>
+                                                            <span class="input-group-text" style="font-size:13px;background-color: #e9ecef00;border: 1px solid #ced4da00; font-family: 'Josefin Sans Light';">.alifeworthremembering.com</span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                            <div class="col-lg-10 mt-2">
-                                            <select class="form-control" name="relationship" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
-                                                <option value="" disabled selected>Choose a Relationship</option>
-                                                <option value="Parent">Parent</option>
-                                                <option value="Step-Parent">Step-Parent</option>
-                                                <option value="Foster Parent">Foster Parent</option>
-                                                <option value="Guardian">Guardian</option>
-                                                <option value="Grandparent">Grandparent</option>
-                                                <option value="Step-Grandparent">Step-Grandparent</option>
-                                                <option value="Godparent">Godparent</option>
-                                                <option value="Husband">Husband</option>
-                                                <option value="Wife">Wife</option>
-                                                <option value="Partner">Partner</option>
-                                                <option value="Ex-Partner">Ex-Partner</option>
-                                                <option value="Child">Child</option>
-                                                <option value="Stepchild">Stepchild</option>
-                                                <option value="Foster Child">Foster Child</option>
-                                                <option value="Godchild">Godchild</option>
-                                                <option value="Sibling">Sibling</option>
-                                                <option value="Nibling">Nibling</option>
-                                                <option value="Niece">Niece</option>
-                                                <option value="Nephew">Nephew</option>
-                                                <option value="Cousin">Cousin</option>
-                                                <option value="Best Friend">Best Friend</option>
-                                                <option value="Friend">Friend</option>
-                                                <option value="Family Friend">Family Friend</option>
-                                                <option value="Friend of a Friend">Friend of a Friend</option>
-                                                <option value="Colleague">Colleague</option>
-                                                <option value="Acquaintance">Acquaintance</option>
-                                                <option value="Caregiver">Caregiver</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                            <p class="text-muted" style="font-family: 'Josefin Sans Light';margin-bottom:9px;">Select your relationship to the honouree from the drop down menu</p>
-                                        </div>
-                                            </div>
 
-
+                                                <div class="col-lg-10">
+                                                    <div class="col-lg-6 col-sm-12" style="padding-left:0px!important;">
+                                                        <label for="dateofdeath" class="form-label"
+                                                            style="font-size:13px;text-align:left;">Relationship</label>
+                                                            <select class="form-control" name="relationship" style="font-family: 'Josefin Sans Light';">
+                                                                <option value="" disabled selected>Choose a Relationship</option>
+                                                                <option value="Parent">Parent</option>
+                                                                <option value="Step-Parent">Step-Parent</option>
+                                                                <option value="Foster Parent">Foster Parent</option>
+                                                                <option value="Guardian">Guardian</option>
+                                                                <option value="Grandparent">Grandparent</option>
+                                                                <option value="Step-Grandparent">Step-Grandparent</option>
+                                                                <option value="Godparent">Godparent</option>
+                                                                <option value="Husband">Husband</option>
+                                                                <option value="Wife">Wife</option>
+                                                                <option value="Partner">Partner</option>
+                                                                <option value="Ex-Partner">Ex-Partner</option>
+                                                                <option value="Child">Child</option>
+                                                                <option value="Stepchild">Stepchild</option>
+                                                                <option value="Foster Child">Foster Child</option>
+                                                                <option value="Godchild">Godchild</option>
+                                                                <option value="Sibling">Sibling</option>
+                                                                <option value="Nibling">Nibling</option>
+                                                                <option value="Niece">Niece</option>
+                                                                <option value="Nephew">Nephew</option>
+                                                                <option value="Cousin">Cousin</option>
+                                                                <option value="Best Friend">Best Friend</option>
+                                                                <option value="Friend">Friend</option>
+                                                                <option value="Family Friend">Family Friend</option>
+                                                                <option value="Friend of a Friend">Friend of a Friend</option>
+                                                                <option value="Colleague">Colleague</option>
+                                                                <option value="Acquaintance">Acquaintance</option>
+                                                                <option value="Caregiver">Caregiver</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                            <p class="text-muted" style="font-family: 'Josefin Sans Light';margin-bottom:9px;">Select your relationship to the honouree from the drop down menu</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="fieldset-footer mt-2">
                                             <span>Step 1 of 6</span>
@@ -468,7 +467,7 @@
                                             options</span>
                                     </h3>
                                     <fieldset>
-                                        <div class="fieldset-content responsiveinvisible" style="height:401px;">
+                                        <div class="fieldset-content responsiveinvisible" style="height:550px;">
                                             <p class="mt-3"
                                                 style="font-size:18px;color:#000; font-weight: 500;margin-top:20px;font-family: 'Josefin Sans Bold';">
                                                 Privacy options:</p>
@@ -508,6 +507,24 @@
                                                                         choose this option if you do not want the
                                                                         memorial to be visible to others at this time.
                                                                     </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-1 col-sm-1 visiblecheckbox" style="margin-top: 7px!important;">
+                                                                    <input type="checkbox" name="visible_only_to_me" class="form-control" style="height:16px;">
+                                                                </div>
+                                                                <div class="col-lg-11 col-sm-11 visiblecheckboxdiv">
+                                                                    <p style="font-size:18px;color:#000; font-weight: 500;font-family: 'Josefin Sans Bold';">Visible to guests with an access code</p>
+                                                                    <p style="font-size:14px;color:grey; font-weight: 500;margin-top:10px;font-family: 'Josefin Sans Light';">choose this option if you do not want the memorial to be visible to others at this time.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-lg-1 col-sm-1 visiblecheckbox" style="margin-top: 7px!important;">
+                                                                    <input type="checkbox" name="visible_only_to_me" class="form-control" style="height:16px;">
+                                                                </div>
+                                                                <div class="col-lg-11 col-sm-11 visiblecheckboxdiv">
+                                                                    <p style="font-size:18px;color:#000; font-weight: 500;font-family: 'Josefin Sans Bold';">Visible to public</p>
+                                                                    <p style="font-size:14px;color:grey; font-weight: 500;margin-top:10px;font-family: 'Josefin Sans Light';">choose this option if you do not want the memorial to be visible to others at this time.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -610,17 +627,59 @@
                                             account</span>
                                     </h3>
                                     <fieldset>
-                                        <div class="fieldset-content lastformheightset" style="height:200px;">
+                                        <div class="fieldset-content lastformheightset" style="height:630px;">
                                             <div class="row">
                                                 <div class="col-lg-6 col-sm-12">
-                                                    <label for="name" class="form-label"
-                                                        style="text-align:left;font-size:13px;">Name</label>
-                                                    <input type="text" name="name" id="name" placeholder="Name" />
+                                                    <label for="firstname" class="form-label" style="text-align:left;font-size:13px;">First Name</label>
+                                                    <input type="text" name="firstname" id="firstname"  placeholder="First Name" />
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12">
-                                                    <label class="form-label"
-                                                        style="text-align:left;font-size:13px;">Email</label>
-                                                    <input type="email" name="email" placeholder="Email" />
+                                                    <label for="lastname" class="form-label" style="text-align:left;font-size:13px;">Last Name</label>
+                                                    <input type="text" name="lastname" id="lastname"  placeholder="Last Name" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label class="form-label" style="text-align:left;font-size:13px;">Email</label>
+                                                    <input type="email" name="emaill" placeholder="Email" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="mobilephone" class="form-label" style="text-align:left;font-size:13px;">Mobile Phone</label>
+                                                    <input type="number" name="mobilephone" id="lastname"  placeholder="Mobile Phone" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="buildingname" class="form-label" style="text-align:left;font-size:13px;">Building Name</label>
+                                                    <input type="text" name="buildingname" id="buildingname"  placeholder="Building Name" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="number" class="form-label" style="text-align:left;font-size:13px;">Number</label>
+                                                    <input type="number" name="buildingname" id="number"  placeholder="Number" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="street" class="form-label" style="text-align:left;font-size:13px;">Street</label>
+                                                    <input type="number" name="street" id="street"  placeholder="Street" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="suburb" class="form-label" style="text-align:left;font-size:13px;">Suburb</label>
+                                                    <input type="text" name="suburb" id="suburb"  placeholder="Suburb" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="postcode" class="form-label" style="text-align:left;font-size:13px;">Postcode</label>
+                                                    <input type="number" name="postcode" id="postcode"  placeholder="Postcode" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="state" class="form-label" style="text-align:left;font-size:13px;">State</label>
+                                                    <input type="text" name="state" id="state"  placeholder="State" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="country" class="form-label" style="text-align:left;font-size:13px;">Country</label>
+                                                    <input type="text" name="country" id="country"  placeholder="Country" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="password" class="form-label" style="text-align:left;font-size:13px;">Password</label>
+                                                    <input type="password" name="password" id="password"  placeholder="Password" />
+                                                </div>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <label for="reenterpassword" class="form-label" style="text-align:left;font-size:13px;">Re-enter password</label>
+                                                    <input type="password" name="password" id="reenterpassword"  placeholder="Re-enter password" />
                                                 </div>
                                             </div>
                                         </div>

@@ -201,6 +201,9 @@
             .fontsizednh{
                 font-size: 25px;
             }
+            .chartieslinksfooter{
+                font-size: 13px;
+            }
         }
         
         @media screen and (max-width: 1024px) {
@@ -373,6 +376,9 @@
             .fontsizednh{
                 font-size: 25px;
             }
+            .chartieslinksfooter{
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -387,12 +393,12 @@
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 mobileoff">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="/" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                         <a class="navbar-brand mobileon" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
+                                         <a class="navbar-brand mobileon" href="/" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                             aria-label="Toggle navigation">
@@ -401,10 +407,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="login.html">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="creat_a_page.html">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -425,9 +431,35 @@
                                         Charities
                                     </h1>
                                     <p class="mt-3 mb-lg-5" style="font-family: 'Josefin Sans Light';">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                        Transform grief into action by supporting a cause close to your heart. In memory of your loved one, consider donating to a charity dedicated to researching, advocating, or providing support for the cause of their passing. Your contribution not only honours their memory but also helps others facing similar challenges. Together, let's turn loss into hope and make a difference in their honour.
                                     </p>
+                                </div>
+                                <div class="col-lg-2 col-3">
+                                    <img src="{{asset('assets/heartfoundation.png')}}" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3 mb-5">
+                                    <a href="https://donate.heartfoundation.org.au/once-off" style="color:#000;" class="chartieslinksfooter">https://donate.heartfoundation.org.au/once-off</a>
+                                </div>
+                                
+                                <div class="col-lg-2 col-3">
+                                    <img src="{{asset('assets/cystric.PNG')}}" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3 mb-5">
+                                    <a href="https://www.cff.org/donate" style="color:#000;" class="chartieslinksfooter">https://www.cff.org/donate</a>
+                                </div>
+                                
+                                <div class="col-lg-2 col-3">
+                                    <img src="{{asset('assets/cure.PNG')}}" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3 mb-5">
+                                    <a href="https://www.curecancer.com.au/make-a-donation" style="color:#000;" class="chartieslinksfooter">https://www.curecancer.com.au/make-a-donation</a>
+                                </div>
+                                
+                                <div class="col-lg-2 col-3">
+                                    <img src="{{asset('assets/musclar.PNG')}}" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3">
+                                    <a href="https://www.mda.org.au/donate" style="color:#000;" class="chartieslinksfooter">https://www.mda.org.au/donate</a>
                                 </div>
                             </div>
                         </div>
@@ -484,18 +516,38 @@
                                                       <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="{{route('create_page')}}" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>
                                             <div class="col-lg-4 col-sm-6 col-12">
                                                 <h6 class="text-center mt-3">SHARE THIS PAGE
                                                 </h6>
-                                                <ul class="nav flex-column text-center">
-                                                    <li class="nav-item">
-                                                      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';">Facebook</a>
-                                                    </li>
-                                                </ul>
+                                                <!--<ul class="nav flex-column text-center">-->
+                                                <!--    <li class="nav-item">-->
+                                                <!--      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';">Facebook</a>-->
+                                                <!--    </li>-->
+                                                <!--</ul>-->
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

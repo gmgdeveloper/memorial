@@ -14,6 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        body {
+            background-image: url({{asset('assets/background.png')}});
+            background-position: center;
+        }
         .navbar-brand {
             color: #BE9438 !important;
             font-size: 25px;
@@ -380,19 +384,19 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="container">
+            <div class="container" style="background-color:white;border: 2px solid #be9438;">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 mobileoff">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="/" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                         <a class="navbar-brand mobileon" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
+                                         <a class="navbar-brand mobileon" href="/" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                             aria-label="Toggle navigation">
@@ -401,10 +405,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="login.html">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="creat_a_page.html">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -432,7 +436,7 @@
                                         be shared and cherished for generations to come</p>
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
-                                    <img src="assets/heart.png" class="img-fluid heartimgresposive">
+                                    <img src="{{asset('assets/heart.png')}}" class="img-fluid heartimgresposive">
                                 </div>
                             </div>
                         </div>
@@ -441,7 +445,7 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100 firstimg" src="assets/dummythree.jpg" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Bruce Lee</h5>
@@ -449,7 +453,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="assets/dummythree.jpg" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Unknown</h5>
@@ -457,7 +461,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="assets/dummythree.jpg" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Brene Brown</h5>
@@ -465,7 +469,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="assets/dummythree.jpg" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Rebel Thriver</h5>
@@ -473,7 +477,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="assets/dummythree.jpg" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Simply Topaz</h5>
@@ -497,10 +501,10 @@
                             <!--    <div class="swiper mySwiper">-->
                             <!--        <div class="swiper-wrapper">-->
                             <!--            <div class="swiper-slide">-->
-                            <!--                <img src="assets/dummythree.jpg">-->
+                            <!--                <img src="{{asset('assets/dummythree.jpg')}}">-->
                             <!--            </div>-->
                             <!--            <div class="swiper-slide">-->
-                            <!--                <img src="assets/dummytwo.jpg">-->
+                            <!--                <img src="{{asset('assets/dummytwo.jpg')}}">-->
                             <!--            </div>-->
                             <!--        </div>-->
                             <!--        <div class="swiper-button-next"></div>-->
@@ -552,7 +556,7 @@
                                 </ul> 
                             </div>
                             <div class="col-lg-4 col-sm-12 mt-3">
-                                <div class="card" style="background-image:url('assets/dummythree.jpg'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
+                                <div class="card" style="background-image:url('{{asset('assets/dummythree.jpg')}}'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
                                     <div class="card-body" style="border: none;height: 200px;">
                                         <h4 class="card-title text-center">Breannon Schuback
                                         </h4>
@@ -560,7 +564,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12  mt-3">
-                                <div class="card" style="background-image:url('assets/dummythree.jpg'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
+                                <div class="card" style="background-image:url('{{asset('assets/dummythree.jpg')}}'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
                                     <div class="card-body" style="border: none;height: 200px;">
                                         <h4 class="card-title text-center">Joyce Jeffers
                                         </h4>
@@ -568,7 +572,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-sm-12  mt-3">
-                                <div class="card" style="background-image:url('assets/dummythree.jpg'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
+                                <div class="card" style="background-image:url('{{asset('assets/dummythree.jpg')}}'); background-repeat: no-repeat; background-position: center; border: 1px solid #BE9438;">
                                     <div class="card-body" style="border: none;height: 200px;">
                                         <h4 class="card-title text-center">Lex Horgan
                                         </h4>
@@ -576,7 +580,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3">
-                                <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-color: #ccaa54;font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
+                                <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3" style="border-top: 2px solid #ccaa54; border-bottom: 2px solid #ccaa54;">
                                 <div class="row">
@@ -761,7 +765,7 @@
                                                         </button>
                                                       </div>
                                                       <div class="modal-body">
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                        <p>“Please note:Pricing outside of Australia are in US Dollars.”</p>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -786,7 +790,7 @@
                                                         </button>
                                                       </div>
                                                       <div class="modal-body">
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                        <p class="text-center">“Please note:Pricing outside of Australia are in US Dollars.”</p>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -794,11 +798,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center">
-                                        <h5 class="selectionprices">
-                                           Please note these prices are in US dollars
-                                        </h5>
-                                    </div>
+                                    <!--<div class="col-lg-12 col-sm-12 text-center">-->
+                                    <!--    <h5 class="selectionprices">-->
+                                    <!--       Please note these prices are in US dollars-->
+                                    <!--    </h5>-->
+                                    <!--</div>-->
                                 </div>
                             </div>
 
@@ -897,7 +901,7 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-color: #ccaa54;font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
+                                        <button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <h3 class="secondheading mt-5">
@@ -973,18 +977,38 @@
                                                       <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="{{route('create_page')}}" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>
                                             <div class="col-lg-4 col-sm-6 col-12">
                                                 <h6 class="text-center mt-3">SHARE THIS PAGE
                                                 </h6>
-                                                <ul class="nav flex-column text-center">
-                                                    <li class="nav-item">
-                                                      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';">Facebook</a>
-                                                    </li>
-                                                </ul>
+                                                <!--<ul class="nav flex-column text-center">-->
+                                                <!--    <li class="nav-item" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');">-->
+                                                <!--      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';"><i class="fa fa-facebook text-white"></i></a>-->
+                                                <!--    </li>-->
+                                                <!--</ul>-->
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

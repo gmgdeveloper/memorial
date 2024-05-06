@@ -15,6 +15,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <style>
+        body {
+            background-image: url({{asset('assets/background.png')}});
+            background-position: center;
+        }
         .navbar-brand {
             color: white !important;
             font-size: 25px;
@@ -453,6 +457,14 @@
             .newclasspaddingoff{
                 padding-right:0px!important;
             }
+            .heightscoailset {
+                width: 40px !important;
+                padding: 10px !important;
+                height: 40px !important;
+            }
+            .heightscoailseticon{
+                font-size:20px!important;
+            }
         }
         
         @media screen and (max-width: 1024px) {
@@ -682,6 +694,14 @@
                 outline: 0;
                 box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
             }
+            .heightscoailset {
+                width: 40px !important;
+                padding: 10px !important;
+                height: 40px !important;
+            }
+            .heightscoailseticon{
+                font-size:20px!important;
+            }
         }
     </style>
 </head>
@@ -689,7 +709,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="container">
+            <div class="container" style="background-color:white;border:2px solid #BE9438;">
                 <div class="row" id="home">
                     <div class="col-lg-12 col-sm-12 paddingunsget">
                         <div class="row p-lg-4 addpagingmodilbe" style="padding-top:0px!important;padding-bottom:0px!important;">
@@ -735,12 +755,12 @@
                             </div>
                                 <div class="col-lg-6 col-sm-6 mobileoff" style="display:none;">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                                        <a class="navbar-brand" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
+                                        <a class="navbar-brand" href="/" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 mt-lg-2 mb-lg-5 mobileon offinmobile">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white" style="background-color: #be9438 !important;">
-                                         <a class="navbar-brand mobileon" href="{{route('home')}}" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
+                                         <a class="navbar-brand mobileon" href="/" style="font-family: 'Josefin Sans Bold';display:none;" >A Life Worth Remembering</a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                             data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                             aria-label="Toggle navigation">
@@ -774,7 +794,6 @@
                                                         <a class="dropdown-item" href="#">Logout</a>
                                                     </div>
                                                 </div>
-                                            
                                             </div>
                                         </div>
                                     </nav>
@@ -785,18 +804,19 @@
                                     </nav>
                                 </div>
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff">
-                                <img src="assets/pageonebanner.PNG"
+                                <img src="{{asset('assets/pageonebanner.PNG')}}"
                                     style="width:100%;height:400px;border: 2px solid #BE9438!important;" class="imagemainheightset">
                             </div>
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff" id="about">
                                 <h3 class="pagemainheading mt-3">CELEBRATING THE LIFE OF</h3>
                                 <h3 class="mt-2 text-center brennonheading"><b>Breannon Kimberley Schuback</b></h3>
+                                <h4 class="text-center">Date: 5/4/2024</h4>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100 imagemainheightset" src="assets/dummy3.png" alt="First slide"
+                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:#000;">First Quotes</h5>
@@ -807,7 +827,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="d-block w-100 imagemainheightset" src="assets/dummy3.png" alt="Second slide"
+                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground.PNG')}}" alt="Second slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:#000;">Second Quotes</h5>
@@ -831,48 +851,14 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <video width="100%" height="400" controls class="imagemainheightset">
-                                    <source src="assets/dummyvideo.mp4" type="video/mp4">
+                                    <source src="{{asset('assets/dummyvideo.mp4')}}" type="video/mp4">
                                 </video>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 pb-5 newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="overview">AN OVERVIEW</h3>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var paragraph = document.getElementById('editableParagraphoverview');
-                                        
-                                        paragraph.addEventListener('blur', function() {
-                                            var editedData = paragraph.textContent.trim(); // Get the edited content
-                                            // Make an Ajax request to send the edited data to Laravel controller
-                                            fetch('/save-edited-data', {
-                                                method: 'POST',
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
-                                                },
-                                                body: JSON.stringify({ editedData: editedData })
-                                            })
-                                            .then(response => {
-                                                if (response.ok) {
-                                                    console.log('Data saved successfully!');
-                                                } else {
-                                                    console.error('Failed to save data');
-                                                }
-                                            })
-                                            .catch(error => {
-                                                console.error('Error:', error);
-                                            });
-                                        });
-                                    });
-
-                                    function makeEditable() {
-                                        var paragraph = document.getElementById('editableParagraphoverview');
-                                        paragraph.contentEditable = true;
-                                        paragraph.focus();
-                                    }
-                                </script>
+                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-3 mb-5 newclasspaddingoff">
+                            <div class="col-lg-12 col-sm-12 mt-3 mb-5 newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="relations">RELATIONSHIPS</h3>
                                 <div class="swiper myrelationswiper mt-3 mobileoff">
                                     <div class="swiper-wrapper">
@@ -1145,6 +1131,7 @@
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
+                                <br>
                             </div>
                             <div class="col-lg-12 col-sm-12 borderremove newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
                                 <div class="row">
@@ -1437,155 +1424,174 @@
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What was your childhood like?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What was your childhood like?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What is your earliest childhood memory?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What is your earliest childhood memory?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What is your favourite childhood memory?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What is your favourite childhood memory?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What was a significant childhood memory that helped shape who you are today?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What was a significant childhood memory that helped shape who you are today?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What were you like as a teenager?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What were you like as a teenager?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What’s your favourite teen memory?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What’s your favourite teen memory?
                                                     </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">Who was your first crush and how old were you?
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">Who was your first love?
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">Who was your most significant intimate relationship with?
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What challenges have you found most difficult?
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What are the most valuable lessons you’ve learned?
-                                                    </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         
+                                        <div class="swiper-slide">
+                                            <div class="card" style="background-color: #fff; border:0px;">
+                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Who was your first crush and how old were you?
+                                                    </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="card" style="background-color: #fff; border:0px;">
+                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Who was your first love?
+                                                    </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="card" style="background-color: #fff; border:0px;">
+                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Who was your most significant intimate relationship with?
+                                                    </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="card" style="background-color: #fff; border:0px;">
+                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What challenges have you found most difficult?
+                                                    </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="card" style="background-color: #fff; border:0px;">
+                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What are the most valuable lessons you’ve learned?
+                                                    </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What achievements are you most proud of?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What achievements are you most proud of?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">If you could start life over, what knowledge would you want to take with you?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">If you could start life over, what knowledge would you want to take with you?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What is one thing you would want your loved ones to remember you by after your gone?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What is one thing you would want your loved ones to remember you by after your gone?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What advice would you leave for future generations?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What advice would you leave for future generations?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">If you had 24 hours to live, how would you spend it?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">If you had 24 hours to live, how would you spend it?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">Is there anything you’ve done that you wish you had have done differently?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Is there anything you’ve done that you wish you had have done differently?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">If you could have a superpower, what would it be and why?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">If you could have a superpower, what would it be and why?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">What charities do you support and why?
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What charities do you support and why?
                                                     </p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1597,7 +1603,7 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-lg-5 addcontactswipermargintopres newclasspaddingoff">
                                 <p style="font-family: 'Josefin Sans Light;" class="mt-lg-5">Want to know more? Message the page administrators with your question or response</p>
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#fff;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#exampleModal">CONTACT ADMINSTRATORS</button>
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#exampleModal">CONTACT ADMINSTRATORS</button>
                                 
                                 <div class="modal" tabindex="-1" id="exampleModal">
                                   <div class="modal-dialog">
@@ -1698,44 +1704,44 @@
                                       <div class="swiper-slide">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;">
-                                                <a data-fancybox="gallery" href="assets/dummythree.jpg"><img src="assets/dummythree.jpg" style="width: 100%;border: 1px solid #BE9438!important;"></a>
+                                                <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}"><img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #BE9438!important;"></a>
                                                 <div class="row">
                                                     <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                       <a data-fancybox="gallery" href="assets/dummythree.jpg"> <img src="assets/dummythree.jpg" style="height:333px;width: 100%;border: 1px solid #BE9438!important;"></a>
+                                                       <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="height:334px;width: 100%;border: 1px solid #BE9438!important;"></a>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="assets/dummythree.jpg"> <img src="assets/dummythree.jpg" style="width: 100%;border: 1px solid #BE9438!important;"></a>
+                                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #BE9438!important;"></a>
                                                             </div>
                                                             <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="assets/dummythree.jpg"> <img src="assets/dummythree.jpg" style="width: 100%;border: 1px solid #BE9438!important;height:156px;"> </a>
+                                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #BE9438!important;height:157px;"> </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 col-sm-12">
-                                                      <a data-fancybox="gallery" href="assets/dummythree.jpg">  <img src="assets/dummythree.jpg" style="height:312px;width: 100%;border: 1px solid #BE9438!important;"> </a>
+                                                      <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}">  <img src="{{asset('assets/dummythree.jpg')}}" style="height:312px;width: 100%;border: 1px solid #BE9438!important;"> </a>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-sm-6" style="padding-left:0px!important;">
-                                               <a data-fancybox="gallery" href="assets/dummythree.jpg"> <img src="assets/dummythree.jpg" style="height:250px;width: 100%;border: 1px solid #BE9438!important;"> </a>
+                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="height:250px;width: 100%;border: 1px solid #BE9438!important;"> </a>
                                                 <div class="row">
                                                     <div class="col-lg-12 col-sm-12">
-                                                       <a data-fancybox="gallery" href="assets/dummythree.jpg"> <img src="assets/dummythree.jpg" style="height:350px;width: 100%;border: 1px solid #BE9438!important;"></a>
+                                                       <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="height:350px;width: 100%;border: 1px solid #BE9438!important;"></a>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                              <a data-fancybox="gallery" href="assets/dummythree.jpg">  <img src="assets/dummythree.jpg" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #BE9438!important;"></a>
+                                                              <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}">  <img src="{{asset('assets/dummythree.jpg')}}" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #BE9438!important;"></a>
                                                             </div>
                                                             <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="assets/dummythree.jpg"> <img src="assets/dummythree.jpg" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #BE9438!important;"></a>
+                                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #BE9438!important;"></a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                      <a data-fancybox="gallery" href="assets/dummythree.jpg">  <img src="assets/dummythree.jpg"style="height:400px;width: 100%;border: 1px solid #BE9438!important;"></a>
+                                                      <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}">  <img src="{{asset('assets/dummythree.jpg')}}"style="height:400px;width: 100%;border: 1px solid #BE9438!important;"></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1748,10 +1754,10 @@
                                 <div class="swiper qandanswerswiper mobileon" style="border:0px;display:none;">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="assets/dummythree.jpg"> <img src="assets/dummythree.jpg" style="width: 100%;border: 1px solid #BE9438!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #BE9438!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="assets/dummytwo.png"> <img src="assets/dummytwo.png" style="width: 100%;border: 1px solid #BE9438!important;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummytwo.png"> <img src="{{asset('assets/dummytwo.png')}}" style="width: 100%;border: 1px solid #BE9438!important;"></a>
                                         </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
@@ -1760,7 +1766,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#fff;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addphoto">ADD PHOTOS</button>
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addphoto">ADD PHOTOS</button>
                                 <div class="modal fade" id="addphoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -1815,7 +1821,7 @@
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
                                 <div class="swiper guestbookswiper">
                                     <div class="swiper-wrapper" style="height:300px;">
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
                                             Full Name
                                             <br>
@@ -1824,7 +1830,7 @@
                                             Relationship
                                            </p>
                                         </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';"  class="addfullresposnive">
                                              Full Name
                                              <br>
@@ -1833,7 +1839,7 @@
                                              Relationship
                                             </p>
                                          </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
                                              Full Name
                                              <br>
@@ -1842,7 +1848,7 @@
                                              Relationship
                                             </p>
                                          </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
                                              Full Name
                                              <br>
@@ -1851,7 +1857,7 @@
                                              Relationship
                                             </p>
                                          </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
                                              Full Name
                                              <br>
@@ -1860,7 +1866,7 @@
                                              Relationship
                                             </p>
                                          </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
                                              Full Name
                                              <br>
@@ -1869,7 +1875,7 @@
                                              Relationship
                                             </p>
                                          </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
                                              Full Name
                                              <br>
@@ -1878,7 +1884,7 @@
                                              Relationship
                                             </p>
                                          </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;">
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
                                              Full Name
                                              <br>
@@ -1892,7 +1898,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#fff;border-radius: 20px;font-family: 'Josefin Sans Bold';">SIGN THE GUEST BOOK</button>
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">SIGN THE GUEST BOOK</button>
                             </div>
                             <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff" id="stories">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">STORIES (###)-->
@@ -1927,10 +1933,10 @@
                                             <div class="col-lg-6 col-sm-12">
                                                 <div class="row">
                                                     <div class="col-lg-12 col-sm-12">
-                                                        <img src="assets/dummythree.jpg" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                        <img src="{{asset('assets/dummythree.jpg')}}" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
                                                     </div>
                                                     <div class="col-lg-12 col-sm-12">
-                                                        <img src="assets/dummythree.jpg" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                        <img src="{{asset('assets/dummythree.jpg')}}" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1951,7 +1957,7 @@
                                   </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#fff;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addstory" >ADD A STORY
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addstory" >ADD A STORY
                                 </button>
                                 <div class="modal fade" id="addstory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
@@ -1991,7 +1997,7 @@
                                 </div>
                             </div>
                             <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
-                                <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;" id="sounds">SOUND BITES (###)
+                                <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;" id="sounds">SOUND CLIPS (###)
                                 </h3>
                             </div>
                             <div  class="col-lg-12 col-sm-12 mt-lg-3 newclasspaddingoff">
@@ -2003,27 +2009,27 @@
                             <div class="col-lg-12 col-sm-12 mt-4 mb-4 newclasspaddingoff">
                                 <div class="swiper soundbitesswiper">
                                     <div class="swiper-wrapper">
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;">
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <p style="font-family: 'Josefin Sans Light';">Bree Laughing
                                         </p>
                                       </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;">
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <p style="font-family: 'Josefin Sans Light';">TITLE
                                         </p>
                                       </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;">
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <p style="font-family: 'Josefin Sans Light';">TITLE
                                         </p>
                                       </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;">
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <p style="font-family: 'Josefin Sans Light';">TITLE
                                         </p>
                                       </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;"> 
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"> 
                                         <p style="font-family: 'Josefin Sans Light';">TITLE
                                         </p>
                                       </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;">
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <p style="font-family: 'Josefin Sans Light';">TITLE
                                         </p>
                                       </div>
@@ -2032,7 +2038,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#fff;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addaudio">ADD AUDIO
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addaudio">ADD AUDIO
                                 </button>
                                 <div class="modal fade" id="addaudio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
@@ -2227,7 +2233,7 @@
                                 </h3>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center newclasspaddingoff">
-                                <button class="btn btn-large mt-3 contactadministration" style="background-color: #BE9438;width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
+                                <button class="btn btn-large mt-3 contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
@@ -2262,13 +2268,13 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
                                 <video width="100%" height="500" controls style="border: 1px solid #BE9438!important;" class="dummyvideooo">
-                                    <source src="assets/dummyvideo.mp4" type="video/mp4">
+                                    <source src="{{asset('assets/dummyvideo.mp4')}}" type="video/mp4">
                                 </video>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 p-4 newclasspaddingoff">        
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12" id="memorial">
-                                        <h3 class="transitionheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="notices">NOTICES
+                                        <h3 class="transitionheading topaddmarginsub" style="color:#A423EB!important;" id="notices">NOTICES
                                         </h3>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
@@ -2307,7 +2313,7 @@
                             <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff">
                                 <div class="swiper tributeswiper mobileoff">
                                     <div class="swiper-wrapper">
-                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;">
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
                                                 <h4>Mother</h4>
@@ -2315,13 +2321,13 @@
                                             <div class="col-lg-6 col-sm-6">
                                                 <h4>Karen Schuback</h4>
                                             </div>
-                                            <div class="col-lg-12 col-sm-12 text-left">
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
                                                 <p style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
                                       </div>
-                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;">
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
                                                 <h4>Mother</h4>
@@ -2329,13 +2335,13 @@
                                             <div class="col-lg-6 col-sm-6">
                                                 <h4>Full Name Here</h4>
                                             </div>
-                                            <div class="col-lg-12 col-sm-12 text-left">
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
                                                 <p style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
                                       </div>
-                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;">
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
                                                 <h4>Mother</h4>
@@ -2343,13 +2349,13 @@
                                             <div class="col-lg-6 col-sm-6">
                                                 <h4>Full Name Here</h4>
                                             </div>
-                                            <div class="col-lg-12 col-sm-12 text-left">
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
                                                 <p style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
                                       </div>
-                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;">
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
                                                 <h4>Mother</h4>
@@ -2357,13 +2363,13 @@
                                             <div class="col-lg-6 col-sm-6">
                                                 <h4>Full Name Here</h4>
                                             </div>
-                                            <div class="col-lg-12 col-sm-12 text-left">
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
                                                 <p style="font-family: 'Josefin Sans Light';">Message here……….
                                                 </p>
                                             </div>
                                         </div>
                                       </div>
-                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;">
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
                                                 <h4>Mother</h4>
@@ -2371,13 +2377,13 @@
                                             <div class="col-lg-6 col-sm-6">
                                                 <h4>Full Name Here</h4>
                                             </div>
-                                            <div class="col-lg-12 col-sm-12 text-left">
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
                                                 <p style="font-family: 'Josefin Sans Light';">Message here……….
                                                 </p>
                                             </div>
                                         </div>
                                       </div>
-                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;">
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
                                                 <h4>Mother</h4>
@@ -2385,7 +2391,7 @@
                                             <div class="col-lg-6 col-sm-6">
                                                 <h4>Full Name Here</h4>
                                             </div>
-                                            <div class="col-lg-12 col-sm-12 text-left">
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
                                                 <p style="font-family: 'Josefin Sans Light';">Message here……….
                                                 </p>
                                             </div>
@@ -2461,7 +2467,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#000;border-radius: 20px;">ADD A TRIBUTE
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;">ADD A TRIBUTE
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
@@ -2549,7 +2555,7 @@
                                 </p>
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <img src="assets/heartfoundation.png" class="text-center" style="width:150px;">
+                                        <img src="{{asset('assets/heartfoundation.png')}}" class="text-center" style="width:150px;">
                                     </div>
                                 </div>
                             </div>
@@ -2573,7 +2579,7 @@
                                 <div class="slider-container">
                                     <div class="slider-content">
                                       <div class="slider-item">
-                                        <img class="product-image" src="assets/dummythree.jpg" alt="Product 1">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 1">
                                         <div class="product-info">
                                           <h5>LEX HORGAN</h5>
                                           <p style="font-family: 'Josefin Sans Light';">Grandfather
@@ -2581,7 +2587,7 @@
                                         </div>
                                       </div>
                                       <div class="slider-item">
-                                        <img class="product-image" src="assets/dummythree.jpg" alt="Product 2">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 2">
                                         <div class="product-info">
                                           <h5>GEOFFREY SCHUBACK
                                         </h5>
@@ -2590,7 +2596,7 @@
                                         </div>
                                       </div>
                                       <div class="slider-item">
-                                        <img class="product-image" src="assets/dummythree.jpg" alt="Product 3">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 3">
                                         <div class="product-info">
                                           <h5>TROY SCHUBACK
                                         </h5>
@@ -2598,7 +2604,7 @@
                                         </div>
                                       </div>
                                       <div class="slider-item">
-                                        <img class="product-image" src="assets/dummythree.jpg" alt="Product 3">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 3">
                                         <div class="product-info">
                                           <h5>Second TROY SCHUBACK
                                         </h5>
@@ -2611,7 +2617,7 @@
                                   </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">LINK A PAGE
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">LINK A PAGE
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
@@ -2647,7 +2653,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-color: #BE9438;width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">CREATE A PAGE
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">CREATE A PAGE
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff" id="contact">
@@ -2655,14 +2661,46 @@
                                 </h3>
                             </div>
                             <div class="col-lg-4 col-sm-4 mt-2 qrcodediv newclasspaddingoff">
-                                <img src="assets/qr.png" class="qrimageheightset" style="width: 100%; height: 328px;border: 1px solid #BE9438!important;">
+                                <img src="{{asset('assets/qr.png" class="qrimageheightset" style="width: 100%; height: 328px;border: 1px solid #BE9438!important;">
                             </div>
                             <div class="col-lg-8 col-sm-8 mt-2 ">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center p-5" style="border: 1px solid #BE9438!important;">
-                                        <span style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-facebook"></i></span>
-                                        <span class="ml-3" style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-instagram"></i></span>
-                                        <span class="ml-3" style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-linkedin"></i></span>
+                                        <!--<span style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-facebook"></i></span>-->
+                                        <!--<span class="ml-3" style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-instagram"></i></span>-->
+                                        <!--<span class="ml-3" style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-linkedin"></i></span>-->
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
+                                                    <i class="fa fa-facebook text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
+                                                    <i class="fa fa-instagram text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
+                                                    <i class="fa fa-linkedin text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
+                                                    <i class="fa fa-whatsapp text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
+                                                    <i class="fa fa-snapchat text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
+                                                    <i class="fa fa-youtube-play text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center p-5 mt-4" style="border: 1px solid #BE9438!important;">
                                         <div class="row mobileoff">
@@ -2692,7 +2730,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 ">
-                                <button class="btn btn-large contactadministration topcontactadministrationbottom" style="background-color: #BE9438;width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">EMAIL ADMINISTRATORS
+                                <button class="btn btn-large contactadministration topcontactadministrationbottom" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">EMAIL ADMINISTRATORS
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3" style="border: 1px solid #BE9438!important;background-color: lightgrey;">
