@@ -134,14 +134,6 @@ public function page_history($id){
 
 
 
-
-
-
-
-
-
-
-
 // public function frontend_login(Request $request)
 // {
 //     // Validate the incoming request data
@@ -158,6 +150,16 @@ public function page_history($id){
 //     if ($user) {
 //         // Verify the access code
 //         if (Hash::check($validatedData['accesscode'], $user->access_code)) {
+//             // Regenerate the session ID
+//             $request->session()->regenerate();
+
+//             // Log in the user with the updated session ID
+//             Auth::loginUsingId($user->id);
+
+//             // Now you can access the authenticated user
+//             $authenticatedUser = auth()->user();
+
+
 //             // Authentication successful
 //             // You can perform any additional actions here, such as setting session data or logging in the user
 //             return response()->json(['success' => true, 'message' => 'Login successful'], 200);
@@ -171,40 +173,55 @@ public function page_history($id){
 //     }
 // }
 
-
-
 public function frontend_login(Request $request)
 {
     // Validate the incoming request data
     $validatedData = $request->validate([
         'email' => 'required|email',
-        'accesscode' => 'required|string'
+        'accesscode' => 'nullable|string',
+        'password' => 'nullable|string',
     ]);
 
-    // Check if a user with the provided email and access code exists
+    // Check if a user with the provided email exists
     $user = DB::table('users')
                 ->where('email', $validatedData['email'])
                 ->first();
 
     if ($user) {
-        // Verify the access code
-        if (Hash::check($validatedData['accesscode'], $user->access_code)) {
-            // Regenerate the session ID
-            $request->session()->regenerate();
-
-            // Log in the user with the updated session ID
-            Auth::loginUsingId($user->id);
-
-            // Now you can access the authenticated user
-            $authenticatedUser = auth()->user();
-
-
-            // Authentication successful
-            // You can perform any additional actions here, such as setting session data or logging in the user
-            return response()->json(['success' => true, 'message' => 'Login successful'], 200);
-        } else {
-            // Access code does not match
-            return response()->json(['success' => false, 'message' => 'Invalid access code'], 401);
+        // Check if either access code or password is provided
+        if ($validatedData['accesscode']) {
+            // Verify the access code
+            if (Hash::check($validatedData['accesscode'], $user->access_code)) {
+                // Access code authentication successful
+                // Regenerate the session ID
+                $request->session()->regenerate();
+                // Log in the user with the updated session ID
+                Auth::loginUsingId($user->id);
+                return response()->json(['success' => true, 'message' => 'Login successful'], 200);
+            } else {
+                // Access code does not match
+                return response()->json(['success' => false, 'message' => 'Invalid access code'], 401);
+            }
+        }
+        
+        elseif ($validatedData['password']) {
+            // Verify the password
+            if (Hash::check($validatedData['password'], $user->password)) {
+                // Password authentication successful
+                // Regenerate the session ID
+                $request->session()->regenerate();
+                // Log in the user with the updated session ID
+                Auth::loginUsingId($user->id);
+                return response()->json(['success' => true, 'message' => 'Login successful'], 200);
+            } else {
+                // Password does not match
+                return response()->json(['success' => false, 'message' => 'Invalid password'], 401);
+            }
+        }
+        
+        else {
+            // Neither access code nor password is provided
+            return response()->json(['success' => false, 'message' => 'Access code or password is required'], 400);
         }
     } else {
         // User not found
@@ -212,6 +229,47 @@ public function frontend_login(Request $request)
     }
 }
 
+
+
+
+public function profile_honree(){
+
+    $user = Auth()->user();
+    // dd($user);
+
+    return view('auth.profile',compact('user'));
+
+
+
+}
+
+public function update_profile(Request $request)
+{
+    // Validate the form data
+    $request->validate([
+        'name' => 'required|string|max:255',
+        
+        'mobilephone' => 'nullable|string|max:20',
+        'state' => 'nullable|string|max:255',
+        'country' => 'nullable|string|max:255',
+    ]);
+
+
+
+    // Get the authenticated user
+    $user = Auth::user();
+
+    // Update the user's profile fields
+    $user->update([
+        'name' => $request->name,
+        'mobilephone' => $request->mobilephone,
+        'state' => $request->state,
+        'country' => $request->country,
+    ]);
+
+    // Redirect back with a success message
+    return redirect()->back()->with('success', 'Profile updated successfully!');
+}
 
 
 

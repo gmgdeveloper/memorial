@@ -9,6 +9,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +42,7 @@ Route::post('/userlogin',[UserController::class,'frontend_login'])->name('fronte
 
 
 
-Route::post('/user/logout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('user.logout');
+Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 
 
 Route::get('/create_page',[PageController::class,'creat_a_page'])->name('create_page');
@@ -54,8 +55,10 @@ Route::post('/create_page_save',[PageController::class,'save_create_page'])->nam
 Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::get('/pageone', [PageController::class, 'pageone'])->name('pageone');
     Route::get('/UserProfile',[UserController::class,'profile_honree'])->name('profile_honree');
-    Route::get('/honreelogout', [App\Http\Controllers\Auth\LoginController::class, 'userLogout'])->name('honree_logout');
+    Route::post('/update-profile', [UserController::class,'update_profile'])->name('update_profile');
+    Route::get('/honreelogout', [LoginController::class, 'userLogout'])->name('honree_logout');
 
+    Route::post('/bannerimage',[PageController::class,'bange_image'])->name('banner_image');
 
 });
 

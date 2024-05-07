@@ -375,6 +375,12 @@
                  margin-bottom:6px!important;
             }
         }
+
+        /* CSS */
+.custom-select:focus {
+    border-color: #BE9438; /* Change the border color when the select element is focused */
+}
+
     </style>
 </head>
 
@@ -491,12 +497,24 @@
                                             <p class="text-muted" style="font-family: 'Josefin Sans Light';margin-bottom:9px;">Select your relationship to the honouree from the drop down menu</p>
                                         </div>
                                         <div class="col-lg-2">
-                                            <h5 class="mt-2 addbottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">ACCESS CODE</h5>
+                                            <h5 class="mt-2 addbottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">Login Type</h5>
                                         </div>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" name="accesscode" style="border: 2px solid #BE9438;"  placeholder="Access code">
-                                            <p class="text-muted" style="font-family: 'Josefin Sans Light';">(Provide by page the administrators) Not required for public pages</p>
+                                            <select onchange="showField(this.value)" class="mb-3  form-control" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
+                                            <option>--Select Login Type--</option>
+                                                <option value="password">Guest</option>
+                                                <option value="accesscode">Access Code</option>
+                                            </select>
+                                            <input type="text" class="form-control" id="accessCodeInput" name="accesscode" style="border: 2px solid #BE9438; display: none;" placeholder="Access code">
+                                            <input type="password" class="form-control" id="passwordInput" name="password" style="border: 2px solid #BE9438; display: none;" placeholder="Password">
+                                            <p class="text-muted" style="font-family: 'Josefin Sans Light';">(Provided by the page administrators) Not required for public pages</p>
                                         </div>
+
+                                        <div class="col-lg-12 mt-2">
+                                        <div id="loginMessage"></div>
+
+                                        </div>
+
                                         <div class="col-lg-12 mt-2">
                                             <h5 class="securityloginheading text-center" style="font-weight:bold;font-family: 'Josefin Sans Bold';">
                                                 Security check
@@ -538,52 +556,58 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-    $(document).ready(function(){
-        $(".login-butn").click(function(){
-            // Get CSRF token value from meta tag
-            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function(){
+    $(".login-butn").click(function(){
+        // Get CSRF token value from meta tag
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-            // Get form data
-            var fullname = $("input[name='fullname']").val();
-            var email = $("input[name='email']").val();
-            var honouree = $("input[name='honouree']").val();
-            var relationship = $("select[name='relationship']").val();
-            var accesscode = $("input[name='accesscode']").val();
-            
-            // Prepare data for sending
-            var formData = {
-                fullname: fullname,
-                email: email,
-                honouree: honouree,
-                relationship: relationship,
-                accesscode: accesscode
-            };
-            
-            // Send data to the server with CSRF token included
-            $.ajax({
-                type: "POST",
-                url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                success: function(response){
-                    if(response.success){
-                    // Redirect to the desired page
-                    window.location.href = '{{ route("pageone") }}';
-                } else {
-                    // Handle unsuccessful login
-                    console.error('Login unsuccessful');
-                }
+        // Get form data
+        var fullname = $("input[name='fullname']").val();
+        var email = $("input[name='email']").val();
+        var honouree = $("input[name='honouree']").val();
+        var relationship = $("select[name='relationship']").val();
+        var accesscode = $("input[name='accesscode']").val();
+        var password = $("input[name='password']").val();
+        
+        // Prepare data for sending
+        var formData = {
+            fullname: fullname,
+            email: email,
+            honouree: honouree,
+            relationship: relationship,
+            accesscode: accesscode,
+            password: password,
+        };
+        
+        // Send data to the server with CSRF token included
+        $.ajax({
+    type: "POST",
+    url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
+    data: formData,
+    headers: {
+        'X-CSRF-TOKEN': csrfToken
+    },
+    success: function(response){
+        if(response.success){
+            // Redirect to the desired page
+            window.location.href = '{{ route("pageone") }}';
+        }
+        else if(response.success === false) { // Corrected syntax for else if
+            // Display unsuccessful login message
+            $("#loginMessage").html('<span style="color: red;">' + response.message + '</span>');
+        }
+    },
+    error: function(xhr, status, error){
+        // Handle errors
+        // $("#loginMessage").html('<span style="color: red;">' + xhr.responseText + '</span>');
+       
+    }
+});
 
-                },
-                error: function(xhr, status, error){
-                    // Handle errors
-                    console.error(xhr.responseText);
-                }
-            });
-        });
     });
+});
+
+
 </script>
 
 
@@ -613,6 +637,20 @@
  
 
 
+<script>
+    function showField(selectedValue) {
+        var accessCodeInput = document.getElementById("accessCodeInput");
+        var passwordInput = document.getElementById("passwordInput");
+
+        if (selectedValue === "accesscode") {
+            accessCodeInput.style.display = "block";
+            passwordInput.style.display = "none";
+        } else if (selectedValue === "password") {
+            accessCodeInput.style.display = "none";
+            passwordInput.style.display = "block";
+        }
+    }
+</script>
 
 
 
