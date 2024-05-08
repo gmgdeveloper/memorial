@@ -145,7 +145,7 @@
         .mainheaderlink{
             font-size:14px!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -198,12 +198,15 @@
             .heightsitting{
                 height:180px!important;
             }
-            h1.mainheading{
-                font-size:25px!important;
+            .fontsizednh{
+                font-size: 25px;
+            }
+            .chartieslinksfooter{
+                font-size: 13px;
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -370,8 +373,11 @@
             .textcentssrer{
                 text-align:center!important;
             }
-            h1.mainheading{
-                font-size:25px!important;
+            .fontsizednh{
+                font-size: 25px;
+            }
+            .chartieslinksfooter{
+                font-size: 13px;
             }
         }
     </style>
@@ -421,50 +427,43 @@
                                 </div>
                                 <div class="col-lg-12 col-sm-12">
                                     <br>
-                                    <h1 class="mainheading text-center">
-                                        Technical Support
+                                    <h1 class="mainheading text-center fontsizednh">
+                                        Charities
                                     </h1>
-                                    <form action="#" method="POST">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input class="form-control" type="text" name="name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input class="form-control" type="email" name="email" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input class="form-control" type="number" name="phone" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <input class="form-control" type="text" name="subject" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea class="form-control" type="text" name="message" style="height: 110px;"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12 text-right">
-                                                <button type="submit" class="btn" style="background-color:#ccaa54;border-color:#ccaa54;">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <p class="mt-3 mb-lg-5" style="font-family: 'Josefin Sans Light';">
+                                        Transform grief into action by supporting a cause close to your heart. In memory of your loved one, consider donating to a charity dedicated to researching, advocating, or providing support for the cause of their passing. Your contribution not only honours their memory but also helps others facing similar challenges. Together, let's turn loss into hope and make a difference in their honour.
+                                    </p>
+                                </div>
+                                <div class="col-lg-2 col-3">
+                                    <img src="<?php echo e(asset('assets/heartfoundation.png')); ?>" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3 mb-5">
+                                    <a href="https://donate.heartfoundation.org.au/once-off" style="color:#000;" class="chartieslinksfooter">https://donate.heartfoundation.org.au/once-off</a>
+                                </div>
+                                
+                                <div class="col-lg-2 col-3">
+                                    <img src="<?php echo e(asset('assets/cystric.PNG')); ?>" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3 mb-5">
+                                    <a href="https://www.cff.org/donate" style="color:#000;" class="chartieslinksfooter">https://www.cff.org/donate</a>
+                                </div>
+                                
+                                <div class="col-lg-2 col-3">
+                                    <img src="<?php echo e(asset('assets/cure.PNG')); ?>" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3 mb-5">
+                                    <a href="https://www.curecancer.com.au/make-a-donation" style="color:#000;" class="chartieslinksfooter">https://www.curecancer.com.au/make-a-donation</a>
+                                </div>
+                                
+                                <div class="col-lg-2 col-3">
+                                    <img src="<?php echo e(asset('assets/musclar.PNG')); ?>" style="width:100%;">
+                                </div>
+                                <div class="col-lg-10 col-9 pt-lg-5 mt-lg-3">
+                                    <a href="https://www.mda.org.au/donate" style="color:#000;" class="chartieslinksfooter">https://www.mda.org.au/donate</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-lg-5">
                             <div class="col-lg-12 col-sm-12 mt-3" style="background-color: #ccaa54;">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center">
@@ -531,22 +530,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -584,4 +583,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/charties.blade.php ENDPATH**/ ?>

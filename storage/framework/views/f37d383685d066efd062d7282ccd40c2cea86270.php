@@ -145,7 +145,7 @@
         .mainheaderlink{
             font-size:14px!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -203,7 +203,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -531,22 +531,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -584,4 +584,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/tech.blade.php ENDPATH**/ ?>

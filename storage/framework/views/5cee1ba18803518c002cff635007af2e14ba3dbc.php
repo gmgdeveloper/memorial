@@ -145,7 +145,7 @@
         .mainheaderlink{
             font-size:14px!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -203,7 +203,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -422,49 +422,16 @@
                                 <div class="col-lg-12 col-sm-12">
                                     <br>
                                     <h1 class="mainheading text-center">
-                                        Technical Support
+                                        Media Kit
                                     </h1>
-                                    <form action="#" method="POST">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input class="form-control" type="text" name="name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input class="form-control" type="email" name="email" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input class="form-control" type="number" name="phone" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <input class="form-control" type="text" name="subject" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea class="form-control" type="text" name="message" style="height: 110px;"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12 text-right">
-                                                <button type="submit" class="btn" style="background-color:#ccaa54;border-color:#ccaa54;">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <p class="mt-3 mb-5" style="font-family: 'Josefin Sans Light';">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-5">
                             <div class="col-lg-12 col-sm-12 mt-3" style="background-color: #ccaa54;">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center">
@@ -531,22 +498,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -584,4 +551,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/mediakit.blade.php ENDPATH**/ ?>

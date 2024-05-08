@@ -641,22 +641,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{assets('assets//facebook.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets//facebook.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{assets('assets//instagram.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets//instagram.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{assets('assets//linkedin.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets//linkedin.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{assets('assets//whatsapp.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets//whatsapp.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{assets('assets//snapchat.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets//snapchat.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{assets('assets//youtube.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets//youtube.png')}}" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>

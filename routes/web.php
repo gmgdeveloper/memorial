@@ -27,26 +27,81 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
-
-
 Route::get('/',[FrontendController::class,'home_page'])->name('home');
 Route::get('/login',function(){
     return view('Frontend.login');
 })->name('login');
-
-
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/userlogin',[UserController::class,'frontend_login'])->name('frontend_login');
-
-
-
 Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
-
 
 Route::get('/create_page',[PageController::class,'creat_a_page'])->name('create_page');
 Route::post('/create_page_save',[PageController::class,'save_create_page'])->name('save_page');
+
+//pages footer 
+
+
+Route::get('/abouts',function(){
+    return view('Frontend.about');
+})->name('abouts');
+
+
+
+Route::get('/vision',function(){
+    return view('Frontend.vision');
+})->name('vision');
+
+
+Route::get('/abouts',function(){
+    return view('Frontend.about');
+})->name('abouts');
+
+Route::get('/mission',function(){
+    return view('Frontend.mission');
+})->name('mission');
+
+Route::get('/privacy',function(){
+    return view('Frontend.privacy');
+})->name('privacy');
+
+
+Route::get('/terms',function(){
+    return view('Frontend.terms');
+})->name('terms');
+
+
+Route::get('/faqs',function(){
+    return view('Frontend.faqs');
+})->name('faqs');
+
+
+
+Route::get('/business',function(){
+    return view('Frontend.business');
+})->name('business');
+
+
+Route::get('/mediakit',function(){
+    return view('Frontend.mediakit');
+})->name('mediakit');
+
+
+Route::get('/charties',function(){
+    return view('Frontend.charties');
+})->name('charties');
+
+
+Route::get('/tech',function(){
+    return view('Frontend.tech');
+})->name('tech');
+
+
+
+
+Route::get('/contact',function(){
+    return view('Frontend.contact');
+})->name('contact');
+
 
 
 
@@ -64,13 +119,7 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::post('/videoupload',[PageController::class,'videoupload'])->name('videoupload');
 
     Route::post('/update-dates',[PageController::class,'update_dates'])->name('update-dates');
-
-
-
-
 });
-
-
 
 Route::group(['prefix' => 'admin'], function() {
     Route::group(['middleware' => 'admin.guest'], function(){
@@ -110,12 +159,5 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/admin/editcategory/{id}',[CategoryController::class,'display'])->name('admin.editCategory');
         Route::post('/admin/updatecategory/{id}',[CategoryController::class,'update_category'])->name('admin.update_category');
         Route::post('/admin/deletecategory/{id}',[CategoryController::class,'delete_category'])->name('admin.delete_category');
-
-
-
-
-
-
-
     });
 });

@@ -145,7 +145,7 @@
         .mainheaderlink{
             font-size:14px!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -198,12 +198,12 @@
             .heightsitting{
                 height:180px!important;
             }
-            h1.mainheading{
-                font-size:25px!important;
+            .fontsizednh{
+                font-size: 25px;
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -370,8 +370,8 @@
             .textcentssrer{
                 text-align:center!important;
             }
-            h1.mainheading{
-                font-size:25px!important;
+            .fontsizednh{
+                font-size: 25px;
             }
         }
     </style>
@@ -421,51 +421,38 @@
                                 </div>
                                 <div class="col-lg-12 col-sm-12">
                                     <br>
-                                    <h1 class="mainheading text-center">
-                                        Technical Support
+                                    <h1 class="mainheading text-center fontsizednh">
+                                        About
                                     </h1>
-                                    <form action="#" method="POST">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input class="form-control" type="text" name="name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input class="form-control" type="email" name="email" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input class="form-control" type="number" name="phone" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <input class="form-control" type="text" name="subject" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea class="form-control" type="text" name="message" style="height: 110px;"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12 text-right">
-                                                <button type="submit" class="btn" style="background-color:#ccaa54;border-color:#ccaa54;">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                        Founded in November 2023
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        About ‘A Life Worth Remembering’.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Welcome to "A Life Worth Remembering," a heartfelt space born out of love and loss. This journey began when my beloved daughter, Breannon, unexpectedly passed away and was cremated. Faced with the challenge of finding a memorial site that truly honoured her legacy, I decided to create something unique — an online space where people could pay their respects and remember her life story for generations to come.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Unsatisfied with the existing options on the market, I embarked on the creation of ‘A Life Worth Remembering’. Breannon's memory became the inspiration for a platform that goes beyond the conventional memorial site. I chose to link her story to relatives, to create a family tree, and to friends, to capture the essence of who she really was.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        As the platform evolved, so did my vision. I expanded beyond Breannon's memorial page, recognising the universal need to remember and celebrate the lives of all our loved ones. I invited close family members to share their own stories, and create pages for those who have passed, ensuring that their legacies endure in the hearts of those who knew them.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Now, A Life Worth Remembering is open to everyone so a legacy can be left for future generations. Individuals can create a ‘This is your life’ style page and share stories, photos, and memories, as well as document their wishes in their time of transition.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        What sets ‘A Life Worth Remembering’ apart is my commitment to providing a holistic view of an individual's life, past and present. By including links to special people in the honouree’s life, we showcase the interconnectedness of relationships, making each page a rich tapestry of memories and connections.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Join us in celebrating lives, cherishing memories, and leaving behind a legacy that truly makes every life worth remembering.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 col-sm-12 mt-3" style="background-color: #ccaa54;">
+<div class="col-lg-12 col-sm-12 mt-3" style="background-color: #ccaa54;">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <div class="row">
@@ -517,7 +504,7 @@
                                                       <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="<?php echo e(route('create_page')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>
@@ -531,22 +518,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -584,4 +571,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/about.blade.php ENDPATH**/ ?>

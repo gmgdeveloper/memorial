@@ -145,7 +145,7 @@
         .mainheaderlink{
             font-size:14px!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -203,7 +203,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -422,45 +422,155 @@
                                 <div class="col-lg-12 col-sm-12">
                                     <br>
                                     <h1 class="mainheading text-center">
-                                        Technical Support
+                                        Privacy
                                     </h1>
-                                    <form action="#" method="POST">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input class="form-control" type="text" name="name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input class="form-control" type="email" name="email" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input class="form-control" type="number" name="phone" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <input class="form-control" type="text" name="subject" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea class="form-control" type="text" name="message" style="height: 110px;"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12 text-right">
-                                                <button type="submit" class="btn" style="background-color:#ccaa54;border-color:#ccaa54;">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <h3 class="mainheading text-left mt-3">
+                                        Privacy Policy for "A Life Worth Remembering" Website
+                                    </h3>
+                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                        Last Updated: 24.02.24
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Welcome to "A Life Worth Remembering," a platform dedicated to preserving and sharing personal stories, memories, photos, videos, and soundbites for family, friends, and future generations. We prioritize the protection of your privacy and the security of your personal information. Please read this Privacy Policy carefully to understand how we collect, use, and safeguard your data.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Information We Collect:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        a. Personal Information:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       b. Content:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        You have the option to journal stories, share personal information, and upload photos, videos, and soundbites to your own or your honouree's page.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Access Control:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        a. Limited Access:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Access to an honouree's page is restricted. Only guests with a unique link and password, provided by a page administrator, can access the content.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       b. Page Administrators:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Page administrators have the authority to manage and control the access levels of the honouree's page.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       c. Public or Private Segments:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Page administrators can choose to make specific segments of the honouree's page public or private, providing personalised and controlled viewing options.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Secure Payment Gateway:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        a. Payment Information:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       When making payments for premium features or services, we use a secure payment gateway to process transactions. Your payment information, such as credit card details, is encrypted and securely handled by our payment processor.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        b. Data Protection:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       We prioritise the security of your payment information and adhere to industry standards to ensure the confidentiality and integrity of your financial data.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       How We Use Your Information:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Your personal stories, photos, videos, and soundbites are used to create a comprehensive record of your life, or the lives of your loved ones, for future generations.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        b. Communication:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       We may use your provided contact information to send important updates, announcements, or information related to the platform.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Sharing Information:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       a. Limited Sharing:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Your information is shared only with the guests who receive the link and password from the page administrator.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       b. Public Segments:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       If a page administrator chooses to make certain segments public, they may be accessible to a wider audience.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Data Security:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       a. Encryption:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       We use industry-standard encryption techniques to protect your personal information and ensure its confidentiality.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       b. Access Controls:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Access to personal information is restricted to authorised personnel only.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Your Choices:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       a. Updating Information:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       You can update your account information and content at any time.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       b. Communication Preferences:
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       You have the option to manage your communication preferences and opt-out of certain notifications.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Children's Privacy:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Our services at "A Life Worth Remembering" are available to individuals of all ages, including children. However, special attention is given to the privacy and protection of children. Pages created for children under 16 will not be permitted to be made public unless a written application has been reviewed and approved by the management of ‘A Life Worth Remembering’.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       If a page is found to be in breach of protecting a child's privacy, we are committed to taking immediate action. This includes the deletion of the page without a refund. Our priority is to ensure a safe and secure environment for all users, especially children, and we strictly adhere to legal and ethical standards regarding children's privacy.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Changes to Privacy Policy:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       We may update this Privacy Policy from time to time, and any changes will be effective upon posting the revised version on the website. Please check the policy periodically for updates.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Contact Us:
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       If you have any questions, concerns, or requests regarding your privacy or this Privacy Policy, please contact us via email.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       By using "A Life Worth Remembering," you agree to the terms outlined in this Privacy Policy.
+                                    </p>
+                                    <h3 class="mainheading text-left mt-3">
+                                       Public Pages
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Honouree pages are not listed on the website unless the administrator has set the page to ‘Public’. 
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                       Pages set to ‘Public’ permit ‘A Life to Remember’ to use it as a sample on the home page and in marketing materials if required.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -531,22 +641,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets//facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets//instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets//linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets//whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets//snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets//youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -584,4 +694,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/privacy.blade.php ENDPATH**/ ?>

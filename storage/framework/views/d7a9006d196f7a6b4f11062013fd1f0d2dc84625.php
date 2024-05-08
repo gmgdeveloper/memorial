@@ -145,7 +145,7 @@
         .mainheaderlink{
             font-size:14px!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -203,7 +203,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -422,45 +422,89 @@
                                 <div class="col-lg-12 col-sm-12">
                                     <br>
                                     <h1 class="mainheading text-center">
-                                        Technical Support
+                                        Terms and Condition
                                     </h1>
-                                    <form action="#" method="POST">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input class="form-control" type="text" name="name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input class="form-control" type="email" name="email" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input class="form-control" type="number" name="phone" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <input class="form-control" type="text" name="subject" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea class="form-control" type="text" name="message" style="height: 110px;"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12 text-right">
-                                                <button type="submit" class="btn" style="background-color:#ccaa54;border-color:#ccaa54;">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                        Last Updated: [4/24/2024]
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        By accessing and using the services provided by "A Life Worth Remembering," you agree to the following terms and conditions:
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Subscription Cancellation Notice
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Subscribers can cancel their subscription at any time by accessing their account settings. Notice of cancellation must be provided before the next billing cycle to avoid charges for the upcoming period.
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Content Visibility
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Portions of each page, including Autobiographies, Biographies, and Memorials, may be made public or private at the discretion of the page administrators. 
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Definitions
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        <b>Honouree:</b> Refers to the person the page is dedicated to, whose life, memories, and experiences are shared on the platform.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        <b>Autobiography:</b> A firsthand story created by the honouree, providing a personal account of their life.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        <b>Biography:</b> A page created for a child or adult who is unable to create the page themselves. It is crafted by the next of kin or someone with legal authority to act on behalf of the honouree.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        <b>Memorial:</b> A page dedicated to the memory of an individual, created by the next of kin or someone with legal authority to act on behalf of the honouree.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        <b>Page Administrator:</b> Refers to individuals with authorised access and control over the content on a particular page.
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Respectful Content
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        All pages must adhere to a standard of respect and dignity towards the honouree. Content found in breach of this requirement will be promptly removed by the website management team.
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Refund Policy
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        There are no refunds if a page is removed due to the violation of our respectful content clause or once your page has been made active or shared. 
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        User Responsibilities
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Users are responsible for the accuracy and appropriateness of the content they contribute to the platform.
+                                    </p>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Users must comply with applicable laws and regulations when using the services provided by "A Life Worth Remembering."
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Privacy and Security
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        The privacy policy outlines how user data is collected, used, and protected. By using our platform, you agree to the terms outlined in the privacy policy.
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Termination of Accounts
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        "A Life Worth Remembering" reserves the right to terminate or suspend user accounts that violate these terms and conditions or for any other reason deemed necessary by the website management team.
+                                    </p>
+                                    <h3 class="mainheading text-left">
+                                        Updates to Terms and Conditions
+                                    </h3>
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        These terms and conditions may be updated from time to time. Users will be notified of any changes, and continued use of the platform constitutes acceptance of the updated terms.
+                                    </p>
+                                    <!--<p style="font-family: 'Josefin Sans Light';">-->
+                                    <!--    If you have any questions or concerns regarding these terms and conditions, please contact us at [contact@email.com].-->
+                                    <!--</p>-->
+                                    <p style="font-family: 'Josefin Sans Light';">
+                                        Thank you for using "A Life Worth Remembering."
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -531,22 +575,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -584,4 +628,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/terms.blade.php ENDPATH**/ ?>

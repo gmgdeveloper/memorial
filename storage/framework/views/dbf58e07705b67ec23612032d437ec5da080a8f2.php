@@ -145,7 +145,7 @@
         .mainheaderlink{
             font-size:14px!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -203,7 +203,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -383,7 +383,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="container">
+                        <div class="container mb-lg-5">
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 mobileoff">
                                     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -419,53 +419,19 @@
                                         <a class="navbar-brand" href="#" style="font-family: 'Josefin Sans Bold';">A Life Worth Remembering</a>
                                     </nav>
                                 </div>
-                                <div class="col-lg-12 col-sm-12">
+                                <div class="col-lg-12 col-sm-12 mb-lg-5">
                                     <br>
                                     <h1 class="mainheading text-center">
-                                        Technical Support
+                                        Mission
                                     </h1>
-                                    <form action="#" method="POST">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input class="form-control" type="text" name="name" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input class="form-control" type="email" name="email" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Phone</label>
-                                                    <input class="form-control" type="number" name="phone" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Subject</label>
-                                                    <input class="form-control" type="text" name="subject" >
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea class="form-control" type="text" name="message" style="height: 110px;"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-sm-12 text-right">
-                                                <button type="submit" class="btn" style="background-color:#ccaa54;border-color:#ccaa54;">Submit</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <p class="mt-4 mb-lg-5" style="font-family: 'Josefin Sans Light';">
+                                        "At 'A Life Worth Remembering,' our mission is to empower individuals to capture, share, and celebrate the meaningful moments that shape their unique life stories. We provide a simple and engaging platform for users to curate a digital record for preserving memories, milestones, and reflections. Through this personalised journey, we aim to inspire self-reflection, foster connections, and create a collective tapestry of diverse and impactful life experiences. Our mission is to encourage the appreciation of every individual's narrative, ultimately contributing to a shared legacy of lives worth remembering."
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-sm-12 mt-3" style="background-color: #ccaa54;">
+                        <div class="row mt-lg-5">
+                            <div class="col-lg-12 col-sm-12 mt-lg-5" style="background-color: #ccaa54;">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <div class="row">
@@ -531,22 +497,22 @@
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/facebook.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/instagram.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/linkedin.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/whatsapp.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/snapchat.png')); ?>" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
+                                                        <img src="<?php echo e(asset('assets/youtube.png')); ?>" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -584,4 +550,4 @@
     </script>
 </body>
 
-</html>
+</html><?php /**PATH D:\laragon\www\gmg solution\memorial\memorial\resources\views/Frontend/mission.blade.php ENDPATH**/ ?>
