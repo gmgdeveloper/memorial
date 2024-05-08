@@ -19,7 +19,7 @@ class UserPages extends Model
         'last_name',
         'date_of_death',
         'middle_name',
-        'date_of_birth',
+        'dete_of_birth',
         'memorial_web_address',
         'page_type',
         'plan_id',

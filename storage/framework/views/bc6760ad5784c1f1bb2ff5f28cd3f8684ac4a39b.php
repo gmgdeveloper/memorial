@@ -12,12 +12,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    
     <style>
+        span#editIcon {
+            color: blanchedalmond;
+            padding-right: 20px;
+        }
         body {
             background-image: url(<?php echo e(asset('assets/background.png')); ?>);
-        background-position: center;
+            /* background-position: center; */
         }
-
         .navbar-brand {
             color: white !important;
             font-size: 25px;
@@ -33,14 +37,12 @@
             border-radius: 6px;
             font-size: 12px;
         }
-
-        .footersearchinputnav {
+        .footersearchinputnav{
             height: 30px;
             border-radius: 6px;
             font-size: 12px;
-            width: 100% !important;
+            width: 100%!important;
         }
-
         h3.mainheading {
             font-family: 'Josefin Sans Bold';
             font-size: 18px;
@@ -80,7 +82,6 @@
             text-align: center;
             color: #BE9438;
         }
-
         .anotherpagemainheading {
             font-size: 25px;
             font-family: 'Josefin Sans Bold';
@@ -97,21 +98,19 @@
             color: #000;
         }
 
-        .wishesheading {
+        .wishesheading{
             font-size: 18px;
             font-family: 'Josefin Sans Bold';
             font-weight: 500;
             text-align: center;
             color: #000;
         }
-
-        .breesheading {
+        .breesheading{
             font-size: 15px;
             font-family: 'Josefin Sans Bold';
             font-weight: 500;
             color: #000;
         }
-
         p.mainparagraph.mt-3 {
             font-size: 16px;
         }
@@ -165,7 +164,6 @@
             font-family: 'Josefin Sans Bold';
             font-weight: 500;
         }
-
         h5 {
             font-family: 'Josefin Sans Bold';
             font-weight: 500;
@@ -183,11 +181,9 @@
             text-align: center;
             color: #000;
         }
-
-        h6 {
+        h6{
             font-family: 'Josefin Sans Bold';
         }
-
         input.form-control.mr-sm-2.searchinputnav {
             border-top: 0px;
             border-left: 0px;
@@ -195,67 +191,51 @@
             border-radius: 0px;
             padding-left: 2px;
         }
-
+        
         input.form-control.mr-sm-2.searchinputnav:focus {
-            border-top: 0px;
-            border-right: 0px;
-            border-left: 0px;
-            box-shadow: inherit;
+           border-top:0px;
+           border-right:0px;
+           border-left:0px;
+           box-shadow:inherit;
         }
-
-        .carousel-indicators {
-            bottom: inherit !important;
+        .carousel-indicators{
+            bottom:inherit!important;
         }
-
-        .offinmobile {
-            display: none !important;
+        .offinmobile{
+           display:none!important;
         }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #be9438 !important;
+        .swiper-button-next, .swiper-button-prev {
+            color: #be9438!important;
         }
-
-        .searchinputnavhsbdha {
-            float: right;
+        .searchinputnavhsbdha{
+            float:right;
         }
-
+        
         .slider-container {
-            max-width: 100%;
-            /* Adjust the maximum width as needed */
+            max-width: 100%; /* Adjust the maximum width as needed */
             overflow: hidden;
             margin: 0 auto;
             position: relative;
-        }
-
-        .slider-content {
+          }
+          .slider-content {
             display: flex;
             transition: transform 0.5s ease;
-        }
-
-        .slider-item {
-            flex: 0 0 100%;
-            /* Display one item at a time */
-            margin-right: 20px;
-            /* Adjust the space between items as needed */
-            max-width: 300px;
-            /* Adjust the maximum width as needed */
-        }
-
-        .product-image {
+          }
+          .slider-item {
+            flex: 0 0 100%; /* Display one item at a time */
+            margin-right: 20px; /* Adjust the space between items as needed */
+            max-width: 300px; /* Adjust the maximum width as needed */
+          }
+          .product-image {
             width: 100%;
             height: auto;
-            border: 1px solid #ccc;
-            /* Add border for better visibility */
-        }
-
-        .product-info {
+            border: 1px solid #ccc; /* Add border for better visibility */
+          }
+          .product-info {
             text-align: center;
             padding: 10px;
-        }
-
-        .prev,
-        .next {
+          }
+          .prev, .next {
             position: absolute;
             top: 35%;
             transform: translateY(-50%);
@@ -266,185 +246,167 @@
             border-radius: 50%;
             font-size: 40px;
             z-index: 1;
-        }
-
-        .prev {
+          }
+          .prev {
             left: 0;
-            color: #be9438;
-        }
-
-        .next {
+            color:#be9438;
+          }
+          .next {
             right: 0;
-            color: #be9438;
-        }
-
-        .swiper-button-next.mt-lg-5 {
-            top: 60px;
-        }
-
-        .swiper-button-prev.mt-lg-5 {
-            top: 60px;
-        }
-
-        .swiper-button-next.generalnext {
-            margin-top: -76px;
-        }
-
-        .swiper-button-prev.generalprev {
-            margin-top: -76px;
-        }
-
+            color:#be9438;
+          }
+          .swiper-button-next.mt-lg-5 {
+                top: 60px;
+            }
+            .swiper-button-prev.mt-lg-5{
+                top: 60px;
+            }
+            .swiper-button-next.generalnext {
+                margin-top: -76px;
+            }
+            .swiper-button-prev.generalprev{
+                margin-top: -76px;
+            }
+            .swiper-button-next.relationshipsliderbuttonnext{
+                right:-2px;
+            }
+            .swiper-button-prev.relationshipsliderbuttonprev{
+                left:-2px;
+            }
+            select.form-control.mr-sm-2.searchinputnav.mb-2 {
+                border-left: 0px;
+                border-top: 0px;
+                border-right: 0px;
+                border-radius: 0px;
+            }
+            select.form-control.mr-sm-2.searchinputnav.mb-2:focus {
+                color: #495057;
+                background-color: #fff;
+                border-color: #80bdff00;
+                outline: 0;
+                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
+            }
+            h4.tributemother {
+                margin-top: -60px;
+                font-size: 22px;
+            }
+            .table td, .table th{
+                padding: 10px;
+            }
         @media  screen and (max-width: 768px) {
-            .mobileoff {
-                display: none !important;
-            }
-
-            .mobileon {
-                display: block !important;
-            }
-
-            h3.mainheading {
-                font-size: 13px !important;
-            }
-
-            .mainparagraph {
-                font-size: 13px !important;
-            }
-
-            .firstimg {
-                height: 200px !important;
-            }
-
-            .featurelink {
-                font-size: 15px !important;
-            }
-
-            .margininstutive {
-                margin-left: 42px !important;
-            }
-
-            .blockquotep {
-                font-size: 14px !important;
-            }
-
-            .margintopadd {
-                margin-top: .5rem !important;
-            }
-
-            .loginheading {
-                text-align: center !important;
-            }
-
-            .heartinmg {
-                text-align: center !important;
-            }
-
-            .widthseting {
-                width: 80% !important;
-            }
-
-            .widthsetingcheck {
-                width: 20% !important;
-            }
-
-            .widthsetingtext {
-                font-size: 14px !important;
-            }
-
-            .margintopchecking {
-                margin-top: 5px !important;
-            }
-
-            .number {
+          .mobileoff{
+              display:none!important;
+          }
+          .mobileon{
+              display:block!important;  
+          }
+          h3.mainheading{
+              font-size:13px!important;
+          }
+          .mainparagraph {
+              font-size:13px!important;
+          }
+          .firstimg{
+              height:200px!important;
+          }
+          .featurelink{
+            font-size: 15px!important;
+          }
+          .margininstutive{
+            margin-left: 42px!important;
+          }
+          .blockquotep{
+              font-size:14px!important;
+          }
+          .margintopadd{
+              margin-top: .5rem !important;
+          }
+          .loginheading{
+              text-align:center!important;
+          }
+          .heartinmg{
+              text-align:center!important;
+          }
+          .widthseting{
+              width:80%!important;
+          }
+          .widthsetingcheck{
+              width:20%!important;
+          }
+          .widthsetingtext{
+              font-size:14px!important;
+          }
+          .margintopchecking{
+              margin-top:5px!important;
+          }
+          .number {
                 width: 45px !important;
-                height: 40px !important;
+                height: 40px!important;
+           }
+           .heightsetpackagediv{
+               height:700%!important;
+           }
+           .visiblecheckbox{
+               width:20%!important;
+               margin-top:20px!important;
+           }
+           .visiblecheckboxdiv{
+               width:80%!important;
+           }
+           .marginledftcvc{
+               margin-left:4px!important;
+           }
+           .floatfledft{
+               float:left!important;
+               margin-right: 190px!important;
+           }
+           .imagemainheightset{
+               height:150px!important;
+           }
+           .pagemainheading{
+                font-size: 20px!important;
+           }
+           .brennonheading{
+                font-size: 20px!important;
+           }
+           .borderremove{
+               padding-bottom:130px!important;
+           }
+           .contactadministration{
+               width:100%!important;
+           }
+           .addfullresposnive{
+               font-size:11px!important;
+           }
+           .funeralmargin{
+               margin-top: 1rem!important
+           }
+           .dummyvideooo{
+               height:250px!important;
+           }
+           .heightsethournreebotonimage{
+               height:200px!important;
+           }
+           .slider-item{
+                margin-right:0px!important;
             }
-
-            .heightsetpackagediv {
-                height: 700% !important;
-            }
-
-            .visiblecheckbox {
-                width: 20% !important;
-                margin-top: 20px !important;
-            }
-
-            .visiblecheckboxdiv {
-                width: 80% !important;
-            }
-
-            .marginledftcvc {
-                margin-left: 4px !important;
-            }
-
-            .floatfledft {
-                float: left !important;
-                margin-right: 190px !important;
-            }
-
-            .imagemainheightset {
-                height: 150px !important;
-            }
-
-            .pagemainheading {
-                font-size: 20px !important;
-            }
-
-            .brennonheading {
-                font-size: 20px !important;
-            }
-
-            .borderremove {
-                padding-bottom: 130px !important;
-            }
-
-            .contactadministration {
-                width: 100% !important;
-            }
-
-            .addfullresposnive {
-                font-size: 11px !important;
-            }
-
-            .funeralmargin {
-                margin-top: 1rem !important
-            }
-
-            .dummyvideooo {
-                height: 250px !important;
-            }
-
-            .heightsethournreebotonimage {
-                height: 200px !important;
-            }
-
-            .slider-item {
-                margin-right: 0px !important;
-            }
-
-            .textcentssrer {
-                text-align: center !important;
-            }
-
-            a.navbar-brand.mobileon {
-                width: 50% !important;
-                font-size: 12px;
-            }
-
-            button:focus {
-                outline: inherit !important;
-            }
-
-            .searchinputnavhsbdha {
-                float: inherit;
-            }
-
-            .heightmainstory {
-                height: 200px !important;
-            }
-
-            .prev,
-            .next {
+            .textcentssrer{
+               text-align:center!important;
+           }
+           a.navbar-brand.mobileon {
+            width: 50%!important;
+            font-size:12px;
+           }
+           button:focus{
+               outline:inherit!important;
+           }
+           .searchinputnavhsbdha{
+               float: inherit;
+           }
+           .heightmainstory{
+               height:200px!important;
+           }
+           .prev, .next {
                 position: absolute;
                 top: 35%;
                 transform: translateY(-50%);
@@ -456,76 +418,61 @@
                 font-size: 40px;
                 z-index: 1;
             }
-
-            .qrimageheightset {
-                height: 310px !important;
+            .qrimageheightset{
+                height:310px!important;
             }
-
-            .anotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
+            .anotherpagemainheading{
+                text-align:center!important;
+                margin-right:0px!important;
                 font-size: 20px !important;
             }
-
-            .storiesanotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
-                margin-top: 15px;
+            .storiesanotherpagemainheading{
+                text-align:center!important;
+                margin-right:0px!important;
+                margin-top:15px;
                 font-size: 20px !important;
             }
-
-            .addcontactswipermargintopres {
-                margin-top: 100px !important;
+            .addcontactswipermargintopres{
+                margin-top:100px!important;
             }
-
             .transitionheading {
-                font-size: 20px !important;
+                font-size:20px!important;
             }
-
             .swiper-button-next.mt-lg-5 {
                 top: 140px;
             }
-
-            .swiper-button-prev.mt-lg-5 {
+            .swiper-button-prev.mt-lg-5{
                 top: 140px;
             }
-
-            .qrcodediv {
-                padding-left: 0px !important;
-                padding-right: 0px !important;
-                margin-bottom: 1rem !important;
+            .qrcodediv{
+                padding-left:0px!important;
+                padding-right:0px!important;
+                margin-bottom:1rem!important;
             }
-
-            .topaddmarginsub {
-                margin-top: 30px !important;
-                margin-bottom: 10px !important;
+            .topaddmarginsub{
+                margin-top:30px!important;
+                margin-bottom:10px!important;
             }
-
-            .paddingunsget {
-                padding-left: 0px !important;
-                padding-right: 0px !important
+            .paddingunsget{
+                padding-left:0px!important;
+                padding-right:0px!important
             }
-
-            .addpagingmodilbe {
-                padding: 6px !important;
+            .addpagingmodilbe{
+                padding:6px!important;
             }
-
-            .topcontactadministrationbottom {
-                margin-top: 10px !important;
-                margin-bottom: 10px !important;
+            .topcontactadministrationbottom{
+                margin-top:10px!important;
+                margin-bottom:10px!important;
             }
-
-            .pagenotify {
-                text-align: left !important;
+            .pagenotify{
+                text-align:left!important;
             }
-
             button.btn.notifybutton {
                 height: 31px;
                 border-radius: 0px;
                 margin-top: 0px;
-                padding-top: 2px;
+                padding-top:2px;
             }
-
             .form-control:focus {
                 color: #495057;
                 background-color: #fff;
@@ -533,266 +480,248 @@
                 outline: 0;
                 box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
             }
-
-            .offinmobile {
-                padding-right: 0px !important;
+            .offinmobile{
+                padding-right:0px!important;
             }
-
-            .newclasspaddingoff {
-                padding-right: 0px !important;
+            .newclasspaddingoff{
+                padding-right:0px!important;
             }
-
             .heightscoailset {
                 width: 40px !important;
                 padding: 10px !important;
                 height: 40px !important;
             }
-
-            .heightscoailseticon {
-                font-size: 20px !important;
+            .heightscoailseticon{
+                font-size:20px!important;
+            }
+            h4.tributemother {
+                margin-top: 0px!important;
+            }
+            .table td, .table th{
+                padding: 10px;
             }
         }
-
+        
         @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
-
+            
             .mobileon {
-                display: block !important;
+                display: block !important;  
             }
-
+            
             h3.mainheading {
                 font-size: 13px !important;
             }
-
+            
             .mainparagraph {
                 font-size: 13px !important;
             }
-
+            
             .firstimg {
                 height: 200px !important;
             }
-
+            
             .featurelink {
                 font-size: 15px !important;
             }
-
+            
             .margininstutive {
                 margin-left: 42px !important;
             }
-
+            
             .blockquotep {
                 font-size: 14px !important;
             }
-
+            
             .margintopadd {
                 margin-top: .5rem !important;
             }
-
+            
             .loginheading {
                 text-align: center !important;
             }
-
+            
             .heartinmg {
                 text-align: center !important;
             }
-
+            
             .widthseting {
                 width: 80% !important;
             }
-
+            
             .widthsetingcheck {
                 width: 20% !important;
             }
-
+            
             .widthsetingtext {
                 font-size: 14px !important;
             }
-
+            
             .margintopchecking {
                 margin-top: 5px !important;
             }
-
+            
             .number {
                 width: 45px !important;
                 height: 40px !important;
             }
-
+            
             .heightsetpackagediv {
                 height: auto !important;
             }
-
+            
             .visiblecheckbox {
                 width: 20% !important;
                 margin-top: 20px !important;
             }
-
+            
             .visiblecheckboxdiv {
                 width: 80% !important;
             }
-
+            
             .marginledftcvc {
                 margin-left: 10px !important;
             }
-
+            
             .floatfledft {
                 float: left !important;
                 width: 100%;
                 -webkit-flex-direction: initial !important;
             }
-
+            
             .form-date-item {
                 margin-left: 6px !important;
             }
-
+            
             .textlinkhref {
                 width: 30% !important;
             }
-
+            
             .textlinkhrefinput {
                 width: 40% !important;
             }
-
+            
             .steps {
                 display: none !important;
             }
-
+            
             .content .current {
                 padding-top: 0px !important;
             }
-
+            
             .heightsetcredit {
                 height: auto !important;
             }
-
-            .paddingkhaam {
-                padding-left: 0px !important;
+            .paddingkhaam{
+                padding-left: 0px!important;
             }
-
+            
             .actions ul li a:hover {
                 background-color: #BE9438;
                 color: #fff !important;
             }
-
+            
             label#email-error {
                 display: none !important;
             }
-
+            
             .createammeorialwebsitetotitl {
                 margin-left: 30px !important;
                 font-size: 20px !important;
             }
-
+            
             a[href="#next"] {
                 background-color: #BE9438 !important;
                 color: #fff !important;
             }
-
+            
             .navbar-brand {
                 font-size: 14px !important;
             }
-
+            
             .createa_pagebuttonwidthsetres {
                 width: 100% !important;
             }
-
+            
             a.navbar-brand.mobileon {
                 width: 50% !important;
             }
-
+            
             .responsiveinvisible {
                 height: auto !important;
             }
-
+            
             .reposdivecardheight {
                 height: auto !important;
             }
-
-            .fieldset-contenthwight {
-                height: auto !important;
+            .fieldset-contenthwight{
+                height:auto!important;    
             }
-
-            .nameofcardiwdth {
-                width: 15% !important;
+            .nameofcardiwdth{
+                width:15%!important;
             }
-
-            .searchinputnavhsbdha {
-                float: inherit;
+            .searchinputnavhsbdha{
+               float: inherit;
+           }
+           .heightmainstory{
+               height:200px!important;
+           }
+           .contactadministration{
+               width:100%!important;
+           }
+           .qrimageheightset{
+                height:310px!important;
             }
-
-            .heightmainstory {
-                height: 200px !important;
-            }
-
-            .contactadministration {
-                width: 100% !important;
-            }
-
-            .qrimageheightset {
-                height: 310px !important;
-            }
-
-            .anotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
+            .anotherpagemainheading{
+                text-align:center!important;
+                margin-right:0px!important;
                 font-size: 20px !important;
             }
-
-            .storiesanotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
-                margin-top: 15px;
+            .storiesanotherpagemainheading{
+                text-align:center!important;
+                margin-right:0px!important;
+                margin-top:15px;
             }
-
-            .addcontactswipermargintopres {
-                margin-top: 100px !important;
+            .addcontactswipermargintopres{
+                margin-top:100px!important;
             }
-
             .transitionheading {
-                font-size: 20px !important;
+                font-size:20px!important;
             }
-
-            .swiper-button-next.mt-lg-5 {
+             .swiper-button-next.mt-lg-5 {
                 top: 140px;
             }
-
-            .swiper-button-prev.mt-lg-5 {
+            .swiper-button-prev.mt-lg-5{
                 top: 140px;
             }
-
-            .qrcodediv {
-                padding-left: 0px !important;
-                padding-right: 0px !important;
-                margin-bottom: 1rem !important;
+            .qrcodediv{
+                padding-left:0px!important;
+                padding-right:0px!important;
+                margin-bottom:1rem!important;
             }
-
-            .topaddmarginsub {
-                margin-top: 30px !important;
-                margin-bottom: 10px !important;
+            .topaddmarginsub{
+                margin-top:30px!important;
+                 margin-bottom:10px!important;
             }
-
-            .paddingunsget {
-                padding-left: 0px !important;
-                padding-right: 0px !important
+            .paddingunsget{
+                padding-left:0px!important;
+                padding-right:0px!important
             }
-
-            .addpagingmodilbe {
-                padding: 6px !important;
+            .addpagingmodilbe{
+                padding:6px!important;
             }
-
-            .topcontactadministrationbottom {
-                margin-top: 10px !important;
-                margin-bottom: 10px !important;
+            .topcontactadministrationbottom{
+                margin-top:10px!important;
+                margin-bottom:10px!important;
             }
-
             button.btn.notifybutton {
                 height: 31px;
                 border-radius: 0px;
                 margin-top: 0px;
-                padding-top: 2px;
+                padding-top:2px;
             }
-
             .form-control:focus {
                 color: #495057;
                 background-color: #fff;
@@ -800,22 +729,20 @@
                 outline: 0;
                 box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
             }
-
             .heightscoailset {
                 width: 40px !important;
                 padding: 10px !important;
                 height: 40px !important;
             }
-
-            .heightscoailseticon {
-                font-size: 20px !important;
+            .heightscoailseticon{
+                font-size:20px!important;
             }
-        }
-
-
-        span#editIcon {
-            color: blanchedalmond;
-            padding-right: 20px;
+            h4.tributemother {
+                margin-top: 0px!important;
+            }
+            .table td, .table th{
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -958,7 +885,7 @@
 
 
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff" id="about">
-                                <h3 class="pagemainheading mt-3">CELEBRATING THE LIFE OF</h3>
+                                <h3 class="pagemainheading mt-3" style="color:#A423EB;">CELEBRATING THE LIFE OF</h3>
                                 <h3 class="mt-2 text-center brennonheading" id="breannon" onclick="breannon()">
                                     <?php if(!empty($title_page_name)): ?>
                                     <?php echo e($title_page_name); ?>
@@ -1005,14 +932,102 @@
                                         paragraph.focus();
                                     }
                                 </script>
-                                <h4 class="text-center">Date: 5/4/2024</h4>
+                                <h4 class="text-center" id="editableDates" data-original-dates="Date of Birth: <?php echo e($date_of_birth); ?> Date of Death: <?php echo e($date_of_death); ?>">Date of Birth: <?php echo e($date_of_birth); ?> <span class="ml-lg-3">Date of Death: <?php echo e($date_of_death); ?></span></h4>
+
+                                <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var editableDates = document.getElementById('editableDates');
+        var isRequestInProgress = false; // Flag to track if an AJAX request is in progress
+
+        // Function to make element editable
+        function makeEditable(element) {
+            element.contentEditable = true;
+            element.focus();
+
+            // Add event listener for blur event
+            element.addEventListener('blur', function() {
+                // Get the edited content
+                var editedContent = element.textContent.trim();
+
+                // Extract date of birth and date of death from the edited content
+                var dates = editedContent.split('Date of Birth: ')[1].split(' Date of Death: ');
+                var dateOfBirth = dates[0].trim(); // Trim to remove extra spaces
+                var dateOfDeath = dates[1].trim(); // Trim to remove extra spaces
+
+                // Get the original dates from the data attribute
+                var originalDates = element.getAttribute('data-original-dates').trim();
+                var originalDateOfBirth = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[0].trim();
+                var originalDateOfDeath = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[1].trim();
+
+                // Compare edited dates with original dates
+                if (dateOfBirth !== originalDateOfBirth || dateOfDeath !== originalDateOfDeath) {
+                    // If an AJAX request is not already in progress, make the request
+                    if (!isRequestInProgress) {
+                        // Set the flag to true to indicate that a request is in progress
+                        isRequestInProgress = true;
+
+                        // Make an Ajax request to send the edited content to the server
+                        fetch('/update-dates', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                            },
+                            body: JSON.stringify({
+                                dateOfBirth: dateOfBirth,
+                                dateOfDeath: dateOfDeath
+                            })
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log('Dates updated successfully!');
+                            } else {
+                                console.error('Failed to update dates');
+                            }
+
+                            // Reset the flag to indicate that the request is complete
+                            isRequestInProgress = false;
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+
+                            // Reset the flag to indicate that the request is complete
+                            isRequestInProgress = false;
+                        });
+                    }
+                }
+            });
+        }
+
+        // Make the dates editable upon clicking
+        editableDates.addEventListener('click', function() {
+            makeEditable(editableDates);
+        });
+
+        // Add a click event listener on the document to handle clicks outside the editable element
+        document.addEventListener('click', function(event) {
+            if (!editableDates.contains(event.target)) {
+                // If the click target is not inside the editable element, trigger the blur event manually
+                editableDates.blur();
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+                           
+                           
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <?php $__currentLoopData = $quotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $quote): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="carousel-item <?php if($loop->first): ?> active <?php endif; ?>">
-                                            <img class="d-block w-100 imagemainheightset" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="Slide <?php echo e($loop->iteration); ?>" style="height: 200px;">
+                                            <img class="d-block w-100 imagemainheightset" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="Slide <?php echo e($loop->iteration); ?>" style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:#000;" id="editableHeading<?php echo e($quote->id); ?>" data-quote-id="<?php echo e($quote->id); ?>"><?php echo e($quote->heading); ?></h5>
                                                 <p style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara<?php echo e($quote->id); ?>" data-quote-id="<?php echo e($quote->id); ?>"><?php echo e($quote->description); ?></p>
@@ -1218,8 +1233,9 @@
                                 <div class="swiper myrelationswiper mt-3 mobileoff">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">CHILD OF</h5>
                                                 </div>
                                                 <div class="card-body">
@@ -1228,7 +1244,7 @@
                                                     <!--    Ross Daniel (Estranged)-->
                                                     <!--</p>-->
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1238,20 +1254,21 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="" style="font-size:16px;">GRANDCHILD OF
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1261,14 +1278,15 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">SIBLING OF</h5>
                                                 </div>
                                                 <div class="card-body">
@@ -1276,7 +1294,7 @@
                                                     <!--    Schuback-->
                                                     <!--</p>-->
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1286,20 +1304,34 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="" style="font-size:16px;">NIBLING OF
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
+                                                    <!--<p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">-->
+                                                    <!--    Steven Schuback-->
+                                                    <!--    <br>-->
+                                                    <!--    Kristina Schuback-->
+                                                    <!--    <br>-->
+                                                    <!--    Leesa Schuback-->
+                                                    <!--    <br>-->
+                                                    <!--    <span style="color: #BFAFF8!important;">Troy Schuback</span>-->
+                                                    <!--    <br>-->
+                                                    <!--    <span style="color: #BFAFF8!important;">Neil Daniel</span>-->
+                                                    <!--    <br>-->
+                                                    <!--    <span style="color: #BFAFF8!important;">Chris Shorrock</span>-->
+                                                    <!--</p>-->
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1309,20 +1341,34 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="" style="font-size:16px;">Again NIBLING OF
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
+                                                    <!--<p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">-->
+                                                    <!--    Steven Schuback-->
+                                                    <!--    <br>-->
+                                                    <!--    Kristina Schuback-->
+                                                    <!--    <br>-->
+                                                    <!--    Leesa Schuback-->
+                                                    <!--    <br>-->
+                                                    <!--    <span style="color: #BFAFF8!important;">Troy Schuback</span>-->
+                                                    <!--    <br>-->
+                                                    <!--    <span style="color: #BFAFF8!important;">Neil Daniel</span>-->
+                                                    <!--    <br>-->
+                                                    <!--    <span style="color: #BFAFF8!important;">Chris Shorrock</span>-->
+                                                    <!--</p>-->
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1332,17 +1378,17 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="swiper-button-next" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
-                                    <div class="swiper-button-prev" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
+                                    <div class="swiper-button-next relationshipsliderbuttonnext" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
+                                    <div class="swiper-button-prev relationshipsliderbuttonprev" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                 </div>
-
-
+                                
+                                
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
@@ -1351,7 +1397,7 @@
                                                     <p style="font-family: 'Josefin Sans Light';">CHILD OF
                                                     </p>
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1361,7 +1407,7 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -1372,7 +1418,7 @@
                                                     <p style="font-family: 'Josefin Sans Light';">GRANDCHILD OF
                                                     </p>
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1382,7 +1428,7 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -1393,7 +1439,7 @@
                                                     <p style="font-family: 'Josefin Sans Light';">SIBLING OF
                                                     </p>
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1403,7 +1449,7 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -1414,7 +1460,7 @@
                                                     <p style="font-family: 'Josefin Sans Light';">NIBLING OF
                                                     </p>
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1424,7 +1470,7 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -1435,7 +1481,7 @@
                                                     <p style="font-family: 'Josefin Sans Light';">Again NIBLING OF
                                                     </p>
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;">Geoff Schuback</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
                                                         Diane Schuback
                                                         <br>
@@ -1445,7 +1491,7 @@
                                                         <br>
                                                         Jan Horgan
                                                         <br>
-                                                        <span style="color: #BFAFF8!important;">Lex Horgan (Marriage)</span>
+                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -1459,23 +1505,22 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 borderremove newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
                                 <div class="row">
-                                    <div class="col-lg-8 col-sm-12 text-right mb-lg-4 newclasspaddingoff">
+                                    <div  class="col-lg-8 col-sm-12 text-right mb-lg-4 newclasspaddingoff">
                                         <h3 class="anotherpagemainheading ml-4 topaddmarginsub mobileoff" style="color:#A423EB!important;margin-right: 15px;" id="ganeral">GENERAL KNOWLEDGE
                                         </h3>
                                         <h3 class="ml-lg-4 topaddmarginsub mobileon" style="color:#A423EB!important;margin-right: 15px;display:none;font-size:20px!important;text-align: -webkit-center;padding-top: 30px;" id="ganeral">GENERAL KNOWLEDGE
                                         </h3>
                                     </div>
-                                    <div class="col-lg-4 col-sm-12 ">
-                                        <form class="form-inline searchinputnavhsbdha">
-                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search" placeholder="Search" aria-label="Search">
-                                        </form>
+                                    <div  class="col-lg-4 col-sm-12 ">
+                                        
                                     </div>
                                 </div>
                                 <div class="swiper ganeralswiper pb-5 mobileoff">
                                     <div class="swiper-wrapper" style="height: 400px;">
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#perontitymodal">
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">PERONALITY TRAITS
                                                     </h5>
                                                 </div>
@@ -1491,8 +1536,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#educationmodal">
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">EDUCATION
                                                     </h5>
                                                 </div>
@@ -1505,8 +1551,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center mb-5" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#valuesmodal">
+                                                <div class="card-header text-center mb-5"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">VALUES
                                                     </h5>
                                                 </div>
@@ -1518,8 +1565,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center mb-5" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#employmentmodal">
+                                                <div class="card-header text-center mb-5"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">EMPLOYMENT
                                                     </h5>
                                                 </div>
@@ -1531,8 +1579,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#spiritualmodal"> 
+                                                <div class="card-header text-center"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">SPIRITUAL
                                                         BELIEFS
                                                     </h5>
@@ -1549,8 +1598,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center mb-5" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#goalsmodal">
+                                                <div class="card-header text-center mb-5"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">Goals
                                                     </h5>
                                                 </div>
@@ -1562,8 +1612,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center mb-5" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#hobbiesmodal">
+                                                <div class="card-header text-center mb-5"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">HOBBIES /
                                                         INTERESTS
                                                     </h5>
@@ -1576,8 +1627,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center mb-5" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
+                                                <div class="card-header text-center mb-5"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">
                                                         ACHIEVEMENTS
                                                     </h5>
@@ -1590,8 +1642,9 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center mb-5" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;"  data-toggle="modal" data-target="#hobbiesmodal">
+                                                <div class="card-header text-center mb-5"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">Again /
                                                         INTERESTS
                                                     </h5>
@@ -1604,10 +1657,11 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;">
-                                                <div class="card-header text-center mb-5" style="background-color: #fff;border:0px;">
+                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
+                                                <div class="card-header text-center mb-5"
+                                                    style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">
-                                                        Again ACHIEVEMENTS
+                                                       Again ACHIEVEMENTS
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
@@ -1618,121 +1672,265 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--<div class="swiper-pagination"></div> -->
-                                    <div class="swiper-button-next generalnext"></div>
+                                     <!--<div class="swiper-pagination"></div> -->
+                                     <div class="swiper-button-next generalnext"></div>
                                     <div class="swiper-button-prev generalprev"></div>
                                 </div>
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">PERONALITY TRAITS
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        Down to earth
-                                                        <br>
-                                                        Authentic
-                                                        <br>
-                                                        Fun
-                                                    </p>
-                                                </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">PERONALITY TRAITS
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                    Down to earth
+                                                    <br>
+                                                    Authentic
+                                                    <br>
+                                                    Fun
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">EDUCATION
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        Text here about
-                                                        <br>schooling and educa-<br>tion
-                                                    </p>
-                                                </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">EDUCATION
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                    Text here about
+                                                    <br>schooling and educa-<br>tion
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">VALUES
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">VALUES
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                    
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">EMPLOYMENT
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">EMPLOYMENT
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                    
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">SPIRITUAL
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">SPIRITUAL
                                                         BELIEFS
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        Text here about the
-                                                        <br>
-                                                        honouree’s spiritual/
-                                                        <br>
-                                                        religious beliefs
-                                                    </p>
-                                                </div>
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                    Text here about the
+                                                    <br>
+                                                    honouree’s spiritual/
+                                                    <br>
+                                                    religious beliefs
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">Goals
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">Goals
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                   
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">HOBBIES /
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">HOBBIES /
                                                         INTERESTS
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                   
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">ACHIEVEMENTS
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                <p style="font-family: 'Josefin Sans Light';">ACHIEVEMENTS
+                                                </p>
+                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                   
+                                                </p>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
+                                <div class="modal fade" id="perontitymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">PERONALITY TRAITS</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="valuesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">VALUES</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="educationmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">EDUCATION</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="employmentmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">EMPLOYMENT</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="spiritualmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">SPIRITUAL BELIEFS</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="goalsmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">GOALS</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="hobbiesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">HOBBIES INTERESTS</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="achievementmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ACHIEVEMENTS</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 pb-lg-5 newclasspaddingoff">
-                                <h3 class="pagemainheading mt-lg-5 mb-lg-5 storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;">Q AND A’s (###)
+                                <h3 class="pagemainheading mt-lg-5 mb-lg-5 storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;">Q AND A’s
                                 </h3>
-                                <div class="swiper qandanswerswiperquestion pb-5" style="border:1px solid #BE9438!important;">
+                                <div class="swiper qandanswerswiperquestion pb-5" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
@@ -1788,7 +1986,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
@@ -1834,8 +2032,8 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
+                                        
+                                        
                                         <div class="swiper-slide">
                                             <div class="card" style="background-color: #fff; border:0px;">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
@@ -1917,95 +2115,96 @@
                             <div class="col-lg-12 col-sm-12 text-center mt-lg-5 addcontactswipermargintopres newclasspaddingoff">
                                 <p style="font-family: 'Josefin Sans Light;" class="mt-lg-5">Want to know more? Message the page administrators with your question or response</p>
                                 <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#exampleModal">CONTACT ADMINSTRATORS</button>
-
+                                
                                 <div class="modal" tabindex="-1" id="exampleModal">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Contact Adminstrators</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="#" method="POST">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="form-group text-left">
-                                                                <label class="text-left">Full Name</label>
-                                                                <input class="form-control" type="text" name="fullname">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="form-group text-left">
-                                                                <label>Email</label>
-                                                                <input class="form-control" type="email" name="email">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="form-group text-left">
-                                                                <label>Relation of honouree</label>
-                                                                <select class="form-control" name="relationofhonouree" style="font-family: 'Josefin Sans Light';">
-                                                                    <option value="" disabled selected>Choose a Relationship</option>
-                                                                    <option value="Parent">Parent</option>
-                                                                    <option value="Step-Parent">Step-Parent</option>
-                                                                    <option value="Foster Parent">Foster Parent</option>
-                                                                    <option value="Guardian">Guardian</option>
-                                                                    <option value="Grandparent">Grandparent</option>
-                                                                    <option value="Step-Grandparent">Step-Grandparent</option>
-                                                                    <option value="Godparent">Godparent</option>
-                                                                    <option value="Husband">Husband</option>
-                                                                    <option value="Wife">Wife</option>
-                                                                    <option value="Partner">Partner</option>
-                                                                    <option value="Ex-Partner">Ex-Partner</option>
-                                                                    <option value="Child">Child</option>
-                                                                    <option value="Stepchild">Stepchild</option>
-                                                                    <option value="Foster Child">Foster Child</option>
-                                                                    <option value="Godchild">Godchild</option>
-                                                                    <option value="Sibling">Sibling</option>
-                                                                    <option value="Nibling">Nibling</option>
-                                                                    <option value="Niece">Niece</option>
-                                                                    <option value="Nephew">Nephew</option>
-                                                                    <option value="Cousin">Cousin</option>
-                                                                    <option value="Best Friend">Best Friend</option>
-                                                                    <option value="Friend">Friend</option>
-                                                                    <option value="Family Friend">Family Friend</option>
-                                                                    <option value="Friend of a Friend">Friend of a Friend</option>
-                                                                    <option value="Colleague">Colleague</option>
-                                                                    <option value="Acquaintance">Acquaintance</option>
-                                                                    <option value="Caregiver">Caregiver</option>
-                                                                    <option value="Other">Other</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="form-group text-left">
-                                                                <label>Comment</label>
-                                                                <textarea class="form-control" type="text" name="comment"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-sm-12 text-right">
-                                                            <button type="submit" class="btn" style="background-color: #BE9438;border-color:#e5d079;">Submit</button>
-                                                        </div>
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">Contact Adminstrators</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form action="#" method="POST">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <div class="form-group text-left">
+                                                        <label class="text-left">Full Name</label>
+                                                        <input class="form-control" type="text" name="fullname" >
                                                     </div>
-                                                </form>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <div class="form-group text-left">
+                                                        <label>Email</label>
+                                                        <input class="form-control" type="email" name="email" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <div class="form-group text-left">
+                                                        <label>Relation of honouree</label>
+                                                        <select class="form-control" name="relationofhonouree" style="font-family: 'Josefin Sans Light';">
+                                                            <option value="" disabled selected>Choose a Relationship</option>
+                                                            <option value="Parent">Parent</option>
+                                                            <option value="Step-Parent">Step-Parent</option>
+                                                            <option value="Foster Parent">Foster Parent</option>
+                                                            <option value="Guardian">Guardian</option>
+                                                            <option value="Grandparent">Grandparent</option>
+                                                            <option value="Step-Grandparent">Step-Grandparent</option>
+                                                            <option value="Godparent">Godparent</option>
+                                                            <option value="Husband">Husband</option>
+                                                            <option value="Wife">Wife</option>
+                                                            <option value="Partner">Partner</option>
+                                                            <option value="Ex-Partner">Ex-Partner</option>
+                                                            <option value="Child">Child</option>
+                                                            <option value="Stepchild">Stepchild</option>
+                                                            <option value="Foster Child">Foster Child</option>
+                                                            <option value="Godchild">Godchild</option>
+                                                            <option value="Sibling">Sibling</option>
+                                                            <option value="Nibling">Nibling</option>
+                                                            <option value="Niece">Niece</option>
+                                                            <option value="Nephew">Nephew</option>
+                                                            <option value="Cousin">Cousin</option>
+                                                            <option value="Best Friend">Best Friend</option>
+                                                            <option value="Friend">Friend</option>
+                                                            <option value="Family Friend">Family Friend</option>
+                                                            <option value="Friend of a Friend">Friend of a Friend</option>
+                                                            <option value="Colleague">Colleague</option>
+                                                            <option value="Acquaintance">Acquaintance</option>
+                                                            <option value="Caregiver">Caregiver</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <div class="form-group text-left">
+                                                        <label>Comment</label>
+                                                        <textarea class="form-control" type="text" name="comment"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 text-right">
+                                                    <button type="submit" class="btn" style="background-color: #BE9438;border-color:#e5d079;">Submit</button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
-
+                                
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-lg-5 newclasspaddingoff" id="gallery">
+                            <div  class="col-lg-12 col-sm-12 mt-lg-5 newclasspaddingoff" id="gallery">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">GALLERY (###)-->
                                 <!--</h3>-->
                                 <div class="row mt-lg-3">
-                                    <div class="col-lg-8 col-sm-12 text-right mb-lg-5">
+                                    <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
                                         <h3 class="storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 70px;" id="ganeral">GALLERY (###)
                                         </h3>
                                     </div>
-                                    <div class="col-lg-4 col-sm-12">
+                                    <div  class="col-lg-4 col-sm-12">
                                         <form class="form-inline searchinputnavhsbdha">
-                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search" placeholder="Search" aria-label="Search">
+                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search"
+                                                placeholder="Search" aria-label="Search">
                                         </form>
                                     </div>
                                 </div>
@@ -2013,52 +2212,52 @@
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div class="swiper galleryswiper mobileoff">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;">
-                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"><img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #BE9438!important;"></a>
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                            <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:334px;width: 100%;border: 1px solid #BE9438!important;"></a>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-6">
-                                                            <div class="row">
-                                                                <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #BE9438!important;"></a>
-                                                                </div>
-                                                                <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #BE9438!important;height:157px;"> </a>
-                                                                </div>
+                                      <div class="swiper-slide">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;">
+                                                <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."><img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
+                                                       <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:334px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                    </div>
+                                                    <div class="col-lg-6 col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
+                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:312px;width: 100%;border: 1px solid #BE9438!important;"> </a>
+                                                            <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
+                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:157px;"> </a>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-lg-12 col-sm-12">
+                                                      <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:312px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-6 col-sm-6" style="padding-left:0px!important;">
-                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:250px;width: 100%;border: 1px solid #BE9438!important;"> </a>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:350px;width: 100%;border: 1px solid #BE9438!important;"></a>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-6">
-                                                            <div class="row">
-                                                                <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #BE9438!important;"></a>
-                                                                </div>
-                                                                <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #BE9438!important;"></a>
-                                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6" style="padding-left:0px!important;">
+                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:250px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                       <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:350px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                    </div>
+                                                    <div class="col-lg-6 col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
+                                                              <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                            </div>
+                                                            <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
+                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                            <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:400px;width: 100%;border: 1px solid #BE9438!important;"></a>
-                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
+                                                      <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>"style="height:400px;width: 100%;border: 2px solid #fff!important;"></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                      </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
@@ -2066,10 +2265,10 @@
                                 <div class="swiper qandanswerswiper mobileon" style="border:0px;display:none;">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" style="border:0px;">
-                                            <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #BE9438!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                            <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummytwo.png')); ?>"> <img src="<?php echo e(asset('assets/dummytwo.png')); ?>" style="width: 100%;border: 1px solid #BE9438!important;"></a>
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummytwo.png')); ?>"> <img src="<?php echo e(asset('assets/dummytwo.png')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
                                         </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
@@ -2078,47 +2277,78 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#addphoto">ADD PHOTOS</button>
+                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addphoto">ADD PHOTOS</button>
                                 <div class="modal fade" id="addphoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Add Photos</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="form-group">
-                                                                <label for="addphotos" class="float-left">Add Photo</label>
-                                                                <input class="form-control" type="file" id="addphotos">
-                                                            </div>
-                                                        </div>
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Photos</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="addphotos" class="float-left">Add Photo</label>
+                                                        <input class="form-control" type="file" id="addphotos">
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                                            </div>
-                                        </div>
+                                        </form>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" id="guest">
+                            <div  class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" id="guest">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">GUEST BOOK (###)-->
                                 <!--</h3>-->
-                                <div class="row mt-lg-4">
-                                    <div class="col-lg-8 col-sm-12 text-right mb-lg-5">
+                                 <div class="row mt-lg-4">
+                                    <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
                                         <h3 class="anotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 35px;" id="ganeral">GUEST BOOK (###)
                                         </h3>
                                     </div>
-                                    <div class="col-lg-4 col-sm-12">
+                                    <div  class="col-lg-4 col-sm-12">
                                         <form class="form-inline searchinputnavhsbdha">
-                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search" placeholder="Search" aria-label="Search">
+                                            
+                                            <select class="form-control mr-sm-2 searchinputnav mb-2" name="relationship">
+                                                <option value="" disabled selected>Choose a Relationship</option>
+                                                <option value="Parent">Parent</option>
+                                                <option value="Step-Parent">Step-Parent</option>
+                                                <option value="Foster Parent">Foster Parent</option>
+                                                <option value="Guardian">Guardian</option>
+                                                <option value="Grandparent">Grandparent</option>
+                                                <option value="Step-Grandparent">Step-Grandparent</option>
+                                                <option value="Godparent">Godparent</option>
+                                                <option value="Husband">Husband</option>
+                                                <option value="Wife">Wife</option>
+                                                <option value="Partner">Partner</option>
+                                                <option value="Ex-Partner">Ex-Partner</option>
+                                                <option value="Child">Child</option>
+                                                <option value="Stepchild">Stepchild</option>
+                                                <option value="Foster Child">Foster Child</option>
+                                                <option value="Godchild">Godchild</option>
+                                                <option value="Sibling">Sibling</option>
+                                                <option value="Nibling">Nibling</option>
+                                                <option value="Niece">Niece</option>
+                                                <option value="Nephew">Nephew</option>
+                                                <option value="Cousin">Cousin</option>
+                                                <option value="Best Friend">Best Friend</option>
+                                                <option value="Friend">Friend</option>
+                                                <option value="Family Friend">Family Friend</option>
+                                                <option value="Friend of a Friend">Friend of a Friend</option>
+                                                <option value="Colleague">Colleague</option>
+                                                <option value="Acquaintance">Acquaintance</option>
+                                                <option value="Caregiver">Caregiver</option>
+                                                <option value="Other">Other</option>
+                                            </select>
                                         </form>
                                     </div>
                                 </div>
@@ -2133,77 +2363,77 @@
                                 <div class="swiper guestbookswiper">
                                     <div class="swiper-wrapper" style="height:300px;">
                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
-                                            </p>
+                                           <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
+                                            Full Name
+                                            <br>
+                                            XX/XX/XXXX
+                                            <br>
+                                            Relationship
+                                           </p>
                                         </div>
                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
+                                            <p style="font-family: 'Josefin Sans Light';"  class="addfullresposnive">
+                                             Full Name
+                                             <br>
+                                             XX/XX/XXXX
+                                             <br>
+                                             Relationship
                                             </p>
-                                        </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                         </div>
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
+                                             Full Name
+                                             <br>
+                                             XX/XX/XXXX
+                                             <br>
+                                             Relationship
                                             </p>
-                                        </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                         </div>
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
+                                             Full Name
+                                             <br>
+                                             XX/XX/XXXX
+                                             <br>
+                                             Relationship
                                             </p>
-                                        </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                         </div>
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
+                                             Full Name
+                                             <br>
+                                             XX/XX/XXXX
+                                             <br>
+                                             Relationship
                                             </p>
-                                        </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                         </div>
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
+                                             Full Name
+                                             <br>
+                                             XX/XX/XXXX
+                                             <br>
+                                             Relationship
                                             </p>
-                                        </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                         </div>
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
+                                             Full Name
+                                             <br>
+                                             XX/XX/XXXX
+                                             <br>
+                                             Relationship
                                             </p>
-                                        </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                         </div>
+                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                Full Name
-                                                <br>
-                                                XX/XX/XXXX
-                                                <br>
-                                                Relationship
+                                             Full Name
+                                             <br>
+                                             XX/XX/XXXX
+                                             <br>
+                                             Relationship
                                             </p>
-                                        </div>
+                                         </div>
                                     </div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
@@ -2211,17 +2441,18 @@
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
                                 <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">SIGN THE GUEST BOOK</button>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff" id="stories">
+                            <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff" id="stories">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">STORIES (###)-->
                                 <!--</h3>-->
                                 <div class="row mt-lg-4">
-                                    <div class="col-lg-8 col-sm-12 text-right mb-lg-5">
+                                    <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
                                         <h3 class="storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 85px;" id="ganeral">STORIES (###)
                                         </h3>
                                     </div>
-                                    <div class="col-lg-4 col-sm-12">
+                                    <div  class="col-lg-4 col-sm-12">
                                         <form class="form-inline searchinputnavhsbdha">
-                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search" placeholder="Search" aria-label="Search">
+                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search"
+                                                placeholder="Search" aria-label="Search">
                                         </form>
                                     </div>
                                 </div>
@@ -2235,154 +2466,187 @@
                             <div class="col-lg-12 col-sm-12 p-3 mt-2 newclasspaddingoff" style="border: 2px solid #BE9438!important;">
                                 <div class="swiper galleryswiper">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12">
-                                                    <h4 class="text-center">TITLE</h4>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
-                                                        </div>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
-                                                        </div>
+                                      <div class="swiper-slide">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12">
+                                                <h4 class="text-center">TITLE</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                    </div>
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-sm-6 text-left">
-                                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">Story goes here (Images are optional)</p>
-                                                </div>
-                                                <div class="col-lg-10 col-sm-10 text-left">
-                                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">Submitted by: Waliam</p>
-                                                </div>
-                                                <div class="col-lg-2 col-sm-2 text-right">
-                                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">Date: 4/25/2024</p>
-                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                               <p class="mt-3" style="font-family: 'Josefin Sans Light';">Story goes here (Images are optional)</p> 
+                                            </div>
+                                            <div class="col-lg-10 col-sm-10 text-left">
+                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Submitted by: Waliam</p> 
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 text-right">
+                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Date: 4/25/2024</p> 
                                             </div>
                                         </div>
+                                      </div>
+                                      <div class="swiper-slide">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12">
+                                                <h4 class="text-center">Second TITLE</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                    </div>
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                               <p class="mt-3" style="font-family: 'Josefin Sans Light';">Story goes here (Images are optional)</p> 
+                                            </div>
+                                            <div class="col-lg-10 col-sm-10 text-left">
+                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Submitted by: Waliam</p> 
+                                            </div>
+                                            <div class="col-lg-2 col-sm-2 text-right">
+                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Date: 4/25/2024</p> 
+                                            </div>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
-                                </div>
+                                  </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#addstory">ADD A STORY
+                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addstory" >ADD A STORY
                                 </button>
                                 <div class="modal fade" id="addstory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Add Story</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="form-group">
-                                                                <label for="title" class="float-left">Add Title</label>
-                                                                <input class="form-control" type="text" id="title">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="addphotos" class="float-left">Add Story</label>
-                                                                <input class="form-control" type="file" id="addphotos">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="brief" class="float-left">Add Description</label>
-                                                                <textarea class="form-control" id="brief"></textarea>
-                                                            </div>
-                                                        </div>
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Story</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="title" class="float-left">Add Title</label>
+                                                        <input class="form-control" type="text" id="title">
                                                     </div>
-                                                </form>
+                                                    <div class="form-group">
+                                                        <label for="addphotos" class="float-left">Add Story</label>
+                                                        <input class="form-control" type="file" id="addphotos">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="brief" class="float-left">Add Description</label>
+                                                        <textarea class="form-control" id="brief"></textarea>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                                            </div>
-                                        </div>
+                                        </form>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
+                                
+                                <div class="row mt-lg-4">
+                                    <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
+                                        <h3 class="storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 85px;" id="sounds">SOUND CLIPS (###)
+                                        </h3>
+                                    </div>
+                                    <div  class="col-lg-4 col-sm-12">
+                                        <form class="form-inline searchinputnavhsbdha">
+                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search"
+                                                placeholder="Search" aria-label="Search">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
-                                <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;" id="sounds">SOUND CLIPS (###)
-                                </h3>
-                            </div>
-                            <div class="col-lg-12 col-sm-12 mt-lg-3 newclasspaddingoff">
-                                <form class="form-inline searchinputnavhsbdha">
-                                    <input class="form-control mr-sm-2 searchinputnav" type="search" placeholder="Search" aria-label="Search">
-                                </form>
-                            </div>
+                            
                             <div class="col-lg-12 col-sm-12 mt-4 mb-4 newclasspaddingoff">
                                 <div class="swiper soundbitesswiper">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';">Bree Laughing
-                                            </p>
-                                        </div>
-                                        <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';">TITLE
-                                            </p>
-                                        </div>
-                                        <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';">TITLE
-                                            </p>
-                                        </div>
-                                        <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';">TITLE
-                                            </p>
-                                        </div>
-                                        <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';">TITLE
-                                            </p>
-                                        </div>
-                                        <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';">TITLE
-                                            </p>
-                                        </div>
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <p style="font-family: 'Josefin Sans Light';">Bree Laughing
+                                        </p>
+                                      </div>
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <p style="font-family: 'Josefin Sans Light';">TITLE
+                                        </p>
+                                      </div>
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <p style="font-family: 'Josefin Sans Light';">TITLE
+                                        </p>
+                                      </div>
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <p style="font-family: 'Josefin Sans Light';">TITLE
+                                        </p>
+                                      </div>
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"> 
+                                        <p style="font-family: 'Josefin Sans Light';">TITLE
+                                        </p>
+                                      </div>
+                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <p style="font-family: 'Josefin Sans Light';">TITLE
+                                        </p>
+                                      </div>
                                     </div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#addaudio">ADD AUDIO
+                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addaudio">ADD AUDIO
                                 </button>
                                 <div class="modal fade" id="addaudio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Add Audio</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="form-group">
-                                                                <label for="title" class="float-left">Add Title</label>
-                                                                <input class="form-control" type="text" id="title">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="addphotos" class="float-left">Add Audio</label>
-                                                                <input class="form-control" type="file" id="addphotos">
-                                                            </div>
-                                                        </div>
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Audio</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <div class="form-group">
+                                                        <label for="title" class="float-left">Add Title</label>
+                                                        <input class="form-control" type="text" id="title">
                                                     </div>
-                                                </form>
+                                                    <div class="form-group">
+                                                        <label for="addphotos" class="float-left">Add Audio</label>
+                                                        <input class="form-control" type="file" id="addphotos">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                                            </div>
-                                        </div>
+                                        </form>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-4 p-4 newclasspaddingoff" style="border-top: 2px solid #BE9438!important;">
+                            <div  class="col-lg-12 col-sm-12 mt-4 p-4 newclasspaddingoff" style="border-top: 2px solid #BE9438!important;">        
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12" id="transition">
                                         <h3 class="transitionheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;">THE TRANSITION
@@ -2421,7 +2685,7 @@
                                         </h3>
                                         <h3 class="breesheading"><b style="color:#A423EB!important;">Birth Place: </b> Gosford Hospital NSW Australia
                                         </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Transition: </b> Friday, 25th August 2023
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Transition: </b> Friday, 25th August 2023 
                                         </h3>
                                         <h3 class="breesheading"><b style="color:#A423EB!important;">Place of Transition: </b> At home — Carmody Court, Nudgee, QLD, Australia
                                         </h3>
@@ -2429,106 +2693,106 @@
                                         </h3>
                                     </div>
                                 </div>
-
+                                
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <div class="row">
-                                    <div class="col-lg-3 col-sm-6 ml-lg-5" style="border: 1px solid #BE9438!important;">
+                                    <div class="col-lg-3 col-sm-6 ml-lg-5" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
                                                 <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;" id="funeral">FUNERAL HOME
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Academy Funerals Lawnton
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Academy Funerals Lawnton
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">mail@academyfunerals.com.au
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">mail@academyfunerals.com.au
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Director: Robin Druery
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Director: Robin Druery
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6 offset-lg-1 funeralmargin" style="border: 1px solid #BE9438!important;">
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 funeralmargin" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
                                                 <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">VIEWS
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">By invite Only
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">By invite Only
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6 offset-lg-1 funeralmargin" style="border: 1px solid #BE9438!important;">
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 funeralmargin" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
                                                 <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">PROCESSION
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Wednesday 13th September 2023,
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Wednesday 13th September 2023, 
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">10am
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">10am
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Decker Park
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Decker Park
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Eighteenth Ave
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Eighteenth Ave
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Brighton, Qld 4121
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Brighton, Qld 4121
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6 mt-3 ml-lg-5" style="border: 1px solid #BE9438!important;">
+                                    <div class="col-lg-3 col-sm-6 mt-3 ml-lg-5" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
-                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">SERVICE
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;"><a style="color:#A423EB!important;font-size: 18px;" href="https://www.google.com/maps?q=40.7128,-74.0060" target="_blank">SERVICE</a>
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Wednesday 13th September 2023,
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Wednesday 13th September 2023,  
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">11am-12pm
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">11am-12pm
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Events on Oxlade,
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Events on Oxlade, 
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">50 Oxlade Drive
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">50 Oxlade Drive 
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">New Farm Qld, 4005
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">New Farm Qld, 4005  
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6 offset-lg-1 mt-3" style="border: 1px solid #BE9438!important;">
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 mt-3" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
                                                 <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">WAKE
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Wednesday 13th September 2023,
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Wednesday 13th September 2023,  
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">12pm-3pm
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">12pm-3pm
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Events on Oxlade,
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Events on Oxlade, 
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">50 Oxlade Drive
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">50 Oxlade Drive 
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">New Farm Qld, 4005
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">New Farm Qld, 4005  
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-sm-6 offset-lg-1 mt-3" style="border: 1px solid #BE9438!important;">
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 mt-3" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
-                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">FINAL RESTING PLACE
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;"><a style="color:#A423EB!important;font-size: 18px;" href="https://www.google.com/maps?q=40.7128,-74.0060" target="_blank">FINAL RESTING PLACE</a>
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;">Breannon's ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon's remaining ashes will be combined with her mother’s, and both will be buried with Breannon's sister, Kaitlyn Schuback-Jeffers.
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Breannon's ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon's remaining ashes will be combined with her mother’s, and both will be buried with Breannon's sister, Kaitlyn Schuback-Jeffers.  
                                                 </p>
                                                 <!--<p style="font-family: 'Josefin Sans Light';font-size:15px;">GEO CODE-->
                                                 <!--</p>-->
@@ -2537,13 +2801,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff">
+                            <div  class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3" style="color:#A423EB!important;">EULOGY
                                 </h3>
+                                <p class="mt-2 text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non modi iste rerum, dolore adipisci delectus cum nobis quasi asperiores nesciunt repudiandae doloremque soluta perferendis dolorem consequatur, magni tempora eos amet.</p>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center newclasspaddingoff">
-                                <button class="btn btn-large mt-3 contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
-                                </button>
+                                <a href="<?php echo e(asset('Breannon-ORDER-OF-SERVICE.pdf')); ?>" download><button class="btn btn-large mt-3 contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
+                                </button></a>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3" style="color:#A423EB!important;">A MESSAGE FROM THE FAMILY
@@ -2580,14 +2845,14 @@
                                     <source src="<?php echo e(asset('assets/dummyvideo.mp4')); ?>" type="video/mp4">
                                 </video>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-lg-4 p-4 newclasspaddingoff">
+                            <div class="col-lg-12 col-sm-12 mt-lg-4 p-4 newclasspaddingoff">        
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12" id="memorial">
                                         <h3 class="transitionheading topaddmarginsub" style="color:#A423EB!important;" id="notices">NOTICES
                                         </h3>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 31st BIRTHDAY:
+                                        <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 31st BIRTHDAY:  
                                         </h3>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
@@ -2599,21 +2864,38 @@
                                         </h3>
                                         <h3 class="breesheading">(Pay for your own meals and drinks)
                                         </h3>
-                                        <h3 class="breesheading"><b>RSVP</b> by 20/12/23
+                                        <h3 class="breesheading"><b><a href="#" data-toggle="modal" data-target="#myrsvp" style="color:#000;">RSVP</a></b> by 20/12/23
                                         </h3>
+                                        <div class="modal fade" id="myrsvp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="myModalLabel">Choose Option</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Select an option:</p>
+                                                        <a href="https://meet.google.com/" class="btn" target="_blank" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 40%;color:#000;border-radius: 20px;">Go to Google Meet</a>
+                                                        <a href="https://www.google.com/maps" class="btn" target="_blank" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 40%;color:#000;border-radius: 20px;">Go to Google Maps</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 1st HEAVENLY BIRTHDAY
+                                        <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 1st HEAVENLY BIRTHDAY 
                                         </h3>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
                                         <h3 class="breesheading">Karen and Kaitlyn would like to invite close family and friends to honour Breannon’s anniversary online
                                         </h3>
-                                        <h3 class="breesheading">Wednesday 25th August, 2024., 7pm. Online Zoom .
+                                        <h3 class="breesheading">Wednesday 25th August, 2024., 7pm. Online Zoom                                            .
                                         </h3>
                                     </div>
                                 </div>
-
+                                
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" style="border-top: 2px solid #BE9438!important;" id="tributes">
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">TRIBUTES
@@ -2622,96 +2904,96 @@
                             <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff">
                                 <div class="swiper tributeswiper mobileoff">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-6 text-left">
-                                                    <h4>Mother</h4>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-6">
-                                                    <h4>Karen Schuback</h4>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                    <p style="font-family: 'Josefin Sans Light';">Message here………
-                                                    </p>
-                                                </div>
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                                <h4 class="tributemother">Mother</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <h4 class="tributemother">Karen Schuback</h4>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                <p style="font-family: 'Josefin Sans Light';">Message here………
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-6 text-left">
-                                                    <h4>Mother</h4>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-6">
-                                                    <h4>Full Name Here</h4>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                    <p style="font-family: 'Josefin Sans Light';">Message here………
-                                                    </p>
-                                                </div>
+                                      </div>
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                                <h4 class="tributemother">Mother</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <h4 class="tributemother">Full Name Here</h4>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                <p style="font-family: 'Josefin Sans Light';">Message here………
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-6 text-left">
-                                                    <h4>Mother</h4>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-6">
-                                                    <h4>Full Name Here</h4>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                    <p style="font-family: 'Josefin Sans Light';">Message here………
-                                                    </p>
-                                                </div>
+                                      </div>
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                                <h4 class="tributemother">Mother</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <h4 class="tributemother">Full Name Here</h4>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                <p style="font-family: 'Josefin Sans Light';">Message here………
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-6 text-left">
-                                                    <h4>Mother</h4>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-6">
-                                                    <h4>Full Name Here</h4>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                    <p style="font-family: 'Josefin Sans Light';">Message here……….
-                                                    </p>
-                                                </div>
+                                      </div>
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                                <h4 class="tributemother">Mother</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <h4 class="tributemother">Full Name Here</h4>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                <p style="font-family: 'Josefin Sans Light';">Message here……….
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-6 text-left">
-                                                    <h4>Mother</h4>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-6">
-                                                    <h4>Full Name Here</h4>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                    <p style="font-family: 'Josefin Sans Light';">Message here……….
-                                                    </p>
-                                                </div>
+                                      </div>
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                                <h4 class="tributemother">Mother</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <h4 class="tributemother">Full Name Here</h4>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                <p style="font-family: 'Josefin Sans Light';">Message here……….
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-sm-6 text-left">
-                                                    <h4>Mother</h4>
-                                                </div>
-                                                <div class="col-lg-6 col-sm-6">
-                                                    <h4>Full Name Here</h4>
-                                                </div>
-                                                <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                    <p style="font-family: 'Josefin Sans Light';">Message here……….
-                                                    </p>
-                                                </div>
+                                      </div>
+                                      <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6 text-left">
+                                                <h4 class="tributemother">Mother</h4>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <h4 class="tributemother">Full Name Here</h4>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                <p style="font-family: 'Josefin Sans Light';">Message here……….
+                                                </p>
                                             </div>
                                         </div>
+                                      </div>
                                     </div>
                                     <!--<div class="swiper-pagination mt-3"></div>-->
-                                </div>
-
-
-
+                                  </div>
+                                  
+                                 
+                                 
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
@@ -2783,73 +3065,27 @@
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">MESSAGES FROM THE HONOUREE
                                 </h3>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
+                            <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div class="swiper hououreeswiper">
                                     <div class="swiper-wrapper" style="height: 300px;">
-                                        <div class="swiper-slide pb-lg-5">
-                                            <p class="text-left mr-lg-5" style="font-family: 'Josefin Sans Light';">
-                                                <span class="mr-lg-5">
-                                                    <span class="mr-lg-5">
-                                                        <span class="mr-lg-5">
-                                                            <span class="mr-lg-5">
-                                                                <span class="mr-lg-5">
-                                                                    <span style="font-family: 'Josefin Sans Light';">To: </span>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="text-right ml-lg-5">
-                                                <span class="ml-lg-5">
-                                                    <span class="ml-lg-5">
-                                                        <span class="ml-lg-5">
-                                                            <span class="ml-lg-5">
-                                                                <span class="ml-lg-5">
-                                                                    <span class="ml-lg-5">
-                                                                        <span class="ml-lg-5">
-                                                                            <span style="font-family: 'Josefin Sans Light';">Date: //</span>
-                                                                        </span>
-                                                                    </span>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
-                                        <div class="swiper-slide pb-lg-5">
-                                            <p class="text-left mr-lg-5">
-                                                <span class="mr-lg-5">
-                                                    <span class="mr-lg-5">
-                                                        <span class="mr-lg-5">
-                                                            <span class="mr-lg-5">
-                                                                <span class="mr-lg-5">
-                                                                    <span style="font-family: 'Josefin Sans Light';">To:</span>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                            <p class="text-right ml-lg-5">
-                                                <span class="ml-lg-5">
-                                                    <span class="ml-lg-5">
-                                                        <span class="ml-lg-5">
-                                                            <span class="ml-lg-5">
-                                                                <span class="ml-lg-5">
-                                                                    <span class="ml-lg-5">
-                                                                        <span class="ml-lg-5">
-                                                                            <span style="font-family: 'Josefin Sans Light';">Date: / /</span>
-                                                                        </span>
-                                                                    </span>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </p>
-                                        </div>
+                                      <div class="swiper-slide" style="border:2px solid #BE9438;">
+                                        <p class="text-center mr-lg-5 p-lg-3" style="font-family: 'Josefin Sans Light';">
+                                            
+                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem sunt possimus inventore culpa rem necessitatibus in rerum. Officia autem eaque voluptatibus neque exercitationem nam magni corporis consequuntur facilis repellendus? Odit!
+                                        </p>
+                                        
+                                            
+                                        
+                                      </div>
+                                      <div class="swiper-slide" style="border:2px solid #BE9438;">
+                                        <p class="text-center mr-lg-5 p-lg-3">
+                                            
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore eligendi non quod expedita, natus aliquid iste temporibus iusto aliquam architecto facere mollitia quia numquam eveniet ipsa. Cupiditate, in eligendi.
+                                        </p>
+                                        
+                                            
+                                        
+                                      </div>
                                     </div>
                                     <div class="swiper-button-next mt-lg-5"></div>
                                     <div class="swiper-button-prev mt-lg-5"></div>
@@ -2858,11 +3094,11 @@
                             <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" style="border-top: 2px solid #BE9438!important;border-bottom: 2px solid #BE9438!important;">
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">MAKE A DONATION
                                 </h3>
-                                <p class="text-center" style="font-family: 'Josefin Sans Light';">"Transform grief into action by supporting a cause close to your heart. In memory of your loved one, consider donating to a charity dedicated to researching, advocating, or providing support for the cause of their passing. Your contribution not only honours their memory but also helps others facing similar challenges. Together, let's turn loss into hope and make a difference in their honour."
+                                <p class="text-center" style="font-family: 'Josefin Sans Light';">"Transform grief into action by supporting a cause close to your heart. In memory of your loved one, consider donating to a charity dedicated to researching, advocating, or providing support for the cause of their passing. Your contribution not only honours their memory but also helps others facing similar challenges. Together, let's turn loss into hope and make a difference in their honour."   
                                 </p>
-                                <p class="text-center">https://donate.heartfoundation.org.au
+                                <p class="text-center">https://donate.heartfoundation.org.au 
                                 </p>
-                                <div class="row">
+                                <div class="row mb-lg-3">
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <img src="<?php echo e(asset('assets/heartfoundation.png')); ?>" class="text-center" style="width:150px;">
                                     </div>
@@ -2873,56 +3109,66 @@
                                 </h3>
                             </div>
                             <style>
-                                /* Responsive styles */
-                                @media (min-width: 768px) {
-                                    .slider-item {
-                                        flex: 0 0 calc(100% / 3);
-                                        /* Display three items at a time on larger screens */
-                                        margin-right: 5px !important;
-                                    }
-
+                              
+                            
+                              /* Responsive styles */
+                              @media (min-width: 768px) {
+                                .slider-item {
+                                  flex: 0 0 calc(100% / 3); /* Display three items at a time on larger screens */
+                                  margin-right:5px!important;
                                 }
+                                
+                              }
                             </style>
-                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
+                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">  
                                 <div class="slider-container">
                                     <div class="slider-content">
-                                        <div class="slider-item">
-                                            <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 1">
-                                            <div class="product-info">
-                                                <h5>LEX HORGAN</h5>
-                                                <p style="font-family: 'Josefin Sans Light';">Grandfather
-                                                </p>
-                                            </div>
+                                      <div class="slider-item">
+                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 1">
+                                        <div class="product-info">
+                                          <h6>LEX HORGAN</h6>
+                                          <p style="font-family: 'Josefin Sans Light';">Grandfather
+                                        </p>
                                         </div>
-                                        <div class="slider-item">
-                                            <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 2">
-                                            <div class="product-info">
-                                                <h5>GEOFFREY SCHUBACK
-                                                </h5>
-                                                <p style="font-family: 'Josefin Sans Light';">Grandfather
-                                                </p>
-                                            </div>
+                                      </div>
+                                      <div class="slider-item">
+                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 2">
+                                        <div class="product-info">
+                                          <h6>GEOFFREY SCHUBACK
+                                        </h6>
+                                          <p style="font-family: 'Josefin Sans Light';">Grandfather
+                                        </p>
                                         </div>
-                                        <div class="slider-item">
-                                            <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 3">
-                                            <div class="product-info">
-                                                <h5>TROY SCHUBACK
-                                                </h5>
-                                                <p style="font-family: 'Josefin Sans Light';">Uncle</p>
-                                            </div>
+                                      </div>
+                                      <div class="slider-item">
+                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 3">
+                                        <div class="product-info">
+                                          <h6>TROY SCHUBACK
+                                        </h6>
+                                          <p style="font-family: 'Josefin Sans Light';">Uncle</p>
                                         </div>
-                                        <div class="slider-item">
-                                            <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 3">
-                                            <div class="product-info">
-                                                <h5>Second TROY SCHUBACK
-                                                </h5>
-                                                <p style="font-family: 'Josefin Sans Light';">Uncle</p>
-                                            </div>
+                                      </div>
+                                      <div class="slider-item">
+                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 3">
+                                        <div class="product-info">
+                                          <h6>Second TROY SCHUBACK
+                                        </h6>
+                                          <p style="font-family: 'Josefin Sans Light';">Uncle</p>
                                         </div>
+                                      </div>
                                     </div>
-                                    <span class="prev" onclick="slide(-1)">&#10094;</span>
-                                    <span class="next" onclick="slide(1)">&#10095;</span>
+                                    
+                                    <div class="swiper-button-prev" onclick="slide(-1)"></div>
+                                    <div class="swiper-button-next" onclick="slide(1)"></div>
                                 </div>
+                                <script>
+                                    var swiper = new Swiper('.slider-container', {
+                                        navigation: {
+                                            nextEl: '.swiper-button-next',
+                                            prevEl: '.swiper-button-prev',
+                                        },
+                                    });
+                                </script>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
                                 <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">LINK A PAGE
@@ -2934,7 +3180,7 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
                                 <div class="table-responsive table-small">
-                                    <table class="table table-bordered" style="border: 2px solid #BE9438!important;">
+                                    <table class="table" style="border: 2px solid #BE9438!important;">
                                         <tbody>
                                             <tr>
                                                 <td style="font-family: 'Josefin Sans Light';">XX/XX/XXXX</td>
@@ -2964,12 +3210,12 @@
                                 <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">CREATE A PAGE
                                 </button>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff" id="contact">
-                                <h3 class="pagemainheading mt-2 topaddmarginsub" style="color:#A423EB!important;">SHARE THIS PAGE
+                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff" id="contact">
+                                <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">SHARE THIS PAGE
                                 </h3>
                             </div>
                             <div class="col-lg-4 col-sm-4 mt-2 qrcodediv newclasspaddingoff">
-                                <img src="<?php echo e(asset('assets/qr.png')); ?>" class="qrimageheightset" style="width: 100%; height: 328px;border: 1px solid #BE9438!important;">
+                                <img src="<?php echo e(asset('assets/qr.png')); ?>" class="qrimageheightset" style="width: 100%; height: 218px;border: 1px solid #BE9438!important;">
                             </div>
                             <div class="col-lg-8 col-sm-8 mt-2 ">
                                 <div class="row">
@@ -2979,43 +3225,42 @@
                                         <!--<span class="ml-3" style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-linkedin"></i></span>-->
                                         <div class="row">
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
-                                                    <i class="fa fa-facebook text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                    <i class="fa fa-facebook text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
-                                                    <i class="fa fa-instagram text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                    <i class="fa fa-instagram text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
-                                                    <i class="fa fa-linkedin text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                    <i class="fa fa-linkedin text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
-                                                    <i class="fa fa-whatsapp text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                    <i class="fa fa-whatsapp text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
-                                                    <i class="fa fa-snapchat text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                    <i class="fa fa-snapchat text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 60px;padding: 15px;width: 60px;border-radius: 31px">
-                                                    <i class="fa fa-youtube-play text-white heightscoailseticon" style="font-size:30px;"></i>
+                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                    <i class="fa fa-youtube-play text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12 col-sm-12 text-center p-5 mt-4" style="border: 1px solid #BE9438!important;">
                                         <div class="row mobileoff">
                                             <div class="col-lg-6 col-sm-12 offset-lg-3">
-                                                <p class="pb-0 mb-0 pagenotify" style="font-family: 'Josefin Sans Light';text-align:center;">Notify me when page updates</p>
+                                                <p class="pb-0 mb-0 pagenotify mt-3" style="font-family: 'Josefin Sans Light';text-align:center;">Notify me when page updates</p>
                                                 <form class="form-inline text-center">
-                                                    <input class="form-control mr-sm-2 footersearchinputnav" type="email" placeholder="Enter your Email" aria-label="Email">
+                                                    <input class="form-control mr-sm-2 footersearchinputnav" type="email"
+                                                        placeholder="Enter your Email" aria-label="Email">
                                                 </form>
                                             </div>
                                         </div>
@@ -3025,7 +3270,8 @@
                                                     <p class="pb-0 mb-0 pagenotify" style="font-family: 'Josefin Sans Light';text-align:center;">Notify me when page updates</p>
                                                 </div>
                                                 <div class="col-10" style="padding-right:0px!important;">
-                                                    <input class="form-control mr-sm-2 footersearchinputnav" type="email" placeholder="Enter your Email" aria-label="Email" style="border-radius:0px;border-right:0px;">
+                                                    <input class="form-control mr-sm-2 footersearchinputnav" type="email"
+                                                    placeholder="Enter your Email" aria-label="Email" style="border-radius:0px;border-right:0px;">
                                                 </div>
                                                 <div class="col-2" style="padding-left:0px!important;">
                                                     <button class="btn notifybutton"><i class="fa fa-arrow-right"></i></button>
@@ -3035,7 +3281,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 text-center mt-3 ">
+                            <div class="col-lg-12 col-sm-12 text-center mt-4 mb-lg-3">
                                 <button class="btn btn-large contactadministration topcontactadministrationbottom" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">EMAIL ADMINISTRATORS
                                 </button>
                             </div>
@@ -3046,60 +3292,60 @@
                                             <div class="col-lg-3 col-sm-6 textcentssrer col-6" style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#home" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">HOME</a>
+                                                      <a class="nav-link active" href="#home" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">HOME</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#gallery" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GALLERY</a>
+                                                      <a class="nav-link" href="#gallery" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GALLERY</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#funeral" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">FUNERAL WISHES</a>
+                                                      <a class="nav-link" href="#funeral" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">FUNERAL WISHES</a>
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="#tributes" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">TRIBUTES</a>
                                                     </li>
-                                                </ul>
+                                                  </ul>
                                             </div>
-                                            <div class="col-lg-3 col-sm-6 textcentssrer col-6" style="text-align:left;">
+                                            <div class="col-lg-3 col-sm-6 textcentssrer col-6"  style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#overview" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">OVERVIEW</a>
+                                                      <a class="nav-link active" href="#overview" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">OVERVIEW</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#guest" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GUEST BOOK</a>
+                                                      <a class="nav-link" href="#guest" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GUEST BOOK</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#obituary" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">OBITUARY</a>
+                                                      <a class="nav-link" href="#obituary" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">OBITUARY</a>
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="#contacts" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">CONTACTS</a>
                                                     </li>
-                                                </ul>
+                                                  </ul>
                                             </div>
-                                            <div class="col-lg-3 col-sm-6 textcentssrer col-6" style="text-align:left;">
+                                            <div class="col-lg-3 col-sm-6 textcentssrer col-6"  style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#relations" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">RELATIONSHIPS</a>
+                                                      <a class="nav-link active" href="#relations" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">RELATIONSHIPS</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#stories" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">STORIES</a>
+                                                      <a class="nav-link" href="#stories" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">STORIES</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#notices" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">NOTICES</a>
+                                                      <a class="nav-link" href="#notices" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">NOTICES</a>
                                                     </li>
-                                                </ul>
+                                                  </ul>
                                             </div>
-                                            <div class="col-lg-3 col-sm-6 textcentssrer col-6" style="text-align:left;">
+                                            <div class="col-lg-3 col-sm-6 textcentssrer col-6"  style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#ganeral" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GENERAL KNOWLEDGE</a>
+                                                      <a class="nav-link active" href="#ganeral" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GENERAL KNOWLEDGE</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#sounds" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">SOUNDBITES</a>
+                                                      <a class="nav-link" href="#sounds" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">SOUNDBITES</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#home" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">MEMORIAL</a>
+                                                      <a class="nav-link" href="#home" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">MEMORIAL</a>
                                                     </li>
-                                                </ul>
+                                                  </ul>
                                             </div>
                                         </div>
                                     </div>

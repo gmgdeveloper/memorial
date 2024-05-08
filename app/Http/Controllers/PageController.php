@@ -36,7 +36,8 @@ class PageController extends Controller
         
         $quotes = Quote::where('memorial_id', auth()->user()->id)->get(); // Fetch quotes associated with the authenticated user
             
-      
+
+        
  
             // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
             $banner_image_path = $banner_image ? $banner_image->file_path : null;
@@ -48,12 +49,22 @@ class PageController extends Controller
                 $quotes = Quote::all();
             }
 
+            $user_id = auth()->id();
+            $userpage = UserPlan::where('user_id', $user_id)->first(); // Retrieve the user
+            $page_id = $userpage->page_id; // Access the page ID if the user has a page
+            $page = UserPages::find($page_id);
+
+            // dd($page);
+            $date_of_death = $page->date_of_death ? $page->date_of_death :null;
+            $date_of_birth = $page->date_of_birth ? $page->date_of_birth :null; 
+
         
     
-            return view('Frontend.pageone', compact('banner_image_path', 'title_page_name', 'over_view', 'quotes','audio'));
+            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio'));
         
     }
-    
+
+ 
     
 
 
@@ -307,8 +318,36 @@ class PageController extends Controller
         return response()->json(['success' => true, 'message' => 'Video uploaded successfully']);
     }
     
-    
 
+    public function update_dates(Request $request)
+{
+
+   
+    $user_id = auth()->id();
+    $userpage = UserPlan::where('user_id', $user_id)->first(); // Retrieve the user's plan
+    if ($userpage) {
+        $page_id = $userpage->page_id; // Access the page ID if the user has a page
+        $page = UserPages::find($page_id); // Assuming there's a UserPages model
+        if ($page) {
+            // Update the dates if they are not empty
+            if (!empty($request->dateOfBirth)) {
+                $page->date_of_birth = $request->dateOfBirth;
+            }
+            if (!empty($request->dateOfDeath)) {
+                $page->date_of_death = $request->dateOfDeath;
+            }
+            $page->save();
+
+            return response()->json(['success' => true, 'message' => 'Dates updated successfully']);
+        } else {
+            // Handle case where the page is not found
+            return response()->json(['error' => 'Page not found']);
+        }
+    } else {
+        // Handle case where the user's plan is not found
+        return response()->json(['error' => 'User plan not found']);
+    }
+}
 
 
 

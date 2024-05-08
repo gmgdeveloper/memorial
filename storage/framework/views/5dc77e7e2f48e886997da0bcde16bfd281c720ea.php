@@ -446,7 +446,7 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Bruce Lee</h5>
@@ -454,7 +454,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Unknown</h5>
@@ -462,7 +462,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Brene Brown</h5>
@@ -470,7 +470,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Rebel Thriver</h5>
@@ -478,7 +478,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Simply Topaz</h5>

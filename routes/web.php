@@ -63,6 +63,11 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::post('/savequotes/{id}',[PageController::class,'save_quotes'])->name('savequotes');
     Route::post('/videoupload',[PageController::class,'videoupload'])->name('videoupload');
 
+    Route::post('/update-dates',[PageController::class,'update_dates'])->name('update-dates');
+
+
+
+
 });
 
 
