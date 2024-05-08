@@ -516,52 +516,52 @@
                                             <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="about.html" style="color: #000;font-family: 'Josefin Sans Light';">ABOUT</a>
+                                                      <a class="nav-link active" href="{{route('abouts')}}" style="color: #000;font-family: 'Josefin Sans Light';">ABOUT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="terms.html" style="color: #000;font-family: 'Josefin Sans Light';">TERMS</a>
+                                                      <a class="nav-link" href="{{route('terms')}}" style="color: #000;font-family: 'Josefin Sans Light';">TERMS</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="charties.html" style="color: #000;font-family: 'Josefin Sans Light';">CHARITIES</a>
-                                                    </li>
-                                                  </ul>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                      <a class="nav-link active" href="vision.html" style="color: #000;font-family: 'Josefin Sans Light';">VISION</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                      <a class="nav-link" href="faqs.html" style="color: #000;font-family: 'Josefin Sans Light';">Q & A’S</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                      <a class="nav-link" href="tech.html" style="color: #000;font-family: 'Josefin Sans Light';">TECH SUPPORT</a>
+                                                      <a class="nav-link" href="{{route('charties')}}" style="color: #000;font-family: 'Josefin Sans Light';">CHARITIES</a>
                                                     </li>
                                                   </ul>
                                             </div>
                                             <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="mission.html" style="color: #000;font-family: 'Josefin Sans Light';">MISSION</a>
+                                                      <a class="nav-link active" href="{{route('vision')}}" style="color: #000;font-family: 'Josefin Sans Light';">VISION</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="business.html" style="color: #000;font-family: 'Josefin Sans Light';">BUSINESS</a>
+                                                      <a class="nav-link" href="{{route('faqs')}}" style="color: #000;font-family: 'Josefin Sans Light';">Q & A’S</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="contact.html" style="color: #000;font-family: 'Josefin Sans Light';">CONTACT US</a>
+                                                      <a class="nav-link" href="{{route('tech')}}" style="color: #000;font-family: 'Josefin Sans Light';">TECH SUPPORT</a>
                                                     </li>
                                                   </ul>
                                             </div>
                                             <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="privacy.html" style="color: #000;font-family: 'Josefin Sans Light';">PRIVACY</a>
+                                                      <a class="nav-link active" href="{{route('mission')}}" style="color: #000;font-family: 'Josefin Sans Light';">MISSION</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
+                                                      <a class="nav-link" href="{{route('business')}}" style="color: #000;font-family: 'Josefin Sans Light';">BUSINESS</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="{{route('contact')}}" style="color: #000;font-family: 'Josefin Sans Light';">CONTACT US</a>
+                                                    </li>
+                                                  </ul>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link active" href="{{route('privacy')}}" style="color: #000;font-family: 'Josefin Sans Light';">PRIVACY</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="{{route('mediakit')}}" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="{{route('create_page')}}" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>
@@ -569,28 +569,28 @@
                                                 <h6 class="text-center mt-3">SHARE THIS PAGE
                                                 </h6>
                                                 <!--<ul class="nav flex-column text-center">-->
-                                                <!--    <li class="nav-item">-->
-                                                <!--      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';">Facebook</a>-->
+                                                <!--    <li class="nav-item" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');">-->
+                                                <!--      <a class="nav-link active" href="#" style="color: #000;font-family: 'Josefin Sans Light';"><i class="fa fa-facebook text-white"></i></a>-->
                                                 <!--    </li>-->
                                                 <!--</ul>-->
                                                 <div class="row">
                                                     <div class="col-2">
-                                                        <img src="{{asset('facebook.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets/facebook.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('instagram.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets/instagram.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('linkedin.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets/linkedin.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('whatsapp.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets/whatsapp.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('snapchat.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets/snapchat.png')}}" style="width:100%;">
                                                     </div>
                                                     <div class="col-2">
-                                                        <img src="{{asset('youtube.png')}}" style="width:100%;">
+                                                        <img src="{{asset('assets/youtube.png')}}" style="width:100%;">
                                                     </div>
                                                 </div>
                                             </div>

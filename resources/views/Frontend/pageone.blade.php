@@ -1098,6 +1098,12 @@
             .table td, .table th{
                 padding: 10px;
             }
+            .swiper-button-prev.relativeprev {
+                top: 105px;
+            }
+            .swiper-button-next.relativenext{
+                top: 105px;
+            }
         @media screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
@@ -4020,8 +4026,8 @@
                                     </div>
                                     {{-- <span class="prev" onclick="slide(-1)">&#10094;</span>
                                     <span class="next" onclick="slide(1)">&#10095;</span> --}}
-                                    <div class="swiper-button-prev" onclick="slide(-1)"></div>
-                                    <div class="swiper-button-next" onclick="slide(1)"></div>
+                                    <div class="swiper-button-prev relativeprev" onclick="slide(-1)"></div>
+                                    <div class="swiper-button-next relativenext" onclick="slide(1)"></div>
                                 </div>
                                 <script>
                                     var swiper = new Swiper('.slider-container', {
