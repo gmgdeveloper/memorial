@@ -15,7 +15,7 @@
     <style>
         body {
             background-image: url({{asset('assets/background.png')}});
-          background-position: center;
+        background-position: center;
         }
 
         .navbar-brand {
@@ -895,14 +895,14 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div id="imageContainer">
-                                @if(!empty( $banner_image_path))
-                                <img src="{{ asset($banner_image_path) }}" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
-                                @else
-                                <img src="{{ asset('assets/pageonebanner.png') }}" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
-                                    
-                                @endif    
+                                    @if(!empty( $banner_image_path))
+                                    <img src="{{ asset($banner_image_path) }}" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
+                                    @else
+                                    <img src="{{ asset('assets/pageonebanner.png') }}" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
 
-                                
+                                    @endif
+
+
                                     <span id="editIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
                                         <i class="fa fa-edit"></i>
                                     </span>
@@ -961,9 +961,9 @@
                                 <h3 class="pagemainheading mt-3">CELEBRATING THE LIFE OF</h3>
                                 <h3 class="mt-2 text-center brennonheading" id="breannon" onclick="breannon()">
                                     @if(!empty($title_page_name))
-                                        {{ $title_page_name }}
+                                    {{ $title_page_name }}
                                     @else
-                                        <b>Breannon Kimberley Schuback</b>
+                                    <b>Breannon Kimberley Schuback</b>
                                     @endif
                                 </h3>
 
@@ -976,7 +976,7 @@
                                             // Make an Ajax request to send the edited data to Laravel controller
                                             fetch('/bannerimage', {
                                                     method: 'POST',
-                                                 
+
                                                     headers: {
                                                         'Content-Type': 'application/json',
                                                         'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
@@ -1009,26 +1009,15 @@
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground.PNG')}}" alt="First slide" style="height: 200px;">
+                                        @foreach ($quotes as $quote)
+                                        <div class="carousel-item @if ($loop->first) active @endif">
+                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground.PNG')}}" alt="Slide {{$loop->iteration}}" style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
-                                                <h5 style="color:#000;">First Quotes</h5>
-                                                <p style="font-family: 'Josefin Sans Light';color:#000;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora
-                                                    quos voluptatem aliquid, error reprehenderit vero officia ratione
-                                                    quidem corrupti assumenda magni voluptatibus id! Molestias commodi
-                                                    laborum asperiores vero sint quaerat.</p>
+                                                <h5 style="color:#000;" id="editableHeading{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->heading}}</h5>
+                                                <p style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->description}}</p>
                                             </div>
                                         </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground.PNG')}}" alt="Second slide" style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                <h5 style="color:#000;">Second Quotes</h5>
-                                                <p style="font-family: 'Josefin Sans Light';color:#000;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora
-                                                    quos voluptatem aliquid, error reprehenderit vero officia ratione
-                                                    quidem corrupti assumenda magni voluptatibus id! Molestias commodi
-                                                    laborum asperiores vero sint quaerat.</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <!-- Swiper-style navigation buttons -->
                                     <a class="swiper-button-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -1040,27 +1029,151 @@
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </div>
+
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        // Function to make element editable
+                                        function makeEditable(elementId, quoteId, contentType) {
+                                            var element = document.getElementById(elementId);
+                                            element.contentEditable = true;
+                                            element.focus();
+
+                                            // Add event listener for blur event
+                                            element.addEventListener('blur', function() {
+                                                // Get the edited content
+                                                var editedContent = element.textContent.trim();
+
+                                                // Determine the content type
+                                                var data = {};
+                                                if (contentType === 'heading') {
+                                                    data.heading = editedContent;
+                                                } else if (contentType === 'description') {
+                                                    data.description = editedContent;
+                                                }
+
+
+                                                // Make an Ajax request to send the edited content to the server
+                                                fetch('/savequotes/' + quoteId, {
+                                                        method: 'POST', // Use PUT method for updating
+                                                        headers: {
+                                                            'Content-Type': 'application/json',
+                                                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                        },
+                                                        body: JSON.stringify(data)
+                                                    })
+                                                    .then(response => {
+                                                        if (response.ok) {
+                                                            console.log('Data saved successfully!');
+                                                        } else {
+                                                            console.error('Failed to save data');
+                                                        }
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error:', error);
+                                                    });
+                                            });
+                                        }
+
+                                        // Automatically make elements editable upon certain event
+                                        document.getElementById("carouselExampleControls").addEventListener("mouseover", function(event) {
+                                            var target = event.target;
+                                            var quoteId = target.getAttribute('data-quote-id');
+                                            if (quoteId && (target.id === "editableHeading" + quoteId || target.id === "editablePara" + quoteId)) {
+                                                var contentType = target.id.startsWith('editableHeading') ? 'heading' : 'description';
+                                                makeEditable(target.id, quoteId, contentType);
+                                            }
+                                        });
+                                    });
+                                </script>
+
                             </div>
+
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
-                                <video width="100%" height="400" controls class="imagemainheightset">
-                                    <source src="{{asset('assets/dummyvideo.mp4')}}" type="video/mp4">
-                                </video>
-                            </div>
+    <div style="position: relative;">
+        <!-- Video player -->
+        @if($audio->type=="video")  
+        <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
+            <source src="{{ asset($audio->full_path) }}" type="video/mp4">
+        </video>
+        @else
+        <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
+            <source src="{{ asset('assets/dummyvideo.mp4') }}" type="video/mp4">
+        </video>
+        @endif
+      
+
+        <!-- Icon for uploading video -->
+        <span id="uploadIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+            <i class="fa fa-upload"></i>
+        </span>
+
+        <!-- Video upload area -->
+        <div id="videoUploadArea" style="display: none;">
+            <input type="file" id="videoUploadInput" accept="video/*">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var uploadIcon = document.getElementById('uploadIcon');
+            var videoInput = document.getElementById('videoUploadInput');
+
+            // Function to handle showing/hiding video upload area
+            uploadIcon.addEventListener('click', function() {
+                videoInput.click();
+            });
+
+            // Function to handle video upload
+            videoInput.addEventListener('change', function() {
+                var file = this.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var videoPlayer = document.getElementById('videoPlayer');
+                        videoPlayer.src = URL.createObjectURL(file);
+                        videoPlayer.load();
+
+                        // Optionally, you can send the video data to the server using AJAX
+                        var formData = new FormData();
+                        formData.append('video', file);
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '{{ route("videoupload") }}', true);
+                        xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                        xhr.onload = function() {
+                            if (xhr.status === 200) {
+                                console.log('Video uploaded successfully!');
+                            } else {
+                                console.error('Error uploading video:', xhr.responseText);
+                            }
+                        };
+                        xhr.send(formData);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</div>
+
+             
+
+
                             <div class="col-lg-12 col-sm-12 mt-3 pb-5 newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="overview">AN OVERVIEW</h3>
-                                
-                                @if(!empty($over_view))
-                                      
 
-                                        <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
-                                         {{ $over_view }}
-                                    </p>
-                                    @else
-                                         <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
-                                
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
-                               
-                                    @endif
+                                @if(!empty($over_view))
+
+
+                                <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+                                    {{ $over_view }}
+                                </p>
+                                @else
+                                <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
+
+                                @endif
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         var paragraph = document.getElementById('editableParagraphoverview');

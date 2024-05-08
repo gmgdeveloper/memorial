@@ -504,7 +504,7 @@
                                                       <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="{{route('create_page')}}" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>

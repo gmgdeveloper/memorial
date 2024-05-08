@@ -60,6 +60,9 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
 
     Route::post('/bannerimage',[PageController::class,'bange_image'])->name('banner_image');
 
+    Route::post('/savequotes/{id}',[PageController::class,'save_quotes'])->name('savequotes');
+    Route::post('/videoupload',[PageController::class,'videoupload'])->name('videoupload');
+
 });
 
 

@@ -10,10 +10,12 @@ use App\Models\UserPlan;
 use App\Models\User;
 use Illuminate\Support\Str;
 use App\Mail\AccessCodeEmail;
+use App\Models\Audio;
 use App\Models\BannerImage;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Media;
+use App\Models\Quote;
 
 class PageController extends Controller
 {
@@ -30,18 +32,28 @@ class PageController extends Controller
     {
         $banner_image = Media::where('memorial_id', auth()->user()->id)->first();
         $title_page = BannerImage::where('user_id', auth()->user()->id)->first();
+        $audio = Audio::where('memorial_id', auth()->user()->id)->first();
+        
+        $quotes = Quote::where('memorial_id', auth()->user()->id)->get(); // Fetch quotes associated with the authenticated user
+            
+      
+ 
+            // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
+            $banner_image_path = $banner_image ? $banner_image->file_path : null;
+            $title_page_name = $title_page ? $title_page->name : null;
+            $over_view = $title_page ? $title_page->over_view : null;
     
-        if ($banner_image && $title_page) {
-            $banner_image_path = $banner_image->file_path;
-            $title_page_name = $title_page->name;
-            $over_view = $title_page->over_view; // Assuming 'over_view' is a column in your BannerImage table
+            // If the user has no quotes, fetch all quotes
+            if ($quotes->isEmpty()) {
+                $quotes = Quote::all();
+            }
+
+        
     
-            return view('Frontend.pageone', compact('banner_image_path', 'title_page_name', 'over_view'));
-        } else {
-            // Handle case when either $banner_image or $title_page is null
-            return view('Frontend.pageone');
-        }
+            return view('Frontend.pageone', compact('banner_image_path', 'title_page_name', 'over_view', 'quotes','audio'));
+        
     }
+    
     
 
 
@@ -225,13 +237,87 @@ class PageController extends Controller
                
             }
         }
-
-
-
-
-
-
-
-        
+   
     }
+
+
+    public function save_quotes(Request $request, $id) {
+        $quote = Quote::find($id);
+
+ 
+        // Check if the quote exists
+        if (!$quote) {
+            return response()->json(['message' => 'Quote not found'], 404);
+        }
+    
+        // Update the quote
+        if ($request->has('heading')) {
+            $quote->heading = $request->heading;
+        }
+    
+        if ($request->has('description')) {
+            $quote->description = $request->description;
+        }
+
+        $quote->memorial_id	= auth()->user()->id;
+    
+        // Save the changes
+        $quote->save();
+    
+        return response()->json(['success' => true,'message' => 'Quote updated successfully'], 200);
+    }
+    
+
+
+
+
+
+    public function videoupload(Request $request)
+    {
+        // Check if the user exists
+        $user_id = auth()->id();
+        $audio = Audio::where('memorial_id', $user_id)->first();
+    
+        if (!$audio) {
+            // If the user does not exist in the audio table, create a new record
+            $audio = new Audio();
+            $audio->type="video";
+            $audio->memorial_id = $user_id;
+        }
+    
+        // Handle video upload
+        if ($request->hasFile('video')) {
+            $video = $request->file('video');
+            $videoName = uniqid() . '.' . $video->getClientOriginalExtension();
+    
+            // Move the uploaded file to the public directory
+            if ($video->move(public_path('/Media/videos'), $videoName)) {
+                // Update audio record with the file path
+                $audio->full_path = 'Media/videos/' . $videoName;
+            } else {
+                // Handle failure to move the uploaded file
+                return response()->json(['success' => false, 'message' => 'Failed to move uploaded video'], 500);
+            }
+        }
+    
+        // Save the audio record
+        $audio->save();
+    
+        // Return a response based on success or failure
+        return response()->json(['success' => true, 'message' => 'Video uploaded successfully']);
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -581,7 +581,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3">
-                                <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
+                                <a href="<?php echo e(route('create_page')); ?>">
+    <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
+                            
+                                </a>
+                            
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3" style="border-top: 2px solid #ccaa54; border-bottom: 2px solid #ccaa54;">
                                 <div class="row">
@@ -902,7 +906,11 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
+                                        <a href="<?php echo e(route('create_page')); ?>">
+<button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
+                                    
+                                        </a>
+                                        
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <h3 class="secondheading mt-5">
@@ -978,7 +986,7 @@
                                                       <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="<?php echo e(route('create_page')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>

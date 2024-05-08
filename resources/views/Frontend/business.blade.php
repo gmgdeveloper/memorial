@@ -404,7 +404,7 @@
                                                     <a class="nav-link navlinks mainheaderlink" href="login.html">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="creat_a_page.html">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="{{route('create_page')}}">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
