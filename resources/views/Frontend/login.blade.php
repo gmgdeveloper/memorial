@@ -457,7 +457,7 @@
                                             <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">HONOUREE</h5>
                                         </div>
                                         <div class="col-lg-10 mt-2 mb-2">
-                                            <input type="text" class="form-control" name="honouree" style="border: 2px solid #BE9438;"  placeholder="Honouree's PAGE NAME">
+                                            <input type="text" class="form-control" name="honouree" style="border: 2px solid #BE9438;"  placeholder="Honouree's Page Name">
                                         </div>
                                         <div class="col-lg-2 mt-2">
                                             <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">RELATIONSHIP</h5>

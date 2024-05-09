@@ -342,6 +342,9 @@
             .subcriptionmarginotp{
                 margin-top:15px;
             }
+            .mainlogowalliam{
+                width:30px!important;
+            }
         }
         
         @media screen and (max-width: 1199px) {
@@ -545,6 +548,9 @@
             .subcriptionmarginotp{
                 margin-top:15px;
             }
+            .mainlogowalliam{
+                width:30px!important;
+            }
         }
     </style>
 </head>
@@ -601,7 +607,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-sm-12">
                                 <!--<h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl">CREATE A MEMORIAL WEBSITE</h2>-->
-                                <h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl" style="color:#BE9438;"><img class="mr-2" src="{{asset('assets/heart.png')}}" style="width:5%;"> William</h2>
+                                <h2 class="ml-lg-4 mb-3 createammeorialwebsitetotitl" style="color:#BE9438;"><img class="mr-2 mainlogowalliam" src="{{asset('assets/heart.png')}}" style="width:5%;"> William</h2>
                                 <form method="POST" action="{{route('save_page')}}" id="signup-form"
                                     class="signup-form">
                                     @csrf
@@ -611,7 +617,7 @@
                                             honouree</span>
                                     </h3>
                                     <fieldset>
-                                        <div class="fieldset-content fieldset-contenthwight" style="height:365px;">
+                                        <div class="fieldset-content fieldset-contenthwight" style="height:375px;">
                                             <div class="row">
                                                 <div class="col-lg-6 col-sm-12">
                                                     <label for="firstname" class="form-label"
