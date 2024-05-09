@@ -3,6 +3,7 @@
 
 <head>
     <title>A life Worth Remembering</title>
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -405,10 +406,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="login.html">LOG IN</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="<?php echo e(route('login')); ?>">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks mainheaderlink" href="creat_a_page.html">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks mainheaderlink" href="<?php echo e(route('create_page')); ?>">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -445,7 +446,7 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Bruce Lee</h5>
@@ -453,7 +454,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Unknown</h5>
@@ -461,7 +462,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Brene Brown</h5>
@@ -469,7 +470,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Rebel Thriver</h5>
@@ -477,7 +478,7 @@
                                             </div>
                                         </div>
                                         <div class="carousel-item ">
-                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground.PNG')); ?>" alt="First slide"
+                                            <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
                                             <div class="carousel-caption d-none d-md-block">
                                                 <h5 style="color:black;">Simply Topaz</h5>
@@ -580,7 +581,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3">
-                                <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
+                                <a href="<?php echo e(route('create_page')); ?>">
+    <button class="btn btn-large createa_pagebuttonwidthsetres" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 50px;border-radius: 15px;">CREATE A PAGE</button>
+                            
+                                </a>
+                            
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3" style="border-top: 2px solid #ccaa54; border-bottom: 2px solid #ccaa54;">
                                 <div class="row">
@@ -901,7 +906,11 @@
                                         </p>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
+                                        <a href="<?php echo e(route('create_page')); ?>">
+<button class="btn btn-large createa_pagebuttonwidthsetres"  style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');font-weight: bold;width: 400px;height: 56px;border-radius: 15px;">CREATE A PAGE</button>
+                                    
+                                        </a>
+                                        
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <h3 class="secondheading mt-5">
@@ -932,52 +941,52 @@
                                             <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="about.html" style="color: #000;font-family: 'Josefin Sans Light';">ABOUT</a>
+                                                      <a class="nav-link active" href="<?php echo e(route('abouts')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">ABOUT</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="terms.html" style="color: #000;font-family: 'Josefin Sans Light';">TERMS</a>
+                                                      <a class="nav-link" href="<?php echo e(route('terms')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">TERMS</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="charties.html" style="color: #000;font-family: 'Josefin Sans Light';">CHARITIES</a>
-                                                    </li>
-                                                  </ul>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                      <a class="nav-link active" href="vision.html" style="color: #000;font-family: 'Josefin Sans Light';">VISION</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                      <a class="nav-link" href="faqs.html" style="color: #000;font-family: 'Josefin Sans Light';">Q & A’S</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                      <a class="nav-link" href="tech.html" style="color: #000;font-family: 'Josefin Sans Light';">TECH SUPPORT</a>
+                                                      <a class="nav-link" href="<?php echo e(route('charties')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">CHARITIES</a>
                                                     </li>
                                                   </ul>
                                             </div>
                                             <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="mission.html" style="color: #000;font-family: 'Josefin Sans Light';">MISSION</a>
+                                                      <a class="nav-link active" href="<?php echo e(route('vision')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">VISION</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="business.html" style="color: #000;font-family: 'Josefin Sans Light';">BUSINESS</a>
+                                                      <a class="nav-link" href="<?php echo e(route('faqs')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">Q & A’S</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="contact.html" style="color: #000;font-family: 'Josefin Sans Light';">CONTACT US</a>
+                                                      <a class="nav-link" href="<?php echo e(route('tech')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">TECH SUPPORT</a>
                                                     </li>
                                                   </ul>
                                             </div>
                                             <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="privacy.html" style="color: #000;font-family: 'Josefin Sans Light';">PRIVACY</a>
+                                                      <a class="nav-link active" href="<?php echo e(route('mission')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">MISSION</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="mediakit.html" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
+                                                      <a class="nav-link" href="<?php echo e(route('business')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">BUSINESS</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                      <a class="nav-link" href="creat_a_page.html" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
+                                                      <a class="nav-link" href="<?php echo e(route('contact')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">CONTACT US</a>
+                                                    </li>
+                                                  </ul>
+                                            </div>
+                                            <div class="col-lg-2 col-sm-6 textcentssrer col-6" style="text-align:left;">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                      <a class="nav-link active" href="<?php echo e(route('privacy')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">PRIVACY</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="<?php echo e(route('mediakit')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">MEDIA KIT</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                      <a class="nav-link" href="<?php echo e(route('create_page')); ?>" style="color: #000;font-family: 'Josefin Sans Light';">CREATE A PAGE</a>
                                                     </li>
                                                   </ul>
                                             </div>

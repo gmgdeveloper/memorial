@@ -849,7 +849,7 @@
                                                 your payment plan</span>
                                             <div class="row">
                                                 <div class="row">
-                                                    <input type="hidden" name="to_buy_plan_id" id="to_buy_plan_id">
+                                                    <input type="hidden" name="to_buy_plan_id" id="to_buy_plan_id" required>
                                                     @foreach ($plans as $plan)
                                                     <div class="col-lg-6 col-sm-12">
                                                         <div class="card mt-3"
@@ -1175,7 +1175,7 @@
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12">
                                                     <label class="form-label" style="text-align:left;font-size:13px;">Email</label>
-                                                    <input type="email" name="email" placeholder="Email" />
+                                                    <input type="email" name="emaill" placeholder="Email" />
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12">
                                                     <label for="mobilephone" class="form-label" style="text-align:left;font-size:13px;">Mobile Phone</label>
@@ -1202,13 +1202,837 @@
                                                     <input type="number" name="postcode" id="postcode"  placeholder="Postcode" />
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12">
-                                                    <label for="state" class="form-label" style="text-align:left;font-size:13px;">State</label>
-                                                    <input type="text" name="state" id="state"  placeholder="State" />
+                                                    <label for="country" class="form-label" style="text-align:left;font-size:13px;">Country</label>
+                                                    <!--<input type="text" name="country" id="country"  placeholder="Country" />-->
+                                                    <select name="country" id="country" onchange="populateStates()">
+                                                        <option value="" selected disabled>Select an Country</option>
+                                                        <option value="United States">United States</option>
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                       
+                                                        <option value="American Samoa">American Samoa</option>
+                                                      
+                                                        <option value="Australia">Australia</option>
+                                                  
+                                                        <option value="Bangladesh">Bangladesh</option>
+                                                    
+                                                        <option value="Brazil">Brazil</option>
+                                                       
+                                                        <option value="Canada">Canada</option>
+                                                   
+                                                        <option value="China">China</option>
+                                                     
+                                                        <option value="Egypt">Egypt</option>
+                                                     
+                                                        <option value="Finland">Finland</option>
+                                                        <option value="France">France</option>
+                                                       
+                                                        <option value="Germany">Germany</option>
+                                                
+                                                        <option value="Hong Kong">Hong Kong</option>
+                                                    
+                                                        <option value="India">India</option>
+                                                        <option value="Indonesia">Indonesia</option>
+                                                       
+                                                        <option value="Iraq">Iraq</option>
+                                                 
+                                                        <option value="Israel">Israel</option>
+                                                        <option value="Italy">Italy</option>
+                                                        <option value="Japan">Japan</option>
+                                                        <option value="Jordan">Jordan</option>
+                                                       
+                                                        <option value="Kuwait">Kuwait</option>
+                                                       
+                                                        <option value="Malaysia">Malaysia</option>
+                                                   
+                                                        <option value="Mexico">Mexico</option>
+                                                   
+                                                        <option value="Nepal">Nepal</option>
+                                                        <option value="Netherlands">Netherlands</option>
+                                                     
+                                                        <option value="Norway">Norway</option>
+                                                    
+                                                        <option value="Pakistan">Pakistan</option>
+                                                      
+                                                        <option value="Philippines">Philippines</option>
+                                                       
+                                                        <option value="Russia">Russian</option>
+                                                        <option value="Saudi Arabia">Saudi Arabia</option>
+                                                      
+                                                        <option value="Swaziland">Swaziland</option>
+                                                      
+                                                        <option value="Turkey">Turkey</option>                                                      
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-lg-6 col-sm-12">
-                                                    <label for="country" class="form-label" style="text-align:left;font-size:13px;">Country</label>
-                                                    <input type="text" name="country" id="country"  placeholder="Country" />
+                                                    <label for="state" class="form-label" style="text-align:left;font-size:13px;">State</label>
+                                                    <select name="state" id="state">
+                                                        <option value="" selected disabled>Select an State</option>
+                                                    </select>
                                                 </div>
+                                                <script>
+                                                    var countryStates = {
+                                                        "United States": ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"],
+                                                        "Afghanistan": ["Badakhshan", "Badghis", "Baghlan", "Balkh", "Bamyan", "Daykundi", "Farah", "Faryab", "Ghazni", "Ghor", "Helmand", "Herat", "Jowzjan", "Kabul", "Kandahar", "Kapisa", "Khost", "Kunar", "Kunduz", "Laghman", "Logar", "Nangarhar", "Nimroz", "Nuristan", "Paktia", "Paktika", "Panjshir", "Parwan", "Samangan", "Sar-e Pol", "Takhar", "Urozgan", "Zabul"],
+                                                        "American Samoa": ["Ma'oputasi","Leasina","Tualauta","Sua","Vaifanua","Ituau","Palauli","Fa'asaleleaga","Gaga'ifomauga","Vaisigano","Satupa'itea"],
+                                                        "Australia":["New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia", "Tasmania"],
+                                                        "Bangladesh":["Barisal","Chittagong","Dhaka","Khulna","Mymensingh","Rajshahi","Rangpur","Sylhet"],
+                                                        "Brazil": [
+                                                            "Acre",
+                                                            "Alagoas",
+                                                            "Amapá",
+                                                            "Amazonas",
+                                                            "Bahia",
+                                                            "Ceará",
+                                                            "Espírito Santo",
+                                                            "Goiás",
+                                                            "Maranhão",
+                                                            "Mato Grosso",
+                                                            "Mato Grosso do Sul",
+                                                            "Minas Gerais",
+                                                            "Pará",
+                                                            "Paraíba",
+                                                            "Paraná",
+                                                            "Pernambuco",
+                                                            "Piauí",
+                                                            "Rio de Janeiro",
+                                                            "Rio Grande do Norte",
+                                                            "Rio Grande do Sul",
+                                                            "Rondônia",
+                                                            "Roraima",
+                                                            "Santa Catarina",
+                                                            "São Paulo",
+                                                            "Sergipe",
+                                                            "Tocantins"
+                                                        ],
+                                                        "Canada": [
+                                                            "Alberta",
+                                                            "British Columbia",
+                                                            "Manitoba",
+                                                            "New Brunswick",
+                                                            "Newfoundland and Labrador",
+                                                            "Northwest Territories",
+                                                            "Nova Scotia",
+                                                            "Nunavut",
+                                                            "Ontario",
+                                                            "Prince Edward Island",
+                                                            "Quebec",
+                                                            "Saskatchewan",
+                                                            "Yukon"
+                                                        ],
+                                                        "China": [
+                                                            "Anhui",
+                                                            "Fujian",
+                                                            "Gansu",
+                                                            "Guangdong",
+                                                            "Guizhou",
+                                                            "Hainan",
+                                                            "Hebei",
+                                                            "Heilongjiang",
+                                                            "Henan",
+                                                            "Hubei",
+                                                            "Hunan",
+                                                            "Jiangsu",
+                                                            "Jiangxi",
+                                                            "Jilin",
+                                                            "Liaoning",
+                                                            "Qinghai",
+                                                            "Shaanxi",
+                                                            "Shandong",
+                                                            "Shanxi",
+                                                            "Sichuan",
+                                                            "Yunnan",
+                                                            "Zhejiang",
+                                                            "Guangxi",
+                                                            "Inner Mongolia",
+                                                            "Ningxia",
+                                                            "Tibet",
+                                                            "Xinjiang",
+                                                            "Beijing",
+                                                            "Chongqing",
+                                                            "Shanghai",
+                                                            "Tianjin",
+                                                            "Hong Kong",
+                                                            "Macau"
+                                                        ],
+                                                        "Egypt": [
+                                                            "Alexandria",
+                                                            "Aswan",
+                                                            "Asyut",
+                                                            "Beheira",
+                                                            "Beni Suef",
+                                                            "Cairo",
+                                                            "Dakahlia",
+                                                            "Damietta",
+                                                            "Faiyum",
+                                                            "Gharbia",
+                                                            "Giza",
+                                                            "Ismailia",
+                                                            "Kafr El Sheikh",
+                                                            "Luxor",
+                                                            "Matrouh",
+                                                            "Minya",
+                                                            "Monufia",
+                                                            "New Valley",
+                                                            "North Sinai",
+                                                            "Port Said",
+                                                            "Qalyubia",
+                                                            "Qena",
+                                                            "Red Sea",
+                                                            "Sharqia",
+                                                            "Sohag",
+                                                            "South Sinai",
+                                                            "Suez"
+                                                        ],
+                                                        "Finland": [
+                                                            "Åland",
+                                                            "Southern Finland",
+                                                            "Western Finland",
+                                                            "Eastern Finland",
+                                                            "Oulu",
+                                                            "Lapland"
+                                                          ],
+                                                          "France": [
+                                                            "Auvergne-Rhône-Alpes",
+                                                            "Bourgogne-Franche-Comté",
+                                                            "Brittany",
+                                                            "Centre-Val de Loire",
+                                                            "Corsica",
+                                                            "Grand Est",
+                                                            "Hauts-de-France",
+                                                            "Île-de-France",
+                                                            "Normandy",
+                                                            "Nouvelle-Aquitaine",
+                                                            "Occitanie",
+                                                            "Pays de la Loire",
+                                                            "Provence-Alpes-Côte d'Azur"
+                                                          ],
+                                                          "Germany": [
+                                                            "Baden-Württemberg",
+                                                            "Bavaria",
+                                                            "Berlin",
+                                                            "Brandenburg",
+                                                            "Bremen",
+                                                            "Hamburg",
+                                                            "Hesse",
+                                                            "Lower Saxony",
+                                                            "Mecklenburg-Vorpommern",
+                                                            "North Rhine-Westphalia",
+                                                            "Rhineland-Palatinate",
+                                                            "Saarland",
+                                                            "Saxony",
+                                                            "Saxony-Anhalt",
+                                                            "Schleswig-Holstein",
+                                                            "Thuringia"
+                                                          ],
+                                                          "Hong Kong": [
+                                                            "Hong Kong Island",
+                                                            "Kowloon",
+                                                            "New Territories",
+                                                            "Lantau Island"
+                                                          ],
+                                                          "India": [
+                                                            "Andaman and Nicobar Islands",
+                                                            "Andhra Pradesh",
+                                                            "Arunachal Pradesh",
+                                                            "Assam",
+                                                            "Bihar",
+                                                            "Chandigarh",
+                                                            "Chhattisgarh",
+                                                            "Dadra and Nagar Haveli",
+                                                            "Daman and Diu",
+                                                            "National Capital Territory of Delhi",
+                                                            "Goa",
+                                                            "Gujarat",
+                                                            "Haryana",
+                                                            "Himachal Pradesh",
+                                                            "Jammu and Kashmir",
+                                                            "Jharkhand",
+                                                            "Karnataka",
+                                                            "Kerala",
+                                                            "Ladakh",
+                                                            "Lakshadweep",
+                                                            "Madhya Pradesh",
+                                                            "Maharashtra",
+                                                            "Manipur",
+                                                            "Meghalaya",
+                                                            "Mizoram",
+                                                            "Nagaland",
+                                                            "Odisha",
+                                                            "Puducherry",
+                                                            "Punjab",
+                                                            "Rajasthan",
+                                                            "Sikkim",
+                                                            "Tamil Nadu",
+                                                            "Telangana",
+                                                            "Tripura",
+                                                            "Uttar Pradesh",
+                                                            "Uttarakhand",
+                                                            "West Bengal"
+                                                          ],
+                                                          "Indonesia": [
+                                                            "Aceh",
+                                                            "Bali",
+                                                            "Bangka Belitung Islands",
+                                                            "Banten",
+                                                            "Bengkulu",
+                                                            "Central Java",
+                                                            "Central Kalimantan",
+                                                            "Central Sulawesi",
+                                                            "East Java",
+                                                            "East Kalimantan",
+                                                            "East Nusa Tenggara",
+                                                            "Gorontalo",
+                                                            "Jakarta",
+                                                            "Jambi",
+                                                            "Lampung",
+                                                            "Maluku",
+                                                            "North Kalimantan",
+                                                            "North Maluku",
+                                                            "North Sulawesi",
+                                                            "North Sumatra",
+                                                            "Papua",
+                                                            "Riau",
+                                                            "Riau Islands",
+                                                            "Southeast Sulawesi",
+                                                            "South Kalimantan",
+                                                            "South Sulawesi",
+                                                            "South Sumatra",
+                                                            "West Java",
+                                                            "West Kalimantan",
+                                                            "West Nusa Tenggara",
+                                                            "West Papua",
+                                                            "West Sulawesi",
+                                                            "West Sumatra",
+                                                            "Yogyakarta"
+                                                          ],
+                                                          "Iraq": [
+                                                            "Al Anbar",
+                                                            "Babil",
+                                                            "Baghdad",
+                                                            "Basra",
+                                                            "Dhi Qar",
+                                                            "Diyala",
+                                                            "Dohuk",
+                                                            "Erbil",
+                                                            "Karbala",
+                                                            "Kirkuk",
+                                                            "Maysan",
+                                                            "Muthanna",
+                                                            "Najaf",
+                                                            "Nineveh",
+                                                            "Saladin",
+                                                            "Sulaymaniyah",
+                                                            "Wasit"
+                                                          ],
+                                                          "Israel": [
+                                                            "Central District",
+                                                            "Haifa District",
+                                                            "Jerusalem District",
+                                                            "Northern District",
+                                                            "Southern District",
+                                                            "Tel Aviv District"
+                                                          ],
+                                                          "Italy": [
+                                                            "Abruzzo",
+                                                            "Aosta Valley",
+                                                            "Apulia",
+                                                            "Basilicata",
+                                                            "Calabria",
+                                                            "Campania",
+                                                            "Emilia-Romagna",
+                                                            "Friuli-Venezia Giulia",
+                                                            "Lazio",
+                                                            "Liguria",
+                                                            "Lombardy",
+                                                            "Marche",
+                                                            "Molise",
+                                                            "Piedmont",
+                                                            "Sardinia",
+                                                            "Sicily",
+                                                            "Trentino-Alto Adige",
+                                                            "Tuscany",
+                                                            "Umbria",
+                                                            "Veneto"
+                                                          ],
+                                                          "Japan": [
+                                                            "Aichi",
+                                                            "Akita",
+                                                            "Aomori",
+                                                            "Chiba",
+                                                            "Ehime",
+                                                            "Fukui",
+                                                            "Fukuoka",
+                                                            "Fukushima",
+                                                            "Gifu",
+                                                            "Gunma",
+                                                            "Hiroshima",
+                                                            "Hokkaido",
+                                                            "Hyogo",
+                                                            "Ibaraki",
+                                                            "Ishikawa",
+                                                            "Iwate",
+                                                            "Kagawa",
+                                                            "Kagoshima",
+                                                            "Kanagawa",
+                                                            "Kochi",
+                                                            "Kumamoto",
+                                                            "Kyoto",
+                                                            "Mie",
+                                                            "Miyagi",
+                                                            "Miyazaki",
+                                                            "Nagano",
+                                                            "Nagasaki",
+                                                            "Nara",
+                                                            "Niigata",
+                                                            "Oita",
+                                                            "Okayama",
+                                                            "Okinawa",
+                                                            "Osaka",
+                                                            "Saga",
+                                                            "Saitama",
+                                                            "Shiga",
+                                                            "Shimane",
+                                                            "Shizuoka",
+                                                            "Tochigi",
+                                                            "Tokushima",
+                                                            "Tokyo",
+                                                            "Tottori",
+                                                            "Toyama",
+                                                            "Wakayama",
+                                                            "Yamagata",
+                                                            "Yamaguchi",
+                                                            "Yamanashi"
+                                                          ],
+                                                          "Jordan": [
+                                                            "Ajloun",
+                                                            "Amman",
+                                                            "Aqaba",
+                                                            "Balqa",
+                                                            "Irbid",
+                                                            "Jerash",
+                                                            "Karak",
+                                                            "Ma'an",
+                                                            "Madaba",
+                                                            "Mafraq",
+                                                            "Tafilah",
+                                                            "Zarqa"
+                                                          ],
+                                                          "Kuwait": [
+                                                            "Al Ahmadi",
+                                                            "Al Farwaniyah",
+                                                            "Al Jahra",
+                                                            "Capital Governorate",
+                                                            "Hawalli",
+                                                            "Mubarak Al-Kabeer"
+                                                          ],
+                                                          "Malaysia": [
+                                                            "Johor",
+                                                            "Kedah",
+                                                            "Kelantan",
+                                                            "Kuala Lumpur",
+                                                            "Labuan",
+                                                            "Melaka",
+                                                            "Negeri Sembilan",
+                                                            "Pahang",
+                                                            "Penang",
+                                                            "Perak",
+                                                            "Perlis",
+                                                            "Putrajaya",
+                                                            "Sabah",
+                                                            "Sarawak",
+                                                            "Selangor",
+                                                            "Terengganu"
+                                                          ],
+                                                          "Mexico": [
+                                                            "Aguascalientes",
+                                                            "Baja California",
+                                                            "Baja California Sur",
+                                                            "Campeche",
+                                                            "Chiapas",
+                                                            "Chihuahua",
+                                                            "Coahuila",
+                                                            "Colima",
+                                                            "Durango",
+                                                            "Guanajuato",
+                                                            "Guerrero",
+                                                            "Hidalgo",
+                                                            "Jalisco",
+                                                            "México",
+                                                            "Michoacán",
+                                                            "Morelos",
+                                                            "Nayarit",
+                                                            "Nuevo León",
+                                                            "Oaxaca",
+                                                            "Puebla",
+                                                            "Querétaro",
+                                                            "Quintana Roo",
+                                                            "San Luis Potosí",
+                                                            "Sinaloa",
+                                                            "Sonora",
+                                                            "Tabasco",
+                                                            "Tamaulipas",
+                                                            "Tlaxcala",
+                                                            "Veracruz",
+                                                            "Yucatán",
+                                                            "Zacatecas"
+                                                          ],
+                                                          "Nepal": [
+                                                            "Bagmati Province",
+                                                            "Gandaki Province",
+                                                            "Karnali Province",
+                                                            "Kosi Province",
+                                                            "Lumbini Province",
+                                                            "Province No. 1",
+                                                            "Province No. 2",
+                                                            "Sudurpashchim Province"
+                                                          ],
+                                                          "Netherlands": [
+                                                            "Drenthe",
+                                                            "Flevoland",
+                                                            "Friesland",
+                                                            "Gelderland",
+                                                            "Groningen",
+                                                            "Limburg",
+                                                            "North Brabant",
+                                                            "North Holland",
+                                                            "Overijssel",
+                                                            "South Holland",
+                                                            "Utrecht",
+                                                            "Zeeland"
+                                                          ],
+                                                          "Norway": [
+                                                            "Akershus",
+                                                            "Aust-Agder",
+                                                            "Buskerud",
+                                                            "Finnmark",
+                                                            "Hedmark",
+                                                            "Hordaland",
+                                                            "Møre og Romsdal",
+                                                            "Nordland",
+                                                            "Oppland",
+                                                            "Oslo",
+                                                            "Østfold",
+                                                            "Rogaland",
+                                                            "Sogn og Fjordane",
+                                                            "Sør-Trøndelag",
+                                                            "Telemark",
+                                                            "Troms",
+                                                            "Trøndelag",
+                                                            "Vest-Agder",
+                                                            "Vestfold"
+                                                          ],
+                                                          "Pakistan": [
+                                                            "Azad Kashmir",
+                                                            "Balochistan",
+                                                            "Gilgit-Baltistan",
+                                                            "Islamabad Capital Territory",
+                                                            "Khyber Pakhtunkhwa",
+                                                            "Punjab",
+                                                            "Sindh"
+                                                          ],
+                                                          "Philippines": [
+                                                            "Abra",
+                                                            "Agusan del Norte",
+                                                            "Agusan del Sur",
+                                                            "Aklan",
+                                                            "Albay",
+                                                            "Antique",
+                                                            "Apayao",
+                                                            "Aurora",
+                                                            "Basilan",
+                                                            "Bataan",
+                                                            "Batanes",
+                                                            "Batangas",
+                                                            "Benguet",
+                                                            "Biliran",
+                                                            "Bohol",
+                                                            "Bukidnon",
+                                                            "Bulacan",
+                                                            "Cagayan",
+                                                            "Camarines Norte",
+                                                            "Camarines Sur",
+                                                            "Camiguin",
+                                                            "Capiz",
+                                                            "Catanduanes",
+                                                            "Cavite",
+                                                            "Cebu",
+                                                            "Compostela Valley",
+                                                            "Cotabato",
+                                                            "Davao del Norte",
+                                                            "Davao del Sur",
+                                                            "Davao Occidental",
+                                                            "Davao Oriental",
+                                                            "Dinagat Islands",
+                                                            "Eastern Samar",
+                                                            "Guimaras",
+                                                            "Ifugao",
+                                                            "Ilocos Norte",
+                                                            "Ilocos Sur",
+                                                            "Iloilo",
+                                                            "Isabela",
+                                                            "Kalinga",
+                                                            "La Union",
+                                                            "Laguna",
+                                                            "Lanao del Norte",
+                                                            "Lanao del Sur",
+                                                            "Leyte",
+                                                            "Maguindanao",
+                                                            "Marinduque",
+                                                            "Masbate",
+                                                            "Metro Manila",
+                                                            "Misamis Occidental",
+                                                            "Misamis Oriental",
+                                                            "Mountain Province",
+                                                            "Negros Occidental",
+                                                            "Negros Oriental",
+                                                            "Northern Samar",
+                                                            "Nueva Ecija",
+                                                            "Nueva Vizcaya",
+                                                            "Occidental Mindoro",
+                                                            "Oriental Mindoro",
+                                                            "Palawan",
+                                                            "Pampanga",
+                                                            "Pangasinan",
+                                                            "Quezon",
+                                                            "Quirino",
+                                                            "Rizal",
+                                                            "Romblon",
+                                                            "Samar",
+                                                            "Sarangani",
+                                                            "Siquijor",
+                                                            "Sorsogon",
+                                                            "South Cotabato",
+                                                            "Southern Leyte",
+                                                            "Sultan Kudarat",
+                                                            "Sulu",
+                                                            "Surigao del Norte",
+                                                            "Surigao del Sur",
+                                                            "Tarlac",
+                                                            "Tawi-Tawi",
+                                                            "Zambales",
+                                                            "Zamboanga del Norte",
+                                                            "Zamboanga del Sur",
+                                                            "Zamboanga Sibugay"
+                                                          ],
+                                                          "Russia": [
+                                                            "Altai Krai",
+                                                            "Altai Republic",
+                                                            "Amur Oblast",
+                                                            "Arkhangelsk Oblast",
+                                                            "Astrakhan Oblast",
+                                                            "Belgorod Oblast",
+                                                            "Bryansk Oblast",
+                                                            "Chelyabinsk Oblast",
+                                                            "Chukotka Autonomous Okrug",
+                                                            "Chuvash Republic",
+                                                            "Irkutsk Oblast",
+                                                            "Ivanovo Oblast",
+                                                            "Jewish Autonomous Oblast",
+                                                            "Kabardino-Balkar Republic",
+                                                            "Kaliningrad Oblast",
+                                                            "Kalmykia Republic",
+                                                            "Kaluga Oblast",
+                                                            "Kamchatka Krai",
+                                                            "Karachay-Cherkess Republic",
+                                                            "Karelia Republic",
+                                                            "Kemerovo Oblast",
+                                                            "Khabarovsk Krai",
+                                                            "Khakassia Republic",
+                                                            "Khanty-Mansi Autonomous Okrug",
+                                                            "Kirov Oblast",
+                                                            "Komi Republic",
+                                                            "Kostroma Oblast",
+                                                            "Krasnodar Krai",
+                                                            "Krasnoyarsk Krai",
+                                                            "Kurgan Oblast",
+                                                            "Kursk Oblast",
+                                                            "Leningrad Oblast",
+                                                            "Lipetsk Oblast",
+                                                            "Magadan Oblast",
+                                                            "Mari El Republic",
+                                                            "Mordovia Republic",
+                                                            "Moscow",
+                                                            "Moscow Oblast",
+                                                            "Murmansk Oblast",
+                                                            "Nenets Autonomous Okrug",
+                                                            "Nizhny Novgorod Oblast",
+                                                            "North Ossetia-Alania Republic",
+                                                            "Novgorod Oblast",
+                                                            "Novosibirsk Oblast",
+                                                            "Omsk Oblast",
+                                                            "Orenburg Oblast",
+                                                            "Oryol Oblast",
+                                                            "Penza Oblast",
+                                                            "Perm Krai",
+                                                            "Primorsky Krai",
+                                                            "Pskov Oblast",
+                                                            "Rostov Oblast",
+                                                            "Ryazan Oblast",
+                                                            "Sakha (Yakutia) Republic",
+                                                            "Sakhalin Oblast",
+                                                            "Samara Oblast",
+                                                            "Saratov Oblast",
+                                                            "Smolensk Oblast",
+                                                            "Stavropol Krai",
+                                                            "Sverdlovsk Oblast",
+                                                            "Tambov Oblast",
+                                                            "Tatarstan Republic",
+                                                            "Tomsk Oblast",
+                                                            "Tula Oblast",
+                                                            "Tuva Republic",
+                                                            "Tver Oblast",
+                                                            "Tyumen Oblast",
+                                                            "Tyva Republic",
+                                                            "Udmurt Republic",
+                                                            "Ulyanovsk Oblast",
+                                                            "Vladimir Oblast",
+                                                            "Volgograd Oblast",
+                                                            "Vologda Oblast",
+                                                            "Voronezh Oblast",
+                                                            "Yamalo-Nenets Autonomous Okrug",
+                                                            "Yaroslavl Oblast",
+                                                            "Zabaykalsky Krai"
+                                                          ],
+                                                          "Saudi Arabia": [
+                                                            "Al Bahah",
+                                                            "Al Jawf",
+                                                            "Al Madinah",
+                                                            "Asir",
+                                                            "Eastern Province",
+                                                            "Ha'il",
+                                                            "Jizan",
+                                                            "Makkah",
+                                                            "Najran",
+                                                            "Northern Borders",
+                                                            "Riyadh",
+                                                            "Tabuk"
+                                                          ],
+                                                          "Swaziland": [
+                                                            "Hhohho",
+                                                            "Lubombo",
+                                                            "Manzini",
+                                                            "Shiselweni"
+                                                          ],
+                                                          "Turkey": [
+                                                            "Adana",
+                                                            "Adıyaman",
+                                                            "Afyonkarahisar",
+                                                            "Ağrı",
+                                                            "Aksaray",
+                                                            "Amasya",
+                                                            "Ankara",
+                                                            "Antalya",
+                                                            "Ardahan",
+                                                            "Artvin",
+                                                            "Aydın",
+                                                            "Balıkesir",
+                                                            "Bartın",
+                                                            "Batman",
+                                                            "Bayburt",
+                                                            "Bilecik",
+                                                            "Bingöl",
+                                                            "Bitlis",
+                                                            "Bolu",
+                                                            "Burdur",
+                                                            "Bursa",
+                                                            "Çanakkale",
+                                                            "Çankırı",
+                                                            "Çorum",
+                                                            "Denizli",
+                                                            "Diyarbakır",
+                                                            "Düzce",
+                                                            "Edirne",
+                                                            "Elazığ",
+                                                            "Erzincan",
+                                                            "Erzurum",
+                                                            "Eskişehir",
+                                                            "Gaziantep",
+                                                            "Giresun",
+                                                            "Gümüşhane",
+                                                            "Hakkari",
+                                                            "Hatay",
+                                                            "Iğdır",
+                                                            "Isparta",
+                                                            "Istanbul",
+                                                            "İzmir",
+                                                            "Kahramanmaraş",
+                                                            "Karabük",
+                                                            "Karaman",
+                                                            "Kars",
+                                                            "Kastamonu",
+                                                            "Kayseri",
+                                                            "Kırıkkale",
+                                                            "Kırklareli",
+                                                            "Kırşehir",
+                                                            "Kilis",
+                                                            "Kocaeli",
+                                                            "Konya",
+                                                            "Kütahya",
+                                                            "Malatya",
+                                                            "Manisa",
+                                                            "Mardin",
+                                                            "Mersin",
+                                                            "Muğla",
+                                                            "Muş",
+                                                            "Nevşehir",
+                                                            "Niğde",
+                                                            "Ordu",
+                                                            "Osmaniye",
+                                                            "Rize",
+                                                            "Sakarya",
+                                                            "Samsun",
+                                                            "Siirt",
+                                                            "Sinop",
+                                                            "Sivas",
+                                                            "Şırnak",
+                                                            "Tekirdağ",
+                                                            "Tokat",
+                                                            "Trabzon",
+                                                            "Tunceli",
+                                                            "Uşak",
+                                                            "Van",
+                                                            "Yalova",
+                                                            "Yozgat",
+                                                            "Zonguldak"
+                                                          ],
+                                                          "United Kingdom": [
+                                                            "England",
+                                                            "Northern Ireland",
+                                                            "Scotland",
+                                                            "Wales"
+                                                          ]
+
+                                                        
+                                                    };
+                                                    
+                                                    function populateStates() {
+                                                        var countrySelect = document.getElementById("country");
+                                                        var stateSelect = document.getElementById("state");
+                                                    
+                                                        // Clear existing options
+                                                        stateSelect.innerHTML = "";
+                                                    
+                                                        // Get selected country
+                                                        var selectedCountry = countrySelect.options[countrySelect.selectedIndex].value;
+                                                    
+                                                        // Populate states based on selected country
+                                                        if (selectedCountry in countryStates) {
+                                                            var states = countryStates[selectedCountry];
+                                                            for (var i = 0; i < states.length; i++) {
+                                                                var option = document.createElement("option");
+                                                                option.text = states[i];
+                                                                option.value = states[i];
+                                                                stateSelect.add(option);
+                                                            }
+                                                        } else {
+                                                            // If the selected country doesn't have states, show a default message
+                                                            var option = document.createElement("option");
+                                                            option.text = "No states available";
+                                                            stateSelect.add(option);
+                                                        }
+                                                    }
+                                                </script>
                                                 <div class="col-lg-6 col-sm-12">
                                                     <label for="password" class="form-label" style="text-align:left;font-size:13px;">Password</label>
                                                     <input type="password" name="password" id="password"  placeholder="Password" />
@@ -1259,7 +2083,8 @@
         // Delegate click event handling to a parent element (e.g., document)
         $(document).on('click', 'a[href="#finish"]', function(e) {
             e.preventDefault(); // Prevent default link behavior
-            $('#signup-form').submit(); // Submit the form
+            window.location.href = '/login'; // Redirect to the login page
+            // $('#signup-form').submit(); // Submit the form
         });
     });
     </script>

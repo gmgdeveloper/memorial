@@ -12,815 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-    {{-- <style>
-        body {
-            background-image: url({{asset('assets/background.png')}});
-        background-position: center;
-        }
-
-        .navbar-brand {
-            color: white !important;
-            font-size: 25px;
-        }
-
-        .navlinks {
-            margin-right: 30px;
-            font-family: "Josefin Sans Light";
-        }
-
-        .searchinputnav {
-            height: 30px;
-            border-radius: 6px;
-            font-size: 12px;
-        }
-
-        .footersearchinputnav {
-            height: 30px;
-            border-radius: 6px;
-            font-size: 12px;
-            width: 100% !important;
-        }
-
-        h3.mainheading {
-            font-family: 'Josefin Sans Bold';
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
-            color: #BE9438;
-        }
-
-        .mainheading {
-            font-size: 18px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            text-align: center;
-            color: #BE9438;
-        }
-
-        h3.secondheading {
-            font-family: 'Josefin Sans Bold';
-            font-size: 22px;
-            text-align: center;
-            font-weight: 500;
-            color: #BE9438;
-        }
-
-        .secondheading {
-            font-size: 22px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            text-align: center;
-            color: #BE9438;
-        }
-
-        .pagemainheading {
-            font-size: 25px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            text-align: center;
-            color: #BE9438;
-        }
-
-        .anotherpagemainheading {
-            font-size: 25px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            text-align: right;
-            color: #BE9438;
-        }
-
-        .transitionheading {
-            font-size: 25px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            text-align: center;
-            color: #000;
-        }
-
-        .wishesheading {
-            font-size: 18px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            text-align: center;
-            color: #000;
-        }
-
-        .breesheading {
-            font-size: 15px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            color: #000;
-        }
-
-        p.mainparagraph.mt-3 {
-            font-size: 16px;
-        }
-
-        .swiper {
-            width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .swiper-slide img {
-            display: block;
-            /* width: 100%; */
-            /* height: 400px; */
-            /* object-fit: cover; */
-        }
-
-        .featurelink {
-            font-size: 22px;
-            color: #BE9438;
-            margin-right: 15px;
-            margin-left: 27px;
-            font-weight: bold;
-        }
-
-        .lifeatures {
-            font-size: 15px;
-        }
-
-        #client-testimonial-carousel {
-            min-height: 200px;
-        }
-
-        .carousel-indicators .active {
-            background-color: black;
-        }
-
-        .carousel-indicators>li {
-            background-color: grey;
-        }
-
-        h4 {
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-        }
-
-        h5 {
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-        }
-
-        h3 {
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-        }
-
-        .brennonheading {
-            font-size: 40px;
-            font-family: 'Josefin Sans Bold';
-            font-weight: 500;
-            text-align: center;
-            color: #000;
-        }
-
-        h6 {
-            font-family: 'Josefin Sans Bold';
-        }
-
-        input.form-control.mr-sm-2.searchinputnav {
-            border-top: 0px;
-            border-left: 0px;
-            border-right: 0px;
-            border-radius: 0px;
-            padding-left: 2px;
-        }
-
-        input.form-control.mr-sm-2.searchinputnav:focus {
-            border-top: 0px;
-            border-right: 0px;
-            border-left: 0px;
-            box-shadow: inherit;
-        }
-
-        .carousel-indicators {
-            bottom: inherit !important;
-        }
-
-        .offinmobile {
-            display: none !important;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #be9438 !important;
-        }
-
-        .searchinputnavhsbdha {
-            float: right;
-        }
-
-        .slider-container {
-            max-width: 100%;
-            /* Adjust the maximum width as needed */
-            overflow: hidden;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .slider-content {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .slider-item {
-            flex: 0 0 100%;
-            /* Display one item at a time */
-            margin-right: 20px;
-            /* Adjust the space between items as needed */
-            max-width: 300px;
-            /* Adjust the maximum width as needed */
-        }
-
-        .product-image {
-            width: 100%;
-            height: auto;
-            border: 1px solid #ccc;
-            /* Add border for better visibility */
-        }
-
-        .product-info {
-            text-align: center;
-            padding: 10px;
-        }
-
-        .prev,
-        .next {
-            position: absolute;
-            top: 35%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            background-color: #f1f1f100;
-            padding: 10px;
-            border: 0px solid #ccc;
-            border-radius: 50%;
-            font-size: 40px;
-            z-index: 1;
-        }
-
-        .prev {
-            left: 0;
-            color: #be9438;
-        }
-
-        .next {
-            right: 0;
-            color: #be9438;
-        }
-
-        .swiper-button-next.mt-lg-5 {
-            top: 60px;
-        }
-
-        .swiper-button-prev.mt-lg-5 {
-            top: 60px;
-        }
-
-        .swiper-button-next.generalnext {
-            margin-top: -76px;
-        }
-
-        .swiper-button-prev.generalprev {
-            margin-top: -76px;
-        }
-
-        @media screen and (max-width: 768px) {
-            .mobileoff {
-                display: none !important;
-            }
-
-            .mobileon {
-                display: block !important;
-            }
-
-            h3.mainheading {
-                font-size: 13px !important;
-            }
-
-            .mainparagraph {
-                font-size: 13px !important;
-            }
-
-            .firstimg {
-                height: 200px !important;
-            }
-
-            .featurelink {
-                font-size: 15px !important;
-            }
-
-            .margininstutive {
-                margin-left: 42px !important;
-            }
-
-            .blockquotep {
-                font-size: 14px !important;
-            }
-
-            .margintopadd {
-                margin-top: .5rem !important;
-            }
-
-            .loginheading {
-                text-align: center !important;
-            }
-
-            .heartinmg {
-                text-align: center !important;
-            }
-
-            .widthseting {
-                width: 80% !important;
-            }
-
-            .widthsetingcheck {
-                width: 20% !important;
-            }
-
-            .widthsetingtext {
-                font-size: 14px !important;
-            }
-
-            .margintopchecking {
-                margin-top: 5px !important;
-            }
-
-            .number {
-                width: 45px !important;
-                height: 40px !important;
-            }
-
-            .heightsetpackagediv {
-                height: 700% !important;
-            }
-
-            .visiblecheckbox {
-                width: 20% !important;
-                margin-top: 20px !important;
-            }
-
-            .visiblecheckboxdiv {
-                width: 80% !important;
-            }
-
-            .marginledftcvc {
-                margin-left: 4px !important;
-            }
-
-            .floatfledft {
-                float: left !important;
-                margin-right: 190px !important;
-            }
-
-            .imagemainheightset {
-                height: 150px !important;
-            }
-
-            .pagemainheading {
-                font-size: 20px !important;
-            }
-
-            .brennonheading {
-                font-size: 20px !important;
-            }
-
-            .borderremove {
-                padding-bottom: 130px !important;
-            }
-
-            .contactadministration {
-                width: 100% !important;
-            }
-
-            .addfullresposnive {
-                font-size: 11px !important;
-            }
-
-            .funeralmargin {
-                margin-top: 1rem !important
-            }
-
-            .dummyvideooo {
-                height: 250px !important;
-            }
-
-            .heightsethournreebotonimage {
-                height: 200px !important;
-            }
-
-            .slider-item {
-                margin-right: 0px !important;
-            }
-
-            .textcentssrer {
-                text-align: center !important;
-            }
-
-            a.navbar-brand.mobileon {
-                width: 50% !important;
-                font-size: 12px;
-            }
-
-            button:focus {
-                outline: inherit !important;
-            }
-
-            .searchinputnavhsbdha {
-                float: inherit;
-            }
-
-            .heightmainstory {
-                height: 200px !important;
-            }
-
-            .prev,
-            .next {
-                position: absolute;
-                top: 35%;
-                transform: translateY(-50%);
-                cursor: pointer;
-                background-color: #f1f1f100;
-                padding: 10px;
-                border: 0px solid #ccc;
-                border-radius: 50%;
-                font-size: 40px;
-                z-index: 1;
-            }
-
-            .qrimageheightset {
-                height: 310px !important;
-            }
-
-            .anotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
-                font-size: 20px !important;
-            }
-
-            .storiesanotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
-                margin-top: 15px;
-                font-size: 20px !important;
-            }
-
-            .addcontactswipermargintopres {
-                margin-top: 100px !important;
-            }
-
-            .transitionheading {
-                font-size: 20px !important;
-            }
-
-            .swiper-button-next.mt-lg-5 {
-                top: 140px;
-            }
-
-            .swiper-button-prev.mt-lg-5 {
-                top: 140px;
-            }
-
-            .qrcodediv {
-                padding-left: 0px !important;
-                padding-right: 0px !important;
-                margin-bottom: 1rem !important;
-            }
-
-            .topaddmarginsub {
-                margin-top: 30px !important;
-                margin-bottom: 10px !important;
-            }
-
-            .paddingunsget {
-                padding-left: 0px !important;
-                padding-right: 0px !important
-            }
-
-            .addpagingmodilbe {
-                padding: 6px !important;
-            }
-
-            .topcontactadministrationbottom {
-                margin-top: 10px !important;
-                margin-bottom: 10px !important;
-            }
-
-            .pagenotify {
-                text-align: left !important;
-            }
-
-            button.btn.notifybutton {
-                height: 31px;
-                border-radius: 0px;
-                margin-top: 0px;
-                padding-top: 2px;
-            }
-
-            .form-control:focus {
-                color: #495057;
-                background-color: #fff;
-                border-color: lightgrey;
-                outline: 0;
-                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
-            }
-
-            .offinmobile {
-                padding-right: 0px !important;
-            }
-
-            .newclasspaddingoff {
-                padding-right: 0px !important;
-            }
-
-            .heightscoailset {
-                width: 40px !important;
-                padding: 10px !important;
-                height: 40px !important;
-            }
-
-            .heightscoailseticon {
-                font-size: 20px !important;
-            }
-        }
-
-        @media screen and (max-width: 1024px) {
-            .mobileoff {
-                display: none !important;
-            }
-
-            .mobileon {
-                display: block !important;
-            }
-
-            h3.mainheading {
-                font-size: 13px !important;
-            }
-
-            .mainparagraph {
-                font-size: 13px !important;
-            }
-
-            .firstimg {
-                height: 200px !important;
-            }
-
-            .featurelink {
-                font-size: 15px !important;
-            }
-
-            .margininstutive {
-                margin-left: 42px !important;
-            }
-
-            .blockquotep {
-                font-size: 14px !important;
-            }
-
-            .margintopadd {
-                margin-top: .5rem !important;
-            }
-
-            .loginheading {
-                text-align: center !important;
-            }
-
-            .heartinmg {
-                text-align: center !important;
-            }
-
-            .widthseting {
-                width: 80% !important;
-            }
-
-            .widthsetingcheck {
-                width: 20% !important;
-            }
-
-            .widthsetingtext {
-                font-size: 14px !important;
-            }
-
-            .margintopchecking {
-                margin-top: 5px !important;
-            }
-
-            .number {
-                width: 45px !important;
-                height: 40px !important;
-            }
-
-            .heightsetpackagediv {
-                height: auto !important;
-            }
-
-            .visiblecheckbox {
-                width: 20% !important;
-                margin-top: 20px !important;
-            }
-
-            .visiblecheckboxdiv {
-                width: 80% !important;
-            }
-
-            .marginledftcvc {
-                margin-left: 10px !important;
-            }
-
-            .floatfledft {
-                float: left !important;
-                width: 100%;
-                -webkit-flex-direction: initial !important;
-            }
-
-            .form-date-item {
-                margin-left: 6px !important;
-            }
-
-            .textlinkhref {
-                width: 30% !important;
-            }
-
-            .textlinkhrefinput {
-                width: 40% !important;
-            }
-
-            .steps {
-                display: none !important;
-            }
-
-            .content .current {
-                padding-top: 0px !important;
-            }
-
-            .heightsetcredit {
-                height: auto !important;
-            }
-
-            .paddingkhaam {
-                padding-left: 0px !important;
-            }
-
-            .actions ul li a:hover {
-                background-color: #BE9438;
-                color: #fff !important;
-            }
-
-            label#email-error {
-                display: none !important;
-            }
-
-            .createammeorialwebsitetotitl {
-                margin-left: 30px !important;
-                font-size: 20px !important;
-            }
-
-            a[href="#next"] {
-                background-color: #BE9438 !important;
-                color: #fff !important;
-            }
-
-            .navbar-brand {
-                font-size: 14px !important;
-            }
-
-            .createa_pagebuttonwidthsetres {
-                width: 100% !important;
-            }
-
-            a.navbar-brand.mobileon {
-                width: 50% !important;
-            }
-
-            .responsiveinvisible {
-                height: auto !important;
-            }
-
-            .reposdivecardheight {
-                height: auto !important;
-            }
-
-            .fieldset-contenthwight {
-                height: auto !important;
-            }
-
-            .nameofcardiwdth {
-                width: 15% !important;
-            }
-
-            .searchinputnavhsbdha {
-                float: inherit;
-            }
-
-            .heightmainstory {
-                height: 200px !important;
-            }
-
-            .contactadministration {
-                width: 100% !important;
-            }
-
-            .qrimageheightset {
-                height: 310px !important;
-            }
-
-            .anotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
-                font-size: 20px !important;
-            }
-
-            .storiesanotherpagemainheading {
-                text-align: center !important;
-                margin-right: 0px !important;
-                margin-top: 15px;
-            }
-
-            .addcontactswipermargintopres {
-                margin-top: 100px !important;
-            }
-
-            .transitionheading {
-                font-size: 20px !important;
-            }
-
-            .swiper-button-next.mt-lg-5 {
-                top: 140px;
-            }
-
-            .swiper-button-prev.mt-lg-5 {
-                top: 140px;
-            }
-
-            .qrcodediv {
-                padding-left: 0px !important;
-                padding-right: 0px !important;
-                margin-bottom: 1rem !important;
-            }
-
-            .topaddmarginsub {
-                margin-top: 30px !important;
-                margin-bottom: 10px !important;
-            }
-
-            .paddingunsget {
-                padding-left: 0px !important;
-                padding-right: 0px !important
-            }
-
-            .addpagingmodilbe {
-                padding: 6px !important;
-            }
-
-            .topcontactadministrationbottom {
-                margin-top: 10px !important;
-                margin-bottom: 10px !important;
-            }
-
-            button.btn.notifybutton {
-                height: 31px;
-                border-radius: 0px;
-                margin-top: 0px;
-                padding-top: 2px;
-            }
-
-            .form-control:focus {
-                color: #495057;
-                background-color: #fff;
-                border-color: lightgrey;
-                outline: 0;
-                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
-            }
-
-            .heightscoailset {
-                width: 40px !important;
-                padding: 10px !important;
-                height: 40px !important;
-            }
-
-            .heightscoailseticon {
-                font-size: 20px !important;
-            }
-        }
-
-
-        span#editIcon {
-            color: blanchedalmond;
-            padding-right: 20px;
-        }
-    </style> --}}
     <style>
         span#editIcon {
-            color: blanchedalmond;
+            color: #BE9438;
             padding-right: 20px;
         }
         body {
@@ -1104,7 +298,7 @@
             .swiper-button-next.relativenext{
                 top: 105px;
             }
-        @media screen and (max-width: 768px) {
+        /* @media screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -1310,6 +504,347 @@
             }
             .table td, .table th{
                 padding: 10px;
+            }
+        } */
+        @media screen and (max-width: 768px) {
+            .mobileoff {
+                display: none !important;
+            }
+            
+            .mobileon {
+                display: block !important;  
+            }
+            
+            h3.mainheading {
+                font-size: 13px !important;
+            }
+            
+            .mainparagraph {
+                font-size: 13px !important;
+            }
+            
+            .firstimg {
+                height: 200px !important;
+            }
+            
+            .featurelink {
+                font-size: 15px !important;
+            }
+            
+            .margininstutive {
+                margin-left: 42px !important;
+            }
+            
+            .blockquotep {
+                font-size: 14px !important;
+            }
+            
+            .margintopadd {
+                margin-top: .5rem !important;
+            }
+            
+            .loginheading {
+                text-align: center !important;
+            }
+            
+            .heartinmg {
+                text-align: center !important;
+            }
+            
+            .widthseting {
+                width: 80% !important;
+            }
+            
+            .widthsetingcheck {
+                width: 20% !important;
+            }
+            
+            .widthsetingtext {
+                font-size: 14px !important;
+            }
+            
+            .margintopchecking {
+                margin-top: 5px !important;
+            }
+            
+            .number {
+                width: 45px !important;
+                height: 40px !important;
+            }
+            
+            .heightsetpackagediv {
+                height: auto !important;
+            }
+            
+            .visiblecheckbox {
+                width: 20% !important;
+                margin-top: 20px !important;
+            }
+            
+            .visiblecheckboxdiv {
+                width: 80% !important;
+            }
+            
+            .marginledftcvc {
+                margin-left: 10px !important;
+            }
+            
+            .floatfledft {
+                float: left !important;
+                width: 100%;
+                -webkit-flex-direction: initial !important;
+            }
+            
+            .form-date-item {
+                margin-left: 6px !important;
+            }
+            
+            .textlinkhref {
+                width: 30% !important;
+            }
+            
+            .textlinkhrefinput {
+                width: 40% !important;
+            }
+            
+            .steps {
+                display: none !important;
+            }
+            
+            .content .current {
+                padding-top: 0px !important;
+            }
+            
+            .heightsetcredit {
+                height: auto !important;
+            }
+            .paddingkhaam{
+                padding-left: 0px!important;
+            }
+            
+            .actions ul li a:hover {
+                background-color: #BE9438;
+                color: #fff !important;
+            }
+            
+            label#email-error {
+                display: none !important;
+            }
+            
+            .createammeorialwebsitetotitl {
+                margin-left: 30px !important;
+                font-size: 20px !important;
+            }
+            
+            a[href="#next"] {
+                background-color: #BE9438 !important;
+                color: #fff !important;
+            }
+            
+            .navbar-brand {
+                font-size: 14px !important;
+            }
+            
+            .createa_pagebuttonwidthsetres {
+                width: 100% !important;
+            }
+            
+            a.navbar-brand.mobileon {
+                width: 50% !important;
+            }
+            
+            .responsiveinvisible {
+                height: auto !important;
+            }
+            
+            .reposdivecardheight {
+                height: auto !important;
+            }
+            .fieldset-contenthwight{
+                height:auto!important;    
+            }
+            .nameofcardiwdth{
+                width:15%!important;
+            }
+            .searchinputnavhsbdha{
+               float: inherit;
+           }
+           .heightmainstory{
+               height:200px!important;
+           }
+           .contactadministration{
+               width:100%!important;
+           }
+           .qrimageheightset{
+                height:310px!important;
+            }
+            .anotherpagemainheading{
+                text-align:center!important;
+                margin-right:0px!important;
+                font-size: 20px !important;
+            }
+            .storiesanotherpagemainheading{
+                text-align:center!important;
+                margin-right:0px!important;
+                margin-top:15px;
+            }
+            .addcontactswipermargintopres{
+                margin-top:100px!important;
+            }
+            .transitionheading {
+                font-size:20px!important;
+            }
+             .swiper-button-next.mt-lg-5 {
+                top: 140px;
+            }
+            .swiper-button-prev.mt-lg-5{
+                top: 140px;
+            }
+            .qrcodediv{
+                padding-left:0px!important;
+                padding-right:0px!important;
+                margin-bottom:1rem!important;
+                width: 100%;
+                margin-left: 8px;
+            }
+            .topaddmarginsub{
+                margin-top:30px!important;
+                 margin-bottom:10px!important;
+            }
+            .paddingunsget{
+                padding-left:0px!important;
+                padding-right:0px!important
+            }
+            .addpagingmodilbe{
+                padding:6px!important;
+            }
+            .topcontactadministrationbottom{
+                margin-top:10px!important;
+                margin-bottom:10px!important;
+            }
+            button.btn.notifybutton {
+                height: 30px;
+                border-radius: 0px;
+                margin-top: 0px;
+                padding-top:2px;
+                margin-left:-6px;
+            }
+            .form-control:focus {
+                color: #495057;
+                background-color: #fff;
+                border-color: lightgrey;
+                outline: 0;
+                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%);
+            }
+            .heightscoailset {
+                width: 40px !important;
+                padding: 10px !important;
+                height: 40px !important;
+            }
+            .heightscoailseticon{
+                font-size:20px!important;
+            }
+            h4.tributemother {
+                margin-top: 0px!important;
+            }
+            .table td, .table th{
+                padding: 10px;
+            }
+            .relationshipdiccv{
+                border-bottom:0px!important;
+            }
+            .qandquestion {
+                margin-top: 90px;
+            }
+            .generalknowlagedivbottom{
+                border-bottom:0px!important;
+            }
+            .funeralmargin {
+                margin-top: 20px;
+            }
+            .dummyvideooo{
+               height:200px!important;
+            }
+            .slider-item{
+                margin-right:0px!important;
+                max-width: 100%!important;
+            }
+            .qrimageheightset{
+                width:98%!important;
+            }
+            .lastnotifybox{
+                border:0px!important;
+            }
+            .storiestitleborder{
+                border:0px!important;
+            }
+            .relationshipdiccv{
+                border-top:0px!important;
+            }
+            .widthsetoverview{
+                width:98%;
+            }
+            p.addfullresposnive {
+                font-size: 13px;
+            }
+            .col-lg-12.col-sm-12.mt-3.newclasspaddingoff.funeralmargin {
+               width: 96%;
+               margin-left: 8px;
+            }
+            .footerlast {
+                width: 96%; 
+                margin-left: 8px;
+            }
+            .doanationdiv{
+                width:98%
+            }
+            .mainecontaienfluid{
+                margin-left: 12px!important;
+            }
+            .transitionlbordernone{
+                border:0px!important;
+            }
+            .quotestextp{
+                font-size:13px;
+            }
+            .carouscaption{
+                top: 5px;
+            }
+            button{
+                 color:#000!important;
+            }
+            #videoPlayer{
+                height:200px!important;
+            }
+            h3{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h2{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h4{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h1{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h5{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            span{
+                font-family: 'Josefin Sans Light'!important;
+            }
+            p{
+                font-family: 'Josefin Sans Light'!important;
+            }
+            .imagemainheightset{
+                height:250px!important;
+            }
+            .noticestextsetiin{
+                padding-right:5px!important;
+            }
+            .mesagetextcenter{
+                text-align:center!important;
             }
         }
         
@@ -1528,10 +1063,11 @@
                 margin-bottom:10px!important;
             }
             button.btn.notifybutton {
-                height: 31px;
+                height: 30px;
                 border-radius: 0px;
                 margin-top: 0px;
                 padding-top:2px;
+                margin-left:-6px;
             }
             .form-control:focus {
                 color: #495057;
@@ -1554,12 +1090,15 @@
             .table td, .table th{
                 padding: 10px;
             }
+            .mesagetextcenter{
+                text-align:center!important;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid mainecontaienfluid">
         <div class="row">
             <div class="container" style="background-color:white;border:2px solid #BE9438;">
                 <div class="row" id="home">
@@ -1618,8 +1157,8 @@
                                             <div class="dropdown show">
                                                 <a class="nav-item nav-link ml-lg-5" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" role="button" id="dropdownMenuLinksec" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLinksec">
-                                                    <a class="dropdown-item" href="#">Profile</a>
-                                                    <a class="dropdown-item" href="#">Logout</a>
+                                                    <a class="dropdown-item" href="{{route('profile_honree')}}">Profile</a>
+                                                    <a class="dropdown-item" href="{{route('honree_logout')}}">Logout</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1745,84 +1284,84 @@
                                 <h4 class="text-center" id="editableDates" data-original-dates="Date of Birth: {{$date_of_birth}} Date of Death: {{$date_of_death}}">Date of Birth: {{$date_of_birth}} <span class="ml-lg-3">Date of Death: {{$date_of_death}}</span></h4>
 
                                 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var editableDates = document.getElementById('editableDates');
-        var isRequestInProgress = false; // Flag to track if an AJAX request is in progress
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableDates = document.getElementById('editableDates');
+                                        var isRequestInProgress = false; // Flag to track if an AJAX request is in progress
 
-        // Function to make element editable
-        function makeEditable(element) {
-            element.contentEditable = true;
-            element.focus();
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
 
-            // Add event listener for blur event
-            element.addEventListener('blur', function() {
-                // Get the edited content
-                var editedContent = element.textContent.trim();
+                                            // Add event listener for blur event
+                                            element.addEventListener('blur', function() {
+                                                // Get the edited content
+                                                var editedContent = element.textContent.trim();
 
-                // Extract date of birth and date of death from the edited content
-                var dates = editedContent.split('Date of Birth: ')[1].split(' Date of Death: ');
-                var dateOfBirth = dates[0].trim(); // Trim to remove extra spaces
-                var dateOfDeath = dates[1].trim(); // Trim to remove extra spaces
+                                                // Extract date of birth and date of death from the edited content
+                                                var dates = editedContent.split('Date of Birth: ')[1].split(' Date of Death: ');
+                                                var dateOfBirth = dates[0].trim(); // Trim to remove extra spaces
+                                                var dateOfDeath = dates[1].trim(); // Trim to remove extra spaces
 
-                // Get the original dates from the data attribute
-                var originalDates = element.getAttribute('data-original-dates').trim();
-                var originalDateOfBirth = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[0].trim();
-                var originalDateOfDeath = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[1].trim();
+                                                // Get the original dates from the data attribute
+                                                var originalDates = element.getAttribute('data-original-dates').trim();
+                                                var originalDateOfBirth = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[0].trim();
+                                                var originalDateOfDeath = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[1].trim();
 
-                // Compare edited dates with original dates
-                if (dateOfBirth !== originalDateOfBirth || dateOfDeath !== originalDateOfDeath) {
-                    // If an AJAX request is not already in progress, make the request
-                    if (!isRequestInProgress) {
-                        // Set the flag to true to indicate that a request is in progress
-                        isRequestInProgress = true;
+                                                // Compare edited dates with original dates
+                                                if (dateOfBirth !== originalDateOfBirth || dateOfDeath !== originalDateOfDeath) {
+                                                    // If an AJAX request is not already in progress, make the request
+                                                    if (!isRequestInProgress) {
+                                                        // Set the flag to true to indicate that a request is in progress
+                                                        isRequestInProgress = true;
 
-                        // Make an Ajax request to send the edited content to the server
-                        fetch('/update-dates', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
-                            },
-                            body: JSON.stringify({
-                                dateOfBirth: dateOfBirth,
-                                dateOfDeath: dateOfDeath
-                            })
-                        })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log('Dates updated successfully!');
-                            } else {
-                                console.error('Failed to update dates');
-                            }
+                                                        // Make an Ajax request to send the edited content to the server
+                                                        fetch('/update-dates', {
+                                                            method: 'POST',
+                                                            headers: {
+                                                                'Content-Type': 'application/json',
+                                                                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                            },
+                                                            body: JSON.stringify({
+                                                                dateOfBirth: dateOfBirth,
+                                                                dateOfDeath: dateOfDeath
+                                                            })
+                                                        })
+                                                        .then(response => {
+                                                            if (response.ok) {
+                                                                console.log('Dates updated successfully!');
+                                                            } else {
+                                                                console.error('Failed to update dates');
+                                                            }
 
-                            // Reset the flag to indicate that the request is complete
-                            isRequestInProgress = false;
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
+                                                            // Reset the flag to indicate that the request is complete
+                                                            isRequestInProgress = false;
+                                                        })
+                                                        .catch(error => {
+                                                            console.error('Error:', error);
 
-                            // Reset the flag to indicate that the request is complete
-                            isRequestInProgress = false;
-                        });
-                    }
-                }
-            });
-        }
+                                                            // Reset the flag to indicate that the request is complete
+                                                            isRequestInProgress = false;
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
 
-        // Make the dates editable upon clicking
-        editableDates.addEventListener('click', function() {
-            makeEditable(editableDates);
-        });
+                                        // Make the dates editable upon clicking
+                                        editableDates.addEventListener('click', function() {
+                                            makeEditable(editableDates);
+                                        });
 
-        // Add a click event listener on the document to handle clicks outside the editable element
-        document.addEventListener('click', function(event) {
-            if (!editableDates.contains(event.target)) {
-                // If the click target is not inside the editable element, trigger the blur event manually
-                editableDates.blur();
-            }
-        });
-    });
-</script>
+                                        // Add a click event listener on the document to handle clicks outside the editable element
+                                        document.addEventListener('click', function(event) {
+                                            if (!editableDates.contains(event.target)) {
+                                                // If the click target is not inside the editable element, trigger the blur event manually
+                                                editableDates.blur();
+                                            }
+                                        });
+                                    });
+                                </script>
 
 
 
@@ -1838,9 +1377,18 @@
                                         @foreach ($quotes as $quote)
                                         <div class="carousel-item @if ($loop->first) active @endif">
                                             <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground2.PNG')}}" alt="Slide {{$loop->iteration}}" style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption d-md-block carouscaption">
                                                 <h5 style="color:#000;" id="editableHeading{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->heading}}</h5>
-                                                <p style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->description}}</p>
+                                                <p class="quotestextp" style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->description}}</p>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                        @foreach ($quotes as $quote)
+                                        <div class="carousel-item @if ($loop->first)  @endif">
+                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground2.PNG')}}" alt="Slide {{$loop->iteration}}" style="height: 200px;">
+                                            <div class="carousel-caption d-md-block carouscaption">
+                                                <h5 style="color:#000;" id="editableHeading{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->heading}}</h5>
+                                                <p class="quotestextp" style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->description}}</p>
                                             </div>
                                         </div>
                                         @endforeach
@@ -1915,87 +1463,87 @@
                             </div>
 
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
-    <div style="position: relative;">
-        <!-- Video player -->
-        @if($audio->type=="video")  
-        <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
-            <source src="{{ asset($audio->full_path) }}" type="video/mp4">
-        </video>
-        @else
-        <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
-            <source src="{{ asset('assets/dummyvideo.mp4') }}" type="video/mp4">
-        </video>
-        @endif
-      
+                                <div style="position: relative;">
+                                    <!-- Video player -->
+                                    @if($audio->type=="video")  
+                                    <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
+                                        <source src="{{ asset($audio->full_path) }}" type="video/mp4">
+                                    </video>
+                                    @else
+                                    <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
+                                        <source src="{{ asset('assets/dummyvideo.mp4') }}" type="video/mp4">
+                                    </video>
+                                    @endif
+                                
 
-        <!-- Icon for uploading video -->
-        <span id="uploadIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-            <i class="fa fa-upload"></i>
-        </span>
+                                    <!-- Icon for uploading video -->
+                                    <span id="uploadIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                                        <i class="fa fa-upload" style="color: #BE9438;"></i>
+                                    </span>
 
-        <!-- Video upload area -->
-        <div id="videoUploadArea" style="display: none;">
-            <input type="file" id="videoUploadInput" accept="video/*">
-        </div>
-    </div>
+                                    <!-- Video upload area -->
+                                    <div id="videoUploadArea" style="display: none;">
+                                        <input type="file" id="videoUploadInput" accept="video/*">
+                                    </div>
+                                </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var uploadIcon = document.getElementById('uploadIcon');
-            var videoInput = document.getElementById('videoUploadInput');
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var uploadIcon = document.getElementById('uploadIcon');
+                                        var videoInput = document.getElementById('videoUploadInput');
 
-            // Function to handle showing/hiding video upload area
-            uploadIcon.addEventListener('click', function() {
-                videoInput.click();
-            });
+                                        // Function to handle showing/hiding video upload area
+                                        uploadIcon.addEventListener('click', function() {
+                                            videoInput.click();
+                                        });
 
-            // Function to handle video upload
-            videoInput.addEventListener('change', function() {
-                var file = this.files[0];
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var videoPlayer = document.getElementById('videoPlayer');
-                        videoPlayer.src = URL.createObjectURL(file);
-                        videoPlayer.load();
+                                        // Function to handle video upload
+                                        videoInput.addEventListener('change', function() {
+                                            var file = this.files[0];
+                                            if (file) {
+                                                var reader = new FileReader();
+                                                reader.onload = function(e) {
+                                                    var videoPlayer = document.getElementById('videoPlayer');
+                                                    videoPlayer.src = URL.createObjectURL(file);
+                                                    videoPlayer.load();
 
-                        // Optionally, you can send the video data to the server using AJAX
-                        var formData = new FormData();
-                        formData.append('video', file);
+                                                    // Optionally, you can send the video data to the server using AJAX
+                                                    var formData = new FormData();
+                                                    formData.append('video', file);
 
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST', '{{ route("videoupload") }}', true);
-                        xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
-                        xhr.onload = function() {
-                            if (xhr.status === 200) {
-                                console.log('Video uploaded successfully!');
-                            } else {
-                                console.error('Error uploading video:', xhr.responseText);
-                            }
-                        };
-                        xhr.send(formData);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        });
-    </script>
-</div>
+                                                    var xhr = new XMLHttpRequest();
+                                                    xhr.open('POST', '{{ route("videoupload") }}', true);
+                                                    xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                                                    xhr.onload = function() {
+                                                        if (xhr.status === 200) {
+                                                            console.log('Video uploaded successfully!');
+                                                        } else {
+                                                            console.error('Error uploading video:', xhr.responseText);
+                                                        }
+                                                    };
+                                                    xhr.send(formData);
+                                                };
+                                                reader.readAsDataURL(file);
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
 
              
 
 
-                            <div class="col-lg-12 col-sm-12 mt-3 pb-5 newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
+                            <div class="col-lg-12 col-sm-12 mt-3 pb-5 newclasspaddingoff widthsetoverview" style="border-bottom: 2px solid #BE9438!important;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="overview">AN OVERVIEW</h3>
 
                                 @if(!empty($over_view))
 
 
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
                                     {{ $over_view }}
                                 </p>
                                 @else
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
 
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
 
@@ -2037,7 +1585,7 @@
                                     }
                                 </script>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-3 mb-5 newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
+                            <div class="col-lg-12 col-sm-12 mt-3 mb-5 newclasspaddingoff relationshipdiccv" style="border-bottom: 2px solid #BE9438;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="relations">RELATIONSHIPS</h3>
                                 <div class="swiper myrelationswiper mt-3 mobileoff">
                                     <div class="swiper-wrapper">
@@ -2099,9 +1647,6 @@
                                                     <h5 style="font-size:16px;">SIBLING OF</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <!--<p class="mb-5" style="font-size: 10px;text-align: justify;font-family: 'Josefin Sans Light';">Kaitlyn-->
-                                                    <!--    Schuback-->
-                                                    <!--</p>-->
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
                                                         <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
@@ -2126,19 +1671,6 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <!--<p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">-->
-                                                    <!--    Steven Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    Kristina Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    Leesa Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    <span style="color: #BFAFF8!important;">Troy Schuback</span>-->
-                                                    <!--    <br>-->
-                                                    <!--    <span style="color: #BFAFF8!important;">Neil Daniel</span>-->
-                                                    <!--    <br>-->
-                                                    <!--    <span style="color: #BFAFF8!important;">Chris Shorrock</span>-->
-                                                    <!--</p>-->
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
                                                         <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
@@ -2163,19 +1695,6 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <!--<p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">-->
-                                                    <!--    Steven Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    Kristina Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    Leesa Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    <span style="color: #BFAFF8!important;">Troy Schuback</span>-->
-                                                    <!--    <br>-->
-                                                    <!--    <span style="color: #BFAFF8!important;">Neil Daniel</span>-->
-                                                    <!--    <br>-->
-                                                    <!--    <span style="color: #BFAFF8!important;">Chris Shorrock</span>-->
-                                                    <!--</p>-->
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
                                                         <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
                                                         <br>
@@ -2312,19 +1831,15 @@
                                 </div>
                                 <br>
                             </div>
-                            <div class="col-lg-12 col-sm-12 borderremove newclasspaddingoff" style="border-bottom: 2px solid #BE9438!important;">
+                            <div class="col-lg-12 col-sm-12 borderremove newclasspaddingoff generalknowlagedivbottom" style="border-bottom: 2px solid #BE9438;">
                                 <div class="row">
                                     <div  class="col-lg-8 col-sm-12 text-right mb-lg-4 newclasspaddingoff">
-                                        <h3 class="anotherpagemainheading ml-4 topaddmarginsub mobileoff" style="color:#A423EB!important;margin-right: 15px;" id="ganeral">GENERAL KNOWLEDGE
+                                        <h3 class="anotherpagemainheading ml-4 topaddmarginsub mobileoff" style="color:#A423EB!important;margin-right: 15px;" >GENERAL KNOWLEDGE
                                         </h3>
-                                        <h3 class="ml-lg-4 topaddmarginsub mobileon" style="color:#A423EB!important;margin-right: 15px;display:none;font-size:20px!important;text-align: -webkit-center;padding-top: 30px;" id="ganeral">GENERAL KNOWLEDGE
+                                        <h3 class="ml-lg-4 topaddmarginsub mobileon" style="color:#A423EB!important;margin-right: 15px;display:none;font-size:20px!important;text-align: -webkit-center;padding-top: 30px;" id="ganerall">GENERAL KNOWLEDGE
                                         </h3>
                                     </div>
                                     <div  class="col-lg-4 col-sm-12 ">
-                                        {{-- <form class="form-inline searchinputnavhsbdha">
-                                            <input class="form-control mr-sm-2 searchinputnav mb-2" type="search"
-                                                placeholder="Search" aria-label="Search">
-                                        </form> --}}
                                     </div>
                                 </div>
                                 <div class="swiper ganeralswiper pb-5 mobileoff">
@@ -2739,7 +2254,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-lg-4 pb-lg-5 newclasspaddingoff">
+                            <div class="col-lg-12 col-sm-12 mt-lg-4 pb-lg-5 newclasspaddingoff qandquestion">
                                 <h3 class="pagemainheading mt-lg-5 mb-lg-5 storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;">Q AND A’s
                                 </h3>
                                 <div class="swiper qandanswerswiperquestion pb-5" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
@@ -3080,7 +2595,31 @@
                                            <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummytwo.png')}}"> <img src="{{asset('assets/dummytwo.png')}}" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
@@ -3166,12 +2705,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--<div  class="col-lg-12 col-sm-12 mt-3">-->
-                            <!--    <form class="form-inline searchinputnavhsbdha">-->
-                            <!--        <input class="form-control mr-sm-2 searchinputnav" type="search"-->
-                            <!--            placeholder="Search" aria-label="Search">-->
-                            <!--    </form>-->
-                            <!--</div>-->
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
                                 <div class="swiper guestbookswiper">
                                     <div class="swiper-wrapper" style="height:300px;">
@@ -3276,7 +2809,7 @@
                             <!--            placeholder="Search" aria-label="Search">-->
                             <!--    </form>-->
                             <!--</div>-->
-                            <div class="col-lg-12 col-sm-12 p-3 mt-2 newclasspaddingoff" style="border: 2px solid #BE9438!important;">
+                            <div class="col-lg-12 col-sm-12 p-3 mt-2 newclasspaddingoff storiestitleborder" style="border: 2px solid #BE9438;">
                                 <div class="swiper galleryswiper">
                                     <div class="swiper-wrapper">
                                       <div class="swiper-slide">
@@ -3465,17 +2998,17 @@
                                   </div>
                                 </div>
                             </div>
-                            <div  class="col-lg-12 col-sm-12 mt-4 p-4 newclasspaddingoff" style="border-top: 2px solid #BE9438!important;">        
+                            <div  class="col-lg-12 col-sm-12 mt-4 p-4 newclasspaddingoff transitionlbordernone" style="border-top: 2px solid #BE9438;">        
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12" id="transition">
                                         <h3 class="transitionheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;">THE TRANSITION
                                         </h3>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <h3 class="wishesheading mt-4 topaddmarginsub" style="color:#A423EB!important;">FUNERAL WISHES
+                                        <h3 class="wishesheading mt-4" style="color:#A423EB!important;" id="funeral">FUNERAL WISHES
                                         </h3>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
+                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 5px!important;padding-left: 5px!important;">
                                         <h3 class="breesheading"><b style="color:#A423EB!important;">Title:</b> Bree’s Celebration of Life
                                         </h3>
                                         <h3 class="breesheading"><b style="color:#A423EB!important;">Theme:</b> Not sad - Light, Fun, Airy, like a carnivale
@@ -3514,12 +3047,12 @@
                                 </div>
                                 
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
+                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff funeralmargin" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                 <div class="row">
                                     <div class="col-lg-3 col-sm-6 ml-lg-5" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
-                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;" id="funeral">FUNERAL HOME
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">FUNERAL HOME
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
@@ -3613,8 +3146,6 @@
                                             <div class="card-body text-center" style="padding-top: 0px;">
                                                 <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Breannon's ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon's remaining ashes will be combined with her mother’s, and both will be buried with Breannon's sister, Kaitlyn Schuback-Jeffers.  
                                                 </p>
-                                                <!--<p style="font-family: 'Josefin Sans Light';font-size:15px;">GEO CODE-->
-                                                <!--</p>-->
                                             </div>
                                         </div>
                                     </div>
@@ -3632,30 +3163,30 @@
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3" style="color:#A423EB!important;">A MESSAGE FROM THE FAMILY
                                 </h3>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">In loving memory of Breannon, Kaitlyn and I wish to express our heartfelt gratitude to all who have supported us during this difficult time.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">In loving memory of Breannon, Kaitlyn and I wish to express our heartfelt gratitude to all who have supported us during this difficult time.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">A special thank you to Poppy and Brian for their generous assistance with funeral expenses and your consistent support during our times of need. Your love, kindness and support have been a great comfort to us.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">A special thank you to Poppy and Brian for their generous assistance with funeral expenses and your consistent support during our times of need. Your love, kindness and support have been a great comfort to us.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Our thanks go out to John Frearson for organizing the Go Fund Me account, and to everyone who contributed to assist us with living expenses while we took time off work to grieve. Your efforts have been a tremendous help to us during this challenging time.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">Our thanks go out to John Frearson for organizing the Go Fund Me account, and to everyone who contributed to assist us with living expenses while we took time off work to grieve. Your efforts have been a tremendous help to us during this challenging time.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Thank you to Kyle Tokic for leading the procession in Breannon’s car and for being a constant source of emotional support.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">Thank you to Kyle Tokic for leading the procession in Breannon’s car and for being a constant source of emotional support.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     We are also grateful to Cameron Rickard for organising the lawn games, which brought joy and light-heartedness to our gathering.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     We would also like to thank Selyca for providing the beautiful angel flowers, popcorn machine, and fairy floss machine. Your generous gestures added a special touch to the service.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     We are grateful to BHP for providing the stunning floral display, which brought beauty and solace to the service.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     Thank you to everyone who took the time to attend the service, traveling near and far and taking time off from work, especially Breannon’s cousin Kiralee who travelled from the UK to support us.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     As you can imagine, the event and lead-up were a blur. If we have missed anyone, please message us as we would love to mention you.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     Your kindness and support have meant the world to us during this difficult time. We are forever grateful for your love and generosity.
                                 </p>
                             </div>
@@ -3674,7 +3205,7 @@
                                         <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 31st BIRTHDAY:  
                                         </h3>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
+                                    <div class="col-lg-12 col-sm-12 text-center noticestextsetiin" style="padding-right: 5px!important;">
                                         <h3 class="breesheading">Karen and Kaitlyn would like to invite close family and friends to honour Breannon’s birthday at lunch on
                                         </h3>
                                         <h3 class="breesheading">Sunday 31st December, 12pm.
@@ -3707,7 +3238,7 @@
                                         <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 1st HEAVENLY BIRTHDAY 
                                         </h3>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
+                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 5px!important; padding-left:5px!important;">
                                         <h3 class="breesheading">Karen and Kaitlyn would like to invite close family and friends to honour Breannon’s anniversary online
                                         </h3>
                                         <h3 class="breesheading">Wednesday 25th August, 2024., 7pm. Online Zoom                                            .
@@ -3716,7 +3247,7 @@
                                 </div>
                                 
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" style="border-top: 2px solid #BE9438!important;" id="tributes">
+                            <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff doanationdiv transitionlbordernone" style="border-top: 2px solid #BE9438;" id="tributes">
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">TRIBUTES
                                 </h3>
                             </div>
@@ -3889,76 +3420,20 @@
                                     <div class="swiper-wrapper" style="height: 300px;">
                                       <div class="swiper-slide" style="border:2px solid #BE9438;">
                                         <p class="text-center mr-lg-5 p-lg-3" style="font-family: 'Josefin Sans Light';">
-                                            {{-- <span class="mr-lg-5">
-                                                <span class="mr-lg-5">
-                                                    <span class="mr-lg-5">
-                                                        <span class="mr-lg-5">
-                                                            <span class="mr-lg-5">
-                                                                <span style="font-family: 'Josefin Sans Light';">To: </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </span> --}}
                                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem sunt possimus inventore culpa rem necessitatibus in rerum. Officia autem eaque voluptatibus neque exercitationem nam magni corporis consequuntur facilis repellendus? Odit!
                                         </p>
-                                        {{-- <p class="text-center ml-lg-5"> --}}
-                                            {{-- <span class="ml-lg-5">
-                                                <span class="ml-lg-5"> 
-                                                    <span class="ml-lg-5">
-                                                        <span class="ml-lg-5">
-                                                            <span class="ml-lg-5">
-                                                                <span class="ml-lg-5">
-                                                                    <span class="ml-lg-5">
-                                                                        <span style="font-family: 'Josefin Sans Light';">Date: //</span>
-                                                                    </span>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </span> --}}
-                                        {{-- </p> --}}
                                       </div>
                                       <div class="swiper-slide" style="border:2px solid #BE9438;">
                                         <p class="text-center mr-lg-5 p-lg-3">
-                                            {{-- <span class="mr-lg-5">
-                                                <span class="mr-lg-5">
-                                                    <span class="mr-lg-5">
-                                                        <span class="mr-lg-5">
-                                                            <span class="mr-lg-5">
-                                                                <span style="font-family: 'Josefin Sans Light';">To:</span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </span> --}}
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore eligendi non quod expedita, natus aliquid iste temporibus iusto aliquam architecto facere mollitia quia numquam eveniet ipsa. Cupiditate, in eligendi.
                                         </p>
-                                        {{-- <p class="text-center ml-lg-5"> --}}
-                                            {{-- <span class="ml-lg-5">
-                                                <span class="ml-lg-5"> 
-                                                    <span class="ml-lg-5">
-                                                        <span class="ml-lg-5">
-                                                            <span class="ml-lg-5">
-                                                                <span class="ml-lg-5">
-                                                                    <span class="ml-lg-5">
-                                                                        <span style="font-family: 'Josefin Sans Light';">Date: / /</span>
-                                                                    </span>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                            </span> --}}
-                                        {{-- </p> --}}
                                       </div>
                                     </div>
                                     <div class="swiper-button-next mt-lg-5"></div>
                                     <div class="swiper-button-prev mt-lg-5"></div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" style="border-top: 2px solid #BE9438!important;border-bottom: 2px solid #BE9438!important;">
+                            <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff doanationdiv transitionlbordernone" style="border-top: 2px solid #BE9438;border-bottom: 2px solid #BE9438;">
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">MAKE A DONATION
                                 </h3>
                                 <p class="text-center" style="font-family: 'Josefin Sans Light';">"Transform grief into action by supporting a cause close to your heart. In memory of your loved one, consider donating to a charity dedicated to researching, advocating, or providing support for the cause of their passing. Your contribution not only honours their memory but also helps others facing similar challenges. Together, let's turn loss into hope and make a difference in their honour."   
@@ -4087,10 +3562,7 @@
                             </div>
                             <div class="col-lg-8 col-sm-8 mt-2 ">
                                 <div class="row">
-                                    <div class="col-lg-12 col-sm-12 text-center p-5" style="border: 1px solid #BE9438!important;">
-                                        <!--<span style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-facebook"></i></span>-->
-                                        <!--<span class="ml-3" style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-instagram"></i></span>-->
-                                        <!--<span class="ml-3" style="font-weight: bold;font-family: 'Josefin Sans Light';font-size: 35px;"><i class="fa fa-linkedin"></i></span>-->
+                                    <div class="col-lg-12 col-sm-12 text-center p-5 lastnotifybox" style="border: 1px solid #BE9438;">
                                         <div class="row">
                                             <div class="col-2">
                                                 <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
@@ -4142,7 +3614,7 @@
                                                     placeholder="Enter your Email" aria-label="Email" style="border-radius:0px;border-right:0px;">
                                                 </div>
                                                 <div class="col-2" style="padding-left:0px!important;">
-                                                    <button class="btn notifybutton"><i class="fa fa-arrow-right"></i></button>
+                                                    <button class="btn notifybutton"><i class="fa fa-arrow-right" style="color:#000;"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -4153,7 +3625,7 @@
                                 <button class="btn btn-large contactadministration topcontactadministrationbottom" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">EMAIL ADMINISTRATORS
                                 </button>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-3" style="border: 1px solid #BE9438!important;background-color: lightgrey;">
+                            <div class="col-lg-12 col-sm-12 mt-3 footerlast" style="border: 1px solid #BE9438!important;background-color: lightgrey;">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center">
                                         <div class="row">
@@ -4205,7 +3677,7 @@
                                             <div class="col-lg-3 col-sm-6 textcentssrer col-6"  style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="#ganeral" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GENERAL KNOWLEDGE</a>
+                                                      <a class="nav-link active" href="#ganerall" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GENERAL KNOWLEDGE</a>
                                                     </li>
                                                     <li class="nav-item">
                                                       <a class="nav-link" href="#sounds" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">SOUNDBITES</a>

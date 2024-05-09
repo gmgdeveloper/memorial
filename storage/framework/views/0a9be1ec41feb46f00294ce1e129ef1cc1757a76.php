@@ -4,7 +4,7 @@
 <head>
     <title>A life Worth Remembering</title>
     <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <style>
      body {
-    background-image: url({{ asset('background.png') }});
+    background-image: url(<?php echo e(asset('background.png')); ?>);
     background-position: center;
 }
 
@@ -145,7 +145,7 @@
         .btn:focus{
             box-shadow: 0 0 0 0.2rem rgb(177 138 52 / 30%)!important;
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -206,15 +206,9 @@
            .addbottommargindh{
                  margin-bottom:6px!important;
             }
-            .requestaccess{
-                color:#000!important;
-            }
-            button{
-                 color:#000!important;
-            }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -414,10 +408,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('login')); ?>">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('create_page')); ?>">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -435,6 +429,8 @@
                             </div>
                         </div>
                         <div class="container p-lg-5">
+                            <form action="<?php echo e(route('frontend_login')); ?>" method="POST">
+                                <?php echo csrf_field(); ?>
                             <div class="row p-lg-5" style="border: 2px solid #BE9438;">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
@@ -444,7 +440,7 @@
                                             </h3>
                                         </div>
                                         <div class="col-lg-5 col-sm-6 text-right mb-4 heartinmg">
-                                            <img src="{{asset('assets/heart.png')}}" class="img-fluid heartinmg" style="width:180px;">
+                                            <img src="<?php echo e(asset('assets/heart.png')); ?>" class="img-fluid heartinmg" style="width:180px;">
                                         </div>
                                         <div class="col-lg-2 mt-2">
                                             <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">FULL NAME</h5>
@@ -507,7 +503,7 @@
                                         </div>
                                         <div class="col-lg-10">
                                             <select onchange="showField(this.value)" class="mb-3  form-control" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
-                                            <option>Select Login Type</option>
+                                            <option>--Select Login Type--</option>
                                                 <option value="password">Guest</option>
                                                 <option value="accesscode">Access Code</option>
                                             </select>
@@ -539,17 +535,18 @@
                                             <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">I accept accasional marketing emails from 'A Life Worth Remembring'</p>
                                         </div>
                                         <div class="col-lg-5 col-sm-5 offset-lg-1 mt-2">
-                                            <button class="login-butn  btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">LOG IN</button>
+                                            <button type="submit" class="login-butn  btn btn-large mb-4" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">LOG IN</button>
                                         </div>
                                         <div class="col-lg-5 col-sm-5 mt-2">
-                                            <button class="btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">REQUEST ACCESS</button>
+                                            <button class="btn btn-large mb-4" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">REQUEST ACCESS</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </form>
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12 text-center">
-                                    <p class="text-muted text-center mt-4" style="font-family: 'Josefin Sans Light';">Copyright © 2024 - All Right Reserved.</p>
+                                    <p class="text-muted text-center mt-4" style="font-family: 'Josefin Sans Light';">This page was created by GMG Solutions 2024</p>
                                 </div>
                             </div>
                         </div>
@@ -561,60 +558,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-        $(document).ready(function(){
-    $(".login-butn").click(function(){
-        // Get CSRF token value from meta tag
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-        // Get form data
-        var fullname = $("input[name='fullname']").val();
-        var email = $("input[name='email']").val();
-        var honouree = $("input[name='honouree']").val();
-        var relationship = $("select[name='relationship']").val();
-        var accesscode = $("input[name='accesscode']").val();
-        var password = $("input[name='password']").val();
-        
-        // Prepare data for sending
-        var formData = {
-            fullname: fullname,
-            email: email,
-            honouree: honouree,
-            relationship: relationship,
-            accesscode: accesscode,
-            password: password,
-        };
-        
-        // Send data to the server with CSRF token included
-        $.ajax({
-    type: "POST",
-    url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
-    data: formData,
-    headers: {
-        'X-CSRF-TOKEN': csrfToken
-    },
-    success: function(response){
-        if(response.success){
-            // Redirect to the desired page
-            window.location.href = '{{ route("pageone") }}';
-        }
-        else if(response.success === false) { // Corrected syntax for else if
-            // Display unsuccessful login message
-            $("#loginMessage").html('<span style="color: red;">' + response.message + '</span>');
-        }
-    },
-    error: function(xhr, status, error){
-        // Handle errors
-        // $("#loginMessage").html('<span style="color: red;">' + xhr.responseText + '</span>');
-       
-    }
-});
-
-    });
-});
-
-
-</script>
+    
 
 
 
@@ -662,4 +606,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH G:\laragon\www\memorial_website\project\memorial\resources\views/Frontend/login.blade.php ENDPATH**/ ?>
