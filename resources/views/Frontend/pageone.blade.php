@@ -1281,94 +1281,55 @@
                                         paragraph.focus();
                                     }
                                 </script>
-                                <h4 class="text-center" id="editableDates" data-original-dates="Date of Birth: {{$date_of_birth}} Date of Death: {{$date_of_death}}">Date of Birth: {{$date_of_birth}} <span class="ml-lg-3">Date of Death: {{$date_of_death}}</span></h4>
-
+                                <h4 class="text-center">
+                                    Date of Birth: <span id="editableDateOfBirth" contenteditable>{{$date_of_birth}}</span>
+                                    <span class="ml-lg-3">Date of Death: <span id="editableDateOfDeath" contenteditable>{{$date_of_death}}</span></span>
+                                </h4>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
-                                        var editableDates = document.getElementById('editableDates');
-                                        var isRequestInProgress = false; // Flag to track if an AJAX request is in progress
-
-                                        // Function to make element editable
-                                        function makeEditable(element) {
-                                            element.contentEditable = true;
-                                            element.focus();
-
-                                            // Add event listener for blur event
-                                            element.addEventListener('blur', function() {
-                                                // Get the edited content
-                                                var editedContent = element.textContent.trim();
-
-                                                // Extract date of birth and date of death from the edited content
-                                                var dates = editedContent.split('Date of Birth: ')[1].split(' Date of Death: ');
-                                                var dateOfBirth = dates[0].trim(); // Trim to remove extra spaces
-                                                var dateOfDeath = dates[1].trim(); // Trim to remove extra spaces
-
-                                                // Get the original dates from the data attribute
-                                                var originalDates = element.getAttribute('data-original-dates').trim();
-                                                var originalDateOfBirth = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[0].trim();
-                                                var originalDateOfDeath = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[1].trim();
-
-                                                // Compare edited dates with original dates
-                                                if (dateOfBirth !== originalDateOfBirth || dateOfDeath !== originalDateOfDeath) {
-                                                    // If an AJAX request is not already in progress, make the request
-                                                    if (!isRequestInProgress) {
-                                                        // Set the flag to true to indicate that a request is in progress
-                                                        isRequestInProgress = true;
-
-                                                        // Make an Ajax request to send the edited content to the server
-                                                        fetch('/update-dates', {
-                                                            method: 'POST',
-                                                            headers: {
-                                                                'Content-Type': 'application/json',
-                                                                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
-                                                            },
-                                                            body: JSON.stringify({
-                                                                dateOfBirth: dateOfBirth,
-                                                                dateOfDeath: dateOfDeath
-                                                            })
-                                                        })
-                                                        .then(response => {
-                                                            if (response.ok) {
-                                                                console.log('Dates updated successfully!');
-                                                            } else {
-                                                                console.error('Failed to update dates');
-                                                            }
-
-                                                            // Reset the flag to indicate that the request is complete
-                                                            isRequestInProgress = false;
-                                                        })
-                                                        .catch(error => {
-                                                            console.error('Error:', error);
-
-                                                            // Reset the flag to indicate that the request is complete
-                                                            isRequestInProgress = false;
-                                                        });
-                                                    }
+                                        // Function to handle updating the dates
+                                        function updateDates(dateOfBirth, dateOfDeath) {
+                                            // Make an AJAX request to update the database
+                                            fetch('/update-dates', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                },
+                                                body: JSON.stringify({
+                                                    dateOfBirth: dateOfBirth,
+                                                    dateOfDeath: dateOfDeath
+                                                })
+                                            })
+                                            .then(response => {
+                                                if (response.ok) {
+                                                    console.log('Dates updated successfully!');
+                                                } else {
+                                                    console.error('Failed to update dates');
                                                 }
+                                            })
+                                            .catch(error => {
+                                                console.error('Error:', error);
                                             });
                                         }
-
-                                        // Make the dates editable upon clicking
-                                        editableDates.addEventListener('click', function() {
-                                            makeEditable(editableDates);
+                                
+                                        // Add event listener to the Date of Birth span
+                                        var editableDateOfBirth = document.getElementById('editableDateOfBirth');
+                                        editableDateOfBirth.addEventListener('blur', function() {
+                                            var newDateOfBirth = editableDateOfBirth.textContent.trim();
+                                            var dateOfDeath = document.getElementById('editableDateOfDeath').textContent.trim();
+                                            updateDates(newDateOfBirth, dateOfDeath);
                                         });
-
-                                        // Add a click event listener on the document to handle clicks outside the editable element
-                                        document.addEventListener('click', function(event) {
-                                            if (!editableDates.contains(event.target)) {
-                                                // If the click target is not inside the editable element, trigger the blur event manually
-                                                editableDates.blur();
-                                            }
+                                
+                                        // Add event listener to the Date of Death span
+                                        var editableDateOfDeath = document.getElementById('editableDateOfDeath');
+                                        editableDateOfDeath.addEventListener('blur', function() {
+                                            var dateOfBirth = document.getElementById('editableDateOfBirth').textContent.trim();
+                                            var newDateOfDeath = editableDateOfDeath.textContent.trim();
+                                            updateDates(dateOfBirth, newDateOfDeath);
                                         });
                                     });
                                 </script>
-
-
-
-
-
-
-                           
                            
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
@@ -1376,15 +1337,6 @@
                                     <div class="carousel-inner">
                                         @foreach ($quotes as $quote)
                                         <div class="carousel-item @if ($loop->first) active @endif">
-                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground2.PNG')}}" alt="Slide {{$loop->iteration}}" style="height: 200px;">
-                                            <div class="carousel-caption d-md-block carouscaption">
-                                                <h5 style="color:#000;" id="editableHeading{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->heading}}</h5>
-                                                <p class="quotestextp" style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->description}}</p>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                        @foreach ($quotes as $quote)
-                                        <div class="carousel-item @if ($loop->first)  @endif">
                                             <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground2.PNG')}}" alt="Slide {{$loop->iteration}}" style="height: 200px;">
                                             <div class="carousel-caption d-md-block carouscaption">
                                                 <h5 style="color:#000;" id="editableHeading{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->heading}}</h5>
@@ -1402,8 +1354,46 @@
                                         <span class="swiper-button-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
+                                    <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                                        <i class="fa fa-upload" style="color: #fff;" data-toggle="modal" data-target="#quotesmodal"></i>
+                                    </span>
                                 </div>
-
+                                <!-- Modal -->
+                                <div class="modal fade" id="quotesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Quote</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="{{route('add_quote')}}" method="POST">
+                                            <div class="modal-body">
+                                            
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="title" class="float-left">Add Title</label>
+                                                                <input class="form-control" type="text" id="title" name="heading" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="brief" class="float-left">Add Description</label>
+                                                                <textarea class="form-control" id="description" name="description" required></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         // Function to make element editable
@@ -1421,8 +1411,10 @@
                                                 var data = {};
                                                 if (contentType === 'heading') {
                                                     data.heading = editedContent;
+                                                    data.quoteid = quoteId;
                                                 } else if (contentType === 'description') {
                                                     data.description = editedContent;
+                                                    data.quoteid = quoteId;
                                                 }
 
 
@@ -1589,245 +1581,175 @@
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="relations">RELATIONSHIPS</h3>
                                 <div class="swiper myrelationswiper mt-3 mobileoff">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;">CHILD OF</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <!--<p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">Karen Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    Ross Daniel (Estranged)-->
-                                                    <!--</p>-->
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
+                                        @foreach($relationships as $relationship)
+                                            <div class="swiper-slide" style="height: 280px;">
+                                                <div class="card" style="width: 75%;background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                    <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                                        <h5 style="font-size:16px;" id="heading" class="editable" data-relationship-id="{{$relationship->id}}">{{$relationship->heading}}</h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_first}}</a></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_second">{{$relationship->sub_heading_second}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_third">{{$relationship->sub_heading_third}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fourth">{{$relationship->sub_heading_fourth}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fifth">{{$relationship->sub_heading_fifth}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_sixth}}</a></span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="" style="font-size:16px;">GRANDCHILD OF
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;">SIBLING OF</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="" style="font-size:16px;">NIBLING OF
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="" style="font-size:16px;">Again NIBLING OF
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="swiper-button-next relationshipsliderbuttonnext" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                     <div class="swiper-button-prev relationshipsliderbuttonprev" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                 </div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.editable');
+                                        
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+                                
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+                                
+                                            element.addEventListener('blur', function() {
+                                                var editedContent = element.textContent.trim();
+                                                var elementId = element.id;
+                                                var relationshipId = element.getAttribute('data-relationship-id');
+                                
+                                                // Prepare data object with key-value pairs
+                                                var data = {
+                                                    content: editedContent,
+                                                    elementId: elementId,
+                                                    relationshipId: relationshipId
+                                                };
+                                
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-relationship', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Content updated successfully!');
+                                                    } else {
+                                                        console.error('Failed to update content');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                            });
+                                        });
+                                    });
+                                </script>
                                 
                                 
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">CHILD OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
+                                        @foreach($relationships as $relationship)
+                                            <div class="swiper-slide">
+                                                <div class="card" style="width: 75%;background-color: #fff; border:0px;">
+                                                    <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                        <p style="font-family: 'Josefin Sans Light';" id="heading" class="editable" data-relationship-id="{{$relationship->id}}">{{$relationship->heading}}
+                                                        </p>
+                                                        <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_first}}</a></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_second">{{$relationship->sub_heading_second}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_third">{{$relationship->sub_heading_third}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fourth">{{$relationship->sub_heading_fourth}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fifth">{{$relationship->sub_heading_fifth}}</span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_sixth}}</a></span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">GRANDCHILD OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">SIBLING OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">NIBLING OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">Again NIBLING OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
+                                </div>
+
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#relationmodal"></i>
+                                </span>
+                                <div class="modal fade" id="relationmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Relationship</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="{{route('add_relation')}}" method="POST">
+                                            <div class="modal-body">
+                                            
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="title" class="float-left">Add Heading</label>
+                                                                <input class="form-control" type="text" id="title" name="heading" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_first" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_first" name="sub_heading_first" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_second" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_second" name="sub_heading_second" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_third" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_third" name="sub_heading_third" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_fourth" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_fourth" name="sub_heading_fourth" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_fifth" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_fifth" name="sub_heading_fifth" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_sixth" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_sixth" name="sub_heading_sixth" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
                                 </div>
                                 <br>
                             </div>

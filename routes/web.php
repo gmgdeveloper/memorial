@@ -119,6 +119,12 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::post('/videoupload',[PageController::class,'videoupload'])->name('videoupload');
 
     Route::post('/update-dates',[PageController::class,'update_dates'])->name('update-dates');
+
+    Route::post('/add-quote',[PageController::class,'add_quote'])->name('add_quote');
+
+    Route::post('/add-relation',[PageController::class,'add_relation'])->name('add_relation');
+
+    Route::post('/update-relationship',[PageController::class,'update_relationship'])->name('update_relationship');
 });
 
 Route::group(['prefix' => 'admin'], function() {

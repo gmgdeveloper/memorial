@@ -209,6 +209,9 @@
             .heightsitting{
                 height:180px!important;
             }
+            button{
+                 color:#000!important;
+            }
         }
         
         @media  screen and (max-width: 1024px) {
@@ -448,7 +451,7 @@
                                         <div class="carousel-item active">
                                             <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption d-md-block">
                                                 <h5 style="color:black;">Bruce Lee</h5>
                                                 <p style="font-family: 'Josefin Sans Light';color:black;">The key to immortality is first living a life worth remembering</p>
                                             </div>
@@ -456,7 +459,7 @@
                                         <div class="carousel-item ">
                                             <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption d-md-block">
                                                 <h5 style="color:black;">Unknown</h5>
                                                 <p style="font-family: 'Josefin Sans Light';color:black;">Inside each of us is a natural-born storyteller, waiting to be released</p>
                                             </div>
@@ -464,7 +467,7 @@
                                         <div class="carousel-item ">
                                             <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption d-md-block">
                                                 <h5 style="color:black;">Brene Brown</h5>
                                                 <p style="font-family: 'Josefin Sans Light';color:black;">One day, you will tell your story of how you overcame what you went through, and it will be someone else’s survival guide</p>
                                             </div>
@@ -472,7 +475,7 @@
                                         <div class="carousel-item ">
                                             <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption d-md-block">
                                                 <h5 style="color:black;">Rebel Thriver</h5>
                                                 <p style="font-family: 'Josefin Sans Light';color:black;">When writing the story of your life, don’t let anyone else hold the pen</p>
                                             </div>
@@ -480,7 +483,7 @@
                                         <div class="carousel-item ">
                                             <img class="d-block w-100 firstimg" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="First slide"
                                                 style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption d-md-block">
                                                 <h5 style="color:black;">Simply Topaz</h5>
                                                 <p style="font-family: 'Josefin Sans Light';color:black;">Live the story you want to tell</p>
                                             </div>

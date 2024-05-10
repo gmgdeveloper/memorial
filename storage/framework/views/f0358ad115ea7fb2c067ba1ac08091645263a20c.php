@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <style>
         span#editIcon {
-            color: blanchedalmond;
+            color: #BE9438;
             padding-right: 20px;
         }
         body {
@@ -723,10 +723,11 @@
                 margin-bottom:10px!important;
             }
             button.btn.notifybutton {
-                height: 31px;
+                height: 30px;
                 border-radius: 0px;
                 margin-top: 0px;
                 padding-top:2px;
+                margin-left:-6px;
             }
             .form-control:focus {
                 color: #495057;
@@ -791,17 +792,59 @@
                margin-left: 8px;
             }
             .footerlast {
-                width: 96%;
+                width: 96%; 
                 margin-left: 8px;
             }
             .doanationdiv{
                 width:98%
             }
             .mainecontaienfluid{
-                margin-left: 13px!important;
+                margin-left: 12px!important;
             }
             .transitionlbordernone{
                 border:0px!important;
+            }
+            .quotestextp{
+                font-size:13px;
+            }
+            .carouscaption{
+                top: 5px;
+            }
+            button{
+                 color:#000!important;
+            }
+            #videoPlayer{
+                height:200px!important;
+            }
+            h3{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h2{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h4{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h1{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            h5{
+                font-family: 'Josefin Sans Bold'!important;
+            }
+            span{
+                font-family: 'Josefin Sans Light'!important;
+            }
+            p{
+                font-family: 'Josefin Sans Light'!important;
+            }
+            .imagemainheightset{
+                height:250px!important;
+            }
+            .noticestextsetiin{
+                padding-right:5px!important;
+            }
+            .mesagetextcenter{
+                text-align:center!important;
             }
         }
         
@@ -1020,10 +1063,11 @@
                 margin-bottom:10px!important;
             }
             button.btn.notifybutton {
-                height: 31px;
+                height: 30px;
                 border-radius: 0px;
                 margin-top: 0px;
                 padding-top:2px;
+                margin-left:-6px;
             }
             .form-control:focus {
                 color: #495057;
@@ -1045,6 +1089,9 @@
             }
             .table td, .table th{
                 padding: 10px;
+            }
+            .mesagetextcenter{
+                text-align:center!important;
             }
         }
     </style>
@@ -1110,8 +1157,8 @@
                                             <div class="dropdown show">
                                                 <a class="nav-item nav-link ml-lg-5" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" role="button" id="dropdownMenuLinksec" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLinksec">
-                                                    <a class="dropdown-item" href="#">Profile</a>
-                                                    <a class="dropdown-item" href="#">Logout</a>
+                                                    <a class="dropdown-item" href="<?php echo e(route('profile_honree')); ?>">Profile</a>
+                                                    <a class="dropdown-item" href="<?php echo e(route('honree_logout')); ?>">Logout</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1235,94 +1282,55 @@
                                         paragraph.focus();
                                     }
                                 </script>
-                                <h4 class="text-center" id="editableDates" data-original-dates="Date of Birth: <?php echo e($date_of_birth); ?> Date of Death: <?php echo e($date_of_death); ?>">Date of Birth: <?php echo e($date_of_birth); ?> <span class="ml-lg-3">Date of Death: <?php echo e($date_of_death); ?></span></h4>
-
+                                <h4 class="text-center">
+                                    Date of Birth: <span id="editableDateOfBirth" contenteditable><?php echo e($date_of_birth); ?></span>
+                                    <span class="ml-lg-3">Date of Death: <span id="editableDateOfDeath" contenteditable><?php echo e($date_of_death); ?></span></span>
+                                </h4>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
-                                        var editableDates = document.getElementById('editableDates');
-                                        var isRequestInProgress = false; // Flag to track if an AJAX request is in progress
-
-                                        // Function to make element editable
-                                        function makeEditable(element) {
-                                            element.contentEditable = true;
-                                            element.focus();
-
-                                            // Add event listener for blur event
-                                            element.addEventListener('blur', function() {
-                                                // Get the edited content
-                                                var editedContent = element.textContent.trim();
-
-                                                // Extract date of birth and date of death from the edited content
-                                                var dates = editedContent.split('Date of Birth: ')[1].split(' Date of Death: ');
-                                                var dateOfBirth = dates[0].trim(); // Trim to remove extra spaces
-                                                var dateOfDeath = dates[1].trim(); // Trim to remove extra spaces
-
-                                                // Get the original dates from the data attribute
-                                                var originalDates = element.getAttribute('data-original-dates').trim();
-                                                var originalDateOfBirth = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[0].trim();
-                                                var originalDateOfDeath = originalDates.split('Date of Birth: ')[1].split(' Date of Death: ')[1].trim();
-
-                                                // Compare edited dates with original dates
-                                                if (dateOfBirth !== originalDateOfBirth || dateOfDeath !== originalDateOfDeath) {
-                                                    // If an AJAX request is not already in progress, make the request
-                                                    if (!isRequestInProgress) {
-                                                        // Set the flag to true to indicate that a request is in progress
-                                                        isRequestInProgress = true;
-
-                                                        // Make an Ajax request to send the edited content to the server
-                                                        fetch('/update-dates', {
-                                                            method: 'POST',
-                                                            headers: {
-                                                                'Content-Type': 'application/json',
-                                                                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                            },
-                                                            body: JSON.stringify({
-                                                                dateOfBirth: dateOfBirth,
-                                                                dateOfDeath: dateOfDeath
-                                                            })
-                                                        })
-                                                        .then(response => {
-                                                            if (response.ok) {
-                                                                console.log('Dates updated successfully!');
-                                                            } else {
-                                                                console.error('Failed to update dates');
-                                                            }
-
-                                                            // Reset the flag to indicate that the request is complete
-                                                            isRequestInProgress = false;
-                                                        })
-                                                        .catch(error => {
-                                                            console.error('Error:', error);
-
-                                                            // Reset the flag to indicate that the request is complete
-                                                            isRequestInProgress = false;
-                                                        });
-                                                    }
+                                        // Function to handle updating the dates
+                                        function updateDates(dateOfBirth, dateOfDeath) {
+                                            // Make an AJAX request to update the database
+                                            fetch('/update-dates', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                },
+                                                body: JSON.stringify({
+                                                    dateOfBirth: dateOfBirth,
+                                                    dateOfDeath: dateOfDeath
+                                                })
+                                            })
+                                            .then(response => {
+                                                if (response.ok) {
+                                                    console.log('Dates updated successfully!');
+                                                } else {
+                                                    console.error('Failed to update dates');
                                                 }
+                                            })
+                                            .catch(error => {
+                                                console.error('Error:', error);
                                             });
                                         }
-
-                                        // Make the dates editable upon clicking
-                                        editableDates.addEventListener('click', function() {
-                                            makeEditable(editableDates);
+                                
+                                        // Add event listener to the Date of Birth span
+                                        var editableDateOfBirth = document.getElementById('editableDateOfBirth');
+                                        editableDateOfBirth.addEventListener('blur', function() {
+                                            var newDateOfBirth = editableDateOfBirth.textContent.trim();
+                                            var dateOfDeath = document.getElementById('editableDateOfDeath').textContent.trim();
+                                            updateDates(newDateOfBirth, dateOfDeath);
                                         });
-
-                                        // Add a click event listener on the document to handle clicks outside the editable element
-                                        document.addEventListener('click', function(event) {
-                                            if (!editableDates.contains(event.target)) {
-                                                // If the click target is not inside the editable element, trigger the blur event manually
-                                                editableDates.blur();
-                                            }
+                                
+                                        // Add event listener to the Date of Death span
+                                        var editableDateOfDeath = document.getElementById('editableDateOfDeath');
+                                        editableDateOfDeath.addEventListener('blur', function() {
+                                            var dateOfBirth = document.getElementById('editableDateOfBirth').textContent.trim();
+                                            var newDateOfDeath = editableDateOfDeath.textContent.trim();
+                                            updateDates(dateOfBirth, newDateOfDeath);
                                         });
                                     });
                                 </script>
-
-
-
-
-
-
-                           
                            
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
@@ -1331,9 +1339,9 @@
                                         <?php $__currentLoopData = $quotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $quote): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="carousel-item <?php if($loop->first): ?> active <?php endif; ?>">
                                             <img class="d-block w-100 imagemainheightset" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="Slide <?php echo e($loop->iteration); ?>" style="height: 200px;">
-                                            <div class="carousel-caption d-none d-md-block">
+                                            <div class="carousel-caption d-md-block carouscaption">
                                                 <h5 style="color:#000;" id="editableHeading<?php echo e($quote->id); ?>" data-quote-id="<?php echo e($quote->id); ?>"><?php echo e($quote->heading); ?></h5>
-                                                <p style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara<?php echo e($quote->id); ?>" data-quote-id="<?php echo e($quote->id); ?>"><?php echo e($quote->description); ?></p>
+                                                <p class="quotestextp" style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara<?php echo e($quote->id); ?>" data-quote-id="<?php echo e($quote->id); ?>"><?php echo e($quote->description); ?></p>
                                             </div>
                                         </div>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1347,8 +1355,46 @@
                                         <span class="swiper-button-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
+                                    <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                                        <i class="fa fa-upload" style="color: #fff;" data-toggle="modal" data-target="#quotesmodal"></i>
+                                    </span>
                                 </div>
-
+                                <!-- Modal -->
+                                <div class="modal fade" id="quotesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Quote</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="<?php echo e(route('add_quote')); ?>" method="POST">
+                                            <div class="modal-body">
+                                            
+                                                    <?php echo csrf_field(); ?>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="title" class="float-left">Add Title</label>
+                                                                <input class="form-control" type="text" id="title" name="heading" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="brief" class="float-left">Add Description</label>
+                                                                <textarea class="form-control" id="description" name="description" required></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
                                         // Function to make element editable
@@ -1366,8 +1412,10 @@
                                                 var data = {};
                                                 if (contentType === 'heading') {
                                                     data.heading = editedContent;
+                                                    data.quoteid = quoteId;
                                                 } else if (contentType === 'description') {
                                                     data.description = editedContent;
+                                                    data.quoteid = quoteId;
                                                 }
 
 
@@ -1423,7 +1471,7 @@
 
                                     <!-- Icon for uploading video -->
                                     <span id="uploadIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                        <i class="fa fa-upload"></i>
+                                        <i class="fa fa-upload" style="color: #BE9438;"></i>
                                     </span>
 
                                     <!-- Video upload area -->
@@ -1484,12 +1532,12 @@
                                 <?php if(!empty($over_view)): ?>
 
 
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
                                     <?php echo e($over_view); ?>
 
                                 </p>
                                 <?php else: ?>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
 
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
 
@@ -1535,254 +1583,185 @@
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="relations">RELATIONSHIPS</h3>
                                 <div class="swiper myrelationswiper mt-3 mobileoff">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;">CHILD OF</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <!--<p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">Karen Schuback-->
-                                                    <!--    <br>-->
-                                                    <!--    Ross Daniel (Estranged)-->
-                                                    <!--</p>-->
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
+                                        <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="swiper-slide" style="height: 280px;">
+                                                <div class="card" style="width: 75%;background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                                    <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                                        <h5 style="font-size:16px;" id="heading" class="editable" data-relationship-id="<?php echo e($relationship->id); ?>"><?php echo e($relationship->heading); ?></h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_first); ?></a></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_second"><?php echo e($relationship->sub_heading_second); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_third"><?php echo e($relationship->sub_heading_third); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fourth"><?php echo e($relationship->sub_heading_fourth); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fifth"><?php echo e($relationship->sub_heading_fifth); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_sixth); ?></a></span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="" style="font-size:16px;">GRANDCHILD OF
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;">SIBLING OF</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="" style="font-size:16px;">NIBLING OF
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 280px;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="" style="font-size:16px;">Again NIBLING OF
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                     <div class="swiper-button-next relationshipsliderbuttonnext" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                     <div class="swiper-button-prev relationshipsliderbuttonprev" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                 </div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.editable');
+                                        
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+                                
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+                                
+                                            element.addEventListener('blur', function() {
+                                                var editedContent = element.textContent.trim();
+                                                var elementId = element.id;
+                                                var relationshipId = element.getAttribute('data-relationship-id');
+                                
+                                                // Prepare data object with key-value pairs
+                                                var data = {
+                                                    content: editedContent,
+                                                    elementId: elementId,
+                                                    relationshipId: relationshipId
+                                                };
+                                
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-relationship', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Content updated successfully!');
+                                                    } else {
+                                                        console.error('Failed to update content');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                            });
+                                        });
+                                    });
+                                </script>
                                 
                                 
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">CHILD OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
+                                        <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="swiper-slide">
+                                                <div class="card" style="width: 75%;background-color: #fff; border:0px;">
+                                                    <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                        <p style="font-family: 'Josefin Sans Light';" id="heading" class="editable" data-relationship-id="<?php echo e($relationship->id); ?>"><?php echo e($relationship->heading); ?>
+
+                                                        </p>
+                                                        <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_first); ?></a></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_second"><?php echo e($relationship->sub_heading_second); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_third"><?php echo e($relationship->sub_heading_third); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fourth"><?php echo e($relationship->sub_heading_fourth); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fifth"><?php echo e($relationship->sub_heading_fifth); ?></span>
+                                                            <br>
+                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_sixth); ?></a></span>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">GRANDCHILD OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">SIBLING OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">NIBLING OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Light';">Again NIBLING OF
-                                                    </p>
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Geoff Schuback</a></span>
-                                                        <br>
-                                                        Diane Schuback
-                                                        <br>
-                                                        Poppy Schuback (Marriage)
-                                                        <br>
-                                                        Ron Daniel
-                                                        <br>
-                                                        Jan Horgan
-                                                        <br>
-                                                        <span style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">Lex Horgan (Marriage)</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
+                                </div>
+
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#relationmodal"></i>
+                                </span>
+                                <div class="modal fade" id="relationmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Relationship</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="<?php echo e(route('add_relation')); ?>" method="POST">
+                                            <div class="modal-body">
+                                            
+                                                    <?php echo csrf_field(); ?>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="title" class="float-left">Add Heading</label>
+                                                                <input class="form-control" type="text" id="title" name="heading" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_first" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_first" name="sub_heading_first" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_second" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_second" name="sub_heading_second" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_third" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_third" name="sub_heading_third" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_fourth" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_fourth" name="sub_heading_fourth" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_fifth" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_fifth" name="sub_heading_fifth" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="sub_heading_sixth" class="float-left">Add Text</label>
+                                                                <input class="form-control" type="text" id="sub_heading_sixth" name="sub_heading_sixth" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
                                 </div>
                                 <br>
                             </div>
                             <div class="col-lg-12 col-sm-12 borderremove newclasspaddingoff generalknowlagedivbottom" style="border-bottom: 2px solid #BE9438;">
                                 <div class="row">
                                     <div  class="col-lg-8 col-sm-12 text-right mb-lg-4 newclasspaddingoff">
-                                        <h3 class="anotherpagemainheading ml-4 topaddmarginsub mobileoff" style="color:#A423EB!important;margin-right: 15px;" id="ganeral">GENERAL KNOWLEDGE
+                                        <h3 class="anotherpagemainheading ml-4 topaddmarginsub mobileoff" style="color:#A423EB!important;margin-right: 15px;" >GENERAL KNOWLEDGE
                                         </h3>
-                                        <h3 class="ml-lg-4 topaddmarginsub mobileon" style="color:#A423EB!important;margin-right: 15px;display:none;font-size:20px!important;text-align: -webkit-center;padding-top: 30px;" id="ganeral">GENERAL KNOWLEDGE
+                                        <h3 class="ml-lg-4 topaddmarginsub mobileon" style="color:#A423EB!important;margin-right: 15px;display:none;font-size:20px!important;text-align: -webkit-center;padding-top: 30px;" id="ganerall">GENERAL KNOWLEDGE
                                         </h3>
                                     </div>
                                     <div  class="col-lg-4 col-sm-12 ">
@@ -2541,7 +2520,31 @@
                                            <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummytwo.png')); ?>"> <img src="<?php echo e(asset('assets/dummytwo.png')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                        </div>
+                                        <div class="swiper-slide" style="border:0px;">
+                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
@@ -2920,10 +2923,10 @@
                                         </h3>
                                     </div>
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <h3 class="wishesheading mt-4" style="color:#A423EB!important;">FUNERAL WISHES
+                                        <h3 class="wishesheading mt-4" style="color:#A423EB!important;" id="funeral">FUNERAL WISHES
                                         </h3>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
+                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 5px!important;padding-left: 5px!important;">
                                         <h3 class="breesheading"><b style="color:#A423EB!important;">Title:</b> Bree’s Celebration of Life
                                         </h3>
                                         <h3 class="breesheading"><b style="color:#A423EB!important;">Theme:</b> Not sad - Light, Fun, Airy, like a carnivale
@@ -2962,12 +2965,12 @@
                                 </div>
                                 
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff funeralmargin">
+                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff funeralmargin" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                 <div class="row">
                                     <div class="col-lg-3 col-sm-6 ml-lg-5" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
                                             <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
-                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;" id="funeral">FUNERAL HOME
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">FUNERAL HOME
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
@@ -3078,30 +3081,30 @@
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3" style="color:#A423EB!important;">A MESSAGE FROM THE FAMILY
                                 </h3>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">In loving memory of Breannon, Kaitlyn and I wish to express our heartfelt gratitude to all who have supported us during this difficult time.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">In loving memory of Breannon, Kaitlyn and I wish to express our heartfelt gratitude to all who have supported us during this difficult time.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">A special thank you to Poppy and Brian for their generous assistance with funeral expenses and your consistent support during our times of need. Your love, kindness and support have been a great comfort to us.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">A special thank you to Poppy and Brian for their generous assistance with funeral expenses and your consistent support during our times of need. Your love, kindness and support have been a great comfort to us.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Our thanks go out to John Frearson for organizing the Go Fund Me account, and to everyone who contributed to assist us with living expenses while we took time off work to grieve. Your efforts have been a tremendous help to us during this challenging time.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">Our thanks go out to John Frearson for organizing the Go Fund Me account, and to everyone who contributed to assist us with living expenses while we took time off work to grieve. Your efforts have been a tremendous help to us during this challenging time.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Thank you to Kyle Tokic for leading the procession in Breannon’s car and for being a constant source of emotional support.
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">Thank you to Kyle Tokic for leading the procession in Breannon’s car and for being a constant source of emotional support.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     We are also grateful to Cameron Rickard for organising the lawn games, which brought joy and light-heartedness to our gathering.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     We would also like to thank Selyca for providing the beautiful angel flowers, popcorn machine, and fairy floss machine. Your generous gestures added a special touch to the service.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     We are grateful to BHP for providing the stunning floral display, which brought beauty and solace to the service.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     Thank you to everyone who took the time to attend the service, traveling near and far and taking time off from work, especially Breannon’s cousin Kiralee who travelled from the UK to support us.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     As you can imagine, the event and lead-up were a blur. If we have missed anyone, please message us as we would love to mention you.
                                 </p>
-                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     Your kindness and support have meant the world to us during this difficult time. We are forever grateful for your love and generosity.
                                 </p>
                             </div>
@@ -3120,7 +3123,7 @@
                                         <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 31st BIRTHDAY:  
                                         </h3>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
+                                    <div class="col-lg-12 col-sm-12 text-center noticestextsetiin" style="padding-right: 5px!important;">
                                         <h3 class="breesheading">Karen and Kaitlyn would like to invite close family and friends to honour Breannon’s birthday at lunch on
                                         </h3>
                                         <h3 class="breesheading">Sunday 31st December, 12pm.
@@ -3153,7 +3156,7 @@
                                         <h3 class="wishesheading mt-4">CELEBRATING BREANNONS 1st HEAVENLY BIRTHDAY 
                                         </h3>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
+                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 5px!important; padding-left:5px!important;">
                                         <h3 class="breesheading">Karen and Kaitlyn would like to invite close family and friends to honour Breannon’s anniversary online
                                         </h3>
                                         <h3 class="breesheading">Wednesday 25th August, 2024., 7pm. Online Zoom                                            .
@@ -3528,7 +3531,7 @@
                                                     placeholder="Enter your Email" aria-label="Email" style="border-radius:0px;border-right:0px;">
                                                 </div>
                                                 <div class="col-2" style="padding-left:0px!important;">
-                                                    <button class="btn notifybutton"><i class="fa fa-arrow-right"></i></button>
+                                                    <button class="btn notifybutton"><i class="fa fa-arrow-right" style="color:#000;"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -3591,7 +3594,7 @@
                                             <div class="col-lg-3 col-sm-6 textcentssrer col-6"  style="text-align:left;">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                      <a class="nav-link active" href="#ganeral" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GENERAL KNOWLEDGE</a>
+                                                      <a class="nav-link active" href="#ganerall" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">GENERAL KNOWLEDGE</a>
                                                     </li>
                                                     <li class="nav-item">
                                                       <a class="nav-link" href="#sounds" style="color: #000;padding-bottom: 0px;font-family: 'Josefin Sans Light';">SOUNDBITES</a>

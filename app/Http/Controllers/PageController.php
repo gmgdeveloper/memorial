@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use App\Mail\AccessCodeEmail;
 use App\Models\Audio;
+use App\Models\Relationship;
 use App\Models\BannerImage;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
@@ -35,7 +36,7 @@ class PageController extends Controller
         $audio = Audio::where('memorial_id', auth()->user()->id)->first();
         
         $quotes = Quote::where('memorial_id', auth()->user()->id)->get(); // Fetch quotes associated with the authenticated user
-            
+        $relationships = Relationship::where('user_id', auth()->user()->id)->get();   
 
         
  
@@ -60,7 +61,7 @@ class PageController extends Controller
 
         
     
-            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio'));
+            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships'));
         
     }
 
@@ -253,9 +254,8 @@ class PageController extends Controller
 
 
     public function save_quotes(Request $request, $id) {
-        $quote = Quote::find($id);
+        $quote = Quote::find($request->quoteid);
 
- 
         // Check if the quote exists
         if (!$quote) {
             return response()->json(['message' => 'Quote not found'], 404);
@@ -278,10 +278,48 @@ class PageController extends Controller
         return response()->json(['success' => true,'message' => 'Quote updated successfully'], 200);
     }
     
+    public function add_quote(Request $request){
+        // dd($request->all());
+        $quote = Quote::create([
+            'memorial_id' => auth()->user()->id,
+            'heading' => $request->heading,
+            'description' => $request->description,
+        ]);
+    
+        return redirect()->route('pageone');
+    }
 
 
+    public function add_relation(Request $request){
+        // dd($request->all());
+        $relationship = Relationship::create([
+            'user_id' => auth()->user()->id,
+            'heading' => $request->heading,
+            'sub_heading_first' => $request->sub_heading_first,
+            'sub_heading_second' => $request->sub_heading_second,
+            'sub_heading_third' => $request->sub_heading_third,
+            'sub_heading_fourth' => $request->sub_heading_fourth,
+            'sub_heading_fifth' => $request->sub_heading_fifth,
+            'sub_heading_sixth' => $request->sub_heading_sixth,
+        ]);
+    
+        return redirect()->route('pageone');
+    }
 
-
+    public function update_relationship(Request $request){
+        $relationship = Relationship::where('id', $request->relationshipId)
+                                    ->where('user_id', auth()->user()->id)
+                                    ->first();
+    
+        if($relationship){
+            $relationship->{$request->elementId} = $request->content;
+            $relationship->save();
+    
+            return response()->json(['message' => 'Relationship updated successfully'], 200);
+        } else {
+            return response()->json(['error' => 'Relationship not found or unauthorized'], 404);
+        }
+    }    
 
     public function videoupload(Request $request)
     {
