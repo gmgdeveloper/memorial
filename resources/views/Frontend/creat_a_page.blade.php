@@ -867,11 +867,11 @@
                                                                 style="height: 300px;">
                                                                 <!-- Use a <div> element styled to look like a button -->
                                                                 <div class="select-plan-btn"
-    data-plan-id="{{$plan->id}}"
-    data-price="{{$plan->price}}"
-    style="width:100%; background-color: #BE9438; color: #fff; font-family: 'Josefin Sans Light'; cursor: pointer; padding: 10px; text-align: center; border-radius: 5px;">
-    Select
-</div>
+                                                                    data-plan-id="{{$plan->id}}"
+                                                                    data-price="{{$plan->price}}"
+                                                                    style="width:100%; background-color: #BE9438; color: #fff; font-family: 'Josefin Sans Light'; cursor: pointer; padding: 10px; text-align: center; border-radius: 5px;">
+                                                                    Select
+                                                                </div>
 
                                                                 <p class="mt-3"
                                                                     style="font-size:16px;color:#000; font-weight: 500;margin-top:20px;font-family: 'Josefin Sans Light';">

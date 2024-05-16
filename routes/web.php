@@ -29,7 +29,7 @@ Auth::routes();
 
 Route::get('/',[FrontendController::class,'home_page'])->name('home');
 Route::get('/login',function(){
-    return view('Frontend.login');
+    return view('auth.login');
 })->name('login');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/userlogin',[UserController::class,'frontend_login'])->name('frontend_login');
@@ -38,6 +38,13 @@ Route::post('/user/logout', [LoginController::class, 'userLogout'])->name('user.
 Route::get('/create_page',[PageController::class,'creat_a_page'])->name('create_page');
 Route::post('/create_page_save',[PageController::class,'save_create_page'])->name('save_page');
 
+Route::post('/login_with_access_code',[UserController::class,'login_with_access_code'])->name('login_with_access_code');
+
+Route::post('/request_with_access_code',[UserController::class,'request_with_access_code'])->name('request_with_access_code');
+
+Route::get('hnotifications',[UserController::class,'hnotifications'])->name('hnotifications');
+
+Route::get('giveaccess/{id}',[UserController::class,'giveaccess'])->name('giveaccess');
 //pages footer 
 
 
@@ -125,6 +132,7 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::post('/add-relation',[PageController::class,'add_relation'])->name('add_relation');
 
     Route::post('/update-relationship',[PageController::class,'update_relationship'])->name('update_relationship');
+    Route::post('/ganeral-setting',[PageController::class,'ganeral_setting'])->name('ganeral_setting');
 });
 
 Route::group(['prefix' => 'admin'], function() {

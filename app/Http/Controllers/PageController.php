@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Media;
 use App\Models\Quote;
+use App\Models\GaneralSetting;
 
 class PageController extends Controller
 {
@@ -37,6 +38,7 @@ class PageController extends Controller
         
         $quotes = Quote::where('memorial_id', auth()->user()->id)->get(); // Fetch quotes associated with the authenticated user
         $relationships = Relationship::where('user_id', auth()->user()->id)->get();   
+        $ganeral_setting = GaneralSetting::where('user_id', auth()->user()->id)->first();   
 
         
  
@@ -61,7 +63,7 @@ class PageController extends Controller
 
         
     
-            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships'));
+            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting'));
         
     }
 
@@ -108,7 +110,8 @@ class PageController extends Controller
         $accessCode = Str::random();
 
         // Hash the access code and store it in the database
-        $user->access_code = Hash::make($accessCode);
+        // $user->access_code = Hash::make($accessCode);
+        $user->access_code = $accessCode;
 
         // Save the user to the database
         if ($user->save()) {
@@ -131,6 +134,14 @@ class PageController extends Controller
             $user_page->total_amount = $selectedPlan->price; // Assign the price of the selected plan
             $user_page->name = $user->name; // Use the user's name
             $user_page->email = $user->email; // Use the user's email
+            $user_page->user_id = $user->user_id; // Use the user's email
+
+
+            $randomString = Str::random(5);
+            $baseUrl = config('app.url'); // Get your site's base URL from configuration
+            $randomUrl = $baseUrl . '/' . $randomString;
+            $legacy_page_url = $randomUrl;
+            $user_page->legacy_page_url = $legacy_page_url;
 
             // Save the user page to the database
             if ($user_page->save()) {
@@ -358,36 +369,55 @@ class PageController extends Controller
     
 
     public function update_dates(Request $request)
-{
+    {
 
-   
-    $user_id = auth()->id();
-    $userpage = UserPlan::where('user_id', $user_id)->first(); // Retrieve the user's plan
-    if ($userpage) {
-        $page_id = $userpage->page_id; // Access the page ID if the user has a page
-        $page = UserPages::find($page_id); // Assuming there's a UserPages model
-        if ($page) {
-            // Update the dates if they are not empty
-            if (!empty($request->dateOfBirth)) {
-                $page->date_of_birth = $request->dateOfBirth;
-            }
-            if (!empty($request->dateOfDeath)) {
-                $page->date_of_death = $request->dateOfDeath;
-            }
-            $page->save();
+    
+        $user_id = auth()->id();
+        $userpage = UserPlan::where('user_id', $user_id)->first(); // Retrieve the user's plan
+        if ($userpage) {
+            $page_id = $userpage->page_id; // Access the page ID if the user has a page
+            $page = UserPages::find($page_id); // Assuming there's a UserPages model
+            if ($page) {
+                // Update the dates if they are not empty
+                if (!empty($request->dateOfBirth)) {
+                    $page->date_of_birth = $request->dateOfBirth;
+                }
+                if (!empty($request->dateOfDeath)) {
+                    $page->date_of_death = $request->dateOfDeath;
+                }
+                $page->save();
 
-            return response()->json(['success' => true, 'message' => 'Dates updated successfully']);
+                return response()->json(['success' => true, 'message' => 'Dates updated successfully']);
+            } else {
+                // Handle case where the page is not found
+                return response()->json(['error' => 'Page not found']);
+            }
         } else {
-            // Handle case where the page is not found
-            return response()->json(['error' => 'Page not found']);
+            // Handle case where the user's plan is not found
+            return response()->json(['error' => 'User plan not found']);
         }
-    } else {
-        // Handle case where the user's plan is not found
-        return response()->json(['error' => 'User plan not found']);
     }
-}
 
+    
+    public function ganeral_setting(Request $request)
+    {
+        $user_id = auth()->id();
 
+        $imageName = time().'.'.$request->background_image->extension();  
+        $request->background_image->move(public_path('body_images'), $imageName);
+        
+        $ganeral_seeting = GaneralSetting::where('user_id', $user_id)->first();
+        if ($ganeral_seeting) {
+            $ganeral_seeting->body_image = $imageName;
+            $ganeral_seeting->save();
+        } else {
+            $ganeral_seeting = new GaneralSetting();
+            $ganeral_seeting->user_id = $user_id;
+            $ganeral_seeting->body_image = $imageName;
+            $ganeral_seeting->save();
+        }
+        return redirect()->route('pageone');
+    }
 
 
 

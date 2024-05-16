@@ -1,89 +1,17 @@
-{{-- @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
-@php
+<?php
     if(!empty(auth()->user()->id)) {
         header("Location: /pageone");
         exit;
     }
-@endphp
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>A life Worth Remembering</title>
     <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -94,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-image: url({{ asset('background.png') }});
+            background-image: url(<?php echo e(asset('background.png')); ?>);
             background-position: center;
         }
 
@@ -233,7 +161,7 @@
         .custom-select:focus {
             border-color: #BE9438; /* Change the border color when the select element is focused */
         }
-        @media screen and (max-width: 768px) {
+        @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -302,7 +230,7 @@
             }
         }
         
-        @media screen and (max-width: 1024px) {
+        @media  screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -497,10 +425,10 @@
                                         <div class="collapse navbar-collapse" id="navbarNav">
                                             <ul class="navbar-nav">
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('login')}}">LOG IN</a>
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('login')); ?>">LOG IN</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link navlinks" href="{{route('create_page')}}">CREATE A PAGE</a>
+                                                    <a class="nav-link navlinks" href="<?php echo e(route('create_page')); ?>">CREATE A PAGE</a>
                                                 </li>
                                             </ul>
                                             <form class="form-inline">
@@ -520,8 +448,8 @@
                         <div class="container p-lg-5">
                             <div class="row p-lg-5" style="border: 2px solid #BE9438;">
                                 <div class="col-lg-12 col-sm-12">
-                                    <form action="{{route('login_with_access_code')}}" method="POST" id="loginForm">
-                                        @csrf
+                                    <form action="<?php echo e(route('login_with_access_code')); ?>" method="POST" id="loginForm">
+                                        <?php echo csrf_field(); ?>
                                         <div class="row" id="guestFields">
                                             <div class="col-lg-7 col-sm-6 mt-5">
                                                 <h3 class="loginheading text-right mt-lg-5" style="color:#BE9438;">
@@ -529,28 +457,30 @@
                                                 </h3>
                                             </div>
                                             <div class="col-lg-5 col-sm-6 text-right mb-4 heartinmg">
-                                                <img src="{{asset('assets/heart.png')}}" class="img-fluid heartinmg" style="width:180px;">
+                                                <img src="<?php echo e(asset('assets/heart.png')); ?>" class="img-fluid heartinmg" style="width:180px;">
                                             </div>
                                             <div class="col-12">
-                                                @if($errors->any())
+                                                <?php if($errors->any()): ?>
                                                     <div class="alert alert-danger">
                                                         <ul>
-                                                            @foreach ($errors->all() as $error)
-                                                                <li>{{ $error }}</li>
-                                                            @endforeach
+                                                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <li><?php echo e($error); ?></li>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </ul>
                                                     </div>
-                                                @endif
-                                                @if(session('success'))
+                                                <?php endif; ?>
+                                                <?php if(session('success')): ?>
                                                     <div class="alert alert-success">
-                                                        {{ session('success') }}
+                                                        <?php echo e(session('success')); ?>
+
                                                     </div>
-                                                @endif
-                                                @if(session('error'))
+                                                <?php endif; ?>
+                                                <?php if(session('error')): ?>
                                                     <div class="alert alert-danger">
-                                                        {{ session('error') }}
+                                                        <?php echo e(session('error')); ?>
+
                                                     </div>
-                                                @endif
+                                                <?php endif; ?>
                                             </div>                                            
                                             <div class="col-lg-2 mt-2">
                                                 <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">FULL NAME</h5>
@@ -624,14 +554,9 @@
                                                 <h5 class="mt-2 addbottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">ACCESS CODE</h5>
                                             </div>
                                             <div class="col-lg-10">
-                                                {{-- <select onchange="showField(this.value)" class="mb-3  form-control" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
-                                                <option>Select Login Type</option>
-                                                    <option value="password">Guest</option>
-                                                    <option value="accesscode">Access Code</option>
-                                                </select> --}}
+                                                
                                                 <input type="text" class="form-control" id="accessCodeInput" name="access_code" style="border: 2px solid #BE9438;" placeholder="Access code">
-                                                {{-- <input type="password" class="form-control" id="passwordInput" name="password" style="border: 2px solid #BE9438; display: none;" placeholder="Password">
-                                                <p class="text-muted" style="font-family: 'Josefin Sans Light';">(Provided by the page administrators) Not required for public pages</p> --}}
+                                                
                                             </div>
                                             <div class="col-lg-12 mt-2 text-center">
                                                 <div class="form-check form-check-inline">
@@ -679,7 +604,7 @@
                                                 </h3>
                                             </div>
                                             <div class="col-lg-5 col-sm-6 text-right mb-4 heartinmg">
-                                                <img src="{{asset('assets/heart.png')}}" class="img-fluid heartinmg" style="width:180px;">
+                                                <img src="<?php echo e(asset('assets/heart.png')); ?>" class="img-fluid heartinmg" style="width:180px;">
                                             </div>
                                             <div class="col-lg-2 mt-2">
                                                 <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">Email</h5>
@@ -744,58 +669,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    {{-- <script>
-        $(document).ready(function(){
-            $(".login-butn").click(function(){
-                // Get CSRF token value from meta tag
-                var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-                // Get form data
-                var fullname = $("input[name='fullname']").val();
-                var email = $("input[name='email']").val();
-                var honouree = $("input[name='honouree']").val();
-                var relationship = $("select[name='relationship']").val();
-                var accesscode = $("input[name='accesscode']").val();
-                var password = $("input[name='password']").val();
-                
-                // Prepare data for sending
-                var formData = {
-                    fullname: fullname,
-                    email: email,
-                    honouree: honouree,
-                    relationship: relationship,
-                    accesscode: accesscode,
-                    password: password,
-                };
-                
-                // Send data to the server with CSRF token included
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
-                    data: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                    success: function(response){
-                        if(response.success){
-                            // Redirect to the desired page
-                            window.location.href = '{{ route("pageone") }}';
-                        }
-                        else if(response.success === false) { // Corrected syntax for else if
-                            // Display unsuccessful login message
-                            $("#loginMessage").html('<span style="color: red;">' + response.message + '</span>');
-                        }
-                    },
-                    error: function(xhr, status, error){
-                        // Handle errors
-                        // $("#loginMessage").html('<span style="color: red;">' + xhr.responseText + '</span>');
-                    
-                    }
-                });
-
-            });
-        });
-    </script> --}}
+    
 
     <script>
         function showFields() {
@@ -892,3 +766,4 @@
 </body>
 
 </html>
+<?php /**PATH G:\laragon\www\memorial_website\project\memorial\resources\views/auth/login.blade.php ENDPATH**/ ?>

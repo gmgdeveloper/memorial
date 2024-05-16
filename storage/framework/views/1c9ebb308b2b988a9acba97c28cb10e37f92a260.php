@@ -156,6 +156,12 @@
         .cursorchange:hover {
             cursor: pointer;
         }
+        .btn:focus{
+            box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
+        }
         @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;

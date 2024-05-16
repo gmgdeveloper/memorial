@@ -24,11 +24,11 @@
             padding-right: 20px;
         }
         body {
-            <?php if(empty($ganeral_setting)): ?>
-                background-image: url('<?php echo e(asset('assets/background.png')); ?>');
-            <?php else: ?>
-                background-image: url('<?php echo e(asset("body_images/$ganeral_setting->body_image")); ?>');
-            <?php endif; ?>
+            @if(empty($ganeral_setting))
+                background-image: url('{{asset('assets/background.png')}}');
+            @else
+                background-image: url('{{asset("body_images/$ganeral_setting->body_image")}}');
+            @endif
             /* background-position: center; */
         }
         .navbar-brand {
@@ -308,16 +308,7 @@
             .swiper-button-next.relativenext{
                 top: 105px;
             }
-            .dropdown-item.active, .dropdown-item:active{
-                background-color: #be9438!important;
-            }
-            .btn:focus{
-                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
-            }
-            .form-control:focus {
-                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
-            }
-        /* @media  screen and (max-width: 768px) {
+        /* @media screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
           }
@@ -525,7 +516,7 @@
                 padding: 10px;
             }
         } */
-        @media  screen and (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .mobileoff {
                 display: none !important;
             }
@@ -867,7 +858,7 @@
             }
         }
         
-        @media  screen and (max-width: 1024px) {
+        @media screen and (max-width: 1024px) {
             .mobileoff {
                 display: none !important;
             }
@@ -1117,39 +1108,6 @@
 </head>
 
 <body>
-    <span id="editIconn" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-        <i class="fa fa-edit" data-toggle="modal" data-target="#bodymodal"></i>
-    </span>
-    <div class="modal fade" id="bodymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add Body</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <form action="<?php echo e(route('ganeral_setting')); ?>" method="POST" enctype="multipart/form-data">
-                <?php echo csrf_field(); ?>
-                <div class="modal-body">
-                    <?php echo csrf_field(); ?>
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <div class="form-group">
-                                <label for="title" class="float-left">Add Background Image</label>
-                                <input class="form-control" type="file" id="background_image" name="background_image" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    
-                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
     <div class="container-fluid mainecontaienfluid">
         <div class="row">
             <div class="container" style="background-color:white;border:2px solid #BE9438;">
@@ -1174,24 +1132,12 @@
                                             <a class="nav-item nav-link ml-lg-2" href="#tributes" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">TRIBUTES</a>
                                             <a class="nav-item nav-link ml-lg-2" href="#contact" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">CONTACT</a>
                                             <div class="dropdown show">
-                                                <a class="nav-item nav-link ml-lg-2" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" style="font-size:25px;color:white;"></i></a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="<?php echo e(route('profile_honree')); ?>">Profile</a>
-                                                    <a class="dropdown-item" href="<?php echo e(route('hnotifications')); ?>">Notifications 
-                                                        <?php
-                                                            $counts = \App\Models\RequestAccess::where('seen','=',0)->count();
-                                                        if($counts > 1){
-                                                        ?>
-                                                        <span class="badge" style="color:white;background-color:#BE9438;">
-                                                            <?php echo e($counts); ?>
-
-                                                        </span>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </a>
-                                                    <a class="dropdown-item" href="<?php echo e(route('honree_logout')); ?>">Logout</a>
-                                                </div>
+                                                <a class="nav-item nav-link ml-lg-2" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
+                                                {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item" href="{{route('profile_honree')}}">Profile</a>
+                                                    <a class="dropdown-item" href="{{route('hnotifications')}}">Notifications</a>
+                                                    <a class="dropdown-item" href="{{route('honree_logout')}}">Logout</a>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -1221,10 +1167,10 @@
                                             <a class="nav-item nav-link ml-lg-5" href="#contact" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">CONTACT</a>
                                             <div class="dropdown show">
                                                 <a class="nav-item nav-link ml-lg-5" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" role="button" id="dropdownMenuLinksec" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLinksec">
-                                                    <a class="dropdown-item" href="<?php echo e(route('profile_honree')); ?>">Profile</a>
-                                                    <a class="dropdown-item" href="<?php echo e(route('honree_logout')); ?>">Logout</a>
-                                                </div>
+                                                {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLinksec">
+                                                    <a class="dropdown-item" href="{{route('profile_honree')}}">Profile</a>
+                                                    <a class="dropdown-item" href="{{route('honree_logout')}}">Logout</a>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -1237,179 +1183,50 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div id="imageContainer">
-                                    <?php if(!empty( $banner_image_path)): ?>
-                                    <img src="<?php echo e(asset($banner_image_path)); ?>" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
-                                    <?php else: ?>
-                                    <img src="<?php echo e(asset('assets/pageonebanner.png')); ?>" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
+                                    @if(!empty( $banner_image_path))
+                                    <img src="{{ asset($banner_image_path) }}" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
+                                    @else
+                                    <img src="{{ asset('assets/pageonebanner.png') }}" style="width:100%; height:400px; border: 2px solid #BE9438 !important;" class="imagemainheightset">
 
-                                    <?php endif; ?>
+                                    @endif
 
-
-                                    <span id="editIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                        <i class="fa fa-edit"></i>
-                                    </span>
                                     <input type="file" id="imageInput" style="display: none;">
                                 </div>
                             </div>
 
-                            <script>
-                                document.addEventListener("DOMContentLoaded", function() {
-                                    var editIcon = document.getElementById('editIcon');
-                                    var imageInput = document.getElementById('imageInput');
-
-                                    editIcon.addEventListener('click', function() {
-                                        imageInput.click();
-                                    });
-
-                                    imageInput.addEventListener('change', function() {
-                                        var file = this.files[0];
-                                        if (file) {
-                                            var reader = new FileReader();
-                                            reader.onload = function(e) {
-                                                var imageContainer = document.getElementById('imageContainer');
-                                                var img = document.createElement('img');
-                                                img.src = e.target.result;
-                                                img.style.width = '100%';
-                                                img.style.height = '400px';
-                                                img.style.border = '2px solid #BE9438';
-                                                img.className = 'imagemainheightset';
-                                                imageContainer.replaceChild(img, imageContainer.getElementsByTagName('img')[0]);
-
-                                                // Send the image data to the server using AJAX
-                                                var formData = new FormData();
-                                                formData.append('image', file);
-
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open('POST', '<?php echo e(route("banner_image")); ?>', true);
-                                                xhr.setRequestHeader('X-CSRF-TOKEN', '<?php echo e(csrf_token()); ?>');
-                                                xhr.onload = function() {
-                                                    if (xhr.status === 200) {
-                                                        console.log('Image uploaded successfully!');
-                                                    } else {
-                                                        console.error('Error uploading image:', xhr.responseText);
-                                                    }
-                                                };
-                                                xhr.send(formData);
-                                            };
-                                            reader.readAsDataURL(file);
-                                        }
-                                    });
-                                });
-                            </script>
 
 
 
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff" id="about">
                                 <h3 class="pagemainheading mt-3" style="color:#A423EB;">CELEBRATING THE LIFE OF</h3>
                                 <h3 class="mt-2 text-center brennonheading" id="breannon" onclick="breannon()">
-                                    <?php if(!empty($title_page_name)): ?>
-                                    <?php echo e($title_page_name); ?>
-
-                                    <?php else: ?>
+                                    @if(!empty($title_page_name))
+                                    {{ $title_page_name }}
+                                    @else
                                     <b>Breannon Kimberley Schuback</b>
-                                    <?php endif; ?>
+                                    @endif
                                 </h3>
 
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var paragraph = document.getElementById('breannon');
-
-                                        paragraph.addEventListener('blur', function() {
-                                            var editedData = paragraph.textContent.trim(); // Get the edited content
-                                            // Make an Ajax request to send the edited data to Laravel controller
-                                            fetch('/bannerimage', {
-                                                    method: 'POST',
-
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                    },
-                                                    body: JSON.stringify({
-                                                        memorail_title: editedData
-                                                    })
-                                                })
-                                                .then(response => {
-                                                    if (response.ok) {
-                                                        console.log('Data saved successfully!');
-                                                    } else {
-                                                        console.error('Failed to save data');
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error:', error);
-                                                });
-                                        });
-                                    });
-
-                                    function breannon() {
-                                        var paragraph = document.getElementById('breannon');
-                                        paragraph.contentEditable = true;
-                                        paragraph.focus();
-                                    }
-                                </script>
+                    
                                 <h4 class="text-center">
-                                    <span id="editableDateOfBirth" contenteditable style="color:#A423EB;"><?php echo e($date_of_birth); ?></span>
-                                    <span class="mr-lg-1">/</span><span id="editableDateOfDeath" contenteditable style="color:#A423EB;"><?php echo e($date_of_death); ?></span>
+                                    <span id="editableDateOfBirth" contenteditable style="color:#A423EB;">{{$date_of_birth}}</span>
+                                    <span class="mr-lg-1">/</span><span id="editableDateOfDeath" contenteditable style="color:#A423EB;">{{$date_of_death}}</span>
                                 </h4>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        // Function to handle updating the dates
-                                        function updateDates(dateOfBirth, dateOfDeath) {
-                                            // Make an AJAX request to update the database
-                                            fetch('/update-dates', {
-                                                method: 'POST',
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                    'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                },
-                                                body: JSON.stringify({
-                                                    dateOfBirth: dateOfBirth,
-                                                    dateOfDeath: dateOfDeath
-                                                })
-                                            })
-                                            .then(response => {
-                                                if (response.ok) {
-                                                    console.log('Dates updated successfully!');
-                                                } else {
-                                                    console.error('Failed to update dates');
-                                                }
-                                            })
-                                            .catch(error => {
-                                                console.error('Error:', error);
-                                            });
-                                        }
-                                
-                                        // Add event listener to the Date of Birth span
-                                        var editableDateOfBirth = document.getElementById('editableDateOfBirth');
-                                        editableDateOfBirth.addEventListener('blur', function() {
-                                            var newDateOfBirth = editableDateOfBirth.textContent.trim();
-                                            var dateOfDeath = document.getElementById('editableDateOfDeath').textContent.trim();
-                                            updateDates(newDateOfBirth, dateOfDeath);
-                                        });
-                                
-                                        // Add event listener to the Date of Death span
-                                        var editableDateOfDeath = document.getElementById('editableDateOfDeath');
-                                        editableDateOfDeath.addEventListener('blur', function() {
-                                            var dateOfBirth = document.getElementById('editableDateOfBirth').textContent.trim();
-                                            var newDateOfDeath = editableDateOfDeath.textContent.trim();
-                                            updateDates(dateOfBirth, newDateOfDeath);
-                                        });
-                                    });
-                                </script>
+                               
                            
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
-                                        <?php $__currentLoopData = $quotes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $quote): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <div class="carousel-item <?php if($loop->first): ?> active <?php endif; ?>">
-                                            <img class="d-block w-100 imagemainheightset" src="<?php echo e(asset('assets/buttonbackground2.PNG')); ?>" alt="Slide <?php echo e($loop->iteration); ?>" style="height: 200px;">
+                                        @foreach ($quotes as $quote)
+                                        <div class="carousel-item @if ($loop->first) active @endif">
+                                            <img class="d-block w-100 imagemainheightset" src="{{asset('assets/buttonbackground2.PNG')}}" alt="Slide {{$loop->iteration}}" style="height: 200px;">
                                             <div class="carousel-caption d-md-block carouscaption">
-                                                <h5 style="color:#000;" id="editableHeading<?php echo e($quote->id); ?>" data-quote-id="<?php echo e($quote->id); ?>"><?php echo e($quote->heading); ?></h5>
-                                                <p class="quotestextp" style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara<?php echo e($quote->id); ?>" data-quote-id="<?php echo e($quote->id); ?>"><?php echo e($quote->description); ?></p>
+                                                <h5 style="color:#000;" id="editableHeading{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->heading}}</h5>
+                                                <p class="quotestextp" style="font-family: 'Josefin Sans Light';color:#000;" id="editablePara{{$quote->id}}" data-quote-id="{{$quote->id}}">{{$quote->description}}</p>
                                             </div>
                                         </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        @endforeach
                                     </div>
                                     <!-- Swiper-style navigation buttons -->
                                     <a class="swiper-button-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -1420,9 +1237,6 @@
                                         <span class="swiper-button-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
-                                    <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                        <i class="fa fa-upload" style="color: #fff;" data-toggle="modal" data-target="#quotesmodal"></i>
-                                    </span>
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="quotesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1434,10 +1248,10 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         </div>
-                                        <form action="<?php echo e(route('add_quote')); ?>" method="POST">
+                                        <form action="{{route('add_quote')}}" method="POST">
                                             <div class="modal-body">
                                             
-                                                    <?php echo csrf_field(); ?>
+                                                    @csrf
                                                     <div class="row">
                                                         <div class="col-lg-12 col-sm-12">
                                                             <div class="form-group">
@@ -1453,91 +1267,31 @@
                                                 
                                             </div>
                                             <div class="modal-footer">
-                                                
+                                                {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                                                 <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
                                             </div>
                                         </form>
                                     </div>
                                     </div>
                                 </div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        // Function to make element editable
-                                        function makeEditable(elementId, quoteId, contentType) {
-                                            var element = document.getElementById(elementId);
-                                            element.contentEditable = true;
-                                            element.focus();
 
-                                            // Add event listener for blur event
-                                            element.addEventListener('blur', function() {
-                                                // Get the edited content
-                                                var editedContent = element.textContent.trim();
-
-                                                // Determine the content type
-                                                var data = {};
-                                                if (contentType === 'heading') {
-                                                    data.heading = editedContent;
-                                                    data.quoteid = quoteId;
-                                                } else if (contentType === 'description') {
-                                                    data.description = editedContent;
-                                                    data.quoteid = quoteId;
-                                                }
-
-
-                                                // Make an Ajax request to send the edited content to the server
-                                                fetch('/savequotes/' + quoteId, {
-                                                        method: 'POST', // Use PUT method for updating
-                                                        headers: {
-                                                            'Content-Type': 'application/json',
-                                                            'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                        },
-                                                        body: JSON.stringify(data)
-                                                    })
-                                                    .then(response => {
-                                                        if (response.ok) {
-                                                            console.log('Data saved successfully!');
-                                                        } else {
-                                                            console.error('Failed to save data');
-                                                        }
-                                                    })
-                                                    .catch(error => {
-                                                        console.error('Error:', error);
-                                                    });
-                                            });
-                                        }
-
-                                        // Automatically make elements editable upon certain event
-                                        document.getElementById("carouselExampleControls").addEventListener("mouseover", function(event) {
-                                            var target = event.target;
-                                            var quoteId = target.getAttribute('data-quote-id');
-                                            if (quoteId && (target.id === "editableHeading" + quoteId || target.id === "editablePara" + quoteId)) {
-                                                var contentType = target.id.startsWith('editableHeading') ? 'heading' : 'description';
-                                                makeEditable(target.id, quoteId, contentType);
-                                            }
-                                        });
-                                    });
-                                </script>
 
                             </div>
 
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <div style="position: relative;">
                                     <!-- Video player -->
-                                    <?php if($audio->type=="video"): ?>  
+                                    @if($audio->type=="video")  
                                     <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
-                                        <source src="<?php echo e(asset($audio->full_path)); ?>" type="video/mp4">
+                                        <source src="{{ asset($audio->full_path) }}" type="video/mp4">
                                     </video>
-                                    <?php else: ?>
+                                    @else
                                     <video id="videoPlayer" width="100%" height="400" controls class="imagemainheightset">
-                                        <source src="<?php echo e(asset('assets/dummyvideo.mp4')); ?>" type="video/mp4">
+                                        <source src="{{ asset('assets/dummyvideo.mp4') }}" type="video/mp4">
                                     </video>
-                                    <?php endif; ?>
+                                    @endif
                                 
 
-                                    <!-- Icon for uploading video -->
-                                    <span id="uploadIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                        <i class="fa fa-upload" style="color: #BE9438;"></i>
-                                    </span>
 
                                     <!-- Video upload area -->
                                     <div id="videoUploadArea" style="display: none;">
@@ -1545,47 +1299,6 @@
                                     </div>
                                 </div>
 
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var uploadIcon = document.getElementById('uploadIcon');
-                                        var videoInput = document.getElementById('videoUploadInput');
-
-                                        // Function to handle showing/hiding video upload area
-                                        uploadIcon.addEventListener('click', function() {
-                                            videoInput.click();
-                                        });
-
-                                        // Function to handle video upload
-                                        videoInput.addEventListener('change', function() {
-                                            var file = this.files[0];
-                                            if (file) {
-                                                var reader = new FileReader();
-                                                reader.onload = function(e) {
-                                                    var videoPlayer = document.getElementById('videoPlayer');
-                                                    videoPlayer.src = URL.createObjectURL(file);
-                                                    videoPlayer.load();
-
-                                                    // Optionally, you can send the video data to the server using AJAX
-                                                    var formData = new FormData();
-                                                    formData.append('video', file);
-
-                                                    var xhr = new XMLHttpRequest();
-                                                    xhr.open('POST', '<?php echo e(route("videoupload")); ?>', true);
-                                                    xhr.setRequestHeader('X-CSRF-TOKEN', '<?php echo e(csrf_token()); ?>');
-                                                    xhr.onload = function() {
-                                                        if (xhr.status === 200) {
-                                                            console.log('Video uploaded successfully!');
-                                                        } else {
-                                                            console.error('Error uploading video:', xhr.responseText);
-                                                        }
-                                                    };
-                                                    xhr.send(formData);
-                                                };
-                                                reader.readAsDataURL(file);
-                                            }
-                                        });
-                                    });
-                                </script>
                             </div>
 
              
@@ -1594,176 +1307,85 @@
                             <div class="col-lg-12 col-sm-12 mt-3 pb-5 newclasspaddingoff widthsetoverview" style="border-bottom: 2px solid #BE9438!important;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="overview">AN OVERVIEW</h3>
 
-                                <?php if(!empty($over_view)): ?>
+                                @if(!empty($over_view))
 
 
                                 <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
-                                    <?php echo e($over_view); ?>
-
+                                    {{ $over_view }}
                                 </p>
-                                <?php else: ?>
+                                @else
                                 <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
 
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
 
-                                <?php endif; ?>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var paragraph = document.getElementById('editableParagraphoverview');
-
-                                        paragraph.addEventListener('blur', function() {
-                                            var editedData = paragraph.textContent.trim(); // Get the edited content
-                                            // Make an Ajax request to send the edited data to Laravel controller
-                                            fetch('/bannerimage', {
-                                                    method: 'POST',
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                    },
-                                                    body: JSON.stringify({
-                                                        over_view: editedData
-                                                    })
-                                                })
-                                                .then(response => {
-                                                    if (response.ok) {
-                                                        console.log('Data saved successfully!');
-                                                    } else {
-                                                        console.error('Failed to save data');
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error:', error);
-                                                });
-                                        });
-                                    });
-
-                                    function makeEditable() {
-                                        var paragraph = document.getElementById('editableParagraphoverview');
-                                        paragraph.contentEditable = true;
-                                        paragraph.focus();
-                                    }
-                                </script>
+                                @endif
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 mb-5 newclasspaddingoff relationshipdiccv" style="border-bottom: 2px solid #BE9438;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="relations">RELATIONSHIPS</h3>
                                 <div class="swiper myrelationswiper mt-3 mobileoff">
                                     <div class="swiper-wrapper">
-                                        <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        @foreach($relationships as $relationship)
                                             <div class="swiper-slide" style="height: 280px;">
                                                 <div class="card" style="width: 75%;background-color: #fff;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                                     <div class="card-header text-center" style="background-color: #fff;border:0px;">
-                                                        <h5 style="font-size:16px;" id="heading" class="editable" data-relationship-id="<?php echo e($relationship->id); ?>"><?php echo e($relationship->heading); ?></h5>
+                                                        <h5 style="font-size:16px;" id="heading" class="editable" data-relationship-id="{{$relationship->id}}">{{$relationship->heading}}</h5>
                                                     </div>
                                                     <div class="card-body">
                                                         <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_first); ?></a></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_first}}</a></span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_second"><?php echo e($relationship->sub_heading_second); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_second">{{$relationship->sub_heading_second}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_third"><?php echo e($relationship->sub_heading_third); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_third">{{$relationship->sub_heading_third}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fourth"><?php echo e($relationship->sub_heading_fourth); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fourth">{{$relationship->sub_heading_fourth}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fifth"><?php echo e($relationship->sub_heading_fifth); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fifth">{{$relationship->sub_heading_fifth}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_sixth); ?></a></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_sixth}}</a></span>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        @endforeach
                                     </div>
                                     <div class="swiper-button-next relationshipsliderbuttonnext" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                     <div class="swiper-button-prev relationshipsliderbuttonprev" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                 </div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var editableElements = document.querySelectorAll('.editable');
-                                        
-                                        // Function to make element editable
-                                        function makeEditable(element) {
-                                            element.contentEditable = true;
-                                            element.focus();
-                                        }
-                                
-                                        // Add event listeners to make elements editable upon clicking
-                                        editableElements.forEach(function(element) {
-                                            element.addEventListener('click', function() {
-                                                makeEditable(element);
-                                            });
-                                
-                                            element.addEventListener('blur', function() {
-                                                var editedContent = element.textContent.trim();
-                                                var elementId = element.id;
-                                                var relationshipId = element.getAttribute('data-relationship-id');
-                                
-                                                // Prepare data object with key-value pairs
-                                                var data = {
-                                                    content: editedContent,
-                                                    elementId: elementId,
-                                                    relationshipId: relationshipId
-                                                };
-                                
-                                                // Make an AJAX request to send the edited content to the server
-                                                fetch('/update-relationship', {
-                                                    method: 'POST',
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                    },
-                                                    body: JSON.stringify(data)
-                                                })
-                                                .then(response => {
-                                                    if (response.ok) {
-                                                        console.log('Content updated successfully!');
-                                                    } else {
-                                                        console.error('Failed to update content');
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error:', error);
-                                                });
-                                            });
-                                        });
-                                    });
-                                </script>
+
                                 
                                 
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
                                     <div class="swiper-wrapper">
-                                        <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        @foreach($relationships as $relationship)
                                             <div class="swiper-slide">
                                                 <div class="card" style="width: 75%;background-color: #fff; border:0px;">
                                                     <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                        <p style="font-family: 'Josefin Sans Light';" id="heading" class="editable" data-relationship-id="<?php echo e($relationship->id); ?>"><?php echo e($relationship->heading); ?>
-
+                                                        <p style="font-family: 'Josefin Sans Light';" id="heading" class="editable" data-relationship-id="{{$relationship->id}}">{{$relationship->heading}}
                                                         </p>
                                                         <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_first); ?></a></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_first" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_first}}</a></span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_second"><?php echo e($relationship->sub_heading_second); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_second">{{$relationship->sub_heading_second}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_third"><?php echo e($relationship->sub_heading_third); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_third">{{$relationship->sub_heading_third}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fourth"><?php echo e($relationship->sub_heading_fourth); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fourth">{{$relationship->sub_heading_fourth}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" id="sub_heading_fifth"><?php echo e($relationship->sub_heading_fifth); ?></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" id="sub_heading_fifth">{{$relationship->sub_heading_fifth}}</span>
                                                             <br>
-                                                            <span class="editable" data-relationship-id="<?php echo e($relationship->id); ?>" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;"><?php echo e($relationship->sub_heading_sixth); ?></a></span>
+                                                            <span class="editable" data-relationship-id="{{$relationship->id}}" style="color: #BFAFF8!important;"><a href="#" style="color: #BFAFF8!important;">{{$relationship->sub_heading_sixth}}</a></span>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        @endforeach
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
 
-                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#relationmodal"></i>
-                                </span>
                                 <div class="modal fade" id="relationmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -1773,10 +1395,10 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         </div>
-                                        <form action="<?php echo e(route('add_relation')); ?>" method="POST">
+                                        <form action="{{route('add_relation')}}" method="POST">
                                             <div class="modal-body">
                                             
-                                                    <?php echo csrf_field(); ?>
+                                                    @csrf
                                                     <div class="row">
                                                         <div class="col-lg-12 col-sm-12">
                                                             <div class="form-group">
@@ -1812,7 +1434,7 @@
                                                 
                                             </div>
                                             <div class="modal-footer">
-                                                
+                                                {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                                                 <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
                                             </div>
                                         </form>
@@ -2431,7 +2053,7 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-lg-5 addcontactswipermargintopres newclasspaddingoff">
                                 <p style="font-family: 'Josefin Sans Light;" class="mt-lg-5">Want to know more? Message the page administrators with your question or response</p>
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#exampleModal">CONTACT ADMINSTRATORS</button>
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#exampleModal">CONTACT ADMINSTRATORS</button>
                                 
                                 <div class="modal" tabindex="-1" id="exampleModal">
                                   <div class="modal-dialog">
@@ -2532,44 +2154,44 @@
                                       <div class="swiper-slide">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;">
-                                                <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."><img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."><img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;"></a>
                                                 <div class="row">
                                                     <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                       <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:334px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                       <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="{{asset('assets/dummythree.jpg')}}" style="height:334px;width: 100%;border: 1px solid #fff!important;"></a>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;"></a>
                                                             </div>
                                                             <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:157px;"> </a>
+                                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:157px;"> </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 col-sm-12">
-                                                      <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:312px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                      <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="{{asset('assets/dummythree.jpg')}}" style="height:312px;width: 100%;border: 1px solid #fff!important;"> </a>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-sm-6" style="padding-left:0px!important;">
-                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:250px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="{{asset('assets/dummythree.jpg')}}" style="height:250px;width: 100%;border: 1px solid #fff!important;"> </a>
                                                 <div class="row">
                                                     <div class="col-lg-12 col-sm-12">
-                                                       <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:350px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                       <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="{{asset('assets/dummythree.jpg')}}" style="height:350px;width: 100%;border: 1px solid #fff!important;"></a>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                              <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                              <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="{{asset('assets/dummythree.jpg')}}" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
                                                             </div>
                                                             <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                               <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="{{asset('assets/dummythree.jpg')}}" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                      <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>"style="height:400px;width: 100%;border: 2px solid #fff!important;"></a>
+                                                      <a data-fancybox="gallery" href="{{asset('assets/dummythree.jpg')}}" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="{{asset('assets/dummythree.jpg')}}"style="height:400px;width: 100%;border: 2px solid #fff!important;"></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2582,34 +2204,34 @@
                                 <div class="swiper qandanswerswiper mobileon" style="border:0px;display:none;">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                         <div class="swiper-slide" style="border:0px;">
-                                           <a data-fancybox="gallerysecond" href="<?php echo e(asset('assets/dummythree.jpg')); ?>"> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
+                                           <a data-fancybox="gallerysecond" href="{{asset('assets/dummythree.jpg')}}"> <img src="{{asset('assets/dummythree.jpg')}}" style="width: 100%;border: 1px solid #fff!important;height:auto;"></a>
                                         </div>
                                     </div>
                                     <div class="swiper-button-next"></div>
@@ -2618,7 +2240,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addphoto">ADD PHOTOS</button>
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addphoto">ADD PHOTOS</button>
                                 <div class="modal fade" id="addphoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -2658,7 +2280,8 @@
                                     </div>
                                     <div  class="col-lg-4 col-sm-12">
                                         <form class="form-inline searchinputnavhsbdha">
-                                            
+                                            {{-- <input class="form-control mr-sm-2 searchinputnav mb-2" type="search"
+                                                placeholder="Search" aria-label="Search"> --}}
                                             <select class="form-control mr-sm-2 searchinputnav mb-2" name="relationship">
                                                 <option value="" disabled selected>Choose a Relationship</option>
                                                 <option value="Parent">Parent</option>
@@ -2774,7 +2397,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">SIGN THE GUEST BOOK</button>
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">SIGN THE GUEST BOOK</button>
                             </div>
                             <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff" id="stories">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">STORIES (###)-->
@@ -2809,10 +2432,10 @@
                                             <div class="col-lg-6 col-sm-12">
                                                 <div class="row">
                                                     <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                        <img src="{{asset('assets/dummythree.jpg')}}" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
                                                     </div>
                                                     <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                        <img src="{{asset('assets/dummythree.jpg')}}" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -2835,10 +2458,10 @@
                                             <div class="col-lg-6 col-sm-12">
                                                 <div class="row">
                                                     <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                        <img src="{{asset('assets/dummythree.jpg')}}" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
                                                     </div>
                                                     <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                        <img src="{{asset('assets/dummythree.jpg')}}" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -2859,7 +2482,7 @@
                                   </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addstory" >ADD A STORY
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addstory" >ADD A STORY
                                 </button>
                                 <div class="modal fade" id="addstory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
@@ -2899,7 +2522,8 @@
                                 </div>
                             </div>
                             <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
-                                
+                                {{-- <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;" id="sounds">SOUND CLIPS (###)
+                                </h3> --}}
                                 <div class="row mt-lg-4">
                                     <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
                                         <h3 class="storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 85px;" id="sounds">SOUND CLIPS (###)
@@ -2913,7 +2537,12 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            {{-- <div  class="col-lg-12 col-sm-12 mt-lg-3 newclasspaddingoff">
+                                <form class="form-inline searchinputnavhsbdha">
+                                    <input class="form-control mr-sm-2 searchinputnav" type="search"
+                                        placeholder="Search" aria-label="Search">
+                                </form>
+                            </div> --}}
                             <div class="col-lg-12 col-sm-12 mt-4 mb-4 newclasspaddingoff">
                                 <div class="swiper soundbitesswiper">
                                     <div class="swiper-wrapper">
@@ -2946,7 +2575,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addaudio">ADD AUDIO
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addaudio">ADD AUDIO
                                 </button>
                                 <div class="modal fade" id="addaudio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
@@ -3140,7 +2769,7 @@
                                 <p class="mt-2 text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non modi iste rerum, dolore adipisci delectus cum nobis quasi asperiores nesciunt repudiandae doloremque soluta perferendis dolorem consequatur, magni tempora eos amet.</p>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center newclasspaddingoff">
-                                <a href="<?php echo e(asset('Breannon-ORDER-OF-SERVICE.pdf')); ?>" download><button class="btn btn-large mt-3 contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
+                                <a href="{{ asset('Breannon-ORDER-OF-SERVICE.pdf') }}" download><button class="btn btn-large mt-3 contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
                                 </button></a>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
@@ -3175,7 +2804,7 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
                                 <video width="100%" height="500" controls style="border: 1px solid #BE9438!important;" class="dummyvideooo">
-                                    <source src="<?php echo e(asset('assets/dummyvideo.mp4')); ?>" type="video/mp4">
+                                    <source src="{{asset('assets/dummyvideo.mp4')}}" type="video/mp4">
                                 </video>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 p-4 newclasspaddingoff">        
@@ -3210,8 +2839,8 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>Select an option:</p>
-                                                        <a href="https://meet.google.com/" class="btn" target="_blank" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 40%;color:#000;border-radius: 20px;">Go to Google Meet</a>
-                                                        <a href="https://www.google.com/maps" class="btn" target="_blank" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 40%;color:#000;border-radius: 20px;">Go to Google Maps</a>
+                                                        <a href="https://meet.google.com/" class="btn" target="_blank" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 40%;color:#000;border-radius: 20px;">Go to Google Meet</a>
+                                                        <a href="https://www.google.com/maps" class="btn" target="_blank" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 40%;color:#000;border-radius: 20px;">Go to Google Maps</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3391,7 +3020,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;">ADD A TRIBUTE
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;">ADD A TRIBUTE
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
@@ -3425,7 +3054,7 @@
                                 </p>
                                 <div class="row mb-lg-3">
                                     <div class="col-lg-12 col-sm-12 text-center">
-                                        <img src="<?php echo e(asset('assets/heartfoundation.png')); ?>" class="text-center" style="width:150px;">
+                                        <img src="{{asset('assets/heartfoundation.png')}}" class="text-center" style="width:150px;">
                                     </div>
                                 </div>
                             </div>
@@ -3449,7 +3078,7 @@
                                 <div class="slider-container">
                                     <div class="slider-content">
                                       <div class="slider-item">
-                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 1">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 1">
                                         <div class="product-info">
                                           <h6>LEX HORGAN</h6>
                                           <p style="font-family: 'Josefin Sans Light';">Grandfather
@@ -3457,7 +3086,7 @@
                                         </div>
                                       </div>
                                       <div class="slider-item">
-                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 2">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 2">
                                         <div class="product-info">
                                           <h6>GEOFFREY SCHUBACK
                                         </h6>
@@ -3466,7 +3095,7 @@
                                         </div>
                                       </div>
                                       <div class="slider-item">
-                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 3">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 3">
                                         <div class="product-info">
                                           <h6>TROY SCHUBACK
                                         </h6>
@@ -3474,7 +3103,7 @@
                                         </div>
                                       </div>
                                       <div class="slider-item">
-                                        <img class="product-image" src="<?php echo e(asset('assets/dummythree.jpg')); ?>" alt="Product 3">
+                                        <img class="product-image" src="{{asset('assets/dummythree.jpg')}}" alt="Product 3">
                                         <div class="product-info">
                                           <h6>Second TROY SCHUBACK
                                         </h6>
@@ -3482,7 +3111,8 @@
                                         </div>
                                       </div>
                                     </div>
-                                    
+                                    {{-- <span class="prev" onclick="slide(-1)">&#10094;</span>
+                                    <span class="next" onclick="slide(1)">&#10095;</span> --}}
                                     <div class="swiper-button-prev relativeprev" onclick="slide(-1)"></div>
                                     <div class="swiper-button-next relativenext" onclick="slide(1)"></div>
                                 </div>
@@ -3496,7 +3126,7 @@
                                 </script>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">LINK A PAGE
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">LINK A PAGE
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
@@ -3532,7 +3162,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">CREATE A PAGE
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">CREATE A PAGE
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff" id="contact">
@@ -3540,39 +3170,39 @@
                                 </h3>
                             </div>
                             <div class="col-lg-4 col-sm-4 mt-2 qrcodediv newclasspaddingoff">
-                                <img src="<?php echo e(asset('assets/qr.png')); ?>" class="qrimageheightset" style="width: 100%; height: 218px;border: 1px solid #BE9438!important;">
+                                <img src="{{asset('assets/qr.png')}}" class="qrimageheightset" style="width: 100%; height: 218px;border: 1px solid #BE9438!important;">
                             </div>
                             <div class="col-lg-8 col-sm-8 mt-2 ">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12 text-center p-5 lastnotifybox" style="border: 1px solid #BE9438;">
                                         <div class="row">
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
                                                     <i class="fa fa-facebook text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
                                                     <i class="fa fa-instagram text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
                                                     <i class="fa fa-linkedin text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
                                                     <i class="fa fa-whatsapp text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
                                                     <i class="fa fa-snapchat text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
                                             <div class="col-2">
-                                                <div class="heightscoailset" style="background-image: url('<?php echo e(asset('assets/iconbackground.PNG')); ?>');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
+                                                <div class="heightscoailset" style="background-image: url('{{asset('assets/iconbackground.PNG')}}');height: 50px;padding: 15px;width: 50px;border-radius: 31px">
                                                     <i class="fa fa-youtube-play text-white heightscoailseticon" style="font-size:25px;"></i>
                                                 </div>
                                             </div>
@@ -3604,7 +3234,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-4 mb-lg-3">
-                                <button class="btn btn-large contactadministration topcontactadministrationbottom" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">EMAIL ADMINISTRATORS
+                                <button class="btn btn-large contactadministration topcontactadministrationbottom" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">EMAIL ADMINISTRATORS
                                 </button>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 footerlast" style="border: 1px solid #BE9438!important;background-color: lightgrey;">
@@ -3902,17 +3532,17 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <?php if(session('success')): ?>
+    @if(session('success'))
         <script>
-            toastr.success('<?php echo e(session('success')); ?>', 'Success');
+            toastr.success('{{ session('success') }}', 'Success');
         </script>
-    <?php endif; ?>
+    @endif
     
-    <?php if(session('error')): ?>
+    @if(session('error'))
         <script>
-            toastr.error('<?php echo e(session('error')); ?>', 'Error');
+            toastr.error('{{ session('error') }}', 'Error');
         </script>
-    <?php endif; ?>
+    @endif
 </body>
 
-</html><?php /**PATH G:\laragon\www\memorial_website\project\memorial\resources\views/Frontend/pageone.blade.php ENDPATH**/ ?>
+</html>

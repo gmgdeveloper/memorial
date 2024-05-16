@@ -12,13 +12,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    
     <style>
         span#editIcon {
             color: #BE9438;
             padding-right: 20px;
         }
+        span#editIconn {
+            color: #BE9438;
+            padding-right: 20px;
+        }
         body {
-            background-image: url({{asset('assets/background.png')}});
+            @if(empty($ganeral_setting))
+                background-image: url('{{asset('assets/background.png')}}');
+            @else
+                background-image: url('{{asset("body_images/$ganeral_setting->body_image")}}');
+            @endif
             /* background-position: center; */
         }
         .navbar-brand {
@@ -297,6 +307,15 @@
             }
             .swiper-button-next.relativenext{
                 top: 105px;
+            }
+            .dropdown-item.active, .dropdown-item:active{
+                background-color: #be9438!important;
+            }
+            .btn:focus{
+                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
+            }
+            .form-control:focus {
+                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
             }
         /* @media screen and (max-width: 768px) {
           .mobileoff{
@@ -1098,6 +1117,39 @@
 </head>
 
 <body>
+    <span id="editIconn" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+        <i class="fa fa-edit" data-toggle="modal" data-target="#bodymodal"></i>
+    </span>
+    <div class="modal fade" id="bodymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Body</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form action="{{route('ganeral_setting')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label for="title" class="float-left">Add Background Image</label>
+                                <input class="form-control" type="file" id="background_image" name="background_image" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
     <div class="container-fluid mainecontaienfluid">
         <div class="row">
             <div class="container" style="background-color:white;border:2px solid #BE9438;">
@@ -1112,7 +1164,7 @@
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                         <div class="navbar-nav">
-                                            <a class="nav-item nav-link ml-lg-4" href="#home" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">HOME</a>
+                                            <a class="nav-item nav-link ml-lg-4" href="/" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">HOME</a>
                                             <a class="nav-item nav-link ml-lg-3" href="#about" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">ABOUT</a>
                                             <a class="nav-item nav-link ml-lg-3" href="#gallery" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">GALLERY</a>
                                             <a class="nav-item nav-link ml-lg-2" href="#guest" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">GUEST</a>
@@ -1122,9 +1174,21 @@
                                             <a class="nav-item nav-link ml-lg-2" href="#tributes" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">TRIBUTES</a>
                                             <a class="nav-item nav-link ml-lg-2" href="#contact" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">CONTACT</a>
                                             <div class="dropdown show">
-                                                <a class="nav-item nav-link ml-lg-2" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
+                                                <a class="nav-item nav-link ml-lg-2" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" style="font-size:25px;color:white;"></i></a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a class="dropdown-item" href="{{route('profile_honree')}}">Profile</a>
+                                                    <a class="dropdown-item" href="{{route('hnotifications')}}">Notifications 
+                                                        @php
+                                                            $counts = \App\Models\RequestAccess::where('seen','=',0)->count();
+                                                        if($counts > 1){
+                                                        @endphp
+                                                        <span class="badge" style="color:white;background-color:#BE9438;">
+                                                            {{ $counts }}
+                                                        </span>
+                                                        @php
+                                                        }
+                                                        @endphp
+                                                    </a>
                                                     <a class="dropdown-item" href="{{route('honree_logout')}}">Logout</a>
                                                 </div>
                                             </div>
@@ -1145,7 +1209,7 @@
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNav">
                                         <div class="navbar-nav">
-                                            <a class="nav-item nav-link ml-lg-1" href="#home" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">HOME</a>
+                                            <a class="nav-item nav-link ml-lg-1" href="/" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">HOME</a>
                                             <a class="nav-item nav-link ml-lg-4" href="#about" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">ABOUT</a>
                                             <a class="nav-item nav-link ml-lg-4" href="#gallery" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">GALLERY</a>
                                             <a class="nav-item nav-link ml-lg-4" href="#guest" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">GUEST</a>
@@ -1282,8 +1346,8 @@
                                     }
                                 </script>
                                 <h4 class="text-center">
-                                    Date of Birth: <span id="editableDateOfBirth" contenteditable>{{$date_of_birth}}</span>
-                                    <span class="ml-lg-3">Date of Death: <span id="editableDateOfDeath" contenteditable>{{$date_of_death}}</span></span>
+                                    <span id="editableDateOfBirth" contenteditable style="color:#A423EB;">{{$date_of_birth}}</span>
+                                    <span class="mr-lg-1">/</span><span id="editableDateOfDeath" contenteditable style="color:#A423EB;">{{$date_of_death}}</span>
                                 </h4>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
@@ -1767,7 +1831,7 @@
                                 <div class="swiper ganeralswiper pb-5 mobileoff">
                                     <div class="swiper-wrapper" style="height: 400px;">
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#perontitymodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#perontitymodal">
                                                 <div class="card-header text-center"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">PERONALITY TRAITS
@@ -1785,7 +1849,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#educationmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#educationmodal">
                                                 <div class="card-header text-center"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">EDUCATION
@@ -1800,7 +1864,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#valuesmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#valuesmodal">
                                                 <div class="card-header text-center mb-5"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">VALUES
@@ -1814,7 +1878,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#employmentmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#employmentmodal">
                                                 <div class="card-header text-center mb-5"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">EMPLOYMENT
@@ -1828,7 +1892,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#spiritualmodal"> 
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#spiritualmodal"> 
                                                 <div class="card-header text-center"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 style="font-size:16px;">SPIRITUAL
@@ -1847,7 +1911,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#goalsmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#goalsmodal">
                                                 <div class="card-header text-center mb-5"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">Goals
@@ -1861,7 +1925,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#hobbiesmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#hobbiesmodal">
                                                 <div class="card-header text-center mb-5"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">HOBBIES /
@@ -1876,7 +1940,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
                                                 <div class="card-header text-center mb-5"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">
@@ -1891,7 +1955,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;"  data-toggle="modal" data-target="#hobbiesmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;"  data-toggle="modal" data-target="#hobbiesmodal">
                                                 <div class="card-header text-center mb-5"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">Again /
@@ -1906,7 +1970,7 @@
                                             </div>
                                         </div>
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
                                                 <div class="card-header text-center mb-5"
                                                     style="background-color: #fff;border:0px;">
                                                     <h5 class="mb-4" style="font-size:16px;">
@@ -3840,6 +3904,19 @@
             });
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    @if(session('success'))
+        <script>
+            toastr.success('{{ session('success') }}', 'Success');
+        </script>
+    @endif
+    
+    @if(session('error'))
+        <script>
+            toastr.error('{{ session('error') }}', 'Error');
+        </script>
+    @endif
 </body>
 
 </html>

@@ -143,7 +143,16 @@
            box-shadow:inherit;
         }
         .btn:focus{
-            box-shadow: 0 0 0 0.2rem rgb(177 138 52 / 30%)!important;
+            box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
+        }
+
+        /* CSS */
+        .custom-select:focus {
+            border-color: #BE9438; /* Change the border color when the select element is focused */
         }
         @media screen and (max-width: 768px) {
           .mobileoff{
@@ -382,11 +391,6 @@
             }
         }
 
-        /* CSS */
-.custom-select:focus {
-    border-color: #BE9438; /* Change the border color when the select element is focused */
-}
-
     </style>
 </head>
 
@@ -437,114 +441,186 @@
                         <div class="container p-lg-5">
                             <div class="row p-lg-5" style="border: 2px solid #BE9438;">
                                 <div class="col-lg-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-sm-6 mt-5">
-                                            <h3 class="loginheading text-right mt-lg-5" style="color:#BE9438;">
-                                                LOG IN
-                                            </h3>
-                                        </div>
-                                        <div class="col-lg-5 col-sm-6 text-right mb-4 heartinmg">
-                                            <img src="{{asset('assets/heart.png')}}" class="img-fluid heartinmg" style="width:180px;">
-                                        </div>
-                                        <div class="col-lg-2 mt-2">
-                                            <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">FULL NAME</h5>
-                                        </div>
-                                        <div class="col-lg-10 mt-2">
-                                            <input type="text" class="form-control" name="fullname" style="border: 2px solid #BE9438;" placeholder="Full Name">
-                                            <p class="text-muted" style="font-family: 'Josefin Sans Light';margin-bottom:2px;">(Entry into the site will automatically add your name to the guest book)</p>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">EMAIL</h5>
-                                        </div>
-                                        <div class="col-lg-10 mt-2 mb-2">
-                                            <input type="email" class="form-control" name="email" style="border: 2px solid #BE9438;" placeholder="Email">
-                                        </div>
-                                        <div class="col-lg-2 mt-2">
-                                            <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">HONOUREE</h5>
-                                        </div>
-                                        <div class="col-lg-10 mt-2 mb-2">
-                                            <input type="text" class="form-control" name="honouree" style="border: 2px solid #BE9438;"  placeholder="Honouree's Page Name">
-                                        </div>
-                                        <div class="col-lg-2 mt-2">
-                                            <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">RELATIONSHIP</h5>
-                                        </div>
-                                        <div class="col-lg-10 mt-2">
-                                            <select class="form-control" name="relationship" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
-                                                <option value="" disabled selected>Choose a Relationship</option>
-                                                <option value="Parent">Parent</option>
-                                                <option value="Step-Parent">Step-Parent</option>
-                                                <option value="Foster Parent">Foster Parent</option>
-                                                <option value="Guardian">Guardian</option>
-                                                <option value="Grandparent">Grandparent</option>
-                                                <option value="Step-Grandparent">Step-Grandparent</option>
-                                                <option value="Godparent">Godparent</option>
-                                                <option value="Husband">Husband</option>
-                                                <option value="Wife">Wife</option>
-                                                <option value="Partner">Partner</option>
-                                                <option value="Ex-Partner">Ex-Partner</option>
-                                                <option value="Child">Child</option>
-                                                <option value="Stepchild">Stepchild</option>
-                                                <option value="Foster Child">Foster Child</option>
-                                                <option value="Godchild">Godchild</option>
-                                                <option value="Sibling">Sibling</option>
-                                                <option value="Nibling">Nibling</option>
-                                                <option value="Niece">Niece</option>
-                                                <option value="Nephew">Nephew</option>
-                                                <option value="Cousin">Cousin</option>
-                                                <option value="Best Friend">Best Friend</option>
-                                                <option value="Friend">Friend</option>
-                                                <option value="Family Friend">Family Friend</option>
-                                                <option value="Friend of a Friend">Friend of a Friend</option>
-                                                <option value="Colleague">Colleague</option>
-                                                <option value="Acquaintance">Acquaintance</option>
-                                                <option value="Caregiver">Caregiver</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                            <p class="text-muted" style="font-family: 'Josefin Sans Light';margin-bottom:9px;">Select your relationship to the honouree from the drop down menu</p>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <h5 class="mt-2 addbottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">Login Type</h5>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <select onchange="showField(this.value)" class="mb-3  form-control" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
-                                            <option>Select Login Type</option>
-                                                <option value="password">Guest</option>
-                                                <option value="accesscode">Access Code</option>
-                                            </select>
-                                            <input type="text" class="form-control" id="accessCodeInput" name="accesscode" style="border: 2px solid #BE9438; display: none;" placeholder="Access code">
-                                            <input type="password" class="form-control" id="passwordInput" name="password" style="border: 2px solid #BE9438; display: none;" placeholder="Password">
-                                            <p class="text-muted" style="font-family: 'Josefin Sans Light';">(Provided by the page administrators) Not required for public pages</p>
-                                        </div>
+                                    <form action="{{ route('login') }}" method="POST" id="loginForm">
+                                        <div class="row" id="guestFields">
+                                            <div class="col-lg-7 col-sm-6 mt-5">
+                                                <h3 class="loginheading text-right mt-lg-5" style="color:#BE9438;">
+                                                    LOG IN
+                                                </h3>
+                                            </div>
+                                            <div class="col-lg-5 col-sm-6 text-right mb-4 heartinmg">
+                                                <img src="{{asset('assets/heart.png')}}" class="img-fluid heartinmg" style="width:180px;">
+                                            </div>
+                                            <div class="col-lg-2 mt-2">
+                                                <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">FULL NAME</h5>
+                                            </div>
+                                            <div class="col-lg-10 mt-2">
+                                                <input type="text" class="form-control" name="fullname" style="border: 2px solid #BE9438;" placeholder="Full Name">
+                                                <p class="text-muted" style="font-family: 'Josefin Sans Light';margin-bottom:2px;">(Entry into the site will automatically add your name to the guest book)</p>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">EMAIL</h5>
+                                            </div>
+                                            <div class="col-lg-10 mt-2 mb-2">
+                                                <input type="email" class="form-control" name="email" style="border: 2px solid #BE9438;" placeholder="Email">
+                                            </div>
+                                            <div class="col-lg-2 mt-2">
+                                                <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">HONOUREE</h5>
+                                            </div>
+                                            <div class="col-lg-10 mt-2 mb-2">
+                                                <input type="text" class="form-control" name="honouree" style="border: 2px solid #BE9438;"  placeholder="Honouree's Page Name">
+                                            </div>
+                                            <div class="col-lg-2 mt-2">
+                                                <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">LEGACY PAGE URL</h5>
+                                            </div>
+                                            <div class="col-lg-10 mt-2 mb-2">
+                                                <input type="text" class="form-control" name="legacyurl" style="border: 2px solid #BE9438;"  placeholder="Legacy Page Url">
+                                            </div>
+                                            <div class="col-lg-2 mt-2">
+                                                <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">RELATIONSHIP</h5>
+                                            </div>
+                                            <div class="col-lg-10 mt-2">
+                                                <select class="form-control" name="relationship" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
+                                                    <option value="" disabled selected>Choose a Relationship</option>
+                                                    <option value="Parent">Parent</option>
+                                                    <option value="Step-Parent">Step-Parent</option>
+                                                    <option value="Foster Parent">Foster Parent</option>
+                                                    <option value="Guardian">Guardian</option>
+                                                    <option value="Grandparent">Grandparent</option>
+                                                    <option value="Step-Grandparent">Step-Grandparent</option>
+                                                    <option value="Godparent">Godparent</option>
+                                                    <option value="Husband">Husband</option>
+                                                    <option value="Wife">Wife</option>
+                                                    <option value="Partner">Partner</option>
+                                                    <option value="Ex-Partner">Ex-Partner</option>
+                                                    <option value="Child">Child</option>
+                                                    <option value="Stepchild">Stepchild</option>
+                                                    <option value="Foster Child">Foster Child</option>
+                                                    <option value="Godchild">Godchild</option>
+                                                    <option value="Sibling">Sibling</option>
+                                                    <option value="Nibling">Nibling</option>
+                                                    <option value="Niece">Niece</option>
+                                                    <option value="Nephew">Nephew</option>
+                                                    <option value="Cousin">Cousin</option>
+                                                    <option value="Best Friend">Best Friend</option>
+                                                    <option value="Friend">Friend</option>
+                                                    <option value="Family Friend">Family Friend</option>
+                                                    <option value="Friend of a Friend">Friend of a Friend</option>
+                                                    <option value="Colleague">Colleague</option>
+                                                    <option value="Acquaintance">Acquaintance</option>
+                                                    <option value="Caregiver">Caregiver</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                                <p class="text-muted" style="font-family: 'Josefin Sans Light';margin-bottom:9px;">Select your relationship to the honouree from the drop down menu</p>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <h5 class="mt-2 addbottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">ACCESS CODE</h5>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                {{-- <select onchange="showField(this.value)" class="mb-3  form-control" style="border: 2px solid #BE9438;font-family: 'Josefin Sans Light';">
+                                                <option>Select Login Type</option>
+                                                    <option value="password">Guest</option>
+                                                    <option value="accesscode">Access Code</option>
+                                                </select> --}}
+                                                <input type="text" class="form-control" id="accessCodeInput" name="accesscode" style="border: 2px solid #BE9438;" placeholder="Access code">
+                                                {{-- <input type="password" class="form-control" id="passwordInput" name="password" style="border: 2px solid #BE9438; display: none;" placeholder="Password">
+                                                <p class="text-muted" style="font-family: 'Josefin Sans Light';">(Provided by the page administrators) Not required for public pages</p> --}}
+                                            </div>
+                                            <div class="col-lg-12 mt-2 text-center">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="loginType" id="inlineRadio1" value="option1" onclick="showFields()" checked>
+                                                    <label class="form-check-label" for="inlineRadio1">Guest</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="loginType" id="inlineRadio2" value="option2" onclick="showFields()">
+                                                    <label class="form-check-label" for="inlineRadio2">Honouree</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 mt-2">
+                                            <div id="loginMessage"></div>
 
-                                        <div class="col-lg-12 mt-2">
-                                        <div id="loginMessage"></div>
+                                            </div>
 
+                                            <div class="col-lg-12 mt-2">
+                                                <h5 class="securityloginheading text-center" style="font-weight:bold;font-family: 'Josefin Sans Bold';">
+                                                    Security check
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-1 col-sm-1 widthsetingcheck" style="padding-right: 0px!Important;">
+                                                <input type="checkbox" class="form-control float-right mr-2 mt-1 margintopchecking" name="privacy_policy" style="border-color:#BE9438;width: 25px;height: 35px;" required>
+                                            </div>
+                                            <div class="col-lg-11 col-sm-11 widthseting" style="padding-left: 0px!Important;">
+                                                <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">Entering this site is confirmation that I accept 'A life Worth Remembring' Terms, Conditions and Privacy Policy</p>
+                                            </div>
+                                            <div class="col-lg-1 col-sm-1 mt-2 widthsetingcheck" style="padding-right: 0px!Important;">
+                                                <input type="checkbox" class="form-control float-right mr-2 margintopchecking" name="privacy_policy" style="border-color:#BE9438;width: 25px;height: 35px;">
+                                            </div>
+                                            <div class="col-lg-11 col-sm-11 mt-2 widthseting" style="padding-left: 0px!Important;">
+                                                <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">I accept accasional marketing emails from 'A Life Worth Remembring'</p>
+                                            </div>
+                                            <div class="col-lg-5 col-sm-5 offset-lg-1 mt-2">
+                                                <button class="login-butn  btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">LOG IN</button>
+                                            </div>
+                                            <div class="col-lg-5 col-sm-5 mt-2">
+                                                <button class="btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">REQUEST ACCESS</button>
+                                            </div>
                                         </div>
-
-                                        <div class="col-lg-12 mt-2">
-                                            <h5 class="securityloginheading text-center" style="font-weight:bold;font-family: 'Josefin Sans Bold';">
-                                                Security check
-                                            </h5>
+                                        <div class="row" id="honoureeFields" style="display:none; ">
+                                            <div class="col-lg-7 col-sm-6 mt-5">
+                                                <h3 class="loginheading text-right mt-lg-5" style="color:#BE9438;">
+                                                    LOG IN
+                                                </h3>
+                                            </div>
+                                            <div class="col-lg-5 col-sm-6 text-right mb-4 heartinmg">
+                                                <img src="{{asset('assets/heart.png')}}" class="img-fluid heartinmg" style="width:180px;">
+                                            </div>
+                                            <div class="col-lg-2 mt-2">
+                                                <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">Email</h5>
+                                            </div>
+                                            <div class="col-lg-10 mt-2">
+                                                <input type="email" class="form-control" name="emailhonuree" style="border: 2px solid #BE9438;" placeholder="Email">
+                                            </div>
+                                            <div class="col-lg-2 mt-2">
+                                                <h5 class="mt-2 bottommargindh" style="font-family: 'Josefin Sans Bold';font-size: 18px;">Password</h5>
+                                            </div>
+                                            <div class="col-lg-10 mt-2">
+                                                <input type="password" class="form-control" id="passwordInput" name="password" style="border: 2px solid #BE9438;" placeholder="Password">
+                                            </div>
+                                            <div class="col-lg-12 mt-2 text-center">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="loginType" id="inlineRadiohonuee1" value="option1" onclick="showFieldstwo()">
+                                                    <label class="form-check-label" for="inlineRadio1">Guest</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="loginType" id="inlineRadiohonuee2" value="option2" onclick="showFieldstwo()" checked>
+                                                    <label class="form-check-label" for="inlineRadio2">Honouree</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 mt-2">
+                                                <h5 class="securityloginheading text-center" style="font-weight:bold;font-family: 'Josefin Sans Bold';">
+                                                    Security check
+                                                </h5>
+                                            </div>
+                                            <div class="col-lg-1 col-sm-1 widthsetingcheck" style="padding-right: 0px!Important;">
+                                                <input type="checkbox" class="form-control float-right mr-2 mt-1 margintopchecking" name="privacy_policy" style="border-color:#BE9438;width: 25px;height: 35px;" required>
+                                            </div>
+                                            <div class="col-lg-11 col-sm-11 widthseting" style="padding-left: 0px!Important;">
+                                                <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">Entering this site is confirmation that I accept 'A life Worth Remembring' Terms, Conditions and Privacy Policy</p>
+                                            </div>
+                                            <div class="col-lg-1 col-sm-1 mt-2 widthsetingcheck" style="padding-right: 0px!Important;">
+                                                <input type="checkbox" class="form-control float-right mr-2 margintopchecking" name="privacy_policy" style="border-color:#BE9438;width: 25px;height: 35px;">
+                                            </div>
+                                            <div class="col-lg-11 col-sm-11 mt-2 widthseting" style="padding-left: 0px!Important;">
+                                                <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">I accept accasional marketing emails from 'A Life Worth Remembring'</p>
+                                            </div>
+                                            <div class="col-lg-5 col-sm-5 offset-lg-1 mt-2">
+                                                <button class="login-butn  btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">LOG IN</button>
+                                            </div>
+                                            <div class="col-lg-5 col-sm-5 mt-2">
+                                                <button class="btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">REQUEST ACCESS</button>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-1 col-sm-1 widthsetingcheck" style="padding-right: 0px!Important;">
-                                            <input type="checkbox" class="form-control float-right mr-2 mt-1 margintopchecking" name="privacy_policy" style="border-color:#BE9438;width: 25px;height: 35px;" required>
-                                        </div>
-                                        <div class="col-lg-11 col-sm-11 widthseting" style="padding-left: 0px!Important;">
-                                            <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">Entering this site is confirmation that I accept 'A life Worth Remembring' Terms, Conditions and Privacy Policy</p>
-                                        </div>
-                                        <div class="col-lg-1 col-sm-1 mt-2 widthsetingcheck" style="padding-right: 0px!Important;">
-                                            <input type="checkbox" class="form-control float-right mr-2 margintopchecking" name="privacy_policy" style="border-color:#BE9438;width: 25px;height: 35px;">
-                                        </div>
-                                        <div class="col-lg-11 col-sm-11 mt-2 widthseting" style="padding-left: 0px!Important;">
-                                            <p class="mt-1 text-muted widthsetingtext" style="font-family: 'Josefin Sans Light';">I accept accasional marketing emails from 'A Life Worth Remembring'</p>
-                                        </div>
-                                        <div class="col-lg-5 col-sm-5 offset-lg-1 mt-2">
-                                            <button class="login-butn  btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">LOG IN</button>
-                                        </div>
-                                        <div class="col-lg-5 col-sm-5 mt-2">
-                                            <button class="btn btn-large mb-4 requestaccess" style="font-weight:bold;border-radius:20px;width:100%;background-color:#BE9438;border-color: #BE9438;font-family: 'Josefin Sans Bold';">REQUEST ACCESS</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                             <div class="row">
@@ -561,62 +637,93 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function(){
-    $(".login-butn").click(function(){
-        // Get CSRF token value from meta tag
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+            $(".login-butn").click(function(){
+                // Get CSRF token value from meta tag
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-        // Get form data
-        var fullname = $("input[name='fullname']").val();
-        var email = $("input[name='email']").val();
-        var honouree = $("input[name='honouree']").val();
-        var relationship = $("select[name='relationship']").val();
-        var accesscode = $("input[name='accesscode']").val();
-        var password = $("input[name='password']").val();
-        
-        // Prepare data for sending
-        var formData = {
-            fullname: fullname,
-            email: email,
-            honouree: honouree,
-            relationship: relationship,
-            accesscode: accesscode,
-            password: password,
-        };
-        
-        // Send data to the server with CSRF token included
-        $.ajax({
-    type: "POST",
-    url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
-    data: formData,
-    headers: {
-        'X-CSRF-TOKEN': csrfToken
-    },
-    success: function(response){
-        if(response.success){
-            // Redirect to the desired page
-            window.location.href = '{{ route("pageone") }}';
+                // Get form data
+                var fullname = $("input[name='fullname']").val();
+                var email = $("input[name='email']").val();
+                var honouree = $("input[name='honouree']").val();
+                var relationship = $("select[name='relationship']").val();
+                var accesscode = $("input[name='accesscode']").val();
+                var password = $("input[name='password']").val();
+                
+                // Prepare data for sending
+                var formData = {
+                    fullname: fullname,
+                    email: email,
+                    honouree: honouree,
+                    relationship: relationship,
+                    accesscode: accesscode,
+                    password: password,
+                };
+                
+                // Send data to the server with CSRF token included
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('frontend_login') }}", // Replace "frontend_login" with the actual server endpoint
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    success: function(response){
+                        if(response.success){
+                            // Redirect to the desired page
+                            window.location.href = '{{ route("pageone") }}';
+                        }
+                        else if(response.success === false) { // Corrected syntax for else if
+                            // Display unsuccessful login message
+                            $("#loginMessage").html('<span style="color: red;">' + response.message + '</span>');
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        // Handle errors
+                        // $("#loginMessage").html('<span style="color: red;">' + xhr.responseText + '</span>');
+                    
+                    }
+                });
+
+            });
+        });
+    </script> --}}
+
+    <script>
+        function showFields() {
+            var guestFields = document.getElementById('guestFields');
+            var honoureeFields = document.getElementById('honoureeFields');
+            var radioGuest = document.getElementById('inlineRadio1');
+            var radioHonuee = document.getElementById('inlineRadio2');
+
+            if (radioGuest.checked) {
+                guestFields.style.display = 'flex';
+                honoureeFields.style.display = 'none';
+                radioGuest.checked = true;
+            } else {
+                guestFields.style.display = 'none';
+                honoureeFields.style.display = 'flex';
+                radioHonuee.checked = true;
+            }
         }
-        else if(response.success === false) { // Corrected syntax for else if
-            // Display unsuccessful login message
-            $("#loginMessage").html('<span style="color: red;">' + response.message + '</span>');
+        function showFieldstwo() {
+            var guestFields = document.getElementById('guestFields');
+            var honoureeFields = document.getElementById('honoureeFields');
+            var radioGuest = document.getElementById('inlineRadiohonuee1');
+            var radiohonuee = document.getElementById('inlineRadiohonuee2');
+
+            if (radioGuest.checked) {
+                guestFields.style.display = 'flex';
+                honoureeFields.style.display = 'none';
+                radioGuest.checked = true;
+            } else {
+                guestFields.style.display = 'none';
+                honoureeFields.style.display = 'flex';
+                radiohonuee.checked = true;
+            }
         }
-    },
-    error: function(xhr, status, error){
-        // Handle errors
-        // $("#loginMessage").html('<span style="color: red;">' + xhr.responseText + '</span>');
-       
-    }
-});
-
-    });
-});
-
-
-</script>
-
-
+    </script>
 
 <!-- Other scripts -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"

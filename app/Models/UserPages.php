@@ -29,5 +29,7 @@ class UserPages extends Model
         'total_amount',
         'name',
         'email',
+        'legacy_page_url',
+        'user_id',
     ];
 }

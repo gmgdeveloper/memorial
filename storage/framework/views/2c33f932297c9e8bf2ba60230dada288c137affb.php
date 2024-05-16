@@ -308,15 +308,6 @@
             .swiper-button-next.relativenext{
                 top: 105px;
             }
-            .dropdown-item.active, .dropdown-item:active{
-                background-color: #be9438!important;
-            }
-            .btn:focus{
-                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
-            }
-            .form-control:focus {
-                box-shadow: 0 0 0 .2rem rgb(0 123 255 / 0%)!important;
-            }
         /* @media  screen and (max-width: 768px) {
           .mobileoff{
               display:none!important;
@@ -1117,39 +1108,6 @@
 </head>
 
 <body>
-    <span id="editIconn" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-        <i class="fa fa-edit" data-toggle="modal" data-target="#bodymodal"></i>
-    </span>
-    <div class="modal fade" id="bodymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add Body</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <form action="<?php echo e(route('ganeral_setting')); ?>" method="POST" enctype="multipart/form-data">
-                <?php echo csrf_field(); ?>
-                <div class="modal-body">
-                    <?php echo csrf_field(); ?>
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <div class="form-group">
-                                <label for="title" class="float-left">Add Background Image</label>
-                                <input class="form-control" type="file" id="background_image" name="background_image" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    
-                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                </div>
-            </form>
-        </div>
-        </div>
-    </div>
     <div class="container-fluid mainecontaienfluid">
         <div class="row">
             <div class="container" style="background-color:white;border:2px solid #BE9438;">
@@ -1174,24 +1132,8 @@
                                             <a class="nav-item nav-link ml-lg-2" href="#tributes" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">TRIBUTES</a>
                                             <a class="nav-item nav-link ml-lg-2" href="#contact" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">CONTACT</a>
                                             <div class="dropdown show">
-                                                <a class="nav-item nav-link ml-lg-2" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" style="font-size:25px;color:white;"></i></a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="<?php echo e(route('profile_honree')); ?>">Profile</a>
-                                                    <a class="dropdown-item" href="<?php echo e(route('hnotifications')); ?>">Notifications 
-                                                        <?php
-                                                            $counts = \App\Models\RequestAccess::where('seen','=',0)->count();
-                                                        if($counts > 1){
-                                                        ?>
-                                                        <span class="badge" style="color:white;background-color:#BE9438;">
-                                                            <?php echo e($counts); ?>
-
-                                                        </span>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </a>
-                                                    <a class="dropdown-item" href="<?php echo e(route('honree_logout')); ?>">Logout</a>
-                                                </div>
+                                                <a class="nav-item nav-link ml-lg-2" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -1221,10 +1163,7 @@
                                             <a class="nav-item nav-link ml-lg-5" href="#contact" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';">CONTACT</a>
                                             <div class="dropdown show">
                                                 <a class="nav-item nav-link ml-lg-5" style="color:white;font-weight: bold;font-family: 'Josefin Sans Light';" role="button" id="dropdownMenuLinksec" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFILE</a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLinksec">
-                                                    <a class="dropdown-item" href="<?php echo e(route('profile_honree')); ?>">Profile</a>
-                                                    <a class="dropdown-item" href="<?php echo e(route('honree_logout')); ?>">Logout</a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -1244,58 +1183,10 @@
 
                                     <?php endif; ?>
 
-
-                                    <span id="editIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                        <i class="fa fa-edit"></i>
-                                    </span>
                                     <input type="file" id="imageInput" style="display: none;">
                                 </div>
                             </div>
 
-                            <script>
-                                document.addEventListener("DOMContentLoaded", function() {
-                                    var editIcon = document.getElementById('editIcon');
-                                    var imageInput = document.getElementById('imageInput');
-
-                                    editIcon.addEventListener('click', function() {
-                                        imageInput.click();
-                                    });
-
-                                    imageInput.addEventListener('change', function() {
-                                        var file = this.files[0];
-                                        if (file) {
-                                            var reader = new FileReader();
-                                            reader.onload = function(e) {
-                                                var imageContainer = document.getElementById('imageContainer');
-                                                var img = document.createElement('img');
-                                                img.src = e.target.result;
-                                                img.style.width = '100%';
-                                                img.style.height = '400px';
-                                                img.style.border = '2px solid #BE9438';
-                                                img.className = 'imagemainheightset';
-                                                imageContainer.replaceChild(img, imageContainer.getElementsByTagName('img')[0]);
-
-                                                // Send the image data to the server using AJAX
-                                                var formData = new FormData();
-                                                formData.append('image', file);
-
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open('POST', '<?php echo e(route("banner_image")); ?>', true);
-                                                xhr.setRequestHeader('X-CSRF-TOKEN', '<?php echo e(csrf_token()); ?>');
-                                                xhr.onload = function() {
-                                                    if (xhr.status === 200) {
-                                                        console.log('Image uploaded successfully!');
-                                                    } else {
-                                                        console.error('Error uploading image:', xhr.responseText);
-                                                    }
-                                                };
-                                                xhr.send(formData);
-                                            };
-                                            reader.readAsDataURL(file);
-                                        }
-                                    });
-                                });
-                            </script>
 
 
 
@@ -1310,92 +1201,12 @@
                                     <?php endif; ?>
                                 </h3>
 
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var paragraph = document.getElementById('breannon');
-
-                                        paragraph.addEventListener('blur', function() {
-                                            var editedData = paragraph.textContent.trim(); // Get the edited content
-                                            // Make an Ajax request to send the edited data to Laravel controller
-                                            fetch('/bannerimage', {
-                                                    method: 'POST',
-
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                    },
-                                                    body: JSON.stringify({
-                                                        memorail_title: editedData
-                                                    })
-                                                })
-                                                .then(response => {
-                                                    if (response.ok) {
-                                                        console.log('Data saved successfully!');
-                                                    } else {
-                                                        console.error('Failed to save data');
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error:', error);
-                                                });
-                                        });
-                                    });
-
-                                    function breannon() {
-                                        var paragraph = document.getElementById('breannon');
-                                        paragraph.contentEditable = true;
-                                        paragraph.focus();
-                                    }
-                                </script>
+                    
                                 <h4 class="text-center">
                                     <span id="editableDateOfBirth" contenteditable style="color:#A423EB;"><?php echo e($date_of_birth); ?></span>
                                     <span class="mr-lg-1">/</span><span id="editableDateOfDeath" contenteditable style="color:#A423EB;"><?php echo e($date_of_death); ?></span>
                                 </h4>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        // Function to handle updating the dates
-                                        function updateDates(dateOfBirth, dateOfDeath) {
-                                            // Make an AJAX request to update the database
-                                            fetch('/update-dates', {
-                                                method: 'POST',
-                                                headers: {
-                                                    'Content-Type': 'application/json',
-                                                    'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                },
-                                                body: JSON.stringify({
-                                                    dateOfBirth: dateOfBirth,
-                                                    dateOfDeath: dateOfDeath
-                                                })
-                                            })
-                                            .then(response => {
-                                                if (response.ok) {
-                                                    console.log('Dates updated successfully!');
-                                                } else {
-                                                    console.error('Failed to update dates');
-                                                }
-                                            })
-                                            .catch(error => {
-                                                console.error('Error:', error);
-                                            });
-                                        }
-                                
-                                        // Add event listener to the Date of Birth span
-                                        var editableDateOfBirth = document.getElementById('editableDateOfBirth');
-                                        editableDateOfBirth.addEventListener('blur', function() {
-                                            var newDateOfBirth = editableDateOfBirth.textContent.trim();
-                                            var dateOfDeath = document.getElementById('editableDateOfDeath').textContent.trim();
-                                            updateDates(newDateOfBirth, dateOfDeath);
-                                        });
-                                
-                                        // Add event listener to the Date of Death span
-                                        var editableDateOfDeath = document.getElementById('editableDateOfDeath');
-                                        editableDateOfDeath.addEventListener('blur', function() {
-                                            var dateOfBirth = document.getElementById('editableDateOfBirth').textContent.trim();
-                                            var newDateOfDeath = editableDateOfDeath.textContent.trim();
-                                            updateDates(dateOfBirth, newDateOfDeath);
-                                        });
-                                    });
-                                </script>
+                               
                            
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
@@ -1420,9 +1231,6 @@
                                         <span class="swiper-button-next-icon" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
-                                    <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                        <i class="fa fa-upload" style="color: #fff;" data-toggle="modal" data-target="#quotesmodal"></i>
-                                    </span>
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="quotesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1460,63 +1268,7 @@
                                     </div>
                                     </div>
                                 </div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        // Function to make element editable
-                                        function makeEditable(elementId, quoteId, contentType) {
-                                            var element = document.getElementById(elementId);
-                                            element.contentEditable = true;
-                                            element.focus();
 
-                                            // Add event listener for blur event
-                                            element.addEventListener('blur', function() {
-                                                // Get the edited content
-                                                var editedContent = element.textContent.trim();
-
-                                                // Determine the content type
-                                                var data = {};
-                                                if (contentType === 'heading') {
-                                                    data.heading = editedContent;
-                                                    data.quoteid = quoteId;
-                                                } else if (contentType === 'description') {
-                                                    data.description = editedContent;
-                                                    data.quoteid = quoteId;
-                                                }
-
-
-                                                // Make an Ajax request to send the edited content to the server
-                                                fetch('/savequotes/' + quoteId, {
-                                                        method: 'POST', // Use PUT method for updating
-                                                        headers: {
-                                                            'Content-Type': 'application/json',
-                                                            'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                        },
-                                                        body: JSON.stringify(data)
-                                                    })
-                                                    .then(response => {
-                                                        if (response.ok) {
-                                                            console.log('Data saved successfully!');
-                                                        } else {
-                                                            console.error('Failed to save data');
-                                                        }
-                                                    })
-                                                    .catch(error => {
-                                                        console.error('Error:', error);
-                                                    });
-                                            });
-                                        }
-
-                                        // Automatically make elements editable upon certain event
-                                        document.getElementById("carouselExampleControls").addEventListener("mouseover", function(event) {
-                                            var target = event.target;
-                                            var quoteId = target.getAttribute('data-quote-id');
-                                            if (quoteId && (target.id === "editableHeading" + quoteId || target.id === "editablePara" + quoteId)) {
-                                                var contentType = target.id.startsWith('editableHeading') ? 'heading' : 'description';
-                                                makeEditable(target.id, quoteId, contentType);
-                                            }
-                                        });
-                                    });
-                                </script>
 
                             </div>
 
@@ -1534,10 +1286,6 @@
                                     <?php endif; ?>
                                 
 
-                                    <!-- Icon for uploading video -->
-                                    <span id="uploadIcon" style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                        <i class="fa fa-upload" style="color: #BE9438;"></i>
-                                    </span>
 
                                     <!-- Video upload area -->
                                     <div id="videoUploadArea" style="display: none;">
@@ -1545,47 +1293,6 @@
                                     </div>
                                 </div>
 
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var uploadIcon = document.getElementById('uploadIcon');
-                                        var videoInput = document.getElementById('videoUploadInput');
-
-                                        // Function to handle showing/hiding video upload area
-                                        uploadIcon.addEventListener('click', function() {
-                                            videoInput.click();
-                                        });
-
-                                        // Function to handle video upload
-                                        videoInput.addEventListener('change', function() {
-                                            var file = this.files[0];
-                                            if (file) {
-                                                var reader = new FileReader();
-                                                reader.onload = function(e) {
-                                                    var videoPlayer = document.getElementById('videoPlayer');
-                                                    videoPlayer.src = URL.createObjectURL(file);
-                                                    videoPlayer.load();
-
-                                                    // Optionally, you can send the video data to the server using AJAX
-                                                    var formData = new FormData();
-                                                    formData.append('video', file);
-
-                                                    var xhr = new XMLHttpRequest();
-                                                    xhr.open('POST', '<?php echo e(route("videoupload")); ?>', true);
-                                                    xhr.setRequestHeader('X-CSRF-TOKEN', '<?php echo e(csrf_token()); ?>');
-                                                    xhr.onload = function() {
-                                                        if (xhr.status === 200) {
-                                                            console.log('Video uploaded successfully!');
-                                                        } else {
-                                                            console.error('Error uploading video:', xhr.responseText);
-                                                        }
-                                                    };
-                                                    xhr.send(formData);
-                                                };
-                                                reader.readAsDataURL(file);
-                                            }
-                                        });
-                                    });
-                                </script>
                             </div>
 
              
@@ -1607,42 +1314,6 @@
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
 
                                 <?php endif; ?>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var paragraph = document.getElementById('editableParagraphoverview');
-
-                                        paragraph.addEventListener('blur', function() {
-                                            var editedData = paragraph.textContent.trim(); // Get the edited content
-                                            // Make an Ajax request to send the edited data to Laravel controller
-                                            fetch('/bannerimage', {
-                                                    method: 'POST',
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                    },
-                                                    body: JSON.stringify({
-                                                        over_view: editedData
-                                                    })
-                                                })
-                                                .then(response => {
-                                                    if (response.ok) {
-                                                        console.log('Data saved successfully!');
-                                                    } else {
-                                                        console.error('Failed to save data');
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error:', error);
-                                                });
-                                        });
-                                    });
-
-                                    function makeEditable() {
-                                        var paragraph = document.getElementById('editableParagraphoverview');
-                                        paragraph.contentEditable = true;
-                                        paragraph.focus();
-                                    }
-                                </script>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-3 mb-5 newclasspaddingoff relationshipdiccv" style="border-bottom: 2px solid #BE9438;">
                                 <h3 class="pagemainheading mt-lg-3 topaddmarginsub" style="color:#A423EB!important;" id="relations">RELATIONSHIPS</h3>
@@ -1676,57 +1347,7 @@
                                     <div class="swiper-button-next relationshipsliderbuttonnext" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                     <div class="swiper-button-prev relationshipsliderbuttonprev" style="top: var(--swiper-navigation-top-offset, 40%);"></div>
                                 </div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                                        var editableElements = document.querySelectorAll('.editable');
-                                        
-                                        // Function to make element editable
-                                        function makeEditable(element) {
-                                            element.contentEditable = true;
-                                            element.focus();
-                                        }
-                                
-                                        // Add event listeners to make elements editable upon clicking
-                                        editableElements.forEach(function(element) {
-                                            element.addEventListener('click', function() {
-                                                makeEditable(element);
-                                            });
-                                
-                                            element.addEventListener('blur', function() {
-                                                var editedContent = element.textContent.trim();
-                                                var elementId = element.id;
-                                                var relationshipId = element.getAttribute('data-relationship-id');
-                                
-                                                // Prepare data object with key-value pairs
-                                                var data = {
-                                                    content: editedContent,
-                                                    elementId: elementId,
-                                                    relationshipId: relationshipId
-                                                };
-                                
-                                                // Make an AJAX request to send the edited content to the server
-                                                fetch('/update-relationship', {
-                                                    method: 'POST',
-                                                    headers: {
-                                                        'Content-Type': 'application/json',
-                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                    },
-                                                    body: JSON.stringify(data)
-                                                })
-                                                .then(response => {
-                                                    if (response.ok) {
-                                                        console.log('Content updated successfully!');
-                                                    } else {
-                                                        console.error('Failed to update content');
-                                                    }
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error:', error);
-                                                });
-                                            });
-                                        });
-                                    });
-                                </script>
+
                                 
                                 
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
@@ -1761,9 +1382,6 @@
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
 
-                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
-                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#relationmodal"></i>
-                                </span>
                                 <div class="modal fade" id="relationmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -3915,4 +3533,4 @@
     <?php endif; ?>
 </body>
 
-</html><?php /**PATH G:\laragon\www\memorial_website\project\memorial\resources\views/Frontend/pageone.blade.php ENDPATH**/ ?>
+</html><?php /**PATH G:\laragon\www\memorial_website\project\memorial\resources\views/Frontend/userpageone.blade.php ENDPATH**/ ?>

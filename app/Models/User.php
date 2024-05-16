@@ -27,7 +27,9 @@ class User extends Authenticatable
         'mobilephone',
         'suburb',
         'street',
-        'buildingname'
+        'buildingname',
+        'role',
+        'access_code',
     ];
 
     /**
