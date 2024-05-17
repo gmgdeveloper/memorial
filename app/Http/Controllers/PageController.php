@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Media;
 use App\Models\Quote;
 use App\Models\GaneralSetting;
+use App\Models\GeneralKnowledge;
+use App\Models\Faqs;
+use App\Models\GuestBook;
+
 
 class PageController extends Controller
 {
@@ -40,6 +44,9 @@ class PageController extends Controller
         $relationships = Relationship::where('user_id', auth()->user()->id)->get();   
         $ganeral_setting = GaneralSetting::where('user_id', auth()->user()->id)->first();   
 
+        $generalknowledges = GeneralKnowledge::where('user_id', auth()->user()->id)->get();
+        $faqs = Faqs::where('user_id', auth()->user()->id)->get();
+        $guestbooks = GuestBook::where('user_id', auth()->user()->id)->get();
         
  
             // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
@@ -63,7 +70,7 @@ class PageController extends Controller
 
         
     
-            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting'));
+            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting','generalknowledges','faqs','guestbooks'));
         
     }
 
@@ -72,100 +79,174 @@ class PageController extends Controller
 
 
 
-    public function save_create_page(Request $request)
-    {
-        // Validate the request data as needed
+    // public function save_create_page(Request $request)
+    // {
+    //     // Validate the request data as needed
 
-        // dd($request->all());
+    //     // dd($request->all());
 
-        // Check if the email already exists
-        $existingUser = User::where('email', $request->email)->first();
+    //     // Check if the email already exists
+    //     $existingUser = User::where('email', $request->email)->first();
 
-        // If the email already exists, redirect back with a flash message
-        if ($existingUser) {
-            return redirect()->back()->with('error', 'Email already exists. Please choose a different email.');
+    //     // If the email already exists, redirect back with a flash message
+    //     if ($existingUser) {
+    //         return redirect()->back()->with('error', 'Email already exists. Please choose a different email.');
+    //     }
+
+    //     // Create a new user instance
+    //     $user = new User;
+    //     $user->email = $request->email;
+    //     $user->name = $request->firstname;
+    //     $user->password = Hash::make($request->password); // Hash the password
+    //     $user->mobilephone = $request->mobilephone;
+    //     $user->buildingname = $request->buildingname;
+    //     $user->street = $request->street;
+    //     $user->suburb = $request->suburb;
+    //     $user->postcode = $request->postcode;
+    //     $user->state  = $request->state;
+    //     $user->country = $request->country;
+    //     $user->role = 1;
+    //     $user->name = $request->name;
+    //     $user->email = $request->email;
+    //     $user->is_active = 1;
+    //     $user->no_of_memorial_pages = 1;
+    //     $user->relationship = $request->relationship;
+
+
+    //     // Generate a random access code
+    //     $accessCode = Str::random();
+
+    //     // Hash the access code and store it in the database
+    //     // $user->access_code = Hash::make($accessCode);
+    //     $user->access_code = $accessCode;
+
+    //     // Save the user to the database
+    //     if ($user->save()) {
+    //         // Find the selected plan
+    //         $selectedPlan = Plan::find($request->to_buy_plan_id);
+
+    //         // Create a new user page instance
+    //         $user_page = new UserPages;
+    //         $user_page->first_name = $request->firstname;
+    //         $user_page->last_name = $request->lastname;
+    //         $user_page->date_of_death = $request->dateofdeath;
+    //         $user_page->date_of_birth = $request->dateofbirth;
+    //         $user_page->middle_name = $request->middlename;
+    //         $user_page->memorial_web_address = $request->memorialaddress;
+    //         $user_page->page_type = $request->page_type; // Use directly from the request
+    //         $user_page->plan_id = $request->to_buy_plan_id;
+    //         $user_page->privacy_policy = $request->visible_only_to_me ? 1 : 0; // Assuming this field is boolean
+    //         $user_page->name_of_card = $request->name_on_card;
+    //         $user_page->credit_card = $request->credit_card;
+    //         $user_page->total_amount = $selectedPlan->price; // Assign the price of the selected plan
+    //         $user_page->name = $user->name; // Use the user's name
+    //         $user_page->email = $user->email; // Use the user's email
+    //         $user_page->user_id = $user->user_id; // Use the user's email
+
+
+    //         $randomString = Str::random(5);
+    //         $baseUrl = config('app.url'); // Get your site's base URL from configuration
+    //         $randomUrl = $baseUrl . '/' . $randomString;
+    //         $legacy_page_url = $randomUrl;
+    //         $user_page->legacy_page_url = $legacy_page_url;
+
+    //         // Save the user page to the database
+    //         if ($user_page->save()) {
+    //             // Create a new user plan instance
+    //             $user_plan = new UserPlan;
+    //             $user_plan->user_id = $user->id;
+    //             $user_plan->page_id =  $user_page->id;
+    //             $user_plan->plan_id = $selectedPlan->id;
+    //             $user_plan->total_amount = $selectedPlan->price;
+
+    //             // Save the user plan to the database
+    //             if ($user_plan->save()) {
+    //                 // Send the access code in plaintext via email
+    //                 Mail::to($user->email)->send(new AccessCodeEmail($accessCode));
+    //                 // Redirect to the login page
+    //                 return redirect()->route('login');
+    //             }
+    //         }
+    //     }
+
+    //     // Redirect back with a generic error message if any of the saves fail
+    //     return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+    // }
+    public function save_create_page(Request $request){
+        // Count user pages
+        $pagesfind = UserPages::where('email', $user->email)->count();
+
+        if ($pagesfind == 0) {
+            $user = new User;
+            $user->email = $request->email;
+            $user->name = $request->firstname;
+            $user->password = Hash::make($request->password);
+            $user->mobilephone = $request->mobilephone;
+            $user->buildingname = $request->buildingname;
+            $user->street = $request->street;
+            $user->suburb = $request->suburb;
+            $user->postcode = $request->postcode;
+            $user->state  = $request->state;
+            $user->country = $request->country;
+            $user->role = 1;
+            $user->is_active = 1;
+            $user->no_of_memorial_pages = 1;
+            $user->relationship = $request->relationship;
+
+            $accessCode = Str::random();
+
+            $user->access_code = $accessCode;
+
+            $user->save();
+        } else {
+            $user = User::find(auth()->user()->id);
+        }
+        dd($user);
+        $selectedPlan = Plan::find($request->to_buy_plan_id);
+
+        $user_page = new UserPages;
+        $user_page->first_name = $request->firstname;
+        $user_page->last_name = $request->lastname;
+        $user_page->date_of_death = $request->dateofdeath;
+        $user_page->date_of_birth = $request->dateofbirth;
+        $user_page->middle_name = $request->middlename;
+        $user_page->memorial_web_address = $request->memorialaddress;
+        $user_page->page_type = $request->page_type;
+        $user_page->plan_id = $request->to_buy_plan_id;
+        $user_page->privacy_policy = $request->visible_only_to_me ? 1 : 0;
+        $user_page->name_of_card = $request->name_on_card;
+        $user_page->credit_card = $request->credit_card;
+        $user_page->total_amount = $selectedPlan->price;
+        $user_page->name = $user->name;
+        $user_page->email = $user->email;
+        $user_page->user_id = $user->id;
+
+        if ($pagesfind > 0) {
+            $user_page->page_number = $pagesfind + 1;
         }
 
-        // Create a new user instance
-        $user = new User;
-        $user->email = $request->email;
-        $user->name = $request->firstname;
-        $user->password = Hash::make($request->password); // Hash the password
-        $user->mobilephone = $request->mobilephone;
-        $user->buildingname = $request->buildingname;
-        $user->street = $request->street;
-        $user->suburb = $request->suburb;
-        $user->postcode = $request->postcode;
-        $user->state  = $request->state;
-        $user->country = $request->country;
-        $user->role = 1;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->is_active = 1;
-        $user->no_of_memorial_pages = 1;
-        $user->relationship = $request->relationship;
+        $randomString = Str::random(5);
+        $baseUrl = config('app.url');
+        $randomUrl = $baseUrl . '/' . $randomString;
+        $legacy_page_url = $randomUrl;
+        $user_page->legacy_page_url = $legacy_page_url;
 
+        if ($user_page->save()) {
+            $user_plan = new UserPlan;
+            $user_plan->user_id = $user->id;
+            $user_plan->page_id = $user_page->id;
+            $user_plan->plan_id = $selectedPlan->id;
+            $user_plan->total_amount = $selectedPlan->price;
 
-        // Generate a random access code
-        $accessCode = Str::random();
-
-        // Hash the access code and store it in the database
-        // $user->access_code = Hash::make($accessCode);
-        $user->access_code = $accessCode;
-
-        // Save the user to the database
-        if ($user->save()) {
-            // Find the selected plan
-            $selectedPlan = Plan::find($request->to_buy_plan_id);
-
-            // Create a new user page instance
-            $user_page = new UserPages;
-            $user_page->first_name = $request->firstname;
-            $user_page->last_name = $request->lastname;
-            $user_page->date_of_death = $request->dateofdeath;
-            $user_page->date_of_birth = $request->dateofbirth;
-            $user_page->middle_name = $request->middlename;
-            $user_page->memorial_web_address = $request->memorialaddress;
-            $user_page->page_type = $request->page_type; // Use directly from the request
-            $user_page->plan_id = $request->to_buy_plan_id;
-            $user_page->privacy_policy = $request->visible_only_to_me ? 1 : 0; // Assuming this field is boolean
-            $user_page->name_of_card = $request->name_on_card;
-            $user_page->credit_card = $request->credit_card;
-            $user_page->total_amount = $selectedPlan->price; // Assign the price of the selected plan
-            $user_page->name = $user->name; // Use the user's name
-            $user_page->email = $user->email; // Use the user's email
-            $user_page->user_id = $user->user_id; // Use the user's email
-
-
-            $randomString = Str::random(5);
-            $baseUrl = config('app.url'); // Get your site's base URL from configuration
-            $randomUrl = $baseUrl . '/' . $randomString;
-            $legacy_page_url = $randomUrl;
-            $user_page->legacy_page_url = $legacy_page_url;
-
-            // Save the user page to the database
-            if ($user_page->save()) {
-                // Create a new user plan instance
-                $user_plan = new UserPlan;
-                $user_plan->user_id = $user->id;
-                $user_plan->page_id =  $user_page->id;
-                $user_plan->plan_id = $selectedPlan->id;
-                $user_plan->total_amount = $selectedPlan->price;
-
-                // Save the user plan to the database
-                if ($user_plan->save()) {
-                    // Send the access code in plaintext via email
-                    Mail::to($user->email)->send(new AccessCodeEmail($accessCode));
-                    // Redirect to the login page
-                    return redirect()->route('login');
-                }
+            if ($user_plan->save()) {
+                Mail::to($user->email)->send(new AccessCodeEmail($accessCode));
+                return redirect()->route('login');
             }
         }
 
         // Redirect back with a generic error message if any of the saves fail
         return redirect()->back()->with('error', 'Something went wrong. Please try again.');
     }
-
 
 
 
@@ -419,9 +500,80 @@ class PageController extends Controller
         return redirect()->route('pageone');
     }
 
+    public function add_general_knowledge(Request $request){
+        
+        $ganeral = GeneralKnowledge::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'brief' => $request->brief,
+            'user_id' => auth()->user()->id,
+        ]);
 
+        return redirect()->route('pageone')->with('success','General knowledge added successfully');
 
+    }
 
+    public function add_question_answers(Request $request){
+        
+        $ganeral = Faqs::create([
+            'question' => $request->question,
+            'answer' => $request->answer,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('pageone')->with('success','Question Answer added successfully');
+
+    }
+
+    public function update_faq_content(Request $request) {
+        $faqs = Faqs::find($request->faqId);
+    
+        // Check if the request contains 'question' or 'answer'
+        if ($request->has('question')) {
+            $faqs->question = $request->question;
+        }
+    
+        if ($request->has('answer')) {
+            $faqs->answer = $request->answer;
+        }
+    
+        $faqs->save();
+    
+        return response()->json(['success' => 'Question Answer updated successfully']);
+    }  
+
+    public function add_guestbook(Request $request){
+        
+        $guest = GuestBook::create([
+            'name' => $request->name,
+            'date' => $request->date,
+            'relationship' => $request->relationship,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return redirect()->route('pageone')->with('success','Guest Book added successfully');
+
+    }      
+
+    public function update_guestbook_content(Request $request) {
+        $guestbook = Guestbook::find($request->guestbookId);
+    
+        if ($request->has('name')) {
+            $guestbook->name = $request->name;
+        }
+    
+        if ($request->has('date')) {
+            $guestbook->date = $request->date;
+        }
+    
+        if ($request->has('relationship')) {
+            $guestbook->relationship = $request->relationship;
+        }
+    
+        $guestbook->save();
+    
+        return response()->json(['success' => 'Guestbook content updated successfully']);
+    }    
 
 
 

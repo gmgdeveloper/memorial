@@ -39,7 +39,9 @@ Route::get('/create_page',[PageController::class,'creat_a_page'])->name('create_
 Route::post('/create_page_save',[PageController::class,'save_create_page'])->name('save_page');
 
 Route::post('/login_with_access_code',[UserController::class,'login_with_access_code'])->name('login_with_access_code');
-
+Route::get('/login_with_access_code', function () {
+    return redirect('/login');
+});
 Route::post('/request_with_access_code',[UserController::class,'request_with_access_code'])->name('request_with_access_code');
 
 Route::get('hnotifications',[UserController::class,'hnotifications'])->name('hnotifications');
@@ -133,6 +135,11 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
 
     Route::post('/update-relationship',[PageController::class,'update_relationship'])->name('update_relationship');
     Route::post('/ganeral-setting',[PageController::class,'ganeral_setting'])->name('ganeral_setting');
+    Route::post('/add-general-knowledge',[PageController::class,'add_general_knowledge'])->name('add_general_knowledge');
+    Route::post('/add-question-answers',[PageController::class,'add_question_answers'])->name('add_question_answers');
+    Route::post('/update-faq-content',[PageController::class,'update_faq_content'])->name('update_faq_content');
+    Route::post('/add-guestbook',[PageController::class,'add_guestbook'])->name('add_guestbook');
+    Route::post('/update-guestbook-content',[PageController::class,'update_guestbook_content'])->name('update_guestbook_content');
 });
 
 Route::group(['prefix' => 'admin'], function() {

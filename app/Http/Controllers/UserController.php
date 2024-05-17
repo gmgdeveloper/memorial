@@ -319,67 +319,72 @@ public function update_profile(Request $request)
 
 public function login_with_access_code(Request $request)
 {
-    $request->validate([
-        'access_code' => 'required|string', // Add validation rules as needed
-    ]);
+    // $request->validate([
+    //     'access_code' => 'required|string', // Add validation rules as needed
+    // ]);
 
-    $credentials = $request->only('access_code');
+    // $credentials = $request->only('access_code');
 
-    if (Auth::attempt($credentials)) {
-        // Authentication passed
-        Log::info('Authentication passed');
-        return redirect()->intended('/pageone'); // Redirect to intended URL or a default page
+    // if (Auth::attempt($credentials)) {
+    //     // Authentication passed
+    //     Log::info('Authentication passed');
+    //     return redirect()->intended('/pageone'); // Redirect to intended URL or a default page
+    // }
+
+    // // Authentication failed
+    // Log::error('Authentication failed with access code: ' . $request->access_code);
+    // return redirect()->route('login')->with('error', 'Invalid access code');
+
+    $Userfindhu = RequestAccess::where('email', $request->email)->first();
+    if(!$Userfindhu){
+        return redirect()->back()->with('error', 'Email not found');
     }
 
-    // Authentication failed
-    Log::error('Authentication failed with access code: ' . $request->access_code);
-    return redirect()->route('login')->with('error', 'Invalid access code');
+    $Userfindhustatus = RequestAccess::where('email', $request->email)->where('status', '1')->first();
+    if(!$Userfindhustatus){
+        return redirect()->back()->with('error', 'Please wait for admin approvel');
+    }
+    $Userfindhupage = UserPages::where('legacy_page_url', $Userfindhu->legacyurl)->first();
+    if(!$Userfindhupage){
+        return redirect()->back()->with('error', 'Legarcy Page Url not found');
+    }
+    $userfinduh = User::find($Userfindhupage->user_id);
 
-    // $Userfindhu = RequestAccess::where('email', $request->email)->first();
-    // if(!$Userfindhu){
-    //     return redirect()->back()->with('error', 'Email not found');
-    // }
-    // $Userfindhupage = UserPages::where('legacy_page_url', $Userfindhu->legacyurl)->first();
-    // if(!$Userfindhupage){
-    //     return redirect()->back()->with('error', 'Legarcy Page Url not found');
-    // }
-    // $userfinduh = User::find($Userfindhupage->user_id);
-
-    // if(empty($request->access_code)){
-    //     return redirect()->back()->with('error', 'Please fill access code');
-    // }
-    // if($request->access_code == $userfinduh->access_code){
-    //     $banner_image = Media::where('memorial_id', $userfinduh->id)->first();
-    //     $title_page = BannerImage::where('user_id', $userfinduh->id)->first();
-    //     $audio = Audio::where('memorial_id', $userfinduh->id)->first();
+    if(empty($request->access_code)){
+        return redirect()->back()->with('error', 'Please fill access code');
+    }
+    if($request->access_code == $userfinduh->access_code){
+        $banner_image = Media::where('memorial_id', $userfinduh->id)->first();
+        $title_page = BannerImage::where('user_id', $userfinduh->id)->first();
+        $audio = Audio::where('memorial_id', $userfinduh->id)->first();
         
-    //     $quotes = Quote::where('memorial_id', $userfinduh->id)->get(); // Fetch quotes associated with the authenticated user
-    //     $relationships = Relationship::where('user_id', $userfinduh->id)->get();   
-    //     $ganeral_setting = GaneralSetting::where('user_id', $userfinduh->id)->first();   
+        $quotes = Quote::where('memorial_id', $userfinduh->id)->get(); // Fetch quotes associated with the authenticated user
+        $relationships = Relationship::where('user_id', $userfinduh->id)->get();   
+        $ganeral_setting = GaneralSetting::where('user_id', $userfinduh->id)->first();   
  
-    //     // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
-    //     $banner_image_path = $banner_image ? $banner_image->file_path : null;
-    //     $title_page_name = $title_page ? $title_page->name : null;
-    //     $over_view = $title_page ? $title_page->over_view : null;
+        // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
+        $banner_image_path = $banner_image ? $banner_image->file_path : null;
+        $title_page_name = $title_page ? $title_page->name : null;
+        $over_view = $title_page ? $title_page->over_view : null;
 
-    //     // If the user has no quotes, fetch all quotes
-    //     if ($quotes->isEmpty()) {
-    //         $quotes = Quote::where('memorial_id', $userfinduh->id)->get();
-    //     }
+        // If the user has no quotes, fetch all quotes
+        if ($quotes->isEmpty()) {
+            $quotes = Quote::where('memorial_id', $userfinduh->id)->get();
+        }
 
-    //     $user_id = $userfinduh->id;
-    //     $userpage = UserPlan::where('user_id', $user_id)->first(); // Retrieve the user
-    //     $page_id = $userpage->page_id; // Access the page ID if the user has a page
-    //     $page = UserPages::find($page_id);
+        $user_id = $userfinduh->id;
+        $userpage = UserPlan::where('user_id', $user_id)->first(); // Retrieve the user
+        $page_id = $userpage->page_id; // Access the page ID if the user has a page
+        $page = UserPages::find($page_id);
 
-    //     // dd($page);
-    //     $date_of_death = $page->date_of_death ? $page->date_of_death :null;
-    //     $date_of_birth = $page->date_of_birth ? $page->date_of_birth :null; 
+        // dd($page);
+        $date_of_death = $page->date_of_death ? $page->date_of_death :null;
+        $date_of_birth = $page->date_of_birth ? $page->date_of_birth :null; 
 
-    //     return view('Frontend.userpageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting'));
-    // }else{
-    //     return redirect()->back()->with('error', 'Access code is not correct');
-    // }
+        return view('Frontend.userpageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting'));
+    }else{
+        return redirect()->back()->with('error', 'Access code is not correct');
+    }
 
 }
 

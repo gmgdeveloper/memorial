@@ -31,5 +31,6 @@ class UserPages extends Model
         'email',
         'legacy_page_url',
         'user_id',
+        'page_number'
     ];
 }

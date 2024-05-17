@@ -1828,162 +1828,67 @@
                                     <div  class="col-lg-4 col-sm-12 ">
                                     </div>
                                 </div>
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;">
+                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#generalknowledgemodal"></i>
+                                </span>
+                                <div class="modal fade" id="generalknowledgemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add General Knowledge</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="{{route('add_general_knowledge')}}" method="POST">
+                                            <div class="modal-body">
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="title" class="float-left">Add Title</label>
+                                                                <input class="form-control" type="text" id="title" name="title" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="brief" class="float-left">Add Short Brief</label>
+                                                                <input class="form-control" type="text" id="brief" name="brief">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="description" class="float-left">Add Description</label>
+                                                                <textarea class="form-control" type="text" id="description" name="description" required>
+
+                                                                </textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
                                 <div class="swiper ganeralswiper pb-5 mobileoff">
                                     <div class="swiper-wrapper" style="height: 400px;">
+                                        @foreach($generalknowledges as $generalknowledge)
                                         <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#perontitymodal">
+                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#{{$generalknowledge->title}}modal">
                                                 <div class="card-header text-center"
                                                     style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;">PERONALITY TRAITS
+                                                    <h5 style="font-size:16px;">{{$generalknowledge->title}}
                                                     </h5>
                                                 </div>
                                                 <div class="card-body">
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        Down to earth
-                                                        <br>
-                                                        Authentic
-                                                        <br>
-                                                        Fun
+                                                        {{$generalknowledge->brief}}
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#educationmodal">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;">EDUCATION
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        Text here about
-                                                        <br>schooling and educa-<br>tion
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#valuesmodal">
-                                                <div class="card-header text-center mb-5"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="mb-4" style="font-size:16px;">VALUES
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#employmentmodal">
-                                                <div class="card-header text-center mb-5"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="mb-4" style="font-size:16px;">EMPLOYMENT
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#spiritualmodal"> 
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;">SPIRITUAL
-                                                        BELIEFS
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        Text here about the
-                                                        <br>
-                                                        honouree’s spiritual/
-                                                        <br>
-                                                        religious beliefs
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#goalsmodal">
-                                                <div class="card-header text-center mb-5"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="mb-4" style="font-size:16px;">Goals
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#hobbiesmodal">
-                                                <div class="card-header text-center mb-5"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="mb-4" style="font-size:16px;">HOBBIES /
-                                                        INTERESTS
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;">
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
-                                                <div class="card-header text-center mb-5"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="mb-4" style="font-size:16px;">
-                                                        ACHIEVEMENTS
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;">
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;"  data-toggle="modal" data-target="#hobbiesmodal">
-                                                <div class="card-header text-center mb-5"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="mb-4" style="font-size:16px;">Again /
-                                                        INTERESTS
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;">
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;" data-toggle="modal" data-target="#achievementmodal">
-                                                <div class="card-header text-center mb-5"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 class="mb-4" style="font-size:16px;">
-                                                       Again ACHIEVEMENTS
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;">
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                      <!--<div class="swiper-pagination"></div> -->
                                      <div class="swiper-button-next generalnext"></div>
@@ -1991,121 +1896,36 @@
                                 </div>
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
                                     <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">PERONALITY TRAITS
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                    Down to earth
-                                                    <br>
-                                                    Authentic
-                                                    <br>
-                                                    Fun
-                                                </p>
+                                        @foreach($generalknowledges as $generalknowledge)
+                                        <div class="swiper-slide">
+                                            <div class="card" style="background-color: #fff; border:0px;" data-toggle="modal" data-target="#{{$generalknowledge->title}}modal">
+                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
+                                                    <p style="font-family: 'Josefin Sans Light';">{{$generalknowledge->title}}
+                                                    </p>
+                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                        {{$generalknowledge->brief}}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">EDUCATION
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                    Text here about
-                                                    <br>schooling and educa-<br>tion
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">VALUES
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                    
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">EMPLOYMENT
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                    
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">SPIRITUAL
-                                                        BELIEFS
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                    Text here about the
-                                                    <br>
-                                                    honouree’s spiritual/
-                                                    <br>
-                                                    religious beliefs
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">Goals
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                   
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">HOBBIES /
-                                                        INTERESTS
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                   
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card" style="background-color: #fff; border:0px;">
-                                            <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                <p style="font-family: 'Josefin Sans Light';">ACHIEVEMENTS
-                                                </p>
-                                                <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                   
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endforeach
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
-                                <div class="modal fade" id="perontitymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                @foreach($generalknowledges as $generalknowledg)
+                                <div class="modal fade" id="{{$generalknowledg->title}}modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">PERONALITY TRAITS</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">{{$generalknowledg->title}}</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
+                                           <p>{{$generalknowledg->description}}</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -2113,317 +1933,121 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="valuesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">VALUES</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="educationmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">EDUCATION</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="employmentmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">EMPLOYMENT</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="spiritualmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">SPIRITUAL BELIEFS</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="goalsmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">GOALS</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="hobbiesmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">HOBBIES INTERESTS</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="achievementmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">ACHIEVEMENTS</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima unde quasi accusamus, harum earum eos dicta quam magni dignissimos error. Dolor cumque ratione perferendis aspernatur? Sunt magni asperiores explicabo voluptatibus.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 pb-lg-5 newclasspaddingoff qandquestion">
                                 <h3 class="pagemainheading mt-lg-5 mb-lg-5 storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;">Q AND A’s
                                 </h3>
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;" data-target="#questionanswersknowledgemodal">
+                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#questionanswersknowledgemodal"></i>
+                                </span>
+                                <div class="modal fade" id="questionanswersknowledgemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add Question Answers</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <form action="{{route('add_question_answers')}}" method="POST">
+                                                <div class="modal-body">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label for="question" class="float-left">Add Question</label>
+                                                                    <input class="form-control" type="text" id="question" name="question" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="description" class="float-left">Add Answers</label>
+                                                                    <textarea class="form-control" type="text" id="answers" name="answer" required>
+    
+                                                                    </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                                                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="swiper qandanswerswiperquestion pb-5" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                     <div class="swiper-wrapper">
+                                        @foreach($faqs as $faq)
                                         <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
+                                            <div class="card editable-card" style="background-color: #fff; border:0px;" data-faq-id="{{$faq->id}}">
                                                 <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What was your childhood like?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;" class="qeditable" id="question_{{$faq->id}}" data-faq-id="{{$faq->id}}" data-content-type="question">{{$faq->question}}</p>
+                                                    <p style="font-family: 'Josefin Sans Light';" class="qeditable p-2" id="answer_{{$faq->id}}" data-faq-id="{{$faq->id}}" data-content-type="answer">{{$faq->answer}}</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What is your earliest childhood memory?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What is your favourite childhood memory?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What was a significant childhood memory that helped shape who you are today?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What were you like as a teenager?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What’s your favourite teen memory?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Who was your first crush and how old were you?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Who was your first love?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Who was your most significant intimate relationship with?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What challenges have you found most difficult?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What are the most valuable lessons you’ve learned?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What achievements are you most proud of?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">If you could start life over, what knowledge would you want to take with you?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What is one thing you would want your loved ones to remember you by after your gone?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What advice would you leave for future generations?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">If you had 24 hours to live, how would you spend it?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">Is there anything you’ve done that you wish you had have done differently?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">If you could have a superpower, what would it be and why?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="card" style="background-color: #fff; border:0px;">
-                                                <div class="card-header text-center" style="background-color: #fff; border:0px;">
-                                                    <p style="font-family: 'Josefin Sans Bold'; font-weight:bold;">What charities do you support and why?
-                                                    </p>
-                                                    <p style="font-family: 'Josefin Sans Light';" class="p-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.qeditable');
+
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+
+                                            element.addEventListener('blur', function() {
+                                                var editedContent = element.textContent.trim();
+                                                var faqId = element.getAttribute('data-faq-id');
+                                                var contentType = element.getAttribute('data-content-type');
+
+                                                // Prepare data object with dynamic key-value pair
+                                                var data = {
+                                                    faqId: faqId
+                                                };
+                                                data[contentType] = editedContent;  // Set key based on content type (question/answer)
+
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-faq-content', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        response.json().then(data => {
+                                                            console.log(data.success);
+                                                            // Reload the page after a successful update
+                                                            window.location.reload();
+                                                        });
+                                                    } else {
+                                                        console.error('Failed to update ' + contentType);
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                            });
+                                        });
+                                    });
+                                </script>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-lg-5 addcontactswipermargintopres newclasspaddingoff">
                                 <p style="font-family: 'Josefin Sans Light;" class="mt-lg-5">Want to know more? Message the page administrators with your question or response</p>
@@ -2522,6 +2146,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            {{-- gallery  pending dynamic  --}}
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div class="swiper galleryswiper mobileoff">
                                     <div class="swiper-wrapper">
@@ -2647,6 +2273,78 @@
                             <div  class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" id="guest">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">GUEST BOOK (###)-->
                                 <!--</h3>-->
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;" data-target="#addguestbookmodal">
+                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#addguestbookmodal"></i>
+                                </span>
+                                <div class="modal fade" id="addguestbookmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add Guest Book</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <form action="{{route('add_guestbook')}}" method="POST">
+                                                <div class="modal-body">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label for="name" class="float-left">Add Name</label>
+                                                                    <input class="form-control" type="text" id="name" name="name" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="date" class="float-left">Add Date</label>
+                                                                    <input class="form-control" type="date" id="date" name="date" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="relationship" class="float-left">Add Relationship</label>
+                                                                    <select class="form-control mr-sm-2 searchinputnav mb-2" name="relationship">
+                                                                        <option value="" disabled selected>Choose a Relationship</option>
+                                                                        <option value="Parent">Parent</option>
+                                                                        <option value="Step-Parent">Step-Parent</option>
+                                                                        <option value="Foster Parent">Foster Parent</option>
+                                                                        <option value="Guardian">Guardian</option>
+                                                                        <option value="Grandparent">Grandparent</option>
+                                                                        <option value="Step-Grandparent">Step-Grandparent</option>
+                                                                        <option value="Godparent">Godparent</option>
+                                                                        <option value="Husband">Husband</option>
+                                                                        <option value="Wife">Wife</option>
+                                                                        <option value="Partner">Partner</option>
+                                                                        <option value="Ex-Partner">Ex-Partner</option>
+                                                                        <option value="Child">Child</option>
+                                                                        <option value="Stepchild">Stepchild</option>
+                                                                        <option value="Foster Child">Foster Child</option>
+                                                                        <option value="Godchild">Godchild</option>
+                                                                        <option value="Sibling">Sibling</option>
+                                                                        <option value="Nibling">Nibling</option>
+                                                                        <option value="Niece">Niece</option>
+                                                                        <option value="Nephew">Nephew</option>
+                                                                        <option value="Cousin">Cousin</option>
+                                                                        <option value="Best Friend">Best Friend</option>
+                                                                        <option value="Friend">Friend</option>
+                                                                        <option value="Family Friend">Family Friend</option>
+                                                                        <option value="Friend of a Friend">Friend of a Friend</option>
+                                                                        <option value="Colleague">Colleague</option>
+                                                                        <option value="Acquaintance">Acquaintance</option>
+                                                                        <option value="Caregiver">Caregiver</option>
+                                                                        <option value="Other">Other</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                                                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
                                  <div class="row mt-lg-4">
                                     <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
                                         <h3 class="anotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 35px;" id="ganeral">GUEST BOOK (###)
@@ -2694,79 +2392,75 @@
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
                                 <div class="swiper guestbookswiper">
                                     <div class="swiper-wrapper" style="height:300px;">
+                                        @foreach($guestbooks as $guestbook)
                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                           <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                            Full Name
-                                            <br>
-                                            XX/XX/XXXX
-                                            <br>
-                                            Relationship
-                                           </p>
-                                        </div>
-                                        <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';"  class="addfullresposnive">
-                                             Full Name
-                                             <br>
-                                             XX/XX/XXXX
-                                             <br>
-                                             Relationship
-                                            </p>
-                                         </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                             Full Name
-                                             <br>
-                                             XX/XX/XXXX
-                                             <br>
-                                             Relationship
+                                                <span style="font-family: 'Josefin Sans Light';" class="guesteditable" data-guestbook-id="{{$guestbook->id}}" data-content-type="name">{{$guestbook->name}}</span>
+                                                <br>
+                                                <span style="font-family: 'Josefin Sans Light';" class="guesteditable" data-guestbook-id="{{$guestbook->id}}" data-content-type="date">{{$guestbook->date}}</span>
+                                                <br>
+                                                <span style="font-family: 'Josefin Sans Light';" class="guesteditable" data-guestbook-id="{{$guestbook->id}}" data-content-type="relationship">{{$guestbook->relationship}}</span>
                                             </p>
-                                         </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                             Full Name
-                                             <br>
-                                             XX/XX/XXXX
-                                             <br>
-                                             Relationship
-                                            </p>
-                                         </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                             Full Name
-                                             <br>
-                                             XX/XX/XXXX
-                                             <br>
-                                             Relationship
-                                            </p>
-                                         </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                             Full Name
-                                             <br>
-                                             XX/XX/XXXX
-                                             <br>
-                                             Relationship
-                                            </p>
-                                         </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                             Full Name
-                                             <br>
-                                             XX/XX/XXXX
-                                             <br>
-                                             Relationship
-                                            </p>
-                                         </div>
-                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                            <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                             Full Name
-                                             <br>
-                                             XX/XX/XXXX
-                                             <br>
-                                             Relationship
-                                            </p>
-                                         </div>
+                                        </div>                                        
+                                        @endforeach
                                     </div>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            var editableElements = document.querySelectorAll('.guesteditable');
+                                        
+                                            // Function to make element editable
+                                            function makeEditable(element) {
+                                                element.contentEditable = true;
+                                                element.focus();
+                                            }
+                                        
+                                            // Add event listeners to make elements editable upon clicking
+                                            editableElements.forEach(function(element) {
+                                                element.addEventListener('click', function() {
+                                                    makeEditable(element);
+                                                });
+                                        
+                                                element.addEventListener('blur', function() {
+                                                    var editedContent = element.textContent.trim();
+                                                    var guestbookId = element.getAttribute('data-guestbook-id');
+                                                    var contentType = element.getAttribute('data-content-type');
+                                        
+                                                    // Prepare data object with dynamic key-value pair
+                                                    var data = {
+                                                        guestbookId: guestbookId
+                                                    };
+                                                    data[contentType] = editedContent; // Set key based on content type (name/date/relationship)
+                                        
+                                                    // Make an AJAX request to send the edited content to the server
+                                                    fetch('/update-guestbook-content', {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            'Content-Type': 'application/json',
+                                                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                        },
+                                                        body: JSON.stringify(data)
+                                                    })
+                                                    .then(response => {
+                                                        if (response.ok) {
+                                                            response.json().then(data => {
+                                                                console.log(data.success);
+                                                                // Reload the page after a successful update
+                                                                window.location.reload();
+                                                            });
+                                                        } else {
+                                                            console.error('Failed to update ' + contentType);
+                                                        }
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error:', error);
+                                                    });
+                                        
+                                                    // Set contentEditable to false after editing
+                                                    element.contentEditable = false;
+                                                });
+                                            });
+                                        });
+                                    </script>                                        
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
                             </div>

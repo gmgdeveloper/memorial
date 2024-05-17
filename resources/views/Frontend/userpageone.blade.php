@@ -1209,8 +1209,8 @@
 
                     
                                 <h4 class="text-center">
-                                    <span id="editableDateOfBirth" contenteditable style="color:#A423EB;">{{$date_of_birth}}</span>
-                                    <span class="mr-lg-1">/</span><span id="editableDateOfDeath" contenteditable style="color:#A423EB;">{{$date_of_death}}</span>
+                                    <span style="color:#A423EB;">{{$date_of_birth}}</span>
+                                    <span class="mr-lg-1">/</span><span style="color:#A423EB;">{{$date_of_death}}</span>
                                 </h4>
                                
                            
@@ -1310,11 +1310,11 @@
                                 @if(!empty($over_view))
 
 
-                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" >
                                     {{ $over_view }}
                                 </p>
                                 @else
-                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" id="editableParagraphoverview" onclick="makeEditable()" contenteditable="true">
+                                <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';" >
 
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam faucibus volutpat venenatis. Nunc pretium lectus ac augue tincidunt, et elementum nisi suscipit. Sed eu mollis libero. Sed faucibus risus ex, dignissim porttitor nisl malesuada non. Donec elit arcu, vehicula et justo at, accumsan finibus libero. Maecenas molestie gravida dui ac aliquet. Nunc ornare, nunc quis luctus cursus, justo eros elementum sapien, quis malesuada sapien dolor sit amet augue. Vivamus rhoncus lectus sit amet viverra gravida. Nunc id turpis in enim malesuada varius ut at arcu.</p>
 
