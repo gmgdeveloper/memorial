@@ -21,6 +21,11 @@ use App\Models\GaneralSetting;
 use App\Models\GeneralKnowledge;
 use App\Models\Faqs;
 use App\Models\GuestBook;
+use App\Models\RequestAccess;
+use App\Models\Story;
+use App\Models\SoundClip;
+use App\Models\Transition;
+use App\Models\Obituary;
 
 
 class PageController extends Controller
@@ -47,6 +52,11 @@ class PageController extends Controller
         $generalknowledges = GeneralKnowledge::where('user_id', auth()->user()->id)->get();
         $faqs = Faqs::where('user_id', auth()->user()->id)->get();
         $guestbooks = GuestBook::where('user_id', auth()->user()->id)->get();
+        $requestaccess = RequestAccess::where('honouree_email', auth()->user()->email)->where('status','=',1)->get();
+        $stories = Story::where('user_id', auth()->user()->id)->get();
+        $soundclips = SoundClip::where('user_id', auth()->user()->id)->get();
+        $transition = Transition::where('user_id', auth()->user()->id)->first();
+        $obituary = Obituary::where('user_id', auth()->user()->id)->first();
         
  
             // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
@@ -70,7 +80,7 @@ class PageController extends Controller
 
         
     
-            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting','generalknowledges','faqs','guestbooks'));
+            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting','generalknowledges','faqs','guestbooks','requestaccess','stories','soundclips','transition','obituary'));
         
     }
 
@@ -573,10 +583,323 @@ class PageController extends Controller
         $guestbook->save();
     
         return response()->json(['success' => 'Guestbook content updated successfully']);
+    }   
+
+    public function update_generalknowledge_content(Request $request) {
+        $generalknowledge = GeneralKnowledge::find($request->generalknowledgeId);
+    
+        if ($request->has('title')) {
+            $generalknowledge->title = $request->title;
+        }
+    
+        if ($request->has('description')) {
+            $generalknowledge->description = $request->description;
+        }
+    
+        $generalknowledge->save();
+    
+        return response()->json(['success' => 'Content updated successfully']);
+    }
+    
+    public function add_story(Request $request){
+
+        
+        if ($request->hasFile('image_one')) {
+            $image = $request->file('image_one');
+            $imageoneName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('stories_images'), $imageoneName);
+        }
+    
+        // Handle image_two upload
+        if ($request->hasFile('image_two')) {
+            $image = $request->file('image_two');
+            $imagetwoName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('stories_images'), $imagetwoName);
+        }
+
+        Story::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => auth()->user()->id,
+            'image_one' => $imageoneName,
+            'image_two' => $imagetwoName,
+            'create_by' => auth()->user()->name,
+        ]);
+
+        return redirect()->route('pageone')->with('success','Story added successfully');
+
+    }
+
+    public function update_story_content(Request $request) {
+        $story = Story::find($request->storyId);
+    
+        if ($request->has('title')) {
+            $story->title = $request->title;
+        }
+    
+        if ($request->has('description')) {
+            $story->description = $request->description;
+        }
+    
+        $story->save();
+    
+        return response()->json(['success' => 'Content updated successfully']);
+    }
+    
+    public function update_story_image(Request $request) {
+        $story = Story::find($request->storyId);
+        $contentType = array_keys($request->file())[0]; // Get the dynamic key name (image_one/image_two)
+    
+        if ($request->hasFile($contentType)) {
+            $file = $request->file($contentType);
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('stories_images'), $filename);
+    
+            $story->$contentType = $filename;
+            $story->save();
+        }
+    
+        return response()->json(['success' => 'Image updated successfully']);
+    }
+
+    public function uploadsoundsclip(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'audio' => 'required|file|mimes:mp3,wav,aac|max:20480', // 20MB max
+        ]);
+
+        // Handle the audio file upload
+        if ($request->hasFile('audio')) {
+            $audio = $request->file('audio');
+            $audioName = time() . '_' . Str::random(10) . '.' . $audio->getClientOriginalExtension();
+            $audio->move(public_path('soundclips_files'), $audioName);
+            SoundClip::create([
+                'title' => $request->title,
+                'audio' => $audioName,
+                'user_id' => auth()->user()->id,
+            ]);
+
+            return redirect()->route('pageone')->with('success', 'Audio added successfully');
+        }
+
+        return redirect()->back()->with('error', 'Failed to upload audio');
+    }
+
+    public function update_soundclip_content(Request $request) {
+        $soundclip = Soundclip::find($request->soundclipId);
+    
+        if ($request->has('title')) {
+            $soundclip->title = $request->title;
+        }
+    
+        $soundclip->save();
+    
+        return response()->json(['success' => 'Content updated successfully']);
+    }
+    
+    public function update_soundclip_audio(Request $request) {
+        $soundclip = Soundclip::find($request->soundclipId);
+    
+        if ($request->hasFile('audio')) {
+            $file = $request->file('audio');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('soundclips_files'), $filename);
+    
+            $soundclip->audio = $filename;
+            $soundclip->save();
+        }
+    
+        return response()->json(['success' => 'Audio updated successfully']);
+    }
+    
+    public function update_transition_content(Request $request) {
+        $id = $request->input('id');
+        $content = $request->input('content');
+    
+        // Check if the transition record already exists
+        $transition = Transition::where('user_id', auth()->user()->id)->first();
+    
+        // If the record doesn't exist, create a new one
+        if (!$transition) {
+            $transition = new Transition();
+            $transition->user_id = auth()->user()->id;
+            $transition->honoured_by = auth()->user()->name;
+            if(empty($id) || $id == 'title'){
+                $transition->title = 'Bree’s Celebration of Life';
+                $transition->theme = 'Not sad - Light, Fun, Airy, like a carnivale';
+                $transition->dress_code = 'Everyone to wear colour';
+                $transition->music = 'Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).';
+                $transition->extra_music = 'Time of my Life (Bill Medley & Jennifer Warnes)';
+                $transition->body = 'Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean';
+            }
+
+            if(empty($id) || $id == 'theme'){
+                $transition->title = 'Bree’s Celebration of Life';
+                $transition->theme = 'Not sad - Light, Fun, Airy, like a carnivale';
+                $transition->dress_code = 'Everyone to wear colour';
+                $transition->music = 'Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).';
+                $transition->extra_music = 'Time of my Life (Bill Medley & Jennifer Warnes)';
+                $transition->body = 'Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean';
+            }
+
+            if(empty($id) || $id == 'dress_code'){
+                $transition->title = 'Bree’s Celebration of Life';
+                $transition->theme = 'Not sad - Light, Fun, Airy, like a carnivale';
+                $transition->dress_code = 'Everyone to wear colour';
+                $transition->music = 'Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).';
+                $transition->extra_music = 'Time of my Life (Bill Medley & Jennifer Warnes)';
+                $transition->body = 'Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean';
+            }
+
+            if(empty($id) || $id == 'music'){
+                $transition->title = 'Bree’s Celebration of Life';
+                $transition->theme = 'Not sad - Light, Fun, Airy, like a carnivale';
+                $transition->dress_code = 'Everyone to wear colour';
+                $transition->music = 'Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).';
+                $transition->extra_music = 'Time of my Life (Bill Medley & Jennifer Warnes)';
+                $transition->body = 'Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean';
+            }
+
+            if(empty($id) || $id == 'extra_music'){
+                $transition->title = 'Bree’s Celebration of Life';
+                $transition->theme = 'Not sad - Light, Fun, Airy, like a carnivale';
+                $transition->dress_code = 'Everyone to wear colour';
+                $transition->music = 'Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).';
+                $transition->extra_music = 'Time of my Life (Bill Medley & Jennifer Warnes)';
+                $transition->body = 'Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean';
+            }
+
+            if(empty($id) || $id == 'body'){
+                $transition->title = 'Bree’s Celebration of Life';
+                $transition->theme = 'Not sad - Light, Fun, Airy, like a carnivale';
+                $transition->dress_code = 'Everyone to wear colour';
+                $transition->music = 'Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).';
+                $transition->extra_music = 'Time of my Life (Bill Medley & Jennifer Warnes)';
+                $transition->body = 'Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean';
+            }
+        }
+    
+        // Update the corresponding field based on the id
+        switch ($id) {
+            case 'title':
+                $transition->title = $content;
+                break;
+            case 'theme':
+                $transition->theme = $content;
+                break;
+            case 'dress_code':
+                $transition->dress_code = $content;
+                break;
+            case 'music':
+                $transition->music = $content;
+                break;
+            case 'extra_music':
+                $transition->extra_music = $content;
+                break;
+            case 'body':
+                $transition->body = $content;
+                break;
+        }
+    
+        // Save the transition record
+        $transition->save();
+    
+        return response()->json(['success' => 'Content updated successfully']);
     }    
 
 
+    public function update_obituary_content(Request $request) {
+        $id = $request->input('id');
+        $content = $request->input('content');
+    
+        // Check if the transition record already exists
+        $obituary = Obituary::where('user_id', auth()->user()->id)->first();
+    
+        // If the record doesn't exist, create a new one
+        if (!$obituary) {
+            $obituary = new Obituary();
+            $obituary->user_id = auth()->user()->id;
+            if(empty($id) || $id == 'full_name'){
+                $obituary->full_name = 'Breannon Kimberley Schuback (Formerly Daniel)';
+                $obituary->date_of_birth = '31st December 1992';
+                $obituary->birth_place = 'Gosford Hospital NSW Australia';
+                $obituary->date_of_transition = 'Friday, 25th August 2023';
+                $obituary->place_of_transition = 'At home — Carmody Court, Nudgee, QLD, Australia';
+                $obituary->cause_of_transition = 'Unknown';
+            }
 
+            if(empty($id) || $id == 'date_of_birth'){
+                $obituary->full_name = 'Breannon Kimberley Schuback (Formerly Daniel)';
+                $obituary->date_of_birth = '31st December 1992';
+                $obituary->birth_place = 'Gosford Hospital NSW Australia';
+                $obituary->date_of_transition = 'Friday, 25th August 2023';
+                $obituary->place_of_transition = 'At home — Carmody Court, Nudgee, QLD, Australia';
+                $obituary->cause_of_transition = 'Unknown';
+            }
 
+            if(empty($id) || $id == 'birth_place'){
+                $obituary->full_name = 'Breannon Kimberley Schuback (Formerly Daniel)';
+                $obituary->date_of_birth = '31st December 1992';
+                $obituary->birth_place = 'Gosford Hospital NSW Australia';
+                $obituary->date_of_transition = 'Friday, 25th August 2023';
+                $obituary->place_of_transition = 'At home — Carmody Court, Nudgee, QLD, Australia';
+                $obituary->cause_of_transition = 'Unknown';
+            }
 
+            if(empty($id) || $id == 'date_of_transition'){
+                $obituary->full_name = 'Breannon Kimberley Schuback (Formerly Daniel)';
+                $obituary->date_of_birth = '31st December 1992';
+                $obituary->birth_place = 'Gosford Hospital NSW Australia';
+                $obituary->date_of_transition = 'Friday, 25th August 2023';
+                $obituary->place_of_transition = 'At home — Carmody Court, Nudgee, QLD, Australia';
+                $obituary->cause_of_transition = 'Unknown';
+            }
+
+            if(empty($id) || $id == 'place_of_transition'){
+                $obituary->full_name = 'Breannon Kimberley Schuback (Formerly Daniel)';
+                $obituary->date_of_birth = '31st December 1992';
+                $obituary->birth_place = 'Gosford Hospital NSW Australia';
+                $obituary->date_of_transition = 'Friday, 25th August 2023';
+                $obituary->place_of_transition = 'At home — Carmody Court, Nudgee, QLD, Australia';
+                $obituary->cause_of_transition = 'Unknown';
+            }
+            if(empty($id) || $id == 'cause_of_transition'){
+                $obituary->full_name = 'Breannon Kimberley Schuback (Formerly Daniel)';
+                $obituary->date_of_birth = '31st December 1992';
+                $obituary->birth_place = 'Gosford Hospital NSW Australia';
+                $obituary->date_of_transition = 'Friday, 25th August 2023';
+                $obituary->place_of_transition = 'At home — Carmody Court, Nudgee, QLD, Australia';
+                $obituary->cause_of_transition = 'Unknown';
+            }
+        }
+    
+        // Update the corresponding field based on the id
+        switch ($id) {
+            case 'full_name':
+                $obituary->full_name = $content;
+                break;
+            case 'date_of_birth':
+                $obituary->date_of_birth = $content;
+                break;
+            case 'birth_place':
+                $obituary->birth_place = $content;
+                break;
+            case 'date_of_transition':
+                $obituary->date_of_transition = $content;
+                break;
+            case 'place_of_transition':
+                $obituary->place_of_transition = $content;
+                break;
+            case 'cause_of_transition':
+                $obituary->cause_of_transition = $content;
+                break;
+        }
+    
+        // Save the transition record
+        $obituary->save();
+    
+        return response()->json(['success' => 'Obituary updated successfully']);
+    }   
 }

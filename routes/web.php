@@ -140,6 +140,16 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::post('/update-faq-content',[PageController::class,'update_faq_content'])->name('update_faq_content');
     Route::post('/add-guestbook',[PageController::class,'add_guestbook'])->name('add_guestbook');
     Route::post('/update-guestbook-content',[PageController::class,'update_guestbook_content'])->name('update_guestbook_content');
+    Route::post('/update-generalknowledge-content',[PageController::class,'update_generalknowledge_content'])->name('update_generalknowledge_content');
+    Route::post('/add-story',[PageController::class,'add_story'])->name('addstory');
+    Route::post('/update-story-content',[PageController::class,'update_story_content'])->name('update_story_content');
+    Route::post('/update-story-image',[PageController::class,'update_story_image'])->name('update_story_image');
+    Route::post('/add-sounds-clip',[PageController::class,'uploadsoundsclip'])->name('uploadsoundsclip');
+    Route::post('/update-soundclip-audio',[PageController::class,'update_soundclip_audio'])->name('update_soundclip_audio');
+    Route::post('/update-soundclip-content',[PageController::class,'update_soundclip_content'])->name('update_soundclip_content');
+    Route::post('/update-transition-content',[PageController::class,'update_transition_content'])->name('update_transition_content');
+    Route::post('/update-obituary-content',[PageController::class,'update_obituary_content'])->name('update_obituary_content');
+
 });
 
 Route::group(['prefix' => 'admin'], function() {

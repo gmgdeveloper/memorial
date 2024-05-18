@@ -1853,10 +1853,7 @@
                                                                 <label for="title" class="float-left">Add Title</label>
                                                                 <input class="form-control" type="text" id="title" name="title" required>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="brief" class="float-left">Add Short Brief</label>
-                                                                <input class="form-control" type="text" id="brief" name="brief">
-                                                            </div>
+                                                            
                                                             <div class="form-group">
                                                                 <label for="description" class="float-left">Add Description</label>
                                                                 <textarea class="form-control" type="text" id="description" name="description" required>
@@ -1875,25 +1872,25 @@
                                     </div>
                                     </div>
                                 </div>
+                                <?php
+                                    use Illuminate\Support\Str;
+                                ?>
                                 <div class="swiper ganeralswiper pb-5 mobileoff">
                                     <div class="swiper-wrapper" style="height: 400px;">
                                         <?php $__currentLoopData = $generalknowledges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $generalknowledge): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <div class="swiper-slide" style="height: 300px!important;">
-                                            <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#<?php echo e($generalknowledge->title); ?>modal">
-                                                <div class="card-header text-center"
-                                                    style="background-color: #fff;border:0px;">
-                                                    <h5 style="font-size:16px;"><?php echo e($generalknowledge->title); ?>
+                                            <div class="swiper-slide" style="height: 300px!important;">
+                                                <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);background-color: #fff;border:1px solid #BE9438;width: 100%;height: 175px;" data-toggle="modal" data-target="#<?php echo e($generalknowledge->title); ?>modal">
+                                                    <div class="card-header text-center" style="background-color: #fff;border:0px;">
+                                                        <h5 style="font-size:16px;"><?php echo e($generalknowledge->title); ?></h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
+                                                            <?php echo e(Str::limit($generalknowledge->description, 50, '...')); ?>
 
-                                                    </h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <?php echo e($generalknowledge->brief); ?>
-
-                                                    </p>
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                      <!--<div class="swiper-pagination"></div> -->
@@ -1910,7 +1907,7 @@
 
                                                     </p>
                                                     <p style="font-size: 13px;text-align: justify;font-family: 'Josefin Sans Light';">
-                                                        <?php echo e($generalknowledge->brief); ?>
+                                                        <?php echo e(Str::limit($generalknowledge->description, 50, '...')); ?>
 
                                                     </p>
                                                 </div>
@@ -1923,25 +1920,78 @@
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
                                 <?php $__currentLoopData = $generalknowledges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $generalknowledg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="modal fade" id="<?php echo e($generalknowledg->title); ?>modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><?php echo e($generalknowledg->title); ?></h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                           <p><?php echo e($generalknowledg->description); ?></p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
+                                    <div class="modal fade" id="<?php echo e($generalknowledg->title); ?>modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title ganeraleditable" id="exampleModalLabel" data-generalknowledge-id="<?php echo e($generalknowledg->id); ?>" data-content-type="title"><?php echo e($generalknowledg->title); ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="ganeraleditable" data-generalknowledge-id="<?php echo e($generalknowledg->id); ?>" data-content-type="description"><?php echo e($generalknowledg->description); ?></p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.ganeraleditable');
+                                    
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+                                    
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+                                    
+                                            element.addEventListener('blur', function() {
+                                                var editedContent = element.textContent.trim();
+                                                var generalknowledgeId = element.getAttribute('data-generalknowledge-id');
+                                                var contentType = element.getAttribute('data-content-type');
+                                    
+                                                // Prepare data object with dynamic key-value pair
+                                                var data = {
+                                                    generalknowledgeId: generalknowledgeId
+                                                };
+                                                data[contentType] = editedContent;  // Set key based on content type (title/description)
+                                    
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-generalknowledge-content', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log(contentType.charAt(0).toUpperCase() + contentType.slice(1) + ' updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update ' + contentType);
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                    
+                                                element.contentEditable = false; // Make the element non-editable after blur
+                                            });
+                                        });
+                                    });
+                                </script>      
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 pb-lg-5 newclasspaddingoff qandquestion">
                                 <h3 class="pagemainheading mt-lg-5 mb-lg-5 storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;">Q AND A’s
@@ -2281,78 +2331,10 @@
                             <div  class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" id="guest">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">GUEST BOOK (###)-->
                                 <!--</h3>-->
-                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;" data-target="#addguestbookmodal">
-                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#addguestbookmodal"></i>
-                                </span>
-                                <div class="modal fade" id="addguestbookmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Add Guest Book</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            </div>
-                                            <form action="<?php echo e(route('add_guestbook')); ?>" method="POST">
-                                                <div class="modal-body">
-                                                        <?php echo csrf_field(); ?>
-                                                        <div class="row">
-                                                            <div class="col-lg-12 col-sm-12">
-                                                                <div class="form-group">
-                                                                    <label for="name" class="float-left">Add Name</label>
-                                                                    <input class="form-control" type="text" id="name" name="name" required>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="date" class="float-left">Add Date</label>
-                                                                    <input class="form-control" type="date" id="date" name="date" required>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="relationship" class="float-left">Add Relationship</label>
-                                                                    <select class="form-control mr-sm-2 searchinputnav mb-2" name="relationship">
-                                                                        <option value="" disabled selected>Choose a Relationship</option>
-                                                                        <option value="Parent">Parent</option>
-                                                                        <option value="Step-Parent">Step-Parent</option>
-                                                                        <option value="Foster Parent">Foster Parent</option>
-                                                                        <option value="Guardian">Guardian</option>
-                                                                        <option value="Grandparent">Grandparent</option>
-                                                                        <option value="Step-Grandparent">Step-Grandparent</option>
-                                                                        <option value="Godparent">Godparent</option>
-                                                                        <option value="Husband">Husband</option>
-                                                                        <option value="Wife">Wife</option>
-                                                                        <option value="Partner">Partner</option>
-                                                                        <option value="Ex-Partner">Ex-Partner</option>
-                                                                        <option value="Child">Child</option>
-                                                                        <option value="Stepchild">Stepchild</option>
-                                                                        <option value="Foster Child">Foster Child</option>
-                                                                        <option value="Godchild">Godchild</option>
-                                                                        <option value="Sibling">Sibling</option>
-                                                                        <option value="Nibling">Nibling</option>
-                                                                        <option value="Niece">Niece</option>
-                                                                        <option value="Nephew">Nephew</option>
-                                                                        <option value="Cousin">Cousin</option>
-                                                                        <option value="Best Friend">Best Friend</option>
-                                                                        <option value="Friend">Friend</option>
-                                                                        <option value="Family Friend">Family Friend</option>
-                                                                        <option value="Friend of a Friend">Friend of a Friend</option>
-                                                                        <option value="Colleague">Colleague</option>
-                                                                        <option value="Acquaintance">Acquaintance</option>
-                                                                        <option value="Caregiver">Caregiver</option>
-                                                                        <option value="Other">Other</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                
                                                     
-                                                </div>
-                                                <div class="modal-footer">
                                                     
-                                                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
+                                
                                  <div class="row mt-lg-4">
                                     <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
                                         <h3 class="anotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 35px;" id="ganeral">GUEST BOOK (###)
@@ -2396,83 +2378,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
+                            <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div class="swiper guestbookswiper">
                                     <div class="swiper-wrapper" style="height:300px;">
-                                        <?php $__currentLoopData = $guestbooks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $guestbook): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php $__currentLoopData = $requestaccess; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $requestacces): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="swiper-slide text-center" style="height: calc(25% - 15px)!important;border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                             <p style="font-family: 'Josefin Sans Light';" class="addfullresposnive">
-                                                <span style="font-family: 'Josefin Sans Light';" class="guesteditable" data-guestbook-id="<?php echo e($guestbook->id); ?>" data-content-type="name"><?php echo e($guestbook->name); ?></span>
+                                                <span style="font-family: 'Josefin Sans Light';" data-guestbook-id="<?php echo e($requestacces->id); ?>" data-content-type="name"><?php echo e($requestacces->fullname); ?></span>
                                                 <br>
-                                                <span style="font-family: 'Josefin Sans Light';" class="guesteditable" data-guestbook-id="<?php echo e($guestbook->id); ?>" data-content-type="date"><?php echo e($guestbook->date); ?></span>
+                                                <span style="font-family: 'Josefin Sans Light';" data-guestbook-id="<?php echo e($requestacces->id); ?>" data-content-type="date"><?php echo e(\Carbon\Carbon::parse($requestacces->date)->format('Y-m-d')); ?></span>
                                                 <br>
-                                                <span style="font-family: 'Josefin Sans Light';" class="guesteditable" data-guestbook-id="<?php echo e($guestbook->id); ?>" data-content-type="relationship"><?php echo e($guestbook->relationship); ?></span>
+                                                <span style="font-family: 'Josefin Sans Light';" data-guestbook-id="<?php echo e($requestacces->id); ?>" data-content-type="relationship"><?php echo e($requestacces->relationship); ?></span>
                                             </p>
                                         </div>                                        
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
-                                    <script>
-                                        document.addEventListener("DOMContentLoaded", function() {
-                                            var editableElements = document.querySelectorAll('.guesteditable');
-                                        
-                                            // Function to make element editable
-                                            function makeEditable(element) {
-                                                element.contentEditable = true;
-                                                element.focus();
-                                            }
-                                        
-                                            // Add event listeners to make elements editable upon clicking
-                                            editableElements.forEach(function(element) {
-                                                element.addEventListener('click', function() {
-                                                    makeEditable(element);
-                                                });
-                                        
-                                                element.addEventListener('blur', function() {
-                                                    var editedContent = element.textContent.trim();
-                                                    var guestbookId = element.getAttribute('data-guestbook-id');
-                                                    var contentType = element.getAttribute('data-content-type');
-                                        
-                                                    // Prepare data object with dynamic key-value pair
-                                                    var data = {
-                                                        guestbookId: guestbookId
-                                                    };
-                                                    data[contentType] = editedContent; // Set key based on content type (name/date/relationship)
-                                        
-                                                    // Make an AJAX request to send the edited content to the server
-                                                    fetch('/update-guestbook-content', {
-                                                        method: 'POST',
-                                                        headers: {
-                                                            'Content-Type': 'application/json',
-                                                            'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
-                                                        },
-                                                        body: JSON.stringify(data)
-                                                    })
-                                                    .then(response => {
-                                                        if (response.ok) {
-                                                            response.json().then(data => {
-                                                                console.log(data.success);
-                                                                // Reload the page after a successful update
-                                                                window.location.reload();
-                                                            });
-                                                        } else {
-                                                            console.error('Failed to update ' + contentType);
-                                                        }
-                                                    })
-                                                    .catch(error => {
-                                                        console.error('Error:', error);
-                                                    });
-                                        
-                                                    // Set contentEditable to false after editing
-                                                    element.contentEditable = false;
-                                                });
-                                            });
-                                        });
-                                    </script>                                        
+                                    
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">SIGN THE GUEST BOOK</button>
+                                <a href="<?php echo e(route('login')); ?>" class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">SIGN THE GUEST BOOK</a>
                             </div>
                             <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff" id="stories">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">STORIES (###)-->
@@ -2499,62 +2425,143 @@
                             <div class="col-lg-12 col-sm-12 p-3 mt-2 newclasspaddingoff storiestitleborder" style="border: 2px solid #BE9438;">
                                 <div class="swiper galleryswiper">
                                     <div class="swiper-wrapper">
-                                      <div class="swiper-slide">
-                                        <div class="row">
-                                            <div class="col-lg-12 col-sm-12">
-                                                <h4 class="text-center">TITLE</h4>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-12">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
-                                                    </div>
-                                                    <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                        <?php $__currentLoopData = $stories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $storyy): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <div class="swiper-slide">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-sm-12">
+                                                    <h4 class="text-center editable" data-story-id="<?php echo e($storyy->id); ?>" data-content-type="title"><?php echo e($storyy->title); ?></h4>
+                                                </div>
+                                                <?php if(!empty($storyy->image_one) || !empty($storyy->image_two)): ?>
+                                                <div class="col-lg-6 col-sm-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <img src="<?php echo e(asset('stories_images/'.$storyy->image_one)); ?>" class="mt-2 heightmainstory editable-image" data-story-id="<?php echo e($storyy->id); ?>" data-content-type="image_one" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                            <input type="file" class="image-upload" data-story-id="<?php echo e($storyy->id); ?>" data-content-type="image_one" style="display:none;">
+                                                        </div>
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <img src="<?php echo e(asset('stories_images/'.$storyy->image_two)); ?>" class="mt-2 heightmainstory editable-image" data-story-id="<?php echo e($storyy->id); ?>" data-content-type="image_two" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
+                                                            <input type="file" class="image-upload" data-story-id="<?php echo e($storyy->id); ?>" data-content-type="image_two" style="display:none;">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-6 text-left">
-                                               <p class="mt-3" style="font-family: 'Josefin Sans Light';">Story goes here (Images are optional)</p> 
-                                            </div>
-                                            <div class="col-lg-10 col-sm-10 text-left">
-                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Submitted by: Waliam</p> 
-                                            </div>
-                                            <div class="col-lg-2 col-sm-2 text-right">
-                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Date: 4/25/2024</p> 
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <div class="swiper-slide">
-                                        <div class="row">
-                                            <div class="col-lg-12 col-sm-12">
-                                                <h4 class="text-center">Second TITLE</h4>
-                                            </div>
-                                            <div class="col-lg-6 col-sm-12">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
-                                                    </div>
-                                                    <div class="col-lg-12 col-sm-12">
-                                                        <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" class="mt-2 heightmainstory" style="height:332px;width: 100%;border: 1px solid #BE9438!important;">
-                                                    </div>
+                                                <div class="col-lg-6 col-sm-6 text-left">
+                                                    <p class="mt-3 editable" data-story-id="<?php echo e($storyy->id); ?>" data-content-type="description" style="font-family: 'Josefin Sans Light';"><?php echo e($storyy->description); ?></p> 
+                                                </div>
+                                                <?php else: ?>
+                                                <div class="col-lg-12 col-sm-12 text-left">
+                                                    <p class="mt-3 editable" data-story-id="<?php echo e($storyy->id); ?>" data-content-type="description" style="font-family: 'Josefin Sans Light';"><?php echo e($storyy->description); ?></p> 
+                                                </div>
+                                                <?php endif; ?>
+                                                <div class="col-lg-10 col-sm-10 text-left">
+                                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">Submitted by: <?php echo e($storyy->create_by); ?></p> 
+                                                </div>
+                                                <div class="col-lg-2 col-sm-2 text-right">
+                                                    <p class="mt-3" style="font-family: 'Josefin Sans Light';">Date: <?php echo e(\Carbon\Carbon::parse($storyy->create_at)->format('m-d-Y')); ?></p> 
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 col-sm-6 text-left">
-                                               <p class="mt-3" style="font-family: 'Josefin Sans Light';">Story goes here (Images are optional)</p> 
-                                            </div>
-                                            <div class="col-lg-10 col-sm-10 text-left">
-                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Submitted by: Waliam</p> 
-                                            </div>
-                                            <div class="col-lg-2 col-sm-2 text-right">
-                                                <p class="mt-3" style="font-family: 'Josefin Sans Light';">Date: 4/25/2024</p> 
-                                            </div>
                                         </div>
-                                      </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                                        
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
-                                  </div>
+                                </div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.editable');
+                                        var editableImages = document.querySelectorAll('.editable-image');
+                                        var imageUploads = document.querySelectorAll('.image-upload');
+                                    
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+                                    
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+                                    
+                                            element.addEventListener('blur', function() {
+                                                var editedContent = element.textContent.trim();
+                                                var storyId = element.getAttribute('data-story-id');
+                                                var contentType = element.getAttribute('data-content-type');
+                                    
+                                                // Prepare data object with dynamic key-value pair
+                                                var data = {
+                                                    storyId: storyId
+                                                };
+                                                data[contentType] = editedContent;  // Set key based on content type (title/description)
+                                    
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-story-content', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log(contentType.charAt(0).toUpperCase() + contentType.slice(1) + ' updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update ' + contentType);
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                    
+                                                element.contentEditable = false; // Make the element non-editable after blur
+                                            });
+                                        });
+                                    
+                                        // Add event listeners to handle image clicks
+                                        editableImages.forEach(function(image) {
+                                            image.addEventListener('click', function() {
+                                                var storyId = image.getAttribute('data-story-id');
+                                                var contentType = image.getAttribute('data-content-type');
+                                                var fileInput = document.querySelector('.image-upload[data-story-id="' + storyId + '"][data-content-type="' + contentType + '"]');
+                                                fileInput.click();
+                                            });
+                                        });
+                                    
+                                        // Add event listeners to handle image file selection
+                                        imageUploads.forEach(function(input) {
+                                            input.addEventListener('change', function() {
+                                                var file = input.files[0];
+                                                var storyId = input.getAttribute('data-story-id');
+                                                var contentType = input.getAttribute('data-content-type');
+                                                var formData = new FormData();
+                                                formData.append('storyId', storyId);
+                                                formData.append(contentType, file);
+                                    
+                                                // Make an AJAX request to upload the new image to the server
+                                                fetch('/update-story-image', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: formData
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log(contentType.charAt(0).toUpperCase() + contentType.slice(1) + ' updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update ' + contentType);
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                            });
+                                        });
+                                    });
+                                </script>                                    
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
                                 <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addstory" >ADD A STORY
@@ -2568,30 +2575,35 @@
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
-                                      <div class="modal-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label for="title" class="float-left">Add Title</label>
-                                                        <input class="form-control" type="text" id="title">
+                                        <form action="<?php echo e(route('addstory')); ?>" method="post" enctype="multipart/form-data">
+                                            <?php echo csrf_field(); ?>
+                                            <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="title" class="float-left">Add Title</label>
+                                                                <input class="form-control" type="text" id="title" name="title" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="addphotos" class="float-left">Add Image First</label>
+                                                                <input class="form-control" type="file" id="addphotos" name="image_one">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="addphotos" class="float-left">Add Image Second</label>
+                                                                <input class="form-control" type="file" id="addphotos"  name="image_two">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="brief" class="float-left">Add Description</label>
+                                                                <textarea class="form-control" id="brief" name="description" required></textarea>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="addphotos" class="float-left">Add Story</label>
-                                                        <input class="form-control" type="file" id="addphotos">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="brief" class="float-left">Add Description</label>
-                                                        <textarea class="form-control" id="brief"></textarea>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
                                             </div>
                                         </form>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -2599,11 +2611,11 @@
                             <div  class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
                                 
                                 <div class="row mt-lg-4">
-                                    <div  class="col-lg-8 col-sm-12 text-right mb-lg-5">
-                                        <h3 class="storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 85px;" id="sounds">SOUND CLIPS (###)
+                                    <div  class="col-lg-9 col-sm-12 text-right mb-lg-5">
+                                        <h3 class="storiesanotherpagemainheading topaddmarginsub" style="color:#A423EB!important;margin-right: 125px;" id="sounds">SOUND CLIPS (###)
                                         </h3>
                                     </div>
-                                    <div  class="col-lg-4 col-sm-12">
+                                    <div  class="col-lg-3 col-sm-12">
                                         <form class="form-inline searchinputnavhsbdha">
                                             <input class="form-control mr-sm-2 searchinputnav mb-2" type="search"
                                                 placeholder="Search" aria-label="Search">
@@ -2615,33 +2627,131 @@
                             <div class="col-lg-12 col-sm-12 mt-4 mb-4 newclasspaddingoff">
                                 <div class="swiper soundbitesswiper">
                                     <div class="swiper-wrapper">
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                        <p style="font-family: 'Josefin Sans Light';">Bree Laughing
-                                        </p>
-                                      </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                        <p style="font-family: 'Josefin Sans Light';">TITLE
-                                        </p>
-                                      </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                        <p style="font-family: 'Josefin Sans Light';">TITLE
-                                        </p>
-                                      </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                        <p style="font-family: 'Josefin Sans Light';">TITLE
-                                        </p>
-                                      </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"> 
-                                        <p style="font-family: 'Josefin Sans Light';">TITLE
-                                        </p>
-                                      </div>
-                                      <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                        <p style="font-family: 'Josefin Sans Light';">TITLE
-                                        </p>
-                                      </div>
+                                        <?php $__currentLoopData = $soundclips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $soundclip): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="swiper-slide text-center mb-2 p-4" style="border: 1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" data-toggle="modal" data-target="#checkaudio<?php echo e($key); ?>">
+                                                <p style="font-family: 'Josefin Sans Light';"><?php echo e($soundclip->title); ?>
+
+                                                </p>
+                                            </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                     <!-- <div class="swiper-pagination"></div> -->
                                 </div>
+                                <?php $__currentLoopData = $soundclips; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $soundclipp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="modal fade" id="checkaudio<?php echo e($key); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel<?php echo e($key); ?>" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title soundeditable" data-soundclip-id="<?php echo e($soundclipp->id); ?>" id="exampleModalLabel<?php echo e($key); ?>">
+                                                        <?php echo e($soundclipp->title); ?>
+
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <audio controls>
+                                                                <source src="<?php echo e(asset('soundclips_files/' . $soundclipp->audio)); ?>" type="audio/<?php echo e(pathinfo($soundclipp->audio, PATHINFO_EXTENSION)); ?>">
+                                                                Your browser does not support the audio element.
+                                                            </audio>
+                                                            <span style="cursor: pointer;">
+                                                                <i class="fa fa-edit" style="color: #BE9438;" onclick="document.getElementById('audioUpload<?php echo e($key); ?>').click();"></i>
+                                                            </span>
+                                                            <input type="file" id="audioUpload<?php echo e($key); ?>" class="audio-upload" data-soundclip-id="<?php echo e($soundclipp->id); ?>" style="display:none;" accept="audio/*">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.soundeditable');
+                                        var audioUploads = document.querySelectorAll('.audio-upload');
+                                    
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+                                    
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+                                    
+                                            element.addEventListener('blur', function() {
+                                                var editedContent = element.textContent.trim();
+                                                var soundclipId = element.getAttribute('data-soundclip-id');
+                                    
+                                                // Prepare data object with dynamic key-value pair
+                                                var data = {
+                                                    soundclipId: soundclipId,
+                                                    title: editedContent
+                                                };
+                                    
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-soundclip-content', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Title updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update title');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                    
+                                                element.contentEditable = false; // Make the element non-editable after blur
+                                            });
+                                        });
+                                    
+                                        // Add event listeners to handle audio file selection
+                                        audioUploads.forEach(function(input) {
+                                            input.addEventListener('change', function() {
+                                                var file = input.files[0];
+                                                var soundclipId = input.getAttribute('data-soundclip-id');
+                                                var formData = new FormData();
+                                                formData.append('soundclipId', soundclipId);
+                                                formData.append('audio', file);
+                                    
+                                                // Make an AJAX request to upload the new audio file to the server
+                                                fetch('/update-soundclip-audio', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: formData
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Audio updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update audio');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                            });
+                                        });
+                                    });
+                                </script>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
                                 <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';"data-toggle="modal" data-target="#addaudio">ADD AUDIO
@@ -2655,26 +2765,27 @@
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
-                                      <div class="modal-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-sm-12">
-                                                    <div class="form-group">
-                                                        <label for="title" class="float-left">Add Title</label>
-                                                        <input class="form-control" type="text" id="title">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="addphotos" class="float-left">Add Audio</label>
-                                                        <input class="form-control" type="file" id="addphotos">
+                                        <form action="<?php echo e(route('uploadsoundsclip')); ?>" method="POST" enctype="multipart/form-data">
+                                            <?php echo csrf_field(); ?>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="title" class="float-left">Add Title</label>
+                                                            <input class="form-control" type="text" id="title" name="title" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="addaudio" class="float-left">Add Audio</label>
+                                                            <input class="form-control" type="file" id="addaudio" name="audio" accept="audio/*" required>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
                                         </form>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
-                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -2689,42 +2800,161 @@
                                         <h3 class="wishesheading mt-4" style="color:#A423EB!important;" id="funeral">FUNERAL WISHES
                                         </h3>
                                     </div>
-                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 5px!important;padding-left: 5px!important;">
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Title:</b> Bree’s Celebration of Life
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Theme:</b> Not sad - Light, Fun, Airy, like a carnivale
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Dress Code:</b> Everyone to wear colour
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Music:</b> Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).
-                                        </h3>
-                                        <h3 class="breesheading">Time of my Life (Bill Medley & Jennifer Warnes)
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Body:</b> Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">To be honoured by:</b> Going camping
-                                        </h3>
-                                    </div>
+                                    <?php if($transition): ?>
+                                        <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 5px!important;padding-left: 5px!important;">
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Title:</b> <span class="transitioneditable" data-id="title"><?php echo e($transition->title); ?></span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Theme:</b> <span class="transitioneditable" data-id="theme"><?php echo e($transition->theme); ?></span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Dress Code:</b> <span class="transitioneditable" data-id="dress_code"><?php echo e($transition->dress_code); ?></span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Music:</b> <span class="transitioneditable" data-id="music"><?php echo e($transition->music); ?></span></h3>
+                                            <h3 class="breesheading"><span class="transitioneditable" data-id="extra_music"><?php echo e($transition->extra_music); ?></span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Body:</b> <span class="transitioneditable" data-id="body"><?php echo e($transition->body); ?></span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">To be honoured by:</b> <span><?php echo e($transition->honoured_by); ?></span></h3>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 5px!important;padding-left: 5px!important;">
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Title:</b> <span class="transitioneditable" data-id="title">Bree’s Celebration of Life</span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Theme:</b> <span class="transitioneditable" data-id="theme">Not sad - Light, Fun, Airy, like a carnivale</span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Dress Code:</b> <span class="transitioneditable" data-id="dress_code">Everyone to wear colour</span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Music:</b> <span class="transitioneditable" data-id="music">Catch and Release (Matt Simons), Beat You There (Wil Dempsey), Time of my Life (Bill Medley & Jennifer Warnes).</span></h3>
+                                            <h3 class="breesheading"><span class="transitioneditable" data-id="extra_music">Time of my Life (Bill Medley & Jennifer Warnes)</span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">Body:</b> <span class="transitioneditable" data-id="body">Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean</span></h3>
+                                            <h3 class="breesheading"><b style="color:#A423EB!important;">To be honoured by:</b> <span class="transitioneditable" data-id="honoured_by">Going camping</span></h3>
+                                        </div>
+                                    <?php endif; ?>     
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            var editableElements = document.querySelectorAll('.transitioneditable');
+                                        
+                                            // Function to make element editable
+                                            function makeEditable(element) {
+                                                element.contentEditable = true;
+                                                element.focus();
+                                            }
+                                        
+                                            // Add event listeners to make elements editable upon clicking
+                                            editableElements.forEach(function(element) {
+                                                element.addEventListener('click', function() {
+                                                    makeEditable(element);
+                                                });
+                                        
+                                                element.addEventListener('blur', function() {
+                                                    var editedContent = element.textContent.trim();
+                                                    var dataId = element.getAttribute('data-id');
+                                        
+                                                    // Prepare data object with dynamic key-value pair
+                                                    var data = {
+                                                        id: dataId,
+                                                        content: editedContent
+                                                    };
+                                        
+                                                    // Make an AJAX request to send the edited content to the server
+                                                    fetch('/update-transition-content', {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            'Content-Type': 'application/json',
+                                                            'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                        },
+                                                        body: JSON.stringify(data)
+                                                    })
+                                                    .then(response => {
+                                                        if (response.ok) {
+                                                            console.log('Content updated successfully!');
+                                                            window.location.reload();
+                                                        } else {
+                                                            console.error('Failed to update content');
+                                                        }
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error:', error);
+                                                    });
+                                        
+                                                    element.contentEditable = false; // Make the element non-editable after blur
+                                                });
+                                            });
+                                        });
+                                    </script>                                                                      
                                 </div>
                                 <div class="row" style="border-top: 2px solid #BE9438!important;">
                                     <div class="col-lg-12 col-sm-12">
                                         <h3 class="wishesheading mt-3 topaddmarginsub topaddmarginsub" style="color:#A423EB!important;" id="obituary">OBITUARY
                                         </h3>
                                     </div>
+                                    <?php if(empty($obituary)): ?>
                                     <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Full Name: </b> Breannon Kimberley Schuback (Formerly Daniel)
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Birth:</b> 31st December 1992
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Birth Place: </b> Gosford Hospital NSW Australia
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Transition: </b> Friday, 25th August 2023 
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Place of Transition: </b> At home — Carmody Court, Nudgee, QLD, Australia
-                                        </h3>
-                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Cause of Transition: </b> Unknown
-                                        </h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Full Name: </b> <span class="abituaryeditable" data-id="full_name">Breannon Kimberley Schuback (Formerly Daniel)</span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Birth:</b> <span class="abituaryeditable" data-id="date_of_birth">31st December 1992</span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Birth Place: </b> <span class="abituaryeditable" data-id="birth_place">Gosford Hospital NSW Australia</span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Transition: </b> <span class="abituaryeditable" data-id="date_of_transition">Friday, 25th August 2023</span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Place of Transition: </b> <span class="abituaryeditable" data-id="place_of_transition">At home — Carmody Court, Nudgee, QLD, Australia</span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Cause of Transition: </b> <span class="abituaryeditable" data-id="cause_of_transition">Unknown</span></h3>
                                     </div>
+                                    <?php else: ?>
+                                    <div class="col-lg-12 col-sm-12 text-center" style="padding-right: 0px!important;">
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Full Name: </b> <span class="abituaryeditable" data-id="full_name"><?php echo e($obituary->full_name); ?></span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Birth:</b> <span class="abituaryeditable" data-id="date_of_birth"><?php echo e($obituary->date_of_birth); ?></span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Birth Place: </b> <span class="abituaryeditable" data-id="birth_place"><?php echo e($obituary->birth_place); ?></span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Date of Transition: </b> <span class="abituaryeditable" data-id="date_of_transition"><?php echo e($obituary->date_of_transition); ?></span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Place of Transition: </b> <span class="abituaryeditable" data-id="place_of_transition"><?php echo e($obituary->place_of_transition); ?></span></h3>
+                                        <h3 class="breesheading"><b style="color:#A423EB!important;">Cause of Transition: </b> <span class="abituaryeditable" data-id="cause_of_transition"><?php echo e($obituary->cause_of_transition); ?></span></h3>
+                                    </div>
+                                    <?php endif; ?>  
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            var editableElements = document.querySelectorAll('.abituaryeditable');
+
+                                            // Function to make element editable
+                                            function makeEditable(element) {
+                                                element.contentEditable = true;
+                                                element.focus();
+                                            }
+
+                                            // Function to handle AJAX update
+                                            function handleUpdate(element) {
+                                                var editedContent = element.textContent.trim();
+                                                var dataId = element.getAttribute('data-id');
+
+                                                // Prepare data object with dynamic key-value pair
+                                                var data = {
+                                                    id: dataId,
+                                                    content: editedContent
+                                                };
+
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-obituary-content', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Content updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update content');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+
+                                                element.contentEditable = false; // Make the element non-editable after blur
+                                            }
+
+                                            // Add event listeners to make elements editable upon clicking
+                                            editableElements.forEach(function(element) {
+                                                element.addEventListener('click', function() {
+                                                    makeEditable(element);
+                                                });
+
+                                                element.addEventListener('blur', function() {
+                                                    handleUpdate(element);
+                                                });
+                                            });
+                                        });
+                                    </script>                                                                      
                                 </div>
                                 
                             </div>

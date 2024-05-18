@@ -43,6 +43,7 @@
     <div class="content">
         <p>Hello,</p>
         <p>We are pleased to inform you that access has been granted.</p>
+        
         <p>Thank you.</p>
     </div>
     <div class="footer">
