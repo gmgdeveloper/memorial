@@ -3083,7 +3083,8 @@
                                 </div>
                                 
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff funeralmargin" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff funeralmargin">
+                                @if(empty($obituaryboxes))
                                 <div class="row">
                                     <div class="col-lg-3 col-sm-6 ml-lg-5" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="card" style="border:0px;">
@@ -3092,11 +3093,11 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Academy Funerals Lawnton
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;" class="obituary-editable-text" data-id="funeral_home">Academy Funerals Lawnton
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">mail@academyfunerals.com.au
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;" class="obituary-editable-text" data-id="funeral_home">mail@academyfunerals.com.au
                                                 </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Director: Robin Druery
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;" class="obituary-editable-text" data-id="funeral_home">Director: Robin Druery
                                                 </p>
                                             </div>
                                         </div>
@@ -3108,7 +3109,7 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">By invite Only
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;" class="obituary-editable-text" data-id="views">By invite Only
                                                 </p>
                                             </div>
                                         </div>
@@ -3120,15 +3121,7 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Wednesday 13th September 2023, 
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">10am
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Decker Park
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Eighteenth Ave
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Brighton, Qld 4121
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;"  class="obituary-editable-text" data-id="procession">Wednesday 13th September 2023, 
                                                 </p>
                                             </div>
                                         </div>
@@ -3140,15 +3133,7 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Wednesday 13th September 2023,  
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">11am-12pm
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Events on Oxlade, 
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">50 Oxlade Drive 
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">New Farm Qld, 4005  
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;" class="obituary-editable-text" data-id="service">Wednesday 13th September 2023,  
                                                 </p>
                                             </div>
                                         </div>
@@ -3160,15 +3145,7 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Wednesday 13th September 2023,  
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">12pm-3pm
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Events on Oxlade, 
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">50 Oxlade Drive 
-                                                </p>
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">New Farm Qld, 4005  
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;" class="obituary-editable-text" data-id="wake">Wednesday 13th September 2023,  
                                                 </p>
                                             </div>
                                         </div>
@@ -3180,23 +3157,192 @@
                                                 </h4>
                                             </div>
                                             <div class="card-body text-center" style="padding-top: 0px;">
-                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">Breannon's ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon's remaining ashes will be combined with her mother’s, and both will be buried with Breannon's sister, Kaitlyn Schuback-Jeffers.  
+                                                <p style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;" class="obituary-editable-text" data-id="final_resting_place">Breannon's ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon's remaining ashes will be combined with her mother’s, and both will be buried with Breannon's sister, Kaitlyn Schuback-Jeffers.  
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @else
+                                <div class="row">
+                                    <!-- Funeral Home -->
+                                    <div class="col-lg-3 col-sm-6 ml-lg-5" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="card" style="border:0px;">
+                                            <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">FUNERAL HOME</h4>
+                                            </div>
+                                            <div class="card-body text-center" style="padding-top: 0px;">
+                                                <p class="obituary-editable-text" data-id="funeral_home" style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">{{$obituaryboxes->funeral_home}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Views -->
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 funeralmargin" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="card" style="border:0px;">
+                                            <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">VIEWS</h4>
+                                            </div>
+                                            <div class="card-body text-center" style="padding-top: 0px;">
+                                                <p class="obituary-editable-text" data-id="views" style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">{{$obituaryboxes->views}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Procession -->
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 funeralmargin" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="card" style="border:0px;">
+                                            <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">PROCESSION</h4>
+                                            </div>
+                                            <div class="card-body text-center" style="padding-top: 0px;">
+                                                <p class="obituary-editable-text" data-id="procession" style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">{{$obituaryboxes->procession}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Service -->
+                                    <div class="col-lg-3 col-sm-6 mt-3 ml-lg-5" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="card" style="border:0px;">
+                                            <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;"><a style="color:#A423EB!important;font-size: 18px;" href="https://www.google.com/maps?q=40.7128,-74.0060" target="_blank">SERVICE</a></h4>
+                                            </div>
+                                            <div class="card-body text-center" style="padding-top: 0px;">
+                                                <p class="obituary-editable-text" data-id="service" style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">{{$obituaryboxes->service}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Wake -->
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 mt-3" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="card" style="border:0px;">
+                                            <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;">WAKE</h4>
+                                            </div>
+                                            <div class="card-body text-center" style="padding-top: 0px;">
+                                                <p class="obituary-editable-text" data-id="wake" style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">{{$obituaryboxes->wake}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Final Resting Place -->
+                                    <div class="col-lg-3 col-sm-6 offset-lg-1 mt-3" style="border: 1px solid #BE9438!important;height: 350px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <div class="card" style="border:0px;">
+                                            <div class="card-header text-center" style="padding-bottom: 0px;background-color:#fff;border:0px;">
+                                                <h4 class="pagemainheading topaddmarginsub" style="color:#A423EB!important;font-size: 18px;"><a style="color:#A423EB!important;font-size: 18px;" href="https://www.google.com/maps?q=40.7128,-74.0060" target="_blank">FINAL RESTING PLACE</a></h4>
+                                            </div>
+                                            <div class="card-body text-center" style="padding-top: 0px;">
+                                                <p class="obituary-editable-text" data-id="final_resting_place" style="font-family: 'Josefin Sans Light';font-size:15px;margin-bottom: 0px;">{{$obituaryboxes->final_resting_place}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                @endif
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.obituary-editable-text');
+                                    
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+                                    
+                                        // Function to handle AJAX update
+                                        function handleUpdate(element) {
+                                            var editedContent = element.textContent.trim();
+                                            var dataId = element.getAttribute('data-id');
+                                    
+                                            // Prepare data object with dynamic key-value pair
+                                            var data = {
+                                                id: dataId,
+                                                content: editedContent
+                                            };
+                                    
+                                            // Make an AJAX request to send the edited content to the server
+                                            fetch('/obituray-boxesupdate-content', {  // Adjust the URL as needed
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                                },
+                                                body: JSON.stringify(data)
+                                            })
+                                            .then(response => {
+                                                if (response.ok) {
+                                                    console.log('Content updated successfully!');
+                                                    window.location.reload();
+                                                } else {
+                                                    console.error('Failed to update content');
+                                                }
+                                            })
+                                            .catch(error => {
+                                                console.error('Error:', error);
+                                            });
+                                    
+                                            element.contentEditable = false; // Make the element non-editable after blur
+                                        }
+                                    
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+                                    
+                                            element.addEventListener('blur', function() {
+                                                handleUpdate(element);
+                                            });
+                                        });
+                                    });
+                                </script>  
+                                                                   
                             </div>
                             <div  class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3" style="color:#A423EB!important;">EULOGY
                                 </h3>
-                                <p class="mt-2 text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non modi iste rerum, dolore adipisci delectus cum nobis quasi asperiores nesciunt repudiandae doloremque soluta perferendis dolorem consequatur, magni tempora eos amet.</p>
+                                @if(empty($eulogy->content))
+                                <p class="mt-2 text-center eulogyeditable-p" data-id="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non modi iste rerum, dolore adipisci delectus cum nobis quasi asperiores nesciunt repudiandae doloremque soluta perferendis dolorem consequatur, magni tempora eos amet.</p>
+                                @else
+                                <p class="mt-2 text-center eulogyeditable-p" data-id="content">{{$eulogy->content}}</p>
+                                @endif
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center newclasspaddingoff">
-                                <a href="{{ asset('Breannon-ORDER-OF-SERVICE.pdf') }}" download><button class="btn btn-large mt-3 contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
-                                </button></a>
+                                @if(empty($eulogy->download_order_of_service))
+                                    <a href="{{ asset('Breannon-ORDER-OF-SERVICE.pdf') }}" download><button class="btn btn-large mt-3 contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
+                                    </button></a>
+                                @else
+                                    <a href="{{ asset('download_order_of_services/'.$eulogy->download_order_of_service) }}" download><button class="btn btn-large mt-3 contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">DOWNLOAD ORDER OF SERVICE
+                                    </button></a>
+                                @endif
+                                <span style="cursor: pointer;" data-target="#eulogyupdatemodal">
+                                    <i class="fa fa-edit" style="color: #BE9438;" data-toggle="modal" data-target="#eulogyupdatemodal"></i>
+                                </span>
                             </div>
-                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
+                            <div class="modal fade" id="eulogyupdatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Update Order of Service Eulogy</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="{{route('add_download_order_of_service_euolgy')}}" method="POST" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="download_order_of_service" class="float-left">Add Order Service Pdf</label>
+                                                            <input class="form-control" type="file" id="download_order_of_service" name="download_order_of_service" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer"> 
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3" style="color:#A423EB!important;">A MESSAGE FROM THE FAMILY
                                 </h3>
                                 <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">In loving memory of Breannon, Kaitlyn and I wish to express our heartfelt gratitude to all who have supported us during this difficult time.
@@ -3225,11 +3371,117 @@
                                 <p class="mt-3 mesagetextcenter" style="font-family: 'Josefin Sans Light';">
                                     Your kindness and support have meant the world to us during this difficult time. We are forever grateful for your love and generosity.
                                 </p>
+                            </div> --}}
+                            <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">
+                                <h3 class="pagemainheading mt-3" style="color:#A423EB!important;">A MESSAGE FROM THE FAMILY</h3>
+                                @if(empty($eulogy->description))
+                                <p class="mt-3 mesagetextcenter eulogyeditable-p" data-id="description" style="font-family: 'Josefin Sans Light';">In loving memory of Breannon, Kaitlyn and I wish to express our heartfelt gratitude to all who have supported us during this difficult time.</p>
+                                @else
+                                <p class="mt-3 mesagetextcenter eulogyeditable-p" data-id="description" style="font-family: 'Josefin Sans Light';">{{$eulogy->description}}</p>
+                                @endif
                             </div>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    var editableElements = document.querySelectorAll('.eulogyeditable-p');
+                            
+                                    // Function to make element editable
+                                    function makeEditable(element) {
+                                        element.contentEditable = true;
+                                        element.focus();
+                                    }
+                            
+                                    // Function to handle AJAX update
+                                    function handleUpdate(element) {
+                                        var editedContent = element.textContent.trim();
+                                        var dataId = element.getAttribute('data-id');
+                            
+                                        // Prepare data object with dynamic key-value pair
+                                        var data = {
+                                            id: dataId,
+                                            content: editedContent
+                                        };
+                            
+                                        // Make an AJAX request to send the edited content to the server
+                                        fetch('/eulogyupdate-content', {  // Adjust the URL as needed
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if applicable
+                                            },
+                                            body: JSON.stringify(data)
+                                        })
+                                        .then(response => {
+                                            if (response.ok) {
+                                                console.log('Content updated successfully!');
+                                                // Optionally, you can reload the page after successful update
+                                                window.location.reload();
+                                            } else {
+                                                console.error('Failed to update content');
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                        });
+                            
+                                        element.contentEditable = false; // Make the element non-editable after blur
+                                    }
+                            
+                                    // Add event listeners to make elements editable upon clicking
+                                    editableElements.forEach(function(element) {
+                                        element.addEventListener('click', function() {
+                                            makeEditable(element);
+                                        });
+                            
+                                        element.addEventListener('blur', function() {
+                                            handleUpdate(element);
+                                        });
+                                    });
+                                });
+                            </script>           
+                            <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff mb-2">
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;"  data-target="#eulogyvideoupdatemodal">
+                                    <i class="fa fa-edit" style="color: #BE9438;" data-toggle="modal" data-target="#eulogyvideoupdatemodal"></i>
+                                </span>
+                            </div>                  
                             <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
+                                @if(empty($eulogy->video))
                                 <video width="100%" height="500" controls style="border: 1px solid #BE9438!important;" class="dummyvideooo">
                                     <source src="{{asset('assets/dummyvideo.mp4')}}" type="video/mp4">
                                 </video>
+                                @else
+                                <video width="100%" height="500" controls style="border: 1px solid #BE9438!important;" class="dummyvideooo">
+                                    <source src="{{asset('videoeulogys/'.$eulogy->video)}}" type="video/mp4">
+                                </video>
+                                @endif
+                            </div>
+                            <div class="modal fade" id="eulogyvideoupdatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Update Video</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="{{route('add_download_order_of_service_videoeulogy_euolgy')}}" method="POST" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="video" class="float-left">Add Video</label>
+                                                            <input class="form-control" type="file" id="video" name="video" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer"> 
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 p-4 newclasspaddingoff">        
                                 <div class="row">
@@ -3289,6 +3541,7 @@
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff">
                                 <div class="swiper tributeswiper mobileoff">
+                                    @if(empty($tributes))
                                     <div class="swiper-wrapper">
                                       <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
@@ -3375,6 +3628,26 @@
                                         </div>
                                       </div>
                                     </div>
+                                    @else
+                                    <div class="swiper-wrapper">
+                                        @foreach($tributes as $tribute)
+                                        <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                          <div class="row">
+                                              <div class="col-lg-6 col-sm-6 text-left">
+                                                  <h4 class="tributemother">{{$tribute->name_of_mother}}</h4>
+                                              </div>
+                                              <div class="col-lg-6 col-sm-6">
+                                                  <h4 class="tributemother">{{$tribute->name}}</h4>
+                                              </div>
+                                              <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                  <p style="font-family: 'Josefin Sans Light';">{{$tribute->description}}
+                                                  </p>
+                                              </div>
+                                          </div>
+                                        </div>
+                                        @endforeach
+                                      </div>
+                                    @endif
                                     <!--<div class="swiper-pagination mt-3"></div>-->
                                   </div>
                                   
@@ -3444,8 +3717,49 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;">ADD A TRIBUTE
+                                <button class="btn btn-large contactadministration" style="background-image: url('{{asset('assets/buttonbackground.PNG')}}');width: 30%;color:#000;border-radius: 20px;" data-toggle="modal" data-target="#tributesupdatemodal">ADD A TRIBUTE
                                 </button>
+                            </div>
+                            <div class="modal fade" id="tributesupdatemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Tributes</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <form action="{{route('addtributes')}}" method="POST" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="mother_name" class="float-left">Add Mother Name</label>
+                                                            <input class="form-control" type="text" id="mother_name" name="mother_name" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="name" class="float-left">Add Name</label>
+                                                            <input class="form-control" type="text" id="name" name="name" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="description" class="float-left">Add Message</label>
+                                                            <textarea class="form-control" id="description" name="description" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer"> 
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">MESSAGES FROM THE HONOUREE
@@ -3966,6 +4280,14 @@
         <script>
             toastr.error('{{ session('error') }}', 'Error');
         </script>
+    @endif
+
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <script>
+                toastr.error('{{ $error }}', 'Error');
+            </script>
+        @endforeach
     @endif
 </body>
 

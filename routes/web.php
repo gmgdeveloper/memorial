@@ -149,6 +149,11 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::post('/update-soundclip-content',[PageController::class,'update_soundclip_content'])->name('update_soundclip_content');
     Route::post('/update-transition-content',[PageController::class,'update_transition_content'])->name('update_transition_content');
     Route::post('/update-obituary-content',[PageController::class,'update_obituary_content'])->name('update_obituary_content');
+    Route::post('/obituray-boxesupdate-content',[PageController::class,'obituray_boxesupdate_content'])->name('obituray_boxesupdate_content');
+    Route::post('/eulogyupdate-content',[PageController::class,'add_euolgy'])->name('add_euolgy');
+    Route::post('/add-download-order-of-service-euolgy',[PageController::class,'add_download_order_of_service_euolgy'])->name('add_download_order_of_service_euolgy');
+    Route::post('/add-download-order-video-of-service-euolgy',[PageController::class,'add_download_order_of_service_videoeulogy_euolgy'])->name('add_download_order_of_service_videoeulogy_euolgy');
+    Route::post('/add-tributes',[PageController::class,'add_tributes'])->name('addtributes');
 
 });
 

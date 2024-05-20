@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Plan;
 use App\Models\UserPages;
@@ -26,6 +27,10 @@ use App\Models\Story;
 use App\Models\SoundClip;
 use App\Models\Transition;
 use App\Models\Obituary;
+use App\Models\ObituaryBoxs;
+use App\Models\Eulogy;
+use App\Models\Tribute;
+use App\Rules\MaxWordCount;
 
 
 class PageController extends Controller
@@ -57,6 +62,9 @@ class PageController extends Controller
         $soundclips = SoundClip::where('user_id', auth()->user()->id)->get();
         $transition = Transition::where('user_id', auth()->user()->id)->first();
         $obituary = Obituary::where('user_id', auth()->user()->id)->first();
+        $obituaryboxes = ObituaryBoxs::where('user_id', auth()->user()->id)->first();
+        $eulogy = Eulogy::where('user_id', auth()->user()->id)->first();
+        $tributes = Tribute::where('user_id', auth()->user()->id)->get();
         
  
             // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
@@ -80,7 +88,7 @@ class PageController extends Controller
 
         
     
-            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting','generalknowledges','faqs','guestbooks','requestaccess','stories','soundclips','transition','obituary'));
+            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting','generalknowledges','faqs','guestbooks','requestaccess','stories','soundclips','transition','obituary','obituaryboxes','eulogy','tributes'));
         
     }
 
@@ -902,4 +910,221 @@ class PageController extends Controller
     
         return response()->json(['success' => 'Obituary updated successfully']);
     }   
+
+    public function obituray_boxesupdate_content(Request $request){
+
+        $id = $request->input('id');
+        $content = $request->input('content');
+    
+        // Check if the transition record already exists
+        $obituary = ObituaryBoxs::where('user_id', auth()->user()->id)->first();
+    
+        // If the record doesn't exist, create a new one
+        if (!$obituary) {
+            $obituary = new ObituaryBoxs();
+            $obituary->user_id = auth()->user()->id;
+
+            if(empty($id) || $id == 'funeral_home'){
+                $obituary->funeral_home = 'Academy Funerals Lawnton mail@academyfunerals.com.au Director: Robin Druery By invite Only';
+                $obituary->views = 'By invite Only';
+                $obituary->procession = 'Wednesday 13th September 2023, 10am Decker Park Eighteenth Ave Brighton, Qld 4121';
+                $obituary->service = 'Wednesday 13th September 2023, 11am-12pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->wake = 'Wednesday 13th September 2023, 12pm-3pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->final_resting_place = 'Breannon’s ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon’s remaining ashes will be combined with her mother’s, and both will be buried with Breannon’s sister, Kaitlyn Schuback-Jeffers';
+            }
+
+            if(empty($id) || $id == 'views'){
+                $obituary->funeral_home = 'Academy Funerals Lawnton mail@academyfunerals.com.au Director: Robin Druery By invite Only';
+                $obituary->views = 'By invite Only';
+                $obituary->procession = 'Wednesday 13th September 2023, 10am Decker Park Eighteenth Ave Brighton, Qld 4121';
+                $obituary->service = 'Wednesday 13th September 2023, 11am-12pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->wake = 'Wednesday 13th September 2023, 12pm-3pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->final_resting_place = 'Breannon’s ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon’s remaining ashes will be combined with her mother’s, and both will be buried with Breannon’s sister, Kaitlyn Schuback-Jeffers';
+            }
+
+            if(empty($id) || $id == 'procession'){
+                $obituary->funeral_home = 'Academy Funerals Lawnton mail@academyfunerals.com.au Director: Robin Druery By invite Only';
+                $obituary->views = 'By invite Only';
+                $obituary->procession = 'Wednesday 13th September 2023, 10am Decker Park Eighteenth Ave Brighton, Qld 4121';
+                $obituary->service = 'Wednesday 13th September 2023, 11am-12pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->wake = 'Wednesday 13th September 2023, 12pm-3pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->final_resting_place = 'Breannon’s ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon’s remaining ashes will be combined with her mother’s, and both will be buried with Breannon’s sister, Kaitlyn Schuback-Jeffers';
+            }
+
+            if(empty($id) || $id == 'service'){
+                $obituary->funeral_home = 'Academy Funerals Lawnton mail@academyfunerals.com.au Director: Robin Druery By invite Only';
+                $obituary->views = 'By invite Only';
+                $obituary->procession = 'Wednesday 13th September 2023, 10am Decker Park Eighteenth Ave Brighton, Qld 4121';
+                $obituary->service = 'Wednesday 13th September 2023, 11am-12pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->wake = 'Wednesday 13th September 2023, 12pm-3pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->final_resting_place = 'Breannon’s ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon’s remaining ashes will be combined with her mother’s, and both will be buried with Breannon’s sister, Kaitlyn Schuback-Jeffers';
+            }
+
+            if(empty($id) || $id == 'wake'){
+                $obituary->funeral_home = 'Academy Funerals Lawnton mail@academyfunerals.com.au Director: Robin Druery By invite Only';
+                $obituary->views = 'By invite Only';
+                $obituary->procession = 'Wednesday 13th September 2023, 10am Decker Park Eighteenth Ave Brighton, Qld 4121';
+                $obituary->service = 'Wednesday 13th September 2023, 11am-12pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->wake = 'Wednesday 13th September 2023, 12pm-3pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->final_resting_place = 'Breannon’s ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon’s remaining ashes will be combined with her mother’s, and both will be buried with Breannon’s sister, Kaitlyn Schuback-Jeffers';
+            }
+            if(empty($id) || $id == 'final_resting_place'){
+                $obituary->funeral_home = 'Academy Funerals Lawnton mail@academyfunerals.com.au Director: Robin Druery By invite Only';
+                $obituary->views = 'By invite Only';
+                $obituary->procession = 'Wednesday 13th September 2023, 10am Decker Park Eighteenth Ave Brighton, Qld 4121';
+                $obituary->service = 'Wednesday 13th September 2023, 11am-12pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->wake = 'Wednesday 13th September 2023, 12pm-3pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
+                $obituary->final_resting_place = 'Breannon’s ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon’s remaining ashes will be combined with her mother’s, and both will be buried with Breannon’s sister, Kaitlyn Schuback-Jeffers';
+            }
+        }
+    
+        // Update the corresponding field based on the id
+        switch ($id) {
+            case 'funeral_home':
+                $obituary->funeral_home = $content;
+                break;
+            case 'views':
+                $obituary->views = $content;
+                break;
+            case 'procession':
+                $obituary->procession = $content;
+                break;
+            case 'service':
+                $obituary->service = $content;
+                break;
+            case 'wake':
+                $obituary->wake = $content;
+                break;
+            case 'final_resting_place':
+                $obituary->final_resting_place = $content;
+                break;
+        }
+    
+        // Save the transition record
+        $obituary->save();
+    
+        return response()->json(['success' => 'Obituary updated successfully']);
+
+    }
+
+    public function add_euolgy(Request $request) {
+
+        $obituary = Eulogy::where('user_id', auth()->user()->id)->first();
+
+        if ($obituary) {
+            // Update the content in the database
+            if(empty($id) || $id == 'content'){
+                $obituary->content = $request->content;
+            }
+
+            if(empty($id) || $id == 'description'){
+                $obituary->description = $request->content;
+            }
+
+            $obituary->save();
+
+            return response()->json(['message' => 'Content updated successfully'], 200);
+        } else {
+            // If obituary does not exist, create a new record
+            $newObituary = new Eulogy();
+            
+            $newObituary->user_id = $request->user_id;
+
+            switch ($id) {
+                case 'content':
+                    $transition->content = $content;
+                    break;
+                case 'description':
+                    $transition->description = $content;
+                    break;
+            }
+
+            $newObituary->save();
+
+            return response()->json(['message' => 'Eulogy record created'], 201);
+        }
+
+    }
+    public function add_download_order_of_service_euolgy(Request $request)
+    {
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'download_order_of_service' => 'required|file|mimes:pdf', // Max file size is 2048 KB (2 MB)
+        ]);
+
+        // If validation fails, redirect back with validation errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $eulogy = Eulogy::where('user_id', auth()->user()->id)->first();
+
+        if (!$eulogy) {
+            $eulogy = new Eulogy;
+        }
+
+        if ($request->hasFile('download_order_of_service')) {
+            $file = $request->file('download_order_of_service');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('download_order_of_services'), $filename);
+
+            $eulogy->download_order_of_service = $filename;
+            $eulogy->user_id = auth()->user()->id;
+
+            $eulogy->save();
+
+            return redirect()->route('pageone')->with('success', 'Eulogy updated successfully');
+        }
+
+        // Handle if no file was uploaded
+        return redirect()->route('pageone')->with('error', 'No file was uploaded.');
+    }
+
+    public function add_download_order_of_service_videoeulogy_euolgy(Request $request)
+    {
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'video' => 'required|file|mimetypes:video/mp4,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/mpeg,video/webm,video/x-flv,video/3gpp', // Adjust the list of allowed video MIME types as needed
+        ]);
+
+        // If validation fails, redirect back with validation errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $eulogy = Eulogy::where('user_id', auth()->user()->id)->first();
+
+        if (!$eulogy) {
+            $eulogy = new Eulogy;
+        }
+
+        if ($request->hasFile('video')) {
+            $file = $request->file('video');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('videoeulogys'), $filename);
+
+            $eulogy->video = $filename;
+            $eulogy->user_id = auth()->user()->id;
+
+            $eulogy->save();
+
+            return redirect()->route('pageone')->with('success', 'Video updated successfully');
+        }
+
+        // Handle if no file was uploaded
+        return redirect()->route('pageone')->with('error', 'No file was uploaded.');
+    }
+
+    public function add_tributes(Request $request){
+        $tribute = new Tribute;
+
+        $tribute->name = $request->name;
+        $tribute->mother_name = $request->mother_name;
+        $tribute->description = $request->description;
+        $tribute->user_id = auth()->user()->id;
+
+        $tribute->save();
+
+        return redirect()->route('pageone')->with('success', 'Tribute added successfully');
+    }
 }
