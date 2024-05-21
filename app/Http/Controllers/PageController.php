@@ -30,6 +30,11 @@ use App\Models\Obituary;
 use App\Models\ObituaryBoxs;
 use App\Models\Eulogy;
 use App\Models\Tribute;
+use App\Models\MessageFromHonouree;
+use App\Models\MakeaDonation;
+use App\Models\RelationandRelative;
+use App\Models\History;
+use App\Models\GalleryImage;
 use App\Rules\MaxWordCount;
 
 
@@ -65,6 +70,11 @@ class PageController extends Controller
         $obituaryboxes = ObituaryBoxs::where('user_id', auth()->user()->id)->first();
         $eulogy = Eulogy::where('user_id', auth()->user()->id)->first();
         $tributes = Tribute::where('user_id', auth()->user()->id)->get();
+        $messageshonourees = MessageFromHonouree::where('user_id', auth()->user()->id)->get();
+        $makeadonations = MakeaDonation::where('user_id', auth()->user()->id)->get();
+        $relationandrelatives = RelationandRelative::where('user_id', auth()->user()->id)->get();
+        $histories = History::where('user_id', auth()->user()->id)->get();
+        $galleries = GalleryImage::where('user_id', auth()->user()->id)->get();
         
  
             // Assuming the existence of $banner_image, $title_page, and at least one quote is sufficient
@@ -88,7 +98,7 @@ class PageController extends Controller
 
         
     
-            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting','generalknowledges','faqs','guestbooks','requestaccess','stories','soundclips','transition','obituary','obituaryboxes','eulogy','tributes'));
+            return view('Frontend.pageone', compact('date_of_birth','date_of_death','banner_image_path', 'title_page_name', 'over_view', 'quotes','audio','relationships','ganeral_setting','generalknowledges','faqs','guestbooks','requestaccess','stories','soundclips','transition','obituary','obituaryboxes','eulogy','tributes','messageshonourees','makeadonations','relationandrelatives','histories','galleries'));
         
     }
 
@@ -219,7 +229,7 @@ class PageController extends Controller
         } else {
             $user = User::find(auth()->user()->id);
         }
-        dd($user);
+       // dd($user);
         $selectedPlan = Plan::find($request->to_buy_plan_id);
 
         $user_page = new UserPages;
@@ -308,8 +318,20 @@ class PageController extends Controller
                 $bannerImage->media_id = $media->id;
                 
                 $bannerImage->save();
+
+                History::create([
+                    'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name,
+                    'reaction' => 'Banner added successfully',
+                ]);
                 
             } else {
+                History::create([
+                    'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name,
+                    'reaction' => 'Banner added successfully',
+                ]);
+
                 // If $bannerImage is not empty, update its name
                 $bannerImage->name = $request->memorail_title;
                 $bannerImage->save();
@@ -337,6 +359,12 @@ class PageController extends Controller
                 // Update the media record in the database for the current user
                 Media::where('memorial_id', auth()->user()->id)->update(['file_path' => $imagePath]);
 
+                History::create([
+                    'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name,
+                    'reaction' => 'Banner updated successfully',
+                ]);
+
                 // Return the updated image path
                 return response()->json(['image_path' => asset($imagePath)]);
             } else {
@@ -352,6 +380,11 @@ class PageController extends Controller
 
             if ($over_view) {
                 $over_view->over_view = $request->over_view;
+                History::create([
+                    'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name,
+                    'reaction' => 'Banner Overview updated successfully',
+                ]);
                 $over_view->save();
             } else {
                 // Handle case where no banner image is found for the user
@@ -382,6 +415,12 @@ class PageController extends Controller
 
         $quote->memorial_id	= auth()->user()->id;
     
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Quotes updated successfully',
+        ]);
+
         // Save the changes
         $quote->save();
     
@@ -390,6 +429,13 @@ class PageController extends Controller
     
     public function add_quote(Request $request){
         // dd($request->all());
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Quotes added successfully',
+        ]);
+
         $quote = Quote::create([
             'memorial_id' => auth()->user()->id,
             'heading' => $request->heading,
@@ -402,6 +448,13 @@ class PageController extends Controller
 
     public function add_relation(Request $request){
         // dd($request->all());
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Relationship added successfully',
+        ]);
+
         $relationship = Relationship::create([
             'user_id' => auth()->user()->id,
             'heading' => $request->heading,
@@ -422,6 +475,11 @@ class PageController extends Controller
                                     ->first();
     
         if($relationship){
+            History::create([
+                'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Relationship updated successfully',
+            ]);
             $relationship->{$request->elementId} = $request->content;
             $relationship->save();
     
@@ -459,6 +517,12 @@ class PageController extends Controller
             }
         }
     
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Video updated successfully',
+        ]);
+
         // Save the audio record
         $audio->save();
     
@@ -484,6 +548,12 @@ class PageController extends Controller
                 if (!empty($request->dateOfDeath)) {
                     $page->date_of_death = $request->dateOfDeath;
                 }
+                History::create([
+                    'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name,
+                    'reaction' => 'Dates updated successfully',
+                ]);
+
                 $page->save();
 
                 return response()->json(['success' => true, 'message' => 'Dates updated successfully']);
@@ -508,11 +578,21 @@ class PageController extends Controller
         $ganeral_seeting = GaneralSetting::where('user_id', $user_id)->first();
         if ($ganeral_seeting) {
             $ganeral_seeting->body_image = $imageName;
+            History::create([
+                'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Body image updated successfully',
+            ]);
             $ganeral_seeting->save();
         } else {
             $ganeral_seeting = new GaneralSetting();
             $ganeral_seeting->user_id = $user_id;
             $ganeral_seeting->body_image = $imageName;
+            History::create([
+                'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Body image updated successfully',
+            ]);
             $ganeral_seeting->save();
         }
         return redirect()->route('pageone');
@@ -520,6 +600,12 @@ class PageController extends Controller
 
     public function add_general_knowledge(Request $request){
         
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Ganeral Knowledge added successfully',
+        ]);
+
         $ganeral = GeneralKnowledge::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -533,6 +619,12 @@ class PageController extends Controller
 
     public function add_question_answers(Request $request){
         
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Question answer added successfully',
+        ]);
+
         $ganeral = Faqs::create([
             'question' => $request->question,
             'answer' => $request->answer,
@@ -555,6 +647,12 @@ class PageController extends Controller
             $faqs->answer = $request->answer;
         }
     
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Question answer updated successfully',
+        ]);
+
         $faqs->save();
     
         return response()->json(['success' => 'Question Answer updated successfully']);
@@ -562,6 +660,12 @@ class PageController extends Controller
 
     public function add_guestbook(Request $request){
         
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Guest book added successfully',
+        ]);
+
         $guest = GuestBook::create([
             'name' => $request->name,
             'date' => $request->date,
@@ -588,6 +692,12 @@ class PageController extends Controller
             $guestbook->relationship = $request->relationship;
         }
     
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Guest book updated successfully',
+        ]);
+
         $guestbook->save();
     
         return response()->json(['success' => 'Guestbook content updated successfully']);
@@ -604,6 +714,12 @@ class PageController extends Controller
             $generalknowledge->description = $request->description;
         }
     
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'General Knowledge updated successfully',
+        ]);
+
         $generalknowledge->save();
     
         return response()->json(['success' => 'Content updated successfully']);
@@ -624,6 +740,12 @@ class PageController extends Controller
             $imagetwoName = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('stories_images'), $imagetwoName);
         }
+
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Story added successfully',
+        ]);
 
         Story::create([
             'title' => $request->title,
@@ -649,6 +771,12 @@ class PageController extends Controller
             $story->description = $request->description;
         }
     
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Story updated successfully',
+        ]);
+
         $story->save();
     
         return response()->json(['success' => 'Content updated successfully']);
@@ -664,6 +792,13 @@ class PageController extends Controller
             $file->move(public_path('stories_images'), $filename);
     
             $story->$contentType = $filename;
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Story Image updated successfully',
+            ]);
+
             $story->save();
         }
     
@@ -683,6 +818,13 @@ class PageController extends Controller
             $audio = $request->file('audio');
             $audioName = time() . '_' . Str::random(10) . '.' . $audio->getClientOriginalExtension();
             $audio->move(public_path('soundclips_files'), $audioName);
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Soundclip added successfully',
+            ]);
+
             SoundClip::create([
                 'title' => $request->title,
                 'audio' => $audioName,
@@ -702,6 +844,12 @@ class PageController extends Controller
             $soundclip->title = $request->title;
         }
     
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Soundclip Content updated successfully',
+        ]);
+
         $soundclip->save();
     
         return response()->json(['success' => 'Content updated successfully']);
@@ -716,6 +864,11 @@ class PageController extends Controller
             $file->move(public_path('soundclips_files'), $filename);
     
             $soundclip->audio = $filename;
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Soundclip Audio updated successfully',
+            ]);
             $soundclip->save();
         }
     
@@ -787,6 +940,12 @@ class PageController extends Controller
                 $transition->extra_music = 'Time of my Life (Bill Medley & Jennifer Warnes)';
                 $transition->body = 'Cremated. Ashes made into jewellery for her children Remaining ashes scattered in the ocean';
             }
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Transition added successfully',
+            ]);
         }
     
         // Update the corresponding field based on the id
@@ -809,6 +968,12 @@ class PageController extends Controller
             case 'body':
                 $transition->body = $content;
                 break;
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Transition updated successfully',
+            ]);
         }
     
         // Save the transition record
@@ -881,6 +1046,12 @@ class PageController extends Controller
                 $obituary->place_of_transition = 'At home — Carmody Court, Nudgee, QLD, Australia';
                 $obituary->cause_of_transition = 'Unknown';
             }
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Obituary added successfully',
+            ]);
         }
     
         // Update the corresponding field based on the id
@@ -903,6 +1074,12 @@ class PageController extends Controller
             case 'cause_of_transition':
                 $obituary->cause_of_transition = $content;
                 break;
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Obituary updated successfully',
+            ]);
         }
     
         // Save the transition record
@@ -976,6 +1153,12 @@ class PageController extends Controller
                 $obituary->wake = 'Wednesday 13th September 2023, 12pm-3pm Events on Oxlade, 50 Oxlade Drive New Farm Qld, 4005';
                 $obituary->final_resting_place = 'Breannon’s ashes are currently in her mother’s possession. Some of Bree’s ashes will be scattered with her grandparents, Jan and Lex Horgan. Some ashes will be scattered overseas, where Breannon planned to travel. Breannon’s remaining ashes will be combined with her mother’s, and both will be buried with Breannon’s sister, Kaitlyn Schuback-Jeffers';
             }
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Obituary added successfully',
+            ]);
         }
     
         // Update the corresponding field based on the id
@@ -998,6 +1181,12 @@ class PageController extends Controller
             case 'final_resting_place':
                 $obituary->final_resting_place = $content;
                 break;
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Obituary updated successfully',
+            ]);
         }
     
         // Save the transition record
@@ -1009,6 +1198,7 @@ class PageController extends Controller
 
     public function add_euolgy(Request $request) {
 
+        $id = $request->id;
         $obituary = Eulogy::where('user_id', auth()->user()->id)->first();
 
         if ($obituary) {
@@ -1020,6 +1210,12 @@ class PageController extends Controller
             if(empty($id) || $id == 'description'){
                 $obituary->description = $request->content;
             }
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Eulogy updated successfully',
+            ]);
 
             $obituary->save();
 
@@ -1038,6 +1234,12 @@ class PageController extends Controller
                     $transition->description = $content;
                     break;
             }
+
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Eulogy added successfully',
+            ]);
 
             $newObituary->save();
 
@@ -1061,6 +1263,11 @@ class PageController extends Controller
 
         if (!$eulogy) {
             $eulogy = new Eulogy;
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Eulogy download file added successfully',
+            ]);
         }
 
         if ($request->hasFile('download_order_of_service')) {
@@ -1070,6 +1277,14 @@ class PageController extends Controller
 
             $eulogy->download_order_of_service = $filename;
             $eulogy->user_id = auth()->user()->id;
+
+            if ($eulogy) {
+                History::create([
+                'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name,
+                    'reaction' => 'Eulogy download file updates successfully',
+                ]);
+            }
 
             $eulogy->save();
 
@@ -1096,6 +1311,11 @@ class PageController extends Controller
 
         if (!$eulogy) {
             $eulogy = new Eulogy;
+            History::create([
+            'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Eulogy Video added successfully',
+            ]);
         }
 
         if ($request->hasFile('video')) {
@@ -1105,6 +1325,13 @@ class PageController extends Controller
 
             $eulogy->video = $filename;
             $eulogy->user_id = auth()->user()->id;
+            if ($eulogy) {
+                History::create([
+                'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name,
+                    'reaction' => 'Eulogy Video updated successfully',
+                ]);
+            }
 
             $eulogy->save();
 
@@ -1119,12 +1346,308 @@ class PageController extends Controller
         $tribute = new Tribute;
 
         $tribute->name = $request->name;
-        $tribute->mother_name = $request->mother_name;
+        $tribute->name_of_mother = $request->mother_name;
         $tribute->description = $request->description;
         $tribute->user_id = auth()->user()->id;
 
         $tribute->save();
 
+        History::create([
+        'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Tributes added successfully',
+        ]);
+
         return redirect()->route('pageone')->with('success', 'Tribute added successfully');
     }
+
+    public function update_tribute_content(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'id' => 'required|string',
+            'content' => 'required|string',
+        ]);
+        
+        $id = $request->id;
+
+        // Find the obituary record by id or create a new one
+        $tribute = Tribute::firstOrNew(['user_id' => auth()->user()->id, 'id' => $request->tributeid]);
+
+        if(empty($id) || $id == 'name'){
+            $tribute->name = $request->content;
+        }
+
+        if(empty($id) || $id == 'description'){
+            $tribute->description = $request->content;
+        }
+
+        if(empty($id) || $id == 'name_of_mother'){
+            $tribute->name_of_mother = $request->content;
+        }
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Tributes updated successfully',
+        ]);
+
+        $tribute->save();
+
+        return response()->json(['message' => 'Tribute updated successfully'], 200);
+    }
+
+    public function add_mesageshonureemodal(Request $request){
+        $message = new MessageFromHonouree;
+
+        $message->message = $request->message;
+        $message->user_id = auth()->user()->id;
+
+        $message->save();
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Message from the honouree added successfully',
+        ]);
+
+        return redirect()->route('pageone')->with('success', 'Message added successfully');
+    }
+
+    public function update_messagehonuree_content(Request $request){
+        // Validate the request data
+        $request->validate([
+            'id' => 'required|string',
+            'content' => 'required|string',
+        ]);
+
+        $id = $request->id;
+
+        // Find the obituary record by id or create a new one
+        $messageshonoureeeditableid = MessageFromHonouree::firstOrNew(['user_id' => auth()->user()->id, 'id' => $request->messageshonoureeeditableid]);
+
+        if(empty($id) || $id == 'message'){
+            $messageshonoureeeditableid->message = $request->content;
+        }
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Message from the honouree updated successfully',
+        ]);
+
+        $messageshonoureeeditableid->save();
+
+        return response()->json(['message' => 'Messages updated successfully'], 200);
+    }
+
+    public function add_donationmodal(Request $request){
+        $makeadonation = new MakeaDonation;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('donationimages'), $filename);
+
+            $makeadonation->image = $filename;
+        }
+
+        $makeadonation->url = $request->url;
+        $makeadonation->user_id = auth()->user()->id;
+        $makeadonation->description = $request->description;
+        $makeadonation->save();
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Donation added successfully',
+        ]);
+
+        return redirect()->route('pageone')->with('success', 'Make a Donation added successfully');
+    }
+
+    public function update_donation_content(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'id' => 'required|string',
+            'content' => 'required|string',
+        ]);
+
+        // Find the record by user_id or create a new one
+        $makeadonation = MakeaDonation::firstOrNew(['user_id' => auth()->user()->id, 'id' => $request->donationid]);
+
+        // Update the specific field based on the id
+        if ($request->id == 'description') {
+            $makeadonation->description = $request->content;
+        } elseif ($request->id == 'url') {
+            $makeadonation->url = $request->content;
+        }
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Donation updated successfully',
+        ]);
+
+        $makeadonation->save();
+
+        return response()->json(['message' => 'Make a Donation updated successfully'], 200);
+    }
+
+    public function update_donation_image(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', // Adjust the validation rules as needed
+        ]);
+
+        // Find the record by user_id or create a new one
+        $makeADonation = MakeADonation::firstOrNew(['user_id' => auth()->user()->id, 'id' => $request->donation_id]);
+
+        // Handle the image upload
+        if ($request->hasFile('image')) {
+            // Delete the old image if exists
+            $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('donationimages'), $filename);
+
+            $makeADonation->image = $filename;
+            $makeADonation->user_id = auth()->user()->id;
+            $makeADonation->save();
+
+            History::create([
+                'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Donation updated successfully',
+            ]);
+
+            return response()->json(['message' => 'Make a Donation updated successfully']);
+        }
+
+        return response()->json(['success' => false], 400);
+    }
+
+    public function add_relative_and_friends(Request $request){
+
+        $relationandrelative = new RelationandRelative;
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif', // Adjust the validation rules as needed
+            'name' => 'required|string',
+            'relationship' => 'required|string',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('relationandrelativeimages'), $filename);
+
+            $relationandrelative->image = $filename;
+        }
+
+        $relationandrelative->user_id = auth()->user()->id;
+        $relationandrelative->name = $request->name;
+        $relationandrelative->relationship = $request->relationship;
+
+        $relationandrelative->save();
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Relative and friends added successfully',
+        ]);
+
+        return redirect()->route('pageone')->with('success', 'Relatives and Friends added successfully');
+    }
+
+    public function relativeupdateImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'id' => 'required|integer|exists:relative_and_friends,id'
+        ]);
+
+        $relationandrelative = RelationAndRelative::find($request->id);
+
+        if ($request->hasFile('image')) {
+            
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('relationandrelativeimages'), $filename);
+    
+                $relationandrelative->image = $filename;
+            }
+
+            History::create([
+                'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'reaction' => 'Relative and friends updated successfully',
+            ]);
+
+            $relationandrelative->save();
+
+            return response()->json(['success' => true, 'imageUrl' => asset('storage/' . $filename)], 200);
+        }
+
+        return response()->json(['success' => false], 400);
+    }
+
+    public function relativeupdateText(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer|exists:relative_and_friends,id',
+            'field' => 'required|string|in:name,relationship',
+            'content' => 'required|string|max:255'
+        ]);
+
+        $relationandrelative = RelationAndRelative::find($request->id);
+        $relationandrelative->{$request->field} = $request->content;
+        $relationandrelative->save();
+
+        History::create([
+            'user_id' => auth()->user()->id,
+            'name' => auth()->user()->name,
+            'reaction' => 'Relative and friends added successfully',
+        ]);
+
+        return response()->json(['success' => true], 200);
+    }
+
+    public function add_galleryimages(Request $request){
+
+        if(count($request->images) < 10 && count($request->texts) < 10){
+            return redirect()->back()->with('error','Minimun 10 images and texts must be add.');
+        }
+
+        if (count($request->images) !== count($request->texts)) {
+            return redirect()->back()->with('error','Number of images and texts must match.');
+        }
+
+        if(count($request->images) > 10 && count($request->texts) > 10){
+            return redirect()->back()->with('error','Maximun 10 images and texts add.');
+        }
+
+        // Process images and texts together
+        for ($i = 0; $i < count($request->images); $i++) {
+            $image = $request->images[$i];
+            $text = $request->texts[$i];
+
+            $filename = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('galleries_images'), $filename);
+            // Handle image upload
+            $path = $filename;
+
+            // Create a new GalleryImage entry for each image-text pair
+            GalleryImage::create([
+                'images' => $path,
+                'texts' => $text,
+                'user_id' => auth()->user()->id,
+            ]);
+        }
+
+        return redirect()->route('pageone')->with('success','Gallery Images added successfully');
+
+    }
+
 }

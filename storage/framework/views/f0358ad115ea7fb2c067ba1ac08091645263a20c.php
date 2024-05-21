@@ -2209,56 +2209,247 @@
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div class="swiper galleryswiper mobileoff">
                                     <div class="swiper-wrapper">
+                                      <style>
+                                        .image-container {
+                                            position: relative;
+                                            /* display: inline-block; */
+                                        }
+
+                                        .open-modal-btn {
+                                            display: none;
+                                            position: absolute;
+                                            top: 10px;
+                                            right: 10px;
+                                            z-index: 10;
+                                        }
+
+                                        .image-container:hover .open-modal-btn {
+                                            display: block;
+                                        }
+
+                                        .gallerymodal {
+                                            display: none;
+                                            position: fixed;
+                                            z-index: 100;
+                                            left: 0;
+                                            top: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                            overflow: auto;
+                                            background-color: rgb(0,0,0);
+                                            background-color: rgba(0,0,0,0.4);
+                                        }
+
+                                        .gallerymodal-content {
+                                            background-color: #fefefe;
+                                            margin: 15% auto;
+                                            padding: 20px;
+                                            border: 1px solid #888;
+                                            width: 80%;
+                                        }
+
+                                        .galleryclose {
+                                            color: #aaa;
+                                            float: right;
+                                            font-size: 28px;
+                                            font-weight: bold;
+                                        }
+
+                                        .galleryclose:hover,
+                                        .galleryclose:focus {
+                                            color: black;
+                                            text-decoration: none;
+                                            cursor: pointer;
+                                        }
+                                      </style>
+                                      <?php if(!empty($galleries)): ?>
                                       <div class="swiper-slide">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;">
-                                                <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."><img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                <div class="image-container">
+                                                    <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[0]['images'])); ?>" data-caption="<?php echo e($galleries[0]['text']); ?>"><img src="<?php echo e(asset('galleries_images/'.$galleries[0]['images'])); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                       <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:334px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                        <div class="image-container">
+                                                            <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[1]['images'])); ?>" data-caption="<?php echo e($galleries[1]['text']); ?>"> <img src="<?php echo e(asset('galleries_images/'.$galleries[1]['images'])); ?>" style="height:334px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                            <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[2]['images'])); ?>" data-caption="<?php echo e($galleries[2]['text']); ?>"> <img src="<?php echo e(asset('galleries_images/'.$galleries[2]['images'])); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:157px;"> </a>
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[3]['images'])); ?>" data-caption="<?php echo e($galleries[3]['text']); ?>"> <img src="<?php echo e(asset('galleries_images/'.$galleries[3]['images'])); ?>" style="width: 100%;border: 1px solid #fff!important;height:157px;"> </a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 col-sm-12">
-                                                      <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:312px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                        <div class="image-container">
+                                                            <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[4]['images'])); ?>" data-caption="<?php echo e($galleries[4]['text']); ?>">  <img src="<?php echo e(asset('galleries_images/'.$galleries[4]['images'])); ?>" style="height:312px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                            <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-sm-6" style="padding-left:0px!important;">
-                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:250px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                <div class="image-container">
+                                                    <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[5]['images'])); ?>" data-caption="<?php echo e($galleries[5]['text']); ?>"> <img src="<?php echo e(asset('galleries_images/'.$galleries[5]['images'])); ?>" style="height:250px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-lg-12 col-sm-12">
-                                                       <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:350px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                        <div class="image-container">
+                                                         <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[6]['images'])); ?>" data-caption="<?php echo e($galleries[6]['text']); ?>"> <img src="<?php echo e(asset('galleries_images/'.$galleries[6]['images'])); ?>" style="height:350px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                         <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6">
                                                         <div class="row">
                                                             <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                              <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[7]['images'])); ?>" data-caption="<?php echo e($galleries[7]['text']); ?>">  <img src="<?php echo e(asset('galleries_images/'.$galleries[7]['images'])); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
-                                                               <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[8]['images'])); ?>" data-caption="<?php echo e($galleries[8]['text']); ?>"> <img src="<?php echo e(asset('galleries_images/'.$galleries[8]['images'])); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
-                                                      <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>"style="height:400px;width: 100%;border: 2px solid #fff!important;"></a>
+                                                        <div class="image-container">
+                                                            <a data-fancybox="gallery" href="<?php echo e(asset('galleries_images/'.$galleries[9]['images'])); ?>" data-caption="<?php echo e($galleries[9]['text']); ?>">  <img src="<?php echo e(asset('galleries_images/'.$galleries[9]['images'])); ?>"style="height:400px;width: 100%;border: 2px solid #fff!important;"></a>
+                                                            <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                       </div>
+                                      <?php else: ?>
+                                      <div class="swiper-slide">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;">
+                                                <div class="image-container">
+                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."><img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
+                                                        <div class="image-container">
+                                                            <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:334px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                            <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;"></a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-sm-12" style="padding-left:0px!important;">
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="width: 100%;border: 1px solid #fff!important;height:157px;"> </a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="image-container">
+                                                            <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:312px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                            <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6" style="padding-left:0px!important;">
+                                                <div class="image-container">
+                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:250px;width: 100%;border: 1px solid #fff!important;"> </a>
+                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-sm-12">
+                                                        <div class="image-container">
+                                                         <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="height:350px;width: 100%;border: 1px solid #fff!important;"></a>
+                                                         <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-sm-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 col-sm-12" style="padding-right:0px!important;padding-left:0px!important;">
+                                                                <div class="image-container">
+                                                                    <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum."> <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>" style="margin-left: 15px;width: 95%;height:200px;border: 1px solid #fff!important;"></a>
+                                                                    <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-sm-6" style="padding-right:0px!important;padding-left:0px!important;">
+                                                        <div class="image-container">
+                                                            <a data-fancybox="gallery" href="<?php echo e(asset('assets/dummythree.jpg')); ?>" data-caption="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius voluptas culpa possimus reprehenderit tempore expedita sunt, nulla provident dolores! Numquam laudantium blanditiis voluptates porro asperiores temporibus earum nihil velit rerum.">  <img src="<?php echo e(asset('assets/dummythree.jpg')); ?>"style="height:400px;width: 100%;border: 2px solid #fff!important;"></a>
+                                                            <button class="open-modal-btn btn btn-sm" data-toggle="modal" data-target="#editgalleryphoto"><i class="fa fa-edit" data-toggle="modal" data-target="#editgalleryphoto"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <?php endif; ?>
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                 </div>
+                                <div class="modal fade" id="editgalleryphoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Edit Photo</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <form>
+                                              <div class="row">
+                                                  <div class="col-lg-12 col-sm-12">
+                                                      <div class="form-group">
+                                                          <input type="hidden" value="" class="hiddenid">
+                                                          <label for="addphotos" class="float-left">Edit Photo</label>
+                                                          <input class="form-control" type="file" id="addphotos">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                                 <div class="swiper qandanswerswiper mobileon" style="border:0px;display:none;">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" style="border:0px;">
@@ -2308,26 +2499,38 @@
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
-                                      <div class="modal-body">
-                                        <form>
+                                        <form method="POST" action="<?php echo e(route('add_galleryimages')); ?>" enctype="multipart/form-data">
+                                      <?php echo csrf_field(); ?>
+                                            <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-lg-12 col-sm-12">
                                                     <div class="form-group">
                                                         <label for="addphotos" class="float-left">Add Photo</label>
-                                                        <input class="form-control" type="file" id="addphotos">
+                                                        <input class="form-control" type="file" name="images[]" multiple>
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-8 col-sm-8">
+                                                    <div class="form-group" id="textInputs">
+                                                        <label for="texts" class="float-left">Enter Texts:</label>
+                                                        <input type="text" name="texts[]" placeholder="Add Text" class="form-control">
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-g-4 col-sm-4">
+                                                    <button type="button" id="addTextInput" class="btn btn-sm" style="background-color:#BE9438;border:0px;margin-top: 35px;color:white;">Add Text Input</button>
+                                                </div>
                                             </div>
-                                        </form>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                        <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
                                       </div>
+                                    </form>
                                     </div>
                                   </div>
                                 </div>
                             </div>
+                            
                             <div  class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff" id="guest">
                                 <!--<h3 class="pagemainheading mt-3" style="color:#A423EB!important;">GUEST BOOK (###)-->
                                 <!--</h3>-->
@@ -3392,13 +3595,13 @@
                                       <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
-                                                <h4 class="tributemother">Mother</h4>
+                                                <h4 class="editable-texttribute" data-id="name_of_mother">Mother</h4>
                                             </div>
                                             <div class="col-lg-6 col-sm-6">
-                                                <h4 class="tributemother">Karen Schuback</h4>
+                                                <h4 class="editable-texttribute" data-id="name" >Karen Schuback</h4>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                <p style="font-family: 'Josefin Sans Light';">Message here………
+                                                <p class="editable-texttribute" data-id="description" style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
@@ -3406,13 +3609,13 @@
                                       <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
-                                                <h4 class="tributemother">Mother</h4>
+                                                <h4 class="editable-texttribute" data-id="name_of_mother">Mother</h4>
                                             </div>
                                             <div class="col-lg-6 col-sm-6">
-                                                <h4 class="tributemother">Full Name Here</h4>
+                                                <h4 class="editable-texttribute" data-id="name" >Karen Schuback</h4>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                <p style="font-family: 'Josefin Sans Light';">Message here………
+                                                <p class="editable-texttribute" data-id="description" style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
@@ -3420,13 +3623,13 @@
                                       <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
-                                                <h4 class="tributemother">Mother</h4>
+                                                <h4 class="editable-texttribute" data-id="name_of_mother">Mother</h4>
                                             </div>
                                             <div class="col-lg-6 col-sm-6">
-                                                <h4 class="tributemother">Full Name Here</h4>
+                                                <h4 class="editable-texttribute" data-id="name" >Karen Schuback</h4>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                <p style="font-family: 'Josefin Sans Light';">Message here………
+                                                <p class="editable-texttribute" data-id="description" style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
@@ -3434,13 +3637,13 @@
                                       <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
-                                                <h4 class="tributemother">Mother</h4>
+                                                <h4 class="editable-texttribute" data-id="name_of_mother">Mother</h4>
                                             </div>
                                             <div class="col-lg-6 col-sm-6">
-                                                <h4 class="tributemother">Full Name Here</h4>
+                                                <h4 class="editable-texttribute" data-id="name" >Karen Schuback</h4>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                <p style="font-family: 'Josefin Sans Light';">Message here……….
+                                                <p class="editable-texttribute" data-id="description" style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
@@ -3448,13 +3651,13 @@
                                       <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
-                                                <h4 class="tributemother">Mother</h4>
+                                                <h4 class="editable-texttribute" data-id="name_of_mother">Mother</h4>
                                             </div>
                                             <div class="col-lg-6 col-sm-6">
-                                                <h4 class="tributemother">Full Name Here</h4>
+                                                <h4 class="editable-texttribute" data-id="name" >Karen Schuback</h4>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                <p style="font-family: 'Josefin Sans Light';">Message here……….
+                                                <p class="editable-texttribute" data-id="description" style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
@@ -3462,45 +3665,108 @@
                                       <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                                         <div class="row">
                                             <div class="col-lg-6 col-sm-6 text-left">
-                                                <h4 class="tributemother">Mother</h4>
+                                                <h4 class="editable-texttribute" data-id="name_of_mother">Mother</h4>
                                             </div>
                                             <div class="col-lg-6 col-sm-6">
-                                                <h4 class="tributemother">Full Name Here</h4>
+                                                <h4 class="editable-texttribute" data-id="name" >Karen Schuback</h4>
                                             </div>
                                             <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                <p style="font-family: 'Josefin Sans Light';">Message here……….
+                                                <p class="editable-texttribute" data-id="description" style="font-family: 'Josefin Sans Light';">Message here………
                                                 </p>
                                             </div>
                                         </div>
                                       </div>
                                     </div>
                                     <?php else: ?>
-                                    <div class="swiper-wrapper">
+                                    <div class="swiper-wrapper" style="height: 650px;">
                                         <?php $__currentLoopData = $tributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="swiper-slide" style="border:1px solid #BE9438!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                                          <div class="row">
-                                              <div class="col-lg-6 col-sm-6 text-left">
-                                                  <h4 class="tributemother"><?php echo e($tribute->name_of_mother); ?></h4>
-                                              </div>
-                                              <div class="col-lg-6 col-sm-6">
-                                                  <h4 class="tributemother"><?php echo e($tribute->name); ?></h4>
-                                              </div>
-                                              <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
-                                                  <p style="font-family: 'Josefin Sans Light';"><?php echo e($tribute->description); ?>
-
-                                                  </p>
-                                              </div>
-                                          </div>
-                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-sm-6 text-left">
+                                                    <h4 class="editable-texttribute" data-id="name_of_mother" data-tribute-id="<?php echo e($tribute->id); ?>" style="font-family: 'Josefin Sans Light';"><?php echo e($tribute->name_of_mother); ?></h4>
+                                                </div>
+                                                <div class="col-lg-6 col-sm-6">
+                                                    <h4 class="editable-texttribute" data-id="name" data-tribute-id="<?php echo e($tribute->id); ?>" style="font-family: 'Josefin Sans Light';"><?php echo e($tribute->name); ?></h4>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 text-center mt-lg-3">
+                                                    <p class="editable-texttribute" data-id="description" data-tribute-id="<?php echo e($tribute->id); ?>" style="font-family: 'Josefin Sans Light';"><?php echo e($tribute->description); ?></p>
+                                                </div>
+                                            </div>
+                                        </div>                                        
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                      </div>
+                                    </div>
                                     <?php endif; ?>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            var editableElements = document.querySelectorAll('.editable-texttribute');
+
+                                            // Function to make element editable
+                                            function makeEditable(element) {
+                                                element.contentEditable = true;
+                                                element.focus();
+                                            }
+
+                                            // Function to handle AJAX update
+                                            function handleUpdate(element) {
+                                                var editedContent = element.textContent.trim();
+                                                var dataId = element.getAttribute('data-id');
+                                                var tributeId = element.getAttribute('data-tribute-id');
+
+                                                // Prepare data object with dynamic key-value pair
+                                                var data = {
+                                                    id: dataId,
+                                                    tributeid : tributeId,
+                                                    content: editedContent
+                                                };
+
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-tribute-content', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Content updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update content');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+
+                                                element.contentEditable = false; // Make the element non-editable after blur
+                                            }
+
+                                            // Add event listeners to make elements editable upon clicking
+                                            editableElements.forEach(function(element) {
+                                                element.addEventListener('click', function() {
+                                                    makeEditable(element);
+                                                });
+
+                                                element.addEventListener('blur', function() {
+                                                    handleUpdate(element);
+                                                });
+
+                                                // Allow pressing Enter to save the changes
+                                                element.addEventListener('keydown', function(event) {
+                                                    if (event.key === 'Enter') {
+                                                        event.preventDefault();
+                                                        handleUpdate(element);
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
                                     <!--<div class="swiper-pagination mt-3"></div>-->
-                                  </div>
-                                  
-                                 
-                                 
+                                </div>
                                 <div class="swiper qandanswerswiper pb-5 mobileon" style="border:1px solid #BE9438!important;display:none;">
+                                    <?php if(empty($tributes)): ?>
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="row p-2">
@@ -3558,6 +3824,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <?php else: ?> 
+                                    <div class="swiper-slide">
+                                        <div class="row p-2">
+                                            <div class="col-lg-6 col-sm-6">
+                                                <h4 class="text-left editable-texttribute"data-id="name_of_mother" data-tribute-id="<?php echo e($tribute->id); ?>">Mother <span class="ml-4 text-right editable-texttribute" data-tribute-id="<?php echo e($tribute->id); ?>" data-id="name">Karen Schuback</span></h4>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 text-left mt-5">
+                                                <p style="font-family: 'Josefin Sans Light';" class="editable-texttribute" data-id="description" data-tribute-id="<?php echo e($tribute->id); ?>">Message here……….
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php endif; ?>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
                                     <!-- <div class="swiper-pagination"></div> -->
@@ -3611,37 +3890,325 @@
                             <div class="col-lg-12 col-sm-12 mt-lg-4 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">MESSAGES FROM THE HONOUREE
                                 </h3>
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;" data-target="#mesageshonureemodal">
+                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#mesageshonureemodal"></i>
+                                </span>
+                                <div class="modal fade" id="mesageshonureemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ADD MESSAGES FROM THE HONOUREE </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <form action="<?php echo e(route('add_mesageshonureemodal')); ?>" method="POST">
+                                                <div class="modal-body">
+                                                        <?php echo csrf_field(); ?>
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-sm-12">
+                                                                <div class="form-group">
+                                                                    <label for="message" class="float-left">Add Message</label>
+                                                                    <textarea class="form-control" id="message" name="message" required>
+                                                                    </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 newclasspaddingoff">
                                 <div class="swiper hououreeswiper">
+                                    <?php if(empty($messageshonourees)): ?>
                                     <div class="swiper-wrapper" style="height: 300px;">
                                       <div class="swiper-slide" style="border:2px solid #BE9438;">
-                                        <p class="text-center mr-lg-5 p-lg-3" style="font-family: 'Josefin Sans Light';">
+                                        <p class="text-center mr-lg-5 p-lg-3 messageshonoureeeditable-text"  data-id="message" style="font-family: 'Josefin Sans Light';">
                                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem sunt possimus inventore culpa rem necessitatibus in rerum. Officia autem eaque voluptatibus neque exercitationem nam magni corporis consequuntur facilis repellendus? Odit!
                                         </p>
                                       </div>
                                       <div class="swiper-slide" style="border:2px solid #BE9438;">
-                                        <p class="text-center mr-lg-5 p-lg-3">
+                                        <p class="text-center mr-lg-5 p-lg-3 messageshonoureeeditable-text"  data-id="message">
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio labore eligendi non quod expedita, natus aliquid iste temporibus iusto aliquam architecto facere mollitia quia numquam eveniet ipsa. Cupiditate, in eligendi.
                                         </p>
                                       </div>
                                     </div>
+                                    <?php else: ?>
+                                    <div class="swiper-wrapper" style="height: 300px;">
+                                        <?php $__currentLoopData = $messageshonourees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $messageshonouree): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="swiper-slide" style="border:2px solid #BE9438;">
+                                                <p class="messageshonoureeeditable-text text-center mr-lg-5 p-lg-3" data-id="message" data-messageshonoureeeditable-id="<?php echo e($messageshonouree->id); ?>" style="font-family: 'Josefin Sans Light';">
+                                                    <?php echo e($messageshonouree->message); ?>
+
+                                                </p>
+                                            </div>                                        
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </div>
+                                    <?php endif; ?>
                                     <div class="swiper-button-next mt-lg-5"></div>
                                     <div class="swiper-button-prev mt-lg-5"></div>
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            var editableElements = document.querySelectorAll('.messageshonoureeeditable-text');
+
+                                            // Function to make element editable
+                                            function makeEditable(element) {
+                                                element.contentEditable = true;
+                                                element.focus();
+                                            }
+
+                                            // Function to handle AJAX update
+                                            function handleUpdate(element) {
+                                                var editedContent = element.textContent.trim();
+                                                var dataId = element.getAttribute('data-id');
+                                                var messageshonoureeeditableId = element.getAttribute('data-messageshonoureeeditable-id');
+
+                                                // Prepare data object with dynamic key-value pair
+                                                var data = {
+                                                    id: dataId,
+                                                    messageshonoureeeditableid: messageshonoureeeditableId,
+                                                    content: editedContent
+                                                };
+
+                                                // Make an AJAX request to send the edited content to the server
+                                                fetch('/update-messagehonuree-content', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                    },
+                                                    body: JSON.stringify(data)
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Content updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update content');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+
+                                                element.contentEditable = false; // Make the element non-editable after blur
+                                            }
+
+                                            // Add event listeners to make elements editable upon clicking
+                                            editableElements.forEach(function(element) {
+                                                element.addEventListener('click', function() {
+                                                    makeEditable(element);
+                                                });
+
+                                                element.addEventListener('blur', function() {
+                                                    handleUpdate(element);
+                                                });
+
+                                                // Allow pressing Enter to save the changes
+                                                element.addEventListener('keydown', function(event) {
+                                                    if (event.key === 'Enter') {
+                                                        event.preventDefault();
+                                                        handleUpdate(element);
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-4 newclasspaddingoff doanationdiv transitionlbordernone" style="border-top: 2px solid #BE9438;border-bottom: 2px solid #BE9438;">
                                 <h3 class="pagemainheading mt-3 topaddmarginsub" style="color:#A423EB!important;">MAKE A DONATION
                                 </h3>
-                                <p class="text-center" style="font-family: 'Josefin Sans Light';">"Transform grief into action by supporting a cause close to your heart. In memory of your loved one, consider donating to a charity dedicated to researching, advocating, or providing support for the cause of their passing. Your contribution not only honours their memory but also helps others facing similar challenges. Together, let's turn loss into hope and make a difference in their honour."   
-                                </p>
-                                <p class="text-center">https://donate.heartfoundation.org.au 
-                                </p>
-                                <div class="row mb-lg-3">
-                                    <div class="col-lg-12 col-sm-12 text-center">
-                                        <img src="<?php echo e(asset('assets/heartfoundation.png')); ?>" class="text-center" style="width:150px;">
+                                <span style="position: absolute; top: 10px; right: 10px; cursor: pointer;" data-target="#makeadonationmodal">
+                                    <i class="fa fa-upload" style="color: #BE9438;" data-toggle="modal" data-target="#makeadonationmodal"></i>
+                                </span>
+                                <div class="modal fade" id="makeadonationmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ADD MAKE A DONATION </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <form action="<?php echo e(route('add_donationmodal')); ?>" method="POST" enctype="multipart/form-data">
+                                                <div class="modal-body">
+                                                    <?php echo csrf_field(); ?>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="url" class="float-left">Add Url</label>
+                                                                <input type="text" class="form-control" id="url" name="url" required />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="image" class="float-left">Add Image</label>
+                                                                <input type="file" class="form-control" id="image" name="image" required />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="description" class="float-left">Add Description</label>
+                                                                <textarea class="form-control" id="description" name="description" required>
+                                                                </textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
+                                <?php
+                                if(!empty($makeadonations)){
+                                ?>
+                                    <?php $__currentLoopData = $makeadonations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $makeadonation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <p class="donationeditable-text text-center" data-id="description" data-donation-id="<?php echo e($makeadonation->id); ?>" style="font-family: 'Josefin Sans Light';"><?php echo e($makeadonation->description); ?>   
+                                        </p>
+                                        <p class="donationeditable-text text-center" data-id="url" data-donation-id="<?php echo e($makeadonation->id); ?>"><?php echo e($makeadonation->url); ?>
+
+                                        </p>
+                                        <div class="row mb-lg-3">
+                                            <div class="col-lg-12 col-sm-12 text-center">
+                                                <img id="donationeditable-image" src="<?php echo e(asset('donationimages/'.$makeadonation->image)); ?>" data-donation-id="<?php echo e($makeadonation->id); ?>" class="text-center" style="width:150px; cursor: pointer;">
+                                                <input type="file" id="image-upload" style="display: none;">
+                                                <input type="hidden" id="donation-id" value="<?php echo e($makeadonation->id); ?>">
+                                            </div>                                            
+                                        </div>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php
+                                }else{
+                                ?>
+                                    <p class="text-center" style="font-family: 'Josefin Sans Light';">"Transform grief into action by supporting a cause close to your heart. In memory of your loved one, consider donating to a charity dedicated to researching, advocating, or providing support for the cause of their passing. Your contribution not only honours their memory but also helps others facing similar challenges. Together, let's turn loss into hope and make a difference in their honour."   
+                                    </p>
+                                    <p class="text-center">https://donate.heartfoundation.org.au 
+                                    </p>
+                                    <div class="row mb-lg-3">
+                                        <div class="col-lg-12 col-sm-12 text-center">
+                                            <img src="<?php echo e(asset('assets/heartfoundation.png')); ?>" class="text-center" style="width:150px;">
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var editableElements = document.querySelectorAll('.donationeditable-text');
+
+                                        // Function to make element editable
+                                        function makeEditable(element) {
+                                            element.contentEditable = true;
+                                            element.focus();
+                                        }
+
+                                        // Function to handle AJAX update
+                                        function handleUpdate(element) {
+                                            var editedContent = element.textContent.trim();
+                                            var dataId = element.getAttribute('data-id');
+                                            var donationId = element.getAttribute('data-donation-id');
+
+                                            // Prepare data object with dynamic key-value pair
+                                            var data = {
+                                                id: dataId,
+                                                donationid: donationId,
+                                                content: editedContent
+                                            };
+
+                                            // Make an AJAX request to send the edited content to the server
+                                            fetch('/update-donation-content', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json',
+                                                    'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' // Include CSRF token if applicable
+                                                },
+                                                body: JSON.stringify(data)
+                                            })
+                                            .then(response => {
+                                                if (response.ok) {
+                                                    console.log('Content updated successfully!');
+                                                    window.location.reload();
+                                                } else {
+                                                    console.error('Failed to update content');
+                                                }
+                                            })
+                                            .catch(error => {
+                                                console.error('Error:', error);
+                                            });
+
+                                            element.contentEditable = false; // Make the element non-editable after blur
+                                        }
+
+                                        // Add event listeners to make elements editable upon clicking
+                                        editableElements.forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                makeEditable(element);
+                                            });
+
+                                            element.addEventListener('blur', function() {
+                                                handleUpdate(element);
+                                            });
+
+                                            // Allow pressing Enter to save the changes
+                                            element.addEventListener('keydown', function(event) {
+                                                if (event.key === 'Enter') {
+                                                    event.preventDefault();
+                                                    handleUpdate(element);
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var imageElement = document.getElementById('donationeditable-image');
+                                        var fileInput = document.getElementById('image-upload');
+                                        var donationIdInput = document.getElementById('donation-id');
+
+                                        // Function to trigger file input click
+                                        imageElement.addEventListener('click', function() {
+                                            fileInput.click();
+                                        });
+
+                                        // Function to handle file selection
+                                        fileInput.addEventListener('change', function(event) {
+                                            var file = event.target.files[0];
+
+                                            if (file) {
+                                                var formData = new FormData();
+                                                formData.append('image', file);
+                                                formData.append('donation_id', donationIdInput.value);
+
+                                                // Include CSRF token for security (for Laravel)
+                                                formData.append('_token', '<?php echo e(csrf_token()); ?>');
+
+                                                // Make an AJAX request to upload the file
+                                                fetch('/update-donation-image', {
+                                                    method: 'POST',
+                                                    body: formData
+                                                })
+                                                .then(response => {
+                                                    if (response.ok) {
+                                                        console.log('Content updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update content');
+                                                    }
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                });
+                                            }
+                                        });
+                                    });
+                                </script>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-2 topaddmarginsub" style="color:#A423EB!important;">RELATIVES AND FRIENDS
@@ -3660,6 +4227,7 @@
                               }
                             </style>
                             <div class="col-lg-12 col-sm-12 mt-3 newclasspaddingoff">  
+                                <?php if(empty($relationandrelatives)): ?>
                                 <div class="slider-container">
                                     <div class="slider-content">
                                       <div class="slider-item">
@@ -3700,6 +4268,24 @@
                                     <div class="swiper-button-prev relativeprev" onclick="slide(-1)"></div>
                                     <div class="swiper-button-next relativenext" onclick="slide(1)"></div>
                                 </div>
+                                <?php else: ?>
+                                <div class="slider-container">
+                                    <div class="slider-content">
+                                        <?php $__currentLoopData = $relationandrelatives; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationandrelative): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="slider-item" data-id="<?php echo e($relationandrelative->id); ?>">
+                                                <img class="product-image relativeeditable-image" src="<?php echo e(asset('relationandrelativeimages/'.$relationandrelative->image)); ?>" alt="Product 1" style="height:200px!important; cursor: pointer;">
+                                                <div class="product-info">
+                                                    <h6 class="relativeeditable-text" data-field="name" style="cursor: pointer;"><?php echo e($relationandrelative->name); ?></h6>
+                                                    <p class="relativeeditable-text" data-field="relationship" style="font-family: 'Josefin Sans Light'; cursor: pointer;"><?php echo e($relationandrelative->relationship); ?></p>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </div>
+                                    <div class="swiper-button-prev relativeprev" onclick="slide(-1)"></div>
+                                    <div class="swiper-button-next relativenext" onclick="slide(1)"></div>
+                                </div>
+                                <input type="file" id="relativeimage-upload" style="display: none;">                                
+                                <?php endif; ?>
                                 <script>
                                     var swiper = new Swiper('.slider-container', {
                                         navigation: {
@@ -3708,10 +4294,152 @@
                                         },
                                     });
                                 </script>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        var imageInput = document.getElementById('relativeimage-upload');
+                                        var currentElement;
+
+                                        // Handle image clicks
+                                        document.querySelectorAll('.relativeeditable-image').forEach(function(img) {
+                                            img.addEventListener('click', function() {
+                                                currentElement = img;
+                                                imageInput.click();
+                                            });
+                                        });
+
+                                        // Handle image uploads
+                                        imageInput.addEventListener('change', function(event) {
+                                            var file = event.target.files[0];
+                                            if (file && currentElement) {
+                                                var formData = new FormData();
+                                                formData.append('image', file);
+                                                formData.append('id', currentElement.closest('.slider-item').getAttribute('data-id'));
+                                                formData.append('_token', '<?php echo e(csrf_token()); ?>');
+
+                                                fetch('/update-relationandrelative-image', {
+                                                    method: 'POST',
+                                                    body: formData
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    if (data.success) {
+                                                        currentElement.src = data.imageUrl;
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update image');
+                                                    }
+                                                })
+                                                .catch(error => console.error('Error:', error));
+                                            }
+                                        });
+
+                                        // Handle text clicks
+                                        document.querySelectorAll('.relativeeditable-text').forEach(function(element) {
+                                            element.addEventListener('click', function() {
+                                                element.contentEditable = true;
+                                                element.focus();
+                                            });
+
+                                            element.addEventListener('blur', function() {
+                                                element.contentEditable = false;
+                                                var editedContent = element.textContent.trim();
+                                                var field = element.getAttribute('data-field');
+                                                var id = element.closest('.slider-item').getAttribute('data-id');
+
+                                                fetch('/update-relationandrelative-text', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json',
+                                                        'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+                                                    },
+                                                    body: JSON.stringify({ id: id, field: field, content: editedContent })
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    if (data.success) {
+                                                        console.log('Content updated successfully!');
+                                                        window.location.reload();
+                                                    } else {
+                                                        console.error('Failed to update content');
+                                                    }
+                                                })
+                                                .catch(error => console.error('Error:', error));
+                                            });
+                                        });
+                                    });
+                                </script>
                             </div>
                             <div class="col-lg-12 col-sm-12 text-center mt-3 newclasspaddingoff">
-                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';">LINK A PAGE
+                                <button class="btn btn-large contactadministration" style="background-image: url('<?php echo e(asset('assets/buttonbackground.PNG')); ?>');width: 30%;color:#000;border-radius: 20px;font-family: 'Josefin Sans Bold';" data-toggle="modal" data-target="#relationandrelativemodal">LINK A PAGE
                                 </button>
+                                <div class="modal fade" id="relationandrelativemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">ADD RELATIVES AND FRIENDS
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <form action="<?php echo e(route('add_relative_and_friends')); ?>" method="POST" enctype="multipart/form-data">
+                                                <div class="modal-body">
+                                                    <?php echo csrf_field(); ?>
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-sm-12">
+                                                            <div class="form-group">
+                                                                <label for="name" class="float-left">Add Name</label>
+                                                                <input type="text" class="form-control" id="name" name="name" required />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="image" class="float-left">Add Image</label>
+                                                                <input type="file" class="form-control" id="image" name="image" required />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="relationship" class="float-left">Add Relationship</label>
+                                                                <select class="form-control" name="relationship" style="font-family: 'Josefin Sans Light';">
+                                                                    <option value="" disabled selected>Choose a Relationship</option>
+                                                                    <option value="Parent">Parent</option>
+                                                                    <option value="Step-Parent">Step-Parent</option>
+                                                                    <option value="Foster Parent">Foster Parent</option>
+                                                                    <option value="Guardian">Guardian</option>
+                                                                    <option value="Grandparent">Grandparent</option>
+                                                                    <option value="Step-Grandparent">Step-Grandparent</option>
+                                                                    <option value="Godparent">Godparent</option>
+                                                                    <option value="Husband">Husband</option>
+                                                                    <option value="Wife">Wife</option>
+                                                                    <option value="Partner">Partner</option>
+                                                                    <option value="Ex-Partner">Ex-Partner</option>
+                                                                    <option value="Child">Child</option>
+                                                                    <option value="Stepchild">Stepchild</option>
+                                                                    <option value="Foster Child">Foster Child</option>
+                                                                    <option value="Godchild">Godchild</option>
+                                                                    <option value="Sibling">Sibling</option>
+                                                                    <option value="Nibling">Nibling</option>
+                                                                    <option value="Niece">Niece</option>
+                                                                    <option value="Nephew">Nephew</option>
+                                                                    <option value="Cousin">Cousin</option>
+                                                                    <option value="Best Friend">Best Friend</option>
+                                                                    <option value="Friend">Friend</option>
+                                                                    <option value="Family Friend">Family Friend</option>
+                                                                    <option value="Friend of a Friend">Friend of a Friend</option>
+                                                                    <option value="Colleague">Colleague</option>
+                                                                    <option value="Acquaintance">Acquaintance</option>
+                                                                    <option value="Caregiver">Caregiver</option>
+                                                                    <option value="Other">Other</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    
+                                                    <button type="submit" class="btn" style="background-color: #BE9438;width: 30%;color:#fff;font-family: 'Josefin Sans Bold';">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
                                 <h3 class="pagemainheading mt-2 topaddmarginsub" style="color:#A423EB!important;">RECENT ACTIVITY
@@ -3720,6 +4448,7 @@
                             <div class="col-lg-12 col-sm-12 mt-2 newclasspaddingoff">
                                 <div class="table-responsive table-small">
                                     <table class="table" style="border: 2px solid #BE9438!important;">
+                                        <?php if(empty($histories)): ?>
                                         <tbody>
                                             <tr>
                                                 <td style="font-family: 'Josefin Sans Light';">XX/XX/XXXX</td>
@@ -3742,6 +4471,17 @@
                                                 <td style="font-family: 'Josefin Sans Light';">Added to stories</td>
                                             </tr>
                                         </tbody>
+                                        <?php else: ?>
+                                        <tbody>
+                                            <?php $__currentLoopData = $histories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $history): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <tr>
+                                                <td style="font-family: 'Josefin Sans Light';text-align:center;"><?php echo e($history->created_at->format('d/m/Y')); ?></td>
+                                                <td style="font-family: 'Josefin Sans Light';"><?php echo e($history->name); ?></td>
+                                                <td style="font-family: 'Josefin Sans Light';"><?php echo e($history->reaction); ?></td>
+                                            </tr>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                        <?php endif; ?>
                                     </table>
                                 </div>
                             </div>
@@ -4135,6 +4875,21 @@
             </script>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endif; ?>
+    <script>
+        $(document).ready(function(){
+            var maxTextInputs = 100; // Maximum text input fields allowed
+            var textInputWrapper = $('#textInputs'); // Input field wrapper
+
+            // Add text input field
+            $('#addTextInput').click(function(){
+                if(textInputWrapper.find('input').length < maxTextInputs){
+                    $('<br><input type="text" name="texts[]" class="form-control" placeholder="Text ' + (textInputWrapper.find('input').length + 1) + '">').appendTo(textInputWrapper);
+                } else {
+                    alert('You have reached the maximum limit of text inputs');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html><?php /**PATH G:\laragon\www\memorial_website\project\memorial\resources\views/Frontend/pageone.blade.php ENDPATH**/ ?>

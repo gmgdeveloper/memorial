@@ -154,6 +154,17 @@ Route::group(['middleware' => ['auth', 'honouree']], function(){
     Route::post('/add-download-order-of-service-euolgy',[PageController::class,'add_download_order_of_service_euolgy'])->name('add_download_order_of_service_euolgy');
     Route::post('/add-download-order-video-of-service-euolgy',[PageController::class,'add_download_order_of_service_videoeulogy_euolgy'])->name('add_download_order_of_service_videoeulogy_euolgy');
     Route::post('/add-tributes',[PageController::class,'add_tributes'])->name('addtributes');
+    Route::post('/update-tribute-content',[PageController::class,'update_tribute_content'])->name('update_tribute_content');
+    Route::post('/add-mesageshonureemodal',[PageController::class,'add_mesageshonureemodal'])->name('add_mesageshonureemodal');
+    Route::post('/update-messagehonuree-content',[PageController::class,'update_messagehonuree_content'])->name('update_messagehonuree_content');
+    Route::post('/add-donationmodal',[PageController::class,'add_donationmodal'])->name('add_donationmodal');
+    Route::post('/update-donation-content',[PageController::class,'update_donation_content'])->name('update_donation_content');
+    Route::post('/update-donation-image',[PageController::class,'update_donation_image'])->name('update_donation_image');
+    Route::post('/add-relative-and-friends',[PageController::class,'add_relative_and_friends'])->name('add_relative_and_friends');
+    Route::post('/update-relationandrelative-text',[PageController::class,'relativeupdateText'])->name('relativeupdateText');
+    Route::post('/update-relationandrelative-image',[PageController::class,'relativeupdateImage'])->name('relativeupdateImage');
+    Route::post('/add-gallery-images',[PageController::class,'add_galleryimages'])->name('add_galleryimages');
+
 
 });
 
